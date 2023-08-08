@@ -150,8 +150,8 @@ public class Login extends JFrame {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		      
-		        CadastroUsuario cadastroFrame = new CadastroUsuario();
-		        cadastroFrame.setVisible(true);
+		        //CadastroUsuario cadastroFrame = new CadastroUsuario();
+		        //cadastroFrame.setVisible(true);
 		        Login.this.dispose(); 
 		    }
 		});
