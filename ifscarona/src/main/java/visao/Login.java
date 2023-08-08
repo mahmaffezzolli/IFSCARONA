@@ -11,6 +11,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
+import javax.swing.ImageIcon;
 
 public class Login extends JFrame {
 
@@ -46,27 +47,33 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\icons8-nova-mensagem-60.png"));
+		lblNewLabel.setBounds(876, 417, 60, 45);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\certo.png"));
+		lblNewLabel_3.setBounds(0, -197, 455, 1650);
+		contentPane.add(lblNewLabel_3);
+		
 		JLabel lblNewLabel_2 = new JLabel("E-mail institucional");
-		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblNewLabel_2.setBounds(884, 471, 122, 14);
+		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblNewLabel_2.setBounds(950, 392, 122, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(255, 251, 233));
 		textField.setToolTipText("");
-		textField.setBounds(884, 488, 247, 20);
+		textField.setBounds(946, 417, 336, 45);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 
 		
-		JLabel lblNewLabel_1 = new JLabel("Logar ");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 26));
-		lblNewLabel_1.setBounds(958, 329, 101, 57);
+		JLabel lblNewLabel_1 = new JLabel("Login");
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 53));
+		lblNewLabel_1.setBounds(1030, 41, 327, 107);
 		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
-		lblNewLabel.setBounds(825, 306, 357, 476);
-		contentPane.add(lblNewLabel);
 	}
 }
