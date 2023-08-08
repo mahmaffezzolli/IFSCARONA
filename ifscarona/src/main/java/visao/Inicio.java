@@ -8,25 +8,22 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
 
 public class Inicio extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField txtQuadradoBaixo;
-	private JTextField txtQuadradoCima;
-	private JTextField txtMeio;
 	private JLabel lblImage;
 	private JButton btnCadastrar;
 	private JLabel lblBemvindoAo;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
 
 	/**
 	 * Launch the application.
@@ -63,76 +60,50 @@ public class Inicio extends JFrame {
 			}
 		});
 		
-		lblImage = new JLabel("");
-		lblImage.setBounds(849, 135, 219, 153);
-		contentPane.add(lblImage);
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\decoracao2.1.png"));
+		lblNewLabel_3.setBounds(-48, 669, 403, 517);
+		contentPane.add(lblNewLabel_3);
 		
-        ImageIcon imageIcon = new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/var.jpg");
-        Image image = imageIcon.getImage();
-
-        BufferedImage roundedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g2d = roundedImage.createGraphics();
-        g2d.setClip(new Ellipse2D.Float(0, 0, image.getWidth(null), image.getHeight(null)));
-        g2d.drawImage(image, 0, 0, null);
-        g2d.dispose();
-
-        Image resizedImage = roundedImage.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
-
-        lblImage.setIcon(new ImageIcon(resizedImage));
+		lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\decoracao.png"));
+		lblNewLabel_2.setBounds(1667, -139, 403, 517);
+		contentPane.add(lblNewLabel_2);
+		btnLogar.setBounds(807, 550, 110, 23);
+		contentPane.add(btnLogar);
 		
-		
-		
-		
-		lblBemvindoAo = new JLabel("Bem-Vindo ao");
-		lblBemvindoAo.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblBemvindoAo.setBounds(944, 335, 217, 51);
-		contentPane.add(lblBemvindoAo);
+		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBackground(new Color(255, 251, 233));
+		btnCadastrar.setBounds(993, 550, 110, 23);
+		contentPane.add(btnCadastrar);
 		
 		JLabel lblNewLabel = new JLabel("IFSCarona");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 49));
 		lblNewLabel.setBounds(831, 340, 311, 112);
 		contentPane.add(lblNewLabel);
 		
-		btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBackground(new Color(255, 251, 233));
-		btnCadastrar.setBounds(993, 550, 110, 23);
-		contentPane.add(btnCadastrar);
-		btnLogar.setBounds(807, 550, 110, 23);
-		contentPane.add(btnLogar);
 
+		lblBemvindoAo = new JLabel("Bem-Vindo ao");
+		lblBemvindoAo.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblBemvindoAo.setBounds(944, 335, 217, 51);
+		contentPane.add(lblBemvindoAo);
 		
-		txtMeio = new JTextField();
-        txtMeio.setBackground(new Color(244, 234, 213));
-        txtMeio.setEnabled(false);
-        txtMeio.setEditable(false);
-        txtMeio.setBounds(784, 236, 346, 433);
-        contentPane.add(txtMeio);
-        txtMeio.setColumns(10);
-        
+		lblImage = new JLabel("");
+		lblImage.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
+		lblImage.setBounds(862, 102, 337, 260);
+		contentPane.add(lblImage);
 		
-		txtQuadradoCima = new JTextField();
-		txtQuadradoCima.setEnabled(false);
-		txtQuadradoCima.setEditable(false);
-		txtQuadradoCima.setColumns(10);
-		txtQuadradoCima.setBackground(new Color(223, 238, 221));
-		txtQuadradoCima.setBounds(1592, -57, 472, 330);
-		contentPane.add(txtQuadradoCima);
-		
-		txtQuadradoBaixo = new JTextField();
-		txtQuadradoBaixo.setEnabled(false);
-		txtQuadradoBaixo.setEditable(false);
-		txtQuadradoBaixo.setBackground(new Color(223, 238, 221));
-		txtQuadradoBaixo.setBounds(0, 742, 346, 319);
-		contentPane.add(txtQuadradoBaixo);
-		txtQuadradoBaixo.setColumns(10);
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\trás-removebg-preview.png"));
+		lblNewLabel_1.setBounds(777, 210, 384, 454);
+		contentPane.add(lblNewLabel_1);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("TlwgTypewriter", Font.BOLD, 22));
 		textField.setBackground(new Color(159, 203, 154));
 		textField.setEnabled(false);
 		textField.setEditable(false);
-		textField.setBounds(0, -14, 1939, 1075);
+		textField.setBounds(0, -14, 1949, 1075);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
