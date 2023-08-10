@@ -55,7 +55,6 @@ public class Login extends JFrame {
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(154, 203, 159));
 		contentPane.setBorder(new LineBorder(new Color(255, 251, 233), 2, true));
@@ -121,7 +120,7 @@ public class Login extends JFrame {
 			}
 
 			private void dispose() {
-				setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnLogar.setBounds(1012, 796, 162, 45);
