@@ -1,5 +1,10 @@
 package controle;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import modelo.ITrajetoDAO;
 import modelo.Trajeto;
 
@@ -20,7 +25,26 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 	@Override
 	public boolean cadastrarTrajeto(Trajeto trajeto) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "INSERT INTO trajeto " + "(origem, destino) " + "VALUES (?, ?)";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, trajeto.getOrigem());
+			ps.setString(2, trajeto.getDestino());
+
+			ps.executeUpdate();
+
+			c.fecharConexao();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

@@ -1,5 +1,10 @@
 package controle;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import modelo.Carona;
 import modelo.ICaronaDAO;
 
@@ -20,7 +25,27 @@ public class CaronaDAO implements ICaronaDAO {
 
 	@Override
 	public boolean cadastrarCarona(Carona carona) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "INSERT INTO carona " + "(trajeto, passageiro, motorista) " + "VALUES (?, ?, ?)";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, carona.getTrajeto().getIdTrajeto());
+			//ps.setString(2, carona.getPassageiro());
+			ps.setLong(3, carona.getMotorista().getCpf());
+
+			ps.executeUpdate();
+
+			c.fecharConexao();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
