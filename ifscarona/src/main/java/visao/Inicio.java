@@ -54,6 +54,7 @@ public class Inicio extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnLogar = new JButton("Logar");
+		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -77,14 +78,15 @@ public class Inicio extends JFrame {
 		
 		lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dunso.png"));
-		lblNewLabel_4.setBounds(-19, -131, 800, 1169);
+		lblNewLabel_4.setBounds(0, -137, 800, 1169);
 		contentPane.add(lblNewLabel_4);
-		btnLogar.setBounds(813, 591, 110, 23);
+		btnLogar.setBounds(815, 574, 141, 40);
 		contentPane.add(btnLogar);
 		
 		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
-		btnCadastrar.setBounds(1000, 591, 110, 23);
+		btnCadastrar.setBounds(981, 574, 129, 40);
 		contentPane.add(btnCadastrar);
 		
 		JLabel lblNewLabel = new JLabel("IFSCarona");
