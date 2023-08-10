@@ -8,11 +8,13 @@ import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -37,6 +39,7 @@ public class Login extends JFrame {
 			public void run() {
 				try {
 					Login frame = new Login();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,12 +52,15 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1940, 1119);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds(0, 0, screen.width, screen.height - 30);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(154, 203, 159));
 		contentPane.setBorder(new LineBorder(new Color(255, 251, 233), 2, true));
-
+		
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -115,7 +121,7 @@ public class Login extends JFrame {
 			}
 
 			private void dispose() {
-				setVisible(false);
+				setVisible(true);
 			}
 		});
 		btnLogar.setBounds(1012, 796, 162, 45);
