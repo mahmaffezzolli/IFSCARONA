@@ -109,6 +109,7 @@ public class Login extends JFrame {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
 				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+
 				} 
 				new Inicio().setVisible(true);
 				this.dispose();
