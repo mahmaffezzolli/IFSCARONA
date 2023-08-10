@@ -111,8 +111,6 @@ public class Login extends JFrame {
 					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
 
 				} 
-				new Inicio().setVisible(true);
-				this.dispose();
 
 			}
 
