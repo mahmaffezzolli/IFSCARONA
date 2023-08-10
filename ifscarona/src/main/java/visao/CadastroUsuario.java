@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,6 +18,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
+
+import com.google.protobuf.TextFormat.ParseException;
+
 import javax.swing.ImageIcon;
 
 public class CadastroUsuario extends JFrame {
@@ -48,6 +54,9 @@ public class CadastroUsuario extends JFrame {
 	private JLabel lblIconeConfiormacaoSenha;
 	private JLabel lblPossuiCadastro;
 	private JLabel lblLinkAqui;
+	private JTextField txtCPF;
+	private JLabel lblCPF;
+	private JLabel lblIconeCPF;
 
 	/**
 	 * Launch the application.
@@ -77,6 +86,24 @@ public class CadastroUsuario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		lblIconeCPF = new JLabel("New label");
+		lblIconeCPF.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\cpf.png"));
+		lblIconeCPF.setBounds(944, 267, 59, 71);
+		contentPane.add(lblIconeCPF);
+		
+		lblCPF = new JLabel("CPF:");
+		lblCPF.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblCPF.setBounds(1013, 255, 122, 14);
+		contentPane.add(lblCPF);
+		
+		txtCPF = new JTextField();
+		txtCPF.setToolTipText("");
+		txtCPF.setColumns(10);
+		txtCPF.setBackground(new Color(255, 251, 233));
+		txtCPF.setBounds(1013, 280, 336, 45);
+		contentPane.add(txtCPF);
+		
+		
 		lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
@@ -97,12 +124,12 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblPossuiCadastro);
 		
 		lblIconeConfiormacaoSenha = new JLabel("New label");
-		lblIconeConfiormacaoSenha.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-senha-60.png"));
+		lblIconeConfiormacaoSenha.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\senha.png"));
 		lblIconeConfiormacaoSenha.setBounds(944, 668, 59, 55);
 		contentPane.add(lblIconeConfiormacaoSenha);
 		
 		lblIconeSenha = new JLabel("New label");
-		lblIconeSenha.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-senha-60.png"));
+		lblIconeSenha.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\senha.png"));
 		lblIconeSenha.setBounds(944, 592, 59, 55);
 		contentPane.add(lblIconeSenha);
 		
@@ -158,6 +185,7 @@ public class CadastroUsuario extends JFrame {
 		txtDataNascimento.setBounds(1013, 520, 336, 45);
 		contentPane.add(txtDataNascimento);
 		
+		
 		lblDataNascimento = new JLabel("Data de Nascimento:");
 		lblDataNascimento.setFont(new Font("Arial", Font.PLAIN, 13));
 		lblDataNascimento.setBounds(1013, 496, 122, 14);
@@ -189,7 +217,7 @@ public class CadastroUsuario extends JFrame {
 		
 		lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblCadastro.setBounds(1034, 219, 327, 107);
+		lblCadastro.setBounds(1031, 133, 327, 107);
 		contentPane.add(lblCadastro);
 		
 		ifacarona = new JLabel("IFSCarona");
