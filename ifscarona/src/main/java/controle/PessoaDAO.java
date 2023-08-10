@@ -64,4 +64,10 @@ public class PessoaDAO implements IPessoaDAO {
 		return false;
 	}
 
+	@Override
+	public boolean listarPessoa(Pessoa pessoa) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

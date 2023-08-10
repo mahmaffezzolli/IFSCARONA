@@ -1,7 +1,6 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -58,6 +57,12 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 	@Override
 	public boolean deletarVeiculo(Veiculo veiculo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean listarVeiculo(Veiculo veiculo) {
 		// TODO Auto-generated method stub
 		return false;
 	}

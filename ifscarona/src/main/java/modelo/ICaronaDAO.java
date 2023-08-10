@@ -6,6 +6,8 @@ public interface ICaronaDAO {
 
 	public boolean alterarCarona(Carona carona);
 
+	public boolean listarCarona(Carona carona);
+
 	public boolean deletarCarona(Carona carona);
 
 }

@@ -6,6 +6,8 @@ public interface ITrajetoDAO {
 
 	public boolean alterarTrajeto(Trajeto trajeto);
 
+	public boolean listarTrajeto(Trajeto trajeto);
+
 	public boolean deletarTrajeto(Trajeto trajeto);
 
 }

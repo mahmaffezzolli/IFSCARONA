@@ -1,7 +1,6 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -57,6 +56,12 @@ public class CaronaDAO implements ICaronaDAO {
 
 	@Override
 	public boolean deletarCarona(Carona carona) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean listarCarona(Carona carona) {
 		// TODO Auto-generated method stub
 		return false;
 	}

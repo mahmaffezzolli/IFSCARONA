@@ -1,7 +1,6 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -56,6 +55,12 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 	@Override
 	public boolean deletarTrajeto(Trajeto trajeto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean listarTrajeto(Trajeto trajeto) {
 		// TODO Auto-generated method stub
 		return false;
 	}
