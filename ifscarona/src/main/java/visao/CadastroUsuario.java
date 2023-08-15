@@ -25,6 +25,9 @@ import com.google.protobuf.TextFormat.ParseException;
 import javax.swing.ImageIcon;
 
 public class CadastroUsuario extends JFrame {
+	
+	
+	
 
 	private JPanel contentPane;
 	private JTextField txtfundoBege;
@@ -78,6 +81,8 @@ public class CadastroUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroUsuario() {
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1940, 1119);
 		contentPane = new JPanel();
@@ -242,6 +247,9 @@ public class CadastroUsuario extends JFrame {
 		txtfundoVerde.setBackground(new Color(159, 203, 154));
 		txtfundoVerde.setBounds(150, 0, 1939, 1075);
 		contentPane.add(txtfundoVerde);
+		
+	
+	    
 		
 
 		
