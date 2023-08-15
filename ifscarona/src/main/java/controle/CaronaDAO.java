@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import modelo.Carona;
 import modelo.ICaronaDAO;
-import modelo.Carona;
+import modelo.Pessoa;
 
 public class CaronaDAO implements ICaronaDAO {
 
@@ -63,59 +63,23 @@ public class CaronaDAO implements ICaronaDAO {
 		return false;
 	}
 
-<<<<<<< Updated upstream
 	@Override
 	public ArrayList<Carona> listarCarona(Carona carona) {
 
-		
-=======
-	public ArrayList<Carona> listar() {
-
->>>>>>> Stashed changes
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
 
 		ArrayList<Carona> caronas = new ArrayList<>();
-<<<<<<< Updated upstream
-		
-		String query = "SELECT * FROM carona";
-		
-		try {
-			PreparedStatement cs = con.prepareStatement(query);
-			
-			ResultSet rs = cs.executeQuery();
-			while(rs.next()) {
-				int idCarona = rs.getInt("id_carona");
-//				String Motorista = rs.getString("Motorista");
-//				int Trajeto = rs.getInt("id_trajeto");
-//				int idVeiculo = rs.getInt("id_veiculo");
-				
-				Carona crn = new Carona();
-				crn.setIdCarona(idCarona);
-//				crn.setMotorista(Motorista);
-//				crn.setTrajeto(Trajeto);
-			
-				caronas.add(crn);
-=======
 
-		String query = "SELECT * FROM musica";
+		String query = "SELECT * FROM pessoa";
 
 		try {
-			PreparedStatement ms = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 
-			ResultSet rs = ms.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				int idMusica = rs.getInt("id_musica");
-
-				String nome = rs.getString("nome_musica");
-
-				Carona crn = new Carona();
-				// crn.setIdMusica(idMusica);
-				// crn.setNomeMusica();
-
-				// caronas.add(crn);
->>>>>>> Stashed changes
+				
 			}
 
 		} catch (SQLException e) {
@@ -124,22 +88,8 @@ public class CaronaDAO implements ICaronaDAO {
 		}
 
 		c.fecharConexao();
-<<<<<<< Updated upstream
-		
-		return null;
-	}
-
-}
-=======
 
 		return caronas;
-
 	}
 
-	@Override
-	public ArrayList<Carona> listarCarona(Carona carona) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
->>>>>>> Stashed changes

@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.Carona;
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
 
@@ -32,7 +31,8 @@ public class PessoaDAO implements IPessoaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO pessoa " + "(nome, sobrenome, cpf, dataNasc, senha, email) " + "VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO pessoa " + "(nome, sobrenome, cpf, dataNasc, senha, email) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -67,30 +67,29 @@ public class PessoaDAO implements IPessoaDAO {
 		return false;
 	}
 
-    public ArrayList<Pessoa> listarPessoa(Pessoa pessoa) {
+	@Override
+	public ArrayList<Pessoa> listarPessoa(Pessoa pessoa) {
 
-		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
-		
+
 		Connection con = c.conectar();
-		
+
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
-		
+
 		String query = "SELECT * FROM pessoa";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			
+
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Long cpf = rs.getLong("cpf");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String email = rs.getString("email");
-     			//LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
+				// LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
 				String senha = rs.getString("senha");
-				
-				
+
 				Pessoa p = new Pessoa();
 				p.setCpf(cpf);
 				p.setNome(nome);
@@ -98,19 +97,18 @@ public class PessoaDAO implements IPessoaDAO {
 				p.setEmail(email);
 //				p.setDataNasc(dataNasc);
 				p.setSenha(senha);
-				
+
 				pessoas.add(p);
 			}
-			
-		}catch(SQLException e ) {
-			
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
-		
-		c.fecharConexao();
-		
-		return null;
-	}
 
+		c.fecharConexao();
+
+		return pessoas;
+	}
 
 }
