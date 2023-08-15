@@ -87,7 +87,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.setLayout(null);
 		
 		lblIconeCPF = new JLabel("New label");
-		lblIconeCPF.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\cpf.png"));
+		lblIconeCPF.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/cpf.png")));
 		lblIconeCPF.setBounds(944, 267, 59, 71);
 		contentPane.add(lblIconeCPF);
 		
@@ -124,27 +124,27 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblPossuiCadastro);
 		
 		lblIconeConfiormacaoSenha = new JLabel("New label");
-		lblIconeConfiormacaoSenha.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\senha.png"));
+		lblIconeConfiormacaoSenha.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/senha.png")));
 		lblIconeConfiormacaoSenha.setBounds(944, 668, 59, 55);
 		contentPane.add(lblIconeConfiormacaoSenha);
 		
 		lblIconeSenha = new JLabel("New label");
-		lblIconeSenha.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\senha.png"));
+		lblIconeSenha.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/senha.png")));
 		lblIconeSenha.setBounds(944, 592, 59, 55);
 		contentPane.add(lblIconeSenha);
 		
 		lblIconeDataNascimento = new JLabel("New label");
-		lblIconeDataNascimento.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-data-de-nascimento-60.png"));
+		lblIconeDataNascimento.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-data-de-nascimento-60.png")));
 		lblIconeDataNascimento.setBounds(944, 512, 59, 60);
 		contentPane.add(lblIconeDataNascimento);
 		
 		lblIconeEmail = new JLabel("New label");
-		lblIconeEmail.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-nova-mensagem-ios-16-glyph\\icons8-nova-mensagem-60.png"));
+		lblIconeEmail.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nova-mensagem-60.png")));
 		lblIconeEmail.setBounds(944, 436, 59, 52);
 		contentPane.add(lblIconeEmail);
 		
 		lblIconeNome = new JLabel("New label");
-		lblIconeNome.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-nome-60.png"));
+		lblIconeNome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
 		lblIconeNome.setBounds(944, 362, 59, 45);
 		contentPane.add(lblIconeNome);
 		
