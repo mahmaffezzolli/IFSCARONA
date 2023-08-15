@@ -3,8 +3,11 @@ package controle;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import modelo.Carona;
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
 
@@ -64,10 +67,50 @@ public class PessoaDAO implements IPessoaDAO {
 		return false;
 	}
 
-	@Override
-	public boolean listarPessoa(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-		return false;
+    public ArrayList<Carona> listarPessoa(Pessoa pessoa) {
+
+		
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		
+		Connection con = c.conectar();
+		
+		ArrayList<Pessoa> pessoas = new ArrayList<>();
+		
+		String query = "SELECT * FROM pessoa";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Long cpf = rs.getLong("cpf");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String email = rs.getString("email");
+//   			LocalDate dataNasc = rs.getLocalDate("data_nasc");
+				String senha = rs.getString("senha");
+				
+				
+				Pessoa p = new Pessoa();
+				p.setCpf(cpf);
+				p.setNome(nome);
+				p.setSobrenome(sobrenome);
+				p.setEmail(email);
+//				p.setDataNasc(dataNasc);
+				p.setSenha(senha);
+				
+				pessoas.add(p);
+			}
+			
+		}catch(SQLException e ) {
+			
+			e.printStackTrace();
+		}
+		
+		c.fecharConexao();
+		
+		return null;
 	}
+
 
 }
