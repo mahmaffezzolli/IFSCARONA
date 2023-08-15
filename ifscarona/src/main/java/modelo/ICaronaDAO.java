@@ -11,6 +11,5 @@ public interface ICaronaDAO {
 	public ArrayList<Carona> listarCarona(Carona carona);
 
 	public boolean deletarCarona(Carona carona);
-	
 
 }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import modelo.Carona;
 import modelo.ICaronaDAO;
-import modelo.Pessoa;
 
 public class CaronaDAO implements ICaronaDAO {
 
@@ -79,7 +78,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				
+
 			}
 
 		} catch (SQLException e) {
