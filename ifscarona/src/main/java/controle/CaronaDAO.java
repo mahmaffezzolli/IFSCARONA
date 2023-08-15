@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import modelo.Carona;
 import modelo.ICaronaDAO;
-import modelo.Musicas;
+import modelo.Carona;
 
 public class CaronaDAO implements ICaronaDAO {
 
@@ -63,15 +63,21 @@ public class CaronaDAO implements ICaronaDAO {
 		return false;
 	}
 
+<<<<<<< Updated upstream
 	@Override
 	public ArrayList<Carona> listarCarona(Carona carona) {
 
 		
+=======
+	public ArrayList<Carona> listar() {
+
+>>>>>>> Stashed changes
 		ConexaoBanco c = ConexaoBanco.getInstancia();
-		
+
 		Connection con = c.conectar();
-		
+
 		ArrayList<Carona> caronas = new ArrayList<>();
+<<<<<<< Updated upstream
 		
 		String query = "SELECT * FROM carona";
 		
@@ -91,16 +97,49 @@ public class CaronaDAO implements ICaronaDAO {
 //				crn.setTrajeto(Trajeto);
 			
 				caronas.add(crn);
+=======
+
+		String query = "SELECT * FROM musica";
+
+		try {
+			PreparedStatement ms = con.prepareStatement(query);
+
+			ResultSet rs = ms.executeQuery();
+			while (rs.next()) {
+				int idMusica = rs.getInt("id_musica");
+
+				String nome = rs.getString("nome_musica");
+
+				Carona crn = new Carona();
+				// crn.setIdMusica(idMusica);
+				// crn.setNomeMusica();
+
+				// caronas.add(crn);
+>>>>>>> Stashed changes
 			}
-			
-		}catch(SQLException e ) {
-			
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
-		
+
 		c.fecharConexao();
+<<<<<<< Updated upstream
 		
 		return null;
 	}
 
 }
+=======
+
+		return caronas;
+
+	}
+
+	@Override
+	public ArrayList<Carona> listarCarona(Carona carona) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+>>>>>>> Stashed changes

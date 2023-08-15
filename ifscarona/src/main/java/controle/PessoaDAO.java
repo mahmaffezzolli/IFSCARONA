@@ -87,7 +87,7 @@ public class PessoaDAO implements IPessoaDAO {
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String email = rs.getString("email");
-//   			LocalDate dataNasc = rs.getLocalDate("data_nasc");
+     			//LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
 				String senha = rs.getString("senha");
 				
 				
