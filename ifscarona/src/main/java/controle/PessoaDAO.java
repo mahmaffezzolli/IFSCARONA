@@ -67,7 +67,7 @@ public class PessoaDAO implements IPessoaDAO {
 		return false;
 	}
 
-    public ArrayList<Carona> listarPessoa(Pessoa pessoa) {
+    public ArrayList<Pessoa> listarPessoa(Pessoa pessoa) {
 
 		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
