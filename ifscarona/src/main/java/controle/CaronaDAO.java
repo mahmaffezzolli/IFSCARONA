@@ -63,7 +63,9 @@ public class CaronaDAO implements ICaronaDAO {
 		return false;
 	}
 
-	public ArrayList<Carona> listar(){
+	@Override
+	public ArrayList<Carona> listarCarona(Carona carona) {
+
 		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		
@@ -71,22 +73,24 @@ public class CaronaDAO implements ICaronaDAO {
 		
 		ArrayList<Carona> caronas = new ArrayList<>();
 		
-		String query = "SELECT * FROM musica";
+		String query = "SELECT * FROM carona";
 		
 		try {
-			PreparedStatement ms = con.prepareStatement(query);
+			PreparedStatement cs = con.prepareStatement(query);
 			
-			ResultSet rs = ms.executeQuery();
+			ResultSet rs = cs.executeQuery();
 			while(rs.next()) {
-				int idMusica = rs.getInt("id_musica");
+				int idCarona = rs.getInt("id_carona");
+//				String Motorista = rs.getString("Motorista");
+//				int Trajeto = rs.getInt("id_trajeto");
+//				int idVeiculo = rs.getInt("id_veiculo");
 				
-				String nome = rs.getString("nome_musica");
-				
-				Musicas m = new Musicas();
-				m.setIdMusica(idMusica);
-				m.setNomeMusica(nome);
-				
-				musicas.add(m);
+				Carona crn = new Carona();
+				crn.setIdCarona(idCarona);
+//				crn.setMotorista(Motorista);
+//				crn.setTrajeto(Trajeto);
+			
+				caronas.add(crn);
 			}
 			
 		}catch(SQLException e ) {
@@ -96,6 +100,7 @@ public class CaronaDAO implements ICaronaDAO {
 		
 		c.fecharConexao();
 		
-		return musicas;
+		return null;
+	}
 
 }

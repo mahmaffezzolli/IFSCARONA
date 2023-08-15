@@ -2,7 +2,9 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.ITrajetoDAO;
 import modelo.Trajeto;
@@ -59,10 +61,44 @@ public class TrajetoDAO implements ITrajetoDAO {
 		return false;
 	}
 
-	@Override
-	public boolean listarTrajeto(Trajeto trajeto) {
-		// TODO Auto-generated method stub
-		return false;
+    public ArrayList<Trajeto> listarTrajeto(Trajeto trajeto) {
+
+		
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		
+		Connection con = c.conectar();
+		
+		ArrayList<Trajeto> trajetos = new ArrayList<>();
+		
+		String query = "SELECT * FROM trajeto";
+		
+		try {
+			PreparedStatement tj = con.prepareStatement(query);
+			
+			ResultSet rs = tj.executeQuery();
+			while(rs.next()) {
+				Integer idTrajeto = rs.getInt("id_trajeto");
+				String origem = rs.getString("origem");
+				String destino = rs.getString("destino");
+
+				
+				
+				Trajeto t = new Trajeto();
+				t.setIdTrajeto(idTrajeto);
+				t.setOrigem(origem);
+				t.setDestino(destino);
+				
+				trajetos.add(t);
+			}
+			
+		}catch(SQLException e ) {
+			
+			e.printStackTrace();
+		}
+		
+		c.fecharConexao();
+		
+		return null;
 	}
 
 }
