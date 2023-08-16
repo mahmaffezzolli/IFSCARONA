@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.border.LineBorder;
 
 public class Inicio extends JFrame {
 
@@ -52,13 +51,13 @@ public class Inicio extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnLogar = new JButton("Logar");
 		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				new Login().setVisible(true);
 				this.dispose();
 
@@ -66,50 +65,53 @@ public class Inicio extends JFrame {
 
 			private void dispose() {
 				setVisible(false);
-			
+
 			}
-			
+
 		});
-		
+
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b378852d-354d-4cd5-9896-a0888a6e0b86.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(
+				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b378852d-354d-4cd5-9896-a0888a6e0b86.png"));
 		lblNewLabel_2.setBounds(1367, -14, 548, 492);
 		contentPane.add(lblNewLabel_2);
-		
+
 		lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dunso.png"));
+		lblNewLabel_4.setIcon(
+				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dunso.png"));
 		lblNewLabel_4.setBounds(0, -137, 800, 1169);
 		contentPane.add(lblNewLabel_4);
 		btnLogar.setBounds(815, 574, 141, 40);
 		contentPane.add(btnLogar);
-		
+
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
 		btnCadastrar.setBounds(981, 574, 129, 40);
 		contentPane.add(btnCadastrar);
-		
+
 		JLabel lblNewLabel = new JLabel("IFSCarona");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 49));
 		lblNewLabel.setBounds(824, 385, 311, 112);
 		contentPane.add(lblNewLabel);
-		
 
 		lblBemvindoAo = new JLabel("Bem-Vindo ao");
 		lblBemvindoAo.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblBemvindoAo.setBounds(944, 376, 217, 51);
 		contentPane.add(lblBemvindoAo);
-		
+
 		lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
+		lblImage.setIcon(
+				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
 		lblImage.setBounds(867, 83, 337, 260);
 		contentPane.add(lblImage);
-		
+
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dd400250-652b-4da0-9bcc-ecb003be729e.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(
+				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dd400250-652b-4da0-9bcc-ecb003be729e.png"));
 		lblNewLabel_1.setBounds(748, 203, 559, 600);
 		contentPane.add(lblNewLabel_1);
-		
+
 		textField = new JTextField();
 		textField.setFont(new Font("TlwgTypewriter", Font.BOLD, 22));
 		textField.setBackground(new Color(159, 203, 154));
@@ -118,10 +120,7 @@ public class Inicio extends JFrame {
 		textField.setBounds(0, -14, 1949, 1075);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-	
+
 	}
 
-
 }
-    
