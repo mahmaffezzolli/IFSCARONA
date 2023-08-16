@@ -77,7 +77,7 @@ SELECT * FROM pessoas order by cpf;
 
 -- update
 
-UPDATE pessoas set nome = 'Ash', sobrenome = 'Mezadri', email = 'Ash2005@gmail.com', data_nasc = 10/06/05, senha = 'jurema123' Where cpf = 1003081967;
+UPDATE pessoas set nome = 'Ash', sobrenome = 'Mezadri', email = 'Ash2005@gmail.com', data_nasc = '2005-06-10', senha = 'jurema123' Where cpf = 1003081967;
 
 -- delete
 
