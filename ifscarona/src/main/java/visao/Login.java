@@ -22,6 +22,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 public class Login extends JFrame {
 
@@ -59,11 +60,11 @@ public class Login extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JLabel ifacarona = new JLabel("IFSCarona");
-		ifacarona.setFont(new Font("Dialog", Font.BOLD, 53));
-		ifacarona.setBounds(26, 372, 327, 107);
-		contentPane.add(ifacarona);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png"));
+		lblLogo.setBounds(0, 417, 590, 172);
+		contentPane.add(lblLogo);
 
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(
@@ -80,7 +81,7 @@ public class Login extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(
 				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/fundoClaro.png"));
-		lblNewLabel_3.setBounds(0, -239, 413, 1650);
+		lblNewLabel_3.setBounds(0, -238, 481, 1650);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_2 = new JLabel("E-mail institucional");
@@ -97,36 +98,46 @@ public class Login extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("Login");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblNewLabel_1.setBounds(1012, 154, 327, 107);
+		lblNewLabel_1.setBounds(1012, 161, 327, 107);
 		contentPane.add(lblNewLabel_1);
 
-		JButton btnLogar = new JButton("LOGAR");
-		btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
-		btnLogar.setBackground(new Color(255, 251, 233));
-		btnLogar.addActionListener(new ActionListener() {
+		 JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
+		 showPasswordCheckBox.setBackground(new Color(238, 238, 238));
+	        showPasswordCheckBox.setFont(new Font("Dialog", Font.PLAIN, 13));
+	        showPasswordCheckBox.setBounds(1163, 640, 127, 14);
+	        contentPane.add(showPasswordCheckBox);
 
-			public void actionPerformed(ActionEvent e) {
-				String senha = String.valueOf(txtSenha.getPassword());
+	        showPasswordCheckBox.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                if (showPasswordCheckBox.isSelected()) {
+	                    txtSenha.setEchoChar((char) 0); 
+	                } else {
+	                    txtSenha.setEchoChar('\u2022'); 
+	                }
+	            }
+	        });
 
-				if (txtEmail.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
-				} else if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+	        JButton btnLogar = new JButton("LOGAR");
+	        btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+	        btnLogar.setBackground(new Color(255, 251, 233));
+	        btnLogar.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                String senha = String.valueOf(txtSenha.getPassword());
 
-				}
-
-			}
-
-			private void dispose() {
-				setVisible(false);
-			}
-		});
-		btnLogar.setBounds(1012, 796, 162, 45);
-		contentPane.add(btnLogar);
+	                if (txtEmail.getText().isEmpty()) {
+	                    JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+	                } else if (senha.isEmpty()) {
+	                    JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+	                }
+	            }
+	        });
+	        btnLogar.setBounds(1012, 741, 220, 45);
+	        contentPane.add(btnLogar);
 
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblSenha.setBounds(950, 561, 122, 14);
+		lblSenha.setBounds(964, 561, 122, 14);
 		contentPane.add(lblSenha);
 
 		txtSenha = new JPasswordField();
@@ -138,12 +149,12 @@ public class Login extends JFrame {
 
 		JLabel lblCad = new JLabel("Não possui cadastro?");
 		lblCad.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblCad.setBounds(964, 653, 178, 14);
+		lblCad.setBounds(1012, 795, 178, 14);
 		contentPane.add(lblCad);
 
 		JLabel lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblLinkAqui.setBounds(1116, 653, 178, 14);
+		lblLinkAqui.setBounds(1161, 795, 178, 14);
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(lblLinkAqui);
@@ -151,11 +162,11 @@ public class Login extends JFrame {
 		lblLinkAqui.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				CadastroUsuario cadastroFrame = new CadastroUsuario();
-				cadastroFrame.setVisible(true);
+				CadastroUsuario CadastroFrame = new CadastroUsuario();
+				CadastroFrame.setVisible(true);
 				Login.this.dispose();
 			}
+			
 		});
 
 	}

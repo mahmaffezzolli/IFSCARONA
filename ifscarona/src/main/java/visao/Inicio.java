@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
 
 public class Inicio extends JFrame {
 
@@ -53,6 +54,7 @@ public class Inicio extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton btnLogar = new JButton("Logar");
+		btnLogar.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
 		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
@@ -85,6 +87,23 @@ public class Inicio extends JFrame {
 		contentPane.add(btnLogar);
 
 		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				new CadastroUsuario().setVisible(true);
+				this.dispose();
+
+			}
+
+			private void dispose() {
+				setVisible(false);
+
+			}
+			
+			
+			
+		});
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
 		btnCadastrar.setBounds(981, 574, 129, 40);

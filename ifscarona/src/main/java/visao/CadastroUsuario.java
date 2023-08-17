@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -172,6 +173,7 @@ public class CadastroUsuario extends JFrame {
 		btnCadastrar.setBounds(1093, 783, 162, 45);
 		contentPane.add(btnCadastrar);
 
+		 
 		btnCadastrar.addActionListener(new ActionListener() {
 
 			@Override
