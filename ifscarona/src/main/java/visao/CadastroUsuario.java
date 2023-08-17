@@ -181,9 +181,9 @@ public class CadastroUsuario extends JFrame {
 
 				Pessoa p = new Pessoa();
 
-				String nome = txtCPF.getText();
+				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
-				String cpfS = String.valueOf(txtSobrenome.getText());
+				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
 				String senha = txtSenha.getText();
 				String confSenha = txtConfirmacaoSenha.getText();
