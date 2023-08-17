@@ -76,7 +76,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 
-		String query = "SELECT * FROM pessoa";
+		String query = "SELECT * FROM pessoas";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

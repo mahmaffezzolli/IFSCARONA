@@ -1,34 +1,37 @@
 package visao;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+import controle.PessoaDAO;
+import modelo.Pessoa;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEmail;
 	private JPasswordField txtSenha;
+	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -60,9 +63,10 @@ public class Login extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png"));
+		lblLogo.setIcon(new ImageIcon(
+				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png"));
 		lblLogo.setBounds(0, 417, 590, 172);
 		contentPane.add(lblLogo);
 
@@ -101,39 +105,63 @@ public class Login extends JFrame {
 		lblNewLabel_1.setBounds(1012, 161, 327, 107);
 		contentPane.add(lblNewLabel_1);
 
-		 JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
-		 showPasswordCheckBox.setBackground(new Color(238, 238, 238));
-	        showPasswordCheckBox.setFont(new Font("Dialog", Font.PLAIN, 13));
-	        showPasswordCheckBox.setBounds(1163, 640, 127, 14);
-	        contentPane.add(showPasswordCheckBox);
+		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
+		showPasswordCheckBox.setBackground(new Color(238, 238, 238));
+		showPasswordCheckBox.setFont(new Font("Dialog", Font.PLAIN, 13));
+		showPasswordCheckBox.setBounds(1163, 640, 127, 14);
+		contentPane.add(showPasswordCheckBox);
 
-	        showPasswordCheckBox.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                if (showPasswordCheckBox.isSelected()) {
-	                    txtSenha.setEchoChar((char) 0); 
-	                } else {
-	                    txtSenha.setEchoChar('\u2022'); 
-	                }
-	            }
-	        });
+		showPasswordCheckBox.addActionListener(new ActionListener() {
 
-	        JButton btnLogar = new JButton("LOGAR");
-	        btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
-	        btnLogar.setBackground(new Color(255, 251, 233));
-	        btnLogar.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                String senha = String.valueOf(txtSenha.getPassword());
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-	                if (txtEmail.getText().isEmpty()) {
-	                    JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
-	                } else if (senha.isEmpty()) {
-	                    JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
-	                }
-	            }
-	        });
-	        btnLogar.setBounds(1012, 741, 220, 45);
-	        contentPane.add(btnLogar);
+				if (showPasswordCheckBox.isSelected()) {
+					txtSenha.setEchoChar((char) 0);
+				} else {
+					txtSenha.setEchoChar('\u2022');
+				}
+			}
+		});
+
+		JButton btnLogar = new JButton("LOGAR");
+		btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnLogar.setBackground(new Color(255, 251, 233));
+		btnLogar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				String email = txtEmail.getText();
+				String senha = String.valueOf(txtSenha.getPassword());
+
+				if (txtEmail.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+
+				} else if (senha.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+
+				} else {
+
+					boolean loginSucesso = false;
+
+					for (Pessoa pessoa : pDAO.listarPessoa(null)) {
+						if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
+							loginSucesso = true;
+						}
+					}
+
+					if (loginSucesso) {
+						JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Você não é cadastrado");
+					}
+				}
+			}
+		});
+
+		btnLogar.setBounds(1012, 741, 220, 45);
+		contentPane.add(btnLogar);
 
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Dialog", Font.PLAIN, 13));
@@ -166,7 +194,7 @@ public class Login extends JFrame {
 				CadastroFrame.setVisible(true);
 				Login.this.dispose();
 			}
-			
+
 		});
 
 	}

@@ -82,3 +82,5 @@ UPDATE pessoas set nome = 'Ash', sobrenome = 'Mezadri', email = 'Ash2005@gmail.c
 -- delete
 
 DELETE FROM pessoas WHERE cpf = 1003081967;
+
+desc pessoas;
