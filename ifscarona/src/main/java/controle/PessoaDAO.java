@@ -82,12 +82,14 @@ public class PessoaDAO implements IPessoaDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ResultSet rs = ps.executeQuery();
+
 			while (rs.next()) {
+
 				Long cpf = rs.getLong("cpf");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String email = rs.getString("email");
-				// LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
+				//LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
 				String senha = rs.getString("senha");
 
 				Pessoa p = new Pessoa();
@@ -95,7 +97,7 @@ public class PessoaDAO implements IPessoaDAO {
 				p.setNome(nome);
 				p.setSobrenome(sobrenome);
 				p.setEmail(email);
-//				p.setDataNasc(dataNasc);
+				//p.setDataNasc(dataNasc);
 				p.setSenha(senha);
 
 				pessoas.add(p);

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.IVeiculoDAO;
-import modelo.Trajeto;
 import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
@@ -31,7 +30,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO veiculo " + "(placa, cor, marca, modelo) " + "VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO veiculos " + "(placa, cor, marca, modelo) " + "VALUES (?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -64,46 +63,47 @@ public class VeiculoDAO implements IVeiculoDAO {
 		return false;
 	}
 
-public ArrayList<Veiculo> listarVeiculo(Veiculo veiculo) {
+	public ArrayList<Veiculo> listarVeiculo(Veiculo veiculo) {
 
-		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
-		
+
 		Connection con = c.conectar();
-		
+
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
-		
-		String query = "SELECT * FROM veiculo";
-		
+
+		String query = "SELECT * FROM veiculos";
+
 		try {
 			PreparedStatement vs = con.prepareStatement(query);
-			
+
 			ResultSet rs = vs.executeQuery();
-			while(rs.next()) {
+			
+			while (rs.next()) {
+				
 				Integer idVeiculo = rs.getInt("id_veiculo");
 				String placa = rs.getString("placa");
 				String cor = rs.getString("cor");
 				String marca = rs.getString("marca");
 				String modelo = rs.getString("modelo");
-				
+
 				Veiculo v = new Veiculo();
-				
+
 				v.setIdVeiculo(idVeiculo);
 				v.setPlaca(placa);
 				v.setCor(cor);
 				v.setMarca(marca);
 				v.setModelo(modelo);
-				
+
 				veiculos.add(v);
 			}
-			
-		}catch(SQLException e ) {
-			
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
-		
+
 		c.fecharConexao();
-		
+
 		return null;
 	}
 

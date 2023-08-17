@@ -30,7 +30,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO carona " + "(trajeto, passageiro, motorista) " + "VALUES (?, ?, ?)";
+		String query = "INSERT INTO caronas " + "(trajeto, passageiro, motorista) " + "VALUES (?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -71,7 +71,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 		ArrayList<Carona> caronas = new ArrayList<>();
 
-		String query = "SELECT * FROM pessoa";
+		String query = "SELECT * FROM caronas";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

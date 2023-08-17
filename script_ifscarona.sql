@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
 );
 
 CREATE TABLE IF NOT EXISTS `trajetos` (
-  `id_trajeto` INT NOT NULL,
+  `id_trajeto` INT NOT NULL AUTO_INCREMENT,
   `origem` VARCHAR(45) NOT NULL,
   `destino` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_trajeto`)

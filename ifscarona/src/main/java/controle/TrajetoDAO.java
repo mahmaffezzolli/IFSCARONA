@@ -30,7 +30,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO trajeto " + "(origem, destino) " + "VALUES (?, ?)";
+		String query = "INSERT INTO trajetos " + "(origem, destino) " + "VALUES (?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -61,44 +61,43 @@ public class TrajetoDAO implements ITrajetoDAO {
 		return false;
 	}
 
-    public ArrayList<Trajeto> listarTrajeto(Trajeto trajeto) {
+	public ArrayList<Trajeto> listarTrajeto(Trajeto trajeto) {
 
-		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
-		
+
 		Connection con = c.conectar();
-		
+
 		ArrayList<Trajeto> trajetos = new ArrayList<>();
-		
-		String query = "SELECT * FROM trajeto";
-		
+
+		String query = "SELECT * FROM trajetos";
+
 		try {
 			PreparedStatement tj = con.prepareStatement(query);
-			
+
 			ResultSet rs = tj.executeQuery();
-			while(rs.next()) {
+
+			while (rs.next()) {
+
 				Integer idTrajeto = rs.getInt("id_trajeto");
 				String origem = rs.getString("origem");
 				String destino = rs.getString("destino");
 
-				
-				
 				Trajeto t = new Trajeto();
 				t.setIdTrajeto(idTrajeto);
 				t.setOrigem(origem);
 				t.setDestino(destino);
-				
+
 				trajetos.add(t);
 			}
-			
-		}catch(SQLException e ) {
-			
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
-		
+
 		c.fecharConexao();
-		
-		return null;
+
+		return trajetos;
 	}
 
 }
