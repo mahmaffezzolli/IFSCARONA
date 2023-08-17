@@ -29,8 +29,8 @@ public class CadastroUsuario extends JFrame {
 	private JTextField txtfundoVerde;
 	private JLabel ifacarona;
 	private JLabel lblCadastro;
-	private JLabel lblNome;
-	private JTextField txtNome;
+	private JLabel lblCPF;
+	private JTextField txtCPF;
 	private JLabel lblEmail;
 	private JTextField txtEmail;
 	private JLabel lblDataNascimento;
@@ -40,18 +40,20 @@ public class CadastroUsuario extends JFrame {
 	private JLabel lblConfirmacaoSenha;
 	private JTextField txtConfirmacaoSenha;
 	private JButton btnCadastrar;
-	private JLabel lblIconeNome;
+	private JLabel lblIconeSobrenome;
 	private JLabel lblIconeEmail;
 	private JLabel lblIconeDataNascimento;
 	private JLabel lblIconeSenha;
 	private JLabel lblIconeConfiormacaoSenha;
 	private JLabel lblPossuiCadastro;
 	private JLabel lblLinkAqui;
-	private JTextField txtCPF;
-	private JLabel lblCPF;
+	private JTextField txtSobrenome;
+	private JLabel lblSobrenome;
 	private JLabel lblIconeCPF;
 	private final JPanel panel = new JPanel();
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
+	private JTextField txtNome;
+	private JLabel lblIconeNome;
 
 	/**
 	 * Launch the application.
@@ -83,28 +85,40 @@ public class CadastroUsuario extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		lblIconeNome = new JLabel("New label");
+		lblIconeNome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
+		lblIconeNome.setBounds(944, 199, 59, 45);
+		contentPane.add(lblIconeNome);
+		
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblNome.setBounds(1013, 181, 122, 14);
+		contentPane.add(lblNome);
+		
+		txtNome = new JTextField();
+		txtNome.setToolTipText("");
+		txtNome.setColumns(10);
+		txtNome.setBackground(new Color(255, 251, 233));
+		txtNome.setBounds(1013, 199, 336, 45);
+		contentPane.add(txtNome);
 
 		lblIconeCPF = new JLabel("New label");
 		lblIconeCPF.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/cpf.png")));
-		lblIconeCPF.setBounds(944, 267, 59, 71);
+		lblIconeCPF.setBounds(944, 354, 59, 71);
 		contentPane.add(lblIconeCPF);
 
-		lblCPF = new JLabel("CPF:");
-		lblCPF.setFont(new Font("Arial", Font.PLAIN, 13));
-		lblCPF.setBounds(1013, 255, 122, 14);
-		contentPane.add(lblCPF);
+		lblSobrenome = new JLabel("Sobrenome:");
+		lblSobrenome.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblSobrenome.setBounds(1013, 255, 122, 14);
+		contentPane.add(lblSobrenome);
 
-		txtCPF = new JTextField();
-		txtCPF.setToolTipText("");
-		txtCPF.setColumns(10);
-		txtCPF.setBackground(new Color(255, 251, 233));
-		txtCPF.setBounds(1013, 280, 336, 45);
-		contentPane.add(txtCPF);
-
-		JTextField txtSobrenome = new JTextField();
-		txtSobrenome.setBounds(1253, 252, 86, 20);
-		contentPane.add(txtSobrenome);
+		txtSobrenome = new JTextField();
+		txtSobrenome.setToolTipText("");
 		txtSobrenome.setColumns(10);
+		txtSobrenome.setBackground(new Color(255, 251, 233));
+		txtSobrenome.setBounds(1013, 280, 336, 45);
+		contentPane.add(txtSobrenome);
 
 		lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setForeground(Color.BLUE);
@@ -147,10 +161,10 @@ public class CadastroUsuario extends JFrame {
 		lblIconeEmail.setBounds(944, 436, 59, 52);
 		contentPane.add(lblIconeEmail);
 
-		lblIconeNome = new JLabel("New label");
-		lblIconeNome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
-		lblIconeNome.setBounds(944, 362, 59, 45);
-		contentPane.add(lblIconeNome);
+		lblIconeSobrenome = new JLabel("New label");
+		lblIconeSobrenome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
+		lblIconeSobrenome.setBounds(944, 280, 59, 45);
+		contentPane.add(lblIconeSobrenome);
 
 		btnCadastrar = new JButton("CADASTRAR");
 		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
@@ -165,18 +179,21 @@ public class CadastroUsuario extends JFrame {
 
 				Pessoa p = new Pessoa();
 
-				String nome = txtNome.getText();
+				String nome = txtCPF.getText();
 				String sobrenome = txtSobrenome.getText();
-				String cpfS = String.valueOf(txtCPF.getText());
+				String cpfS = String.valueOf(txtSobrenome.getText());
 				String email = txtEmail.getText();
 				String senha = txtSenha.getText();
 				String confSenha = txtConfirmacaoSenha.getText();
 
-				if (txtCPF.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
-
-				} else if (txtNome.getText().isEmpty()) {
+				if (txtNome.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
+
+				} else if (txtSobrenome.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
+
+				} else if (txtCPF.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
 
 				} else if (txtEmail.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
@@ -261,21 +278,21 @@ public class CadastroUsuario extends JFrame {
 		lblEmail.setBounds(1013, 418, 122, 14);
 		contentPane.add(lblEmail);
 
-		txtNome = new JTextField();
-		txtNome.setToolTipText("");
-		txtNome.setColumns(10);
-		txtNome.setBackground(new Color(255, 251, 233));
-		txtNome.setBounds(1013, 362, 336, 45);
-		contentPane.add(txtNome);
+		txtCPF = new JTextField();
+		txtCPF.setToolTipText("");
+		txtCPF.setColumns(10);
+		txtCPF.setBackground(new Color(255, 251, 233));
+		txtCPF.setBounds(1013, 362, 336, 45);
+		contentPane.add(txtCPF);
 
-		lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Arial", Font.PLAIN, 13));
-		lblNome.setBounds(1013, 337, 122, 14);
-		contentPane.add(lblNome);
+		lblCPF = new JLabel("CPF:");
+		lblCPF.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblCPF.setBounds(1013, 337, 122, 14);
+		contentPane.add(lblCPF);
 
 		lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblCadastro.setBounds(1031, 133, 327, 107);
+		lblCadastro.setBounds(1026, 46, 327, 107);
 		contentPane.add(lblCadastro);
 
 		ifacarona = new JLabel("IFSCarona");
