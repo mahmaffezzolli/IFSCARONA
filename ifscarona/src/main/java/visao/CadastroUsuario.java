@@ -1,19 +1,26 @@
 package visao;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Font;
-import javax.swing.border.LineBorder;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import controle.PessoaDAO;
+import modelo.Pessoa;
 
 public class CadastroUsuario extends JFrame {
 
@@ -44,6 +51,7 @@ public class CadastroUsuario extends JFrame {
 	private JLabel lblCPF;
 	private JLabel lblIconeCPF;
 	private final JPanel panel = new JPanel();
+	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -93,6 +101,11 @@ public class CadastroUsuario extends JFrame {
 		txtCPF.setBounds(1013, 280, 336, 45);
 		contentPane.add(txtCPF);
 
+		JTextField txtSobrenome = new JTextField();
+		txtSobrenome.setBounds(1253, 252, 86, 20);
+		contentPane.add(txtSobrenome);
+		txtSobrenome.setColumns(10);
+
 		lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
@@ -107,6 +120,7 @@ public class CadastroUsuario extends JFrame {
 				CadastroUsuario.this.dispose();
 			}
 		});
+
 		lblPossuiCadastro = new JLabel("Possui cadastro?");
 		lblPossuiCadastro.setFont(new Font("Dialog", Font.PLAIN, 13));
 		lblPossuiCadastro.setBounds(1013, 734, 178, 14);
@@ -143,6 +157,61 @@ public class CadastroUsuario extends JFrame {
 		btnCadastrar.setBackground(new Color(255, 251, 233));
 		btnCadastrar.setBounds(1093, 783, 162, 45);
 		contentPane.add(btnCadastrar);
+
+		btnCadastrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				Pessoa p = new Pessoa();
+
+				String nome = txtNome.getText();
+				String sobrenome = txtSobrenome.getText();
+				String cpfS = String.valueOf(txtCPF.getText());
+				String email = txtEmail.getText();
+				String senha = txtSenha.getText();
+				String confSenha = txtConfirmacaoSenha.getText();
+
+				if (txtCPF.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
+
+				} else if (txtNome.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
+
+				} else if (txtEmail.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+
+				} else if (txtSenha.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+
+				} else if (!senha.equals(confSenha)) {
+					JOptionPane.showMessageDialog(null, "As senhas não conferem");
+
+				} else {
+
+					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
+							DateTimeFormatter.ofPattern("dd/MM/yyy"));
+
+					p.setCpf(Long.parseLong(cpfS));
+					p.setNome(nome);
+					p.setSobrenome(sobrenome);
+					p.setEmail(email);
+					p.setSenha(senha);
+					p.setDataNasc(dataNascimento);
+
+					boolean success = pDAO.cadastrarPessoa(p);
+
+					if (success) {
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+						// Optionally, clear input fields or navigate to another screen
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao cadastrar pessoa.");
+					}
+				}
+
+			}
+
+		});
 
 		txtConfirmacaoSenha = new JTextField();
 		txtConfirmacaoSenha.setToolTipText("");

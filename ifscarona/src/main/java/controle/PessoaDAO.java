@@ -31,7 +31,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO pessoa " + "(nome, sobrenome, cpf, dataNasc, senha, email) "
+		String query = "INSERT INTO pessoas " + "(nome, sobrenome, cpf, data_nasc, senha, email) "
 				+ "VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
