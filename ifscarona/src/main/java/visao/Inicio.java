@@ -122,7 +122,7 @@ public class Inicio extends JFrame {
 		lblImage = new JLabel("");
 		lblImage.setIcon(
 				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
-		lblImage.setBounds(867, 83, 337, 260);
+		lblImage.setBounds(875, 81, 337, 260);
 		contentPane.add(lblImage);
 
 		lblNewLabel_1 = new JLabel("");

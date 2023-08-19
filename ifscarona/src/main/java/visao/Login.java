@@ -63,17 +63,22 @@ public class Login extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+				JLabel lblNewLabel_1 = new JLabel("Login");
+				lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 63));
+				lblNewLabel_1.setBounds(976, 115, 327, 107);
+				contentPane.add(lblNewLabel_1);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(
 				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png"));
-		lblLogo.setBounds(0, 417, 590, 172);
+		lblLogo.setBounds(-15, 417, 590, 172);
 		contentPane.add(lblLogo);
 
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(
 				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/icons8-senha-60.png"));
-		lblNewLabel_4.setBounds(876, 575, 60, 60);
+		lblNewLabel_4.setBounds(876, 572, 60, 60);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -99,11 +104,6 @@ public class Login extends JFrame {
 		txtEmail.setBounds(946, 417, 336, 45);
 		contentPane.add(txtEmail);
 		txtEmail.setColumns(10);
-
-		JLabel lblNewLabel_1 = new JLabel("Login");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblNewLabel_1.setBounds(1012, 161, 327, 107);
-		contentPane.add(lblNewLabel_1);
 
 		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
 		showPasswordCheckBox.setBackground(new Color(238, 238, 238));
@@ -160,7 +160,7 @@ public class Login extends JFrame {
 			}
 		});
 
-		btnLogar.setBounds(1012, 741, 220, 45);
+		btnLogar.setBounds(1002, 738, 220, 45);
 		contentPane.add(btnLogar);
 
 		JLabel lblSenha = new JLabel("Senha");
@@ -177,12 +177,12 @@ public class Login extends JFrame {
 
 		JLabel lblCad = new JLabel("Não possui cadastro?");
 		lblCad.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblCad.setBounds(1012, 795, 178, 14);
+		lblCad.setBounds(1001, 795, 178, 14);
 		contentPane.add(lblCad);
 
 		JLabel lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblLinkAqui.setBounds(1161, 795, 178, 14);
+		lblLinkAqui.setBounds(1145, 795, 178, 14);
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(lblLinkAqui);
