@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -188,7 +190,13 @@ public class Login extends JFrame {
 		lblLinkAqui.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CadastroUsuario CadastroFrame = new CadastroUsuario();
+				CadastroUsuario CadastroFrame = null;
+				try {
+					CadastroFrame = new CadastroUsuario();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				CadastroFrame.setVisible(true);
 				Login.this.dispose();
 			}
