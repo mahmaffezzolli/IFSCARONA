@@ -100,11 +100,13 @@ public class VeiculoDAO implements IVeiculoDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+			
+		}finally {
+			
+			c.fecharConexao();
 		}
 
-		c.fecharConexao();
-
-		return null;
+		return veiculos;
 	}
 
 }

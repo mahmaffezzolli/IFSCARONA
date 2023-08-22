@@ -84,9 +84,11 @@ public class CaronaDAO implements ICaronaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+			
+		}finally {
+			
+			c.fecharConexao();
 		}
-
-		c.fecharConexao();
 
 		return caronas;
 	}

@@ -93,9 +93,10 @@ public class TrajetoDAO implements ITrajetoDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			
+			c.fecharConexao();
 		}
-
-		c.fecharConexao();
 
 		return trajetos;
 	}

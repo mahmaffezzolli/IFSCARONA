@@ -106,9 +106,10 @@ public class PessoaDAO implements IPessoaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			
+			c.fecharConexao();
 		}
-
-		c.fecharConexao();
 
 		return pessoas;
 	}
