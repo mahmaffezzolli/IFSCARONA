@@ -90,7 +90,6 @@ public class CadastroUsuario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-
 		lblCarro = new JLabel("New label");
 		lblCarro.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(101, 297, 170, 151);
@@ -160,24 +159,24 @@ public class CadastroUsuario extends JFrame {
 		txtNome.setBackground(new Color(255, 251, 233));
 		txtNome.setBounds(745, 227, 336, 45);
 		contentPane.add(txtNome);
-		
+
 		lblIconeCPF = new JLabel("New label");
 		lblIconeCPF.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/cpf.png")));
 		lblIconeCPF.setBounds(676, 417, 59, 71);
 		contentPane.add(lblIconeCPF);
-		
+
 		lblSobrenome = new JLabel("Sobrenome:");
 		lblSobrenome.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblSobrenome.setBounds(745, 296, 122, 14);
 		contentPane.add(lblSobrenome);
-		
+
 		txtSobrenome = new JTextField();
 		txtSobrenome.setToolTipText("");
 		txtSobrenome.setColumns(10);
 		txtSobrenome.setBackground(new Color(255, 251, 233));
 		txtSobrenome.setBounds(745, 327, 336, 45);
 		contentPane.add(txtSobrenome);
-		
+
 		lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
@@ -195,32 +194,33 @@ public class CadastroUsuario extends JFrame {
 		lblPossuiCadastro.setFont(new Font("Dialog", Font.PLAIN, 13));
 		lblPossuiCadastro.setBounds(1266, 486, 178, 14);
 		contentPane.add(lblPossuiCadastro);
-		
+
 		lblIconeConfiormacaoSenha = new JLabel("New label");
 		lblIconeConfiormacaoSenha.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/senha.png")));
 		lblIconeConfiormacaoSenha.setBounds(1197, 425, 59, 55);
-		
+
 		contentPane.add(lblIconeConfiormacaoSenha);
 		lblIconeSenha = new JLabel("New label");
 		lblIconeSenha.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/senha.png")));
 		lblIconeSenha.setBounds(1197, 317, 59, 55);
 		contentPane.add(lblIconeSenha);
-		
+
 		lblIconeDataNascimento = new JLabel("New label");
-		lblIconeDataNascimento.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-data-de-nascimento-60.png")));
+		lblIconeDataNascimento
+				.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-data-de-nascimento-60.png")));
 		lblIconeDataNascimento.setBounds(1197, 219, 59, 60);
 		contentPane.add(lblIconeDataNascimento);
-		
+
 		lblIconeEmail = new JLabel("New label");
 		lblIconeEmail.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nova-mensagem-60.png")));
 		lblIconeEmail.setBounds(676, 529, 59, 52);
 		contentPane.add(lblIconeEmail);
-		
+
 		lblIconeSobrenome = new JLabel("New label");
 		lblIconeSobrenome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
 		lblIconeSobrenome.setBounds(676, 327, 59, 45);
 		contentPane.add(lblIconeSobrenome);
-		
+
 		btnCadastrar = new JButton("CADASTRAR");
 		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
@@ -228,46 +228,53 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(btnCadastrar);
 
 		btnCadastrar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Pessoa p = new Pessoa();
-				String nome = txtCPF.getText();
+
+				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
-				String cpfS = String.valueOf(txtSobrenome.getText());
+				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
-				String senha = txtSenha.getText();
-				String confSenha = txtConfirmacaoSenha.getText();
-				
+				String senha = String.valueOf(txtSenha.getPassword());
+				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
+
 				if (txtNome.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
-					
+
 				} else if (txtSobrenome.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
-					
+
 				} else if (txtCPF.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
-					
+
 				} else if (txtEmail.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
-					
-				} else if (txtSenha.getText().isEmpty()) {
+
+				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
-					
+
 				} else if (!senha.equals(confSenha)) {
 					JOptionPane.showMessageDialog(null, "As senhas não conferem");
-					
+
 				} else {
 					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
-					p.setCpf(Long.parseLong(cpfS));
+
+					cpfS = cpfS.replace(".", "");
+					cpfS = cpfS.replace("-", "");
+					cpfS = cpfS.trim();
+					Long cpf = Long.parseLong(cpfS);
+
+					p.setCpf(cpf);
 					p.setNome(nome);
 					p.setSobrenome(sobrenome);
 					p.setEmail(email);
 					p.setSenha(senha);
 					p.setDataNasc(dataNascimento);
-					
+
 					boolean success = pDAO.cadastrarPessoa(p);
 					if (success) {
 						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
@@ -282,12 +289,12 @@ public class CadastroUsuario extends JFrame {
 		lblConfirmacaoSenha.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblConfirmacaoSenha.setBounds(1266, 404, 178, 14);
 		contentPane.add(lblConfirmacaoSenha);
-		
+
 		lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblSenha.setBounds(1266, 297, 122, 14);
 		contentPane.add(lblSenha);
-		
+
 		txtDataNascimento = new JTextField();
 		/*****************/
 		MaskFormatter mascaraData = null;
@@ -298,24 +305,24 @@ public class CadastroUsuario extends JFrame {
 		txtDataNascimento.setBackground(new Color(255, 251, 233));
 		txtDataNascimento.setBounds(1266, 227, 336, 45);
 		contentPane.add(txtDataNascimento);
-		
+
 		lblDataNascimento = new JLabel("Data de Nascimento:");
 		lblDataNascimento.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblDataNascimento.setBounds(1266, 203, 147, 14);
 		contentPane.add(lblDataNascimento);
-		
+
 		txtEmail = new JTextField();
 		txtEmail.setToolTipText("");
 		txtEmail.setColumns(10);
 		txtEmail.setBackground(new Color(255, 251, 233));
 		txtEmail.setBounds(745, 536, 336, 45);
 		contentPane.add(txtEmail);
-		
+
 		lblEmail = new JLabel("E-mail institucional:");
 		lblEmail.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblEmail.setBounds(745, 507, 147, 14);
 		contentPane.add(lblEmail);
-		
+
 		txtCPF = new JTextField();
 		/*****************/
 		MaskFormatter mascaraCPF = null;
@@ -327,17 +334,17 @@ public class CadastroUsuario extends JFrame {
 		txtCPF.setBackground(new Color(255, 251, 233));
 		txtCPF.setBounds(745, 430, 336, 45);
 		contentPane.add(txtCPF);
-		
+
 		lblCPF = new JLabel("CPF:");
 		lblCPF.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblCPF.setBounds(745, 402, 122, 14);
 		contentPane.add(lblCPF);
-		
+
 		lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setFont(new Font("Dialog", Font.BOLD, 53));
 		lblCadastro.setBounds(1009, 65, 327, 107);
 		contentPane.add(lblCadastro);
-		
+
 		txtfundoBege = new JTextField();
 		txtfundoBege.setEnabled(false);
 		txtfundoBege.setEditable(false);
@@ -345,7 +352,7 @@ public class CadastroUsuario extends JFrame {
 		txtfundoBege.setBackground(new Color(244, 234, 213));
 		txtfundoBege.setBounds(0, 0, 390, 1061);
 		contentPane.add(txtfundoBege);
-		
+
 		txtfundoVerde = new JTextField();
 		txtfundoVerde.setFont(new Font("Dialog", Font.BOLD, 22));
 		txtfundoVerde.setEnabled(false);
