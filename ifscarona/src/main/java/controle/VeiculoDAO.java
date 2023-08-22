@@ -57,7 +57,29 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 	@Override
 	public boolean alterarVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "UPDATE veiculos SET " + "placa = ? WHERE id_veiculo = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, veiculo.getPlaca());
+			ps.setString(1, veiculo.getCor());
+			ps.setString(1, veiculo.getMarca());
+			ps.setString(1, veiculo.getModelo());
+			ps.setInt(1, veiculo.getIdVeiculo());
+			
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+			
+		} catch (SQLException e) {
+		e.printStackTrace();
+		
+		}
 		return false;
 	}
 

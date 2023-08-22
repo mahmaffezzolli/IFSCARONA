@@ -56,7 +56,25 @@ public class CaronaDAO implements ICaronaDAO {
 
 	@Override
 	public boolean alterarCarona(Carona carona) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+
+		Connection con = c.conectar();
+		
+		String query = "UPDATE caronas SET" + "trajeto = ? WHERE id_carona = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, carona.getIdCarona());
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 

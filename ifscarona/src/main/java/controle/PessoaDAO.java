@@ -59,7 +59,29 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public boolean alterarPessoa(Pessoa pessoa) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+
+		Connection con = c.conectar();
+		
+		String query = "UPDATE pessoas SET " + "nome = ? WHERE cpf = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, pessoa.getCpf());
+			ps.setString(1, pessoa.getNome());
+			ps.setString(1, pessoa.getSobrenome());
+			ps.setString(1, pessoa.getEmail());
+			ps.setString(1, pessoa.getSenha());
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
