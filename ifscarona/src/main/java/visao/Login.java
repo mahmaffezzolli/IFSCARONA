@@ -63,6 +63,11 @@ public class Login extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+				
+				JLabel lblNewLabel_5 = new JLabel("");
+				lblNewLabel_5.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
+				lblNewLabel_5.setBounds(81, 304, 385, 151);
+				contentPane.add(lblNewLabel_5);
 		
 				JLabel lblNewLabel_1 = new JLabel("Login");
 				lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 63));
