@@ -62,7 +62,25 @@ public class CaronaDAO implements ICaronaDAO {
 
 	@Override
 	public boolean deletarCarona(Carona carona) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM caronas WHERE id_carona = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, carona.getIdCarona());
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
