@@ -46,11 +46,13 @@ public class PessoaDAO implements IPessoaDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+		} finally {
+			c.fecharConexao();
+
 		}
 		return false;
 	}

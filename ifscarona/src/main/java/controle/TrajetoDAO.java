@@ -40,11 +40,14 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+		} finally {
+			c.fecharConexao();
+
 		}
 		return false;
 	}
@@ -93,6 +96,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+			
 		}finally {
 			
 			c.fecharConexao();

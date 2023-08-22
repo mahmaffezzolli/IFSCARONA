@@ -42,12 +42,16 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+		} finally {
+			c.fecharConexao();
+
 		}
+		
 		return false;
 	}
 
