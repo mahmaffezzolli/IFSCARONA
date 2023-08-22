@@ -63,9 +63,32 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 	@Override
 	public boolean deletarVeiculo(Veiculo veiculo) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
 
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM veiculos WHERE id_veiculo = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, veiculo.getIdVeiculo());
+			ps.setString(1, veiculo.getPlaca());
+			ps.setString(1, veiculo.getCor());
+			ps.setString(1, veiculo.getMarca());
+			ps.setString(1, veiculo.getModelo());
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
+
 
 	public ArrayList<Veiculo> listarVeiculo(Veiculo veiculo) {
 

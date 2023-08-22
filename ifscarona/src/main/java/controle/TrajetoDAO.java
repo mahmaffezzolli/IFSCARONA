@@ -60,10 +60,30 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 	@Override
 	public boolean deletarTrajeto(Trajeto trajeto) {
-		// TODO Auto-generated method stub
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM trajetos WHERE id_trajeto = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, trajeto.getIdTrajeto());
+			ps.setString(1, trajeto.getOrigem());
+			ps.setString(1, trajeto.getDestino());
+			ps.executeUpdate();
+			
+			c.fecharConexao();
+			
+			return true;
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
-
+	
 	public ArrayList<Trajeto> listarTrajeto(Trajeto trajeto) {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
