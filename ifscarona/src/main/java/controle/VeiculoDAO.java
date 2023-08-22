@@ -38,20 +38,20 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(1, veiculo.getPlaca());
 			ps.setString(2, veiculo.getCor());
 			ps.setString(3, veiculo.getMarca());
-			ps.setString(5, veiculo.getModelo());
+			ps.setString(4, veiculo.getModelo());
 
 			ps.executeUpdate();
 
 			return true;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			c.fecharConexao();
 
 		}
-		
+
 		return false;
 	}
 
@@ -59,27 +59,29 @@ public class VeiculoDAO implements IVeiculoDAO {
 	public boolean alterarVeiculo(Veiculo veiculo) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
-		
-		String query = "UPDATE veiculos SET " + "placa = ? WHERE id_veiculo = ?";
-		
+
+		String query = "UPDATE veiculos SET placa = ?, cor =?, marca = ?, modelo = ? WHERE id_veiculo = ?";
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, veiculo.getPlaca());
-			ps.setString(1, veiculo.getCor());
-			ps.setString(1, veiculo.getMarca());
-			ps.setString(1, veiculo.getModelo());
-			ps.setInt(1, veiculo.getIdVeiculo());
-			
+			ps.setString(2, veiculo.getCor());
+			ps.setString(3, veiculo.getMarca());
+			ps.setString(4, veiculo.getModelo());
+			ps.setInt(5, veiculo.getIdVeiculo());
+
 			ps.executeUpdate();
-			
-			c.fecharConexao();
-			
+
 			return true;
-			
+
 		} catch (SQLException e) {
-		e.printStackTrace();
-		
+
+			e.printStackTrace();
+		} finally {
+
+			c.fecharConexao();
 		}
+
 		return false;
 	}
 
@@ -88,29 +90,27 @@ public class VeiculoDAO implements IVeiculoDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
-		
+
 		String query = "DELETE FROM veiculos WHERE id_veiculo = ?";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, veiculo.getIdVeiculo());
-			ps.setString(1, veiculo.getPlaca());
-			ps.setString(1, veiculo.getCor());
-			ps.setString(1, veiculo.getMarca());
-			ps.setString(1, veiculo.getModelo());
+
 			ps.executeUpdate();
-			
-			c.fecharConexao();
-			
+
 			return true;
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
+		} finally {
+
+			c.fecharConexao();
 		}
-		
+
 		return false;
 	}
-
 
 	public ArrayList<Veiculo> listarVeiculo(Veiculo veiculo) {
 
@@ -126,9 +126,9 @@ public class VeiculoDAO implements IVeiculoDAO {
 			PreparedStatement vs = con.prepareStatement(query);
 
 			ResultSet rs = vs.executeQuery();
-			
+
 			while (rs.next()) {
-				
+
 				Integer idVeiculo = rs.getInt("id_veiculo");
 				String placa = rs.getString("placa");
 				String cor = rs.getString("cor");
@@ -149,9 +149,9 @@ public class VeiculoDAO implements IVeiculoDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-			
-		}finally {
-			
+
+		} finally {
+
 			c.fecharConexao();
 		}
 

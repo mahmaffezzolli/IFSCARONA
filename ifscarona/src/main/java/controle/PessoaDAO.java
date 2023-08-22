@@ -49,7 +49,7 @@ public class PessoaDAO implements IPessoaDAO {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			c.fecharConexao();
 
@@ -59,60 +59,61 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public boolean alterarPessoa(Pessoa pessoa) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
 
+		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
-		
-		String query = "UPDATE pessoas SET " + "nome = ? WHERE cpf = ?";
-		
+
+		String query = "UPDATE pessoas SET nome = ?, sobrenome = ?, email = ?, senha = ? WHERE cpf = ?";
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, pessoa.getCpf());
 			ps.setString(1, pessoa.getNome());
-			ps.setString(1, pessoa.getSobrenome());
-			ps.setString(1, pessoa.getEmail());
-			ps.setString(1, pessoa.getSenha());
+			ps.setString(2, pessoa.getSobrenome());
+			ps.setString(3, pessoa.getEmail());
+			ps.setString(4, pessoa.getSenha());
+			ps.setLong(5, pessoa.getCpf());
 			ps.executeUpdate();
-			
-			c.fecharConexao();
-			
+
 			return true;
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
+		} finally {
+
+			c.fecharConexao();
 		}
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean deletarPessoa(Pessoa pessoa) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
 
+		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
-		
+
 		String query = "DELETE FROM pessoas WHERE cpf = ?";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setLong(1, pessoa.getCpf());
-			ps.setString(1, pessoa.getNome());
-			ps.setString(1, pessoa.getSobrenome());
-			ps.setString(1, pessoa.getEmail());
-			ps.setString(1, pessoa.getSenha());
+
 			ps.executeUpdate();
-			
-			c.fecharConexao();
-			
+
 			return true;
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
+		} finally {
+
+			c.fecharConexao();
 		}
-		
+
 		return false;
 	}
-	
+
 	@Override
 	public ArrayList<Pessoa> listarPessoa(Pessoa pessoa) {
 
@@ -135,7 +136,7 @@ public class PessoaDAO implements IPessoaDAO {
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String email = rs.getString("email");
-				//LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
+				// LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
 				String senha = rs.getString("senha");
 
 				Pessoa p = new Pessoa();
@@ -143,7 +144,7 @@ public class PessoaDAO implements IPessoaDAO {
 				p.setNome(nome);
 				p.setSobrenome(sobrenome);
 				p.setEmail(email);
-				//p.setDataNasc(dataNasc);
+				// p.setDataNasc(dataNasc);
 				p.setSenha(senha);
 
 				pessoas.add(p);
@@ -152,8 +153,8 @@ public class PessoaDAO implements IPessoaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		}finally {
-			
+		} finally {
+
 			c.fecharConexao();
 		}
 

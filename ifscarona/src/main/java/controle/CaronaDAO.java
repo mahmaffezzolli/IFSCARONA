@@ -42,15 +42,15 @@ public class CaronaDAO implements ICaronaDAO {
 			ps.executeUpdate();
 
 			return true;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			c.fecharConexao();
 
 		}
-		
+
 		return false;
 	}
 
@@ -59,22 +59,22 @@ public class CaronaDAO implements ICaronaDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
-		
+
 		String query = "UPDATE caronas SET" + "trajeto = ? WHERE id_carona = ?";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, carona.getIdCarona());
 			ps.executeUpdate();
-			
+
 			c.fecharConexao();
-			
+
 			return true;
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 
@@ -83,22 +83,22 @@ public class CaronaDAO implements ICaronaDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
-		
+
 		String query = "DELETE FROM caronas WHERE id_carona = ?";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, carona.getIdCarona());
 			ps.executeUpdate();
-			
+
 			c.fecharConexao();
-			
+
 			return true;
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 
@@ -124,9 +124,9 @@ public class CaronaDAO implements ICaronaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-			
-		}finally {
-			
+
+		} finally {
+
 			c.fecharConexao();
 		}
 
