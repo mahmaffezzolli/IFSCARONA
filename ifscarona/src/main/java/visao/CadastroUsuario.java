@@ -56,7 +56,6 @@ public class CadastroUsuario extends JFrame {
 	private JPasswordField txtSenha;
 	private JPasswordField txtConfirmacaoSenha;
 	private JLabel lblLogo;
-	private JLabel lblEstrada;
 	private JLabel lblCarro;
 
 	/**
@@ -94,12 +93,6 @@ public class CadastroUsuario extends JFrame {
 		lblCarro.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(101, 297, 170, 151);
 		contentPane.add(lblCarro);
-
-		lblEstrada = new JLabel("New label");
-		lblEstrada.setIcon(new ImageIcon(
-				CadastroUsuario.class.getResource("/assets/2f04bc89b6682150683e489fa24139a1-removebg-preview.png")));
-		lblEstrada.setBounds(1005, 540, 468, 566);
-		contentPane.add(lblEstrada);
 
 		lblLogo = new JLabel("New label");
 		lblLogo.setIcon(
