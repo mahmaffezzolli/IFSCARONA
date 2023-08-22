@@ -232,12 +232,13 @@ public class CadastroUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				Pessoa p = new Pessoa();
-				String nome = txtCPF.getText();
+				
+				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
-				String cpfS = String.valueOf(txtSobrenome.getText());
+				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
-				String senha = txtSenha.getText();
-				String confSenha = txtConfirmacaoSenha.getText();
+				String senha = String.valueOf(txtSenha.getPassword());
+				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 				
 				if (txtNome.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
@@ -251,7 +252,7 @@ public class CadastroUsuario extends JFrame {
 				} else if (txtEmail.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
 					
-				} else if (txtSenha.getText().isEmpty()) {
+				} else if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
 					
 				} else if (!senha.equals(confSenha)) {
@@ -260,7 +261,13 @@ public class CadastroUsuario extends JFrame {
 				} else {
 					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
-					p.setCpf(Long.parseLong(cpfS));
+					
+					cpfS = cpfS.replace(".", "");
+					cpfS = cpfS.replace("-", "");
+					cpfS = cpfS.trim();
+					Long cpf = Long.parseLong(cpfS);
+					
+					p.setCpf(cpf);
 					p.setNome(nome);
 					p.setSobrenome(sobrenome);
 					p.setEmail(email);
