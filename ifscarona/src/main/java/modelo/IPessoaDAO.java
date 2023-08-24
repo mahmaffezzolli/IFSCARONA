@@ -8,8 +8,10 @@ public interface IPessoaDAO {
 
 	public boolean alterarPessoa(Pessoa pessoa);
 
-	public ArrayList<Pessoa> listarPessoa(Pessoa pessoa);
+	public ArrayList<Pessoa> listarPessoas();
 
 	public boolean deletarPessoa(Pessoa pessoa);
+	
+	public boolean login(Pessoa pessoa);
 
 }

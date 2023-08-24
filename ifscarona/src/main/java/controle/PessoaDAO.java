@@ -115,7 +115,7 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public ArrayList<Pessoa> listarPessoa(Pessoa pessoa) {
+	public ArrayList<Pessoa> listarPessoas() {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
@@ -123,7 +123,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 
-		String query = "SELECT * FROM pessoas";
+		String query = "SELECT * FROM pessoa where ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -159,5 +159,11 @@ public class PessoaDAO implements IPessoaDAO {
 		}
 
 		return pessoas;
+	}
+
+	@Override
+	public boolean login(Pessoa pessoa) {
+		
+		return false;
 	}
 }

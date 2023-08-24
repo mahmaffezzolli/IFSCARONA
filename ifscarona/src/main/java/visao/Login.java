@@ -149,7 +149,7 @@ public class Login extends JFrame {
 
 					boolean loginSucesso = false;
 
-					for (Pessoa pessoa : pDAO.listarPessoa(null)) {
+					for (Pessoa pessoa : pDAO.listarPessoas()) {
 						if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
 							loginSucesso = true;
 						}

@@ -238,30 +238,34 @@ public class CadastroUsuario extends JFrame {
 				String sobrenome = txtSobrenome.getText();
 				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
+				LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
+						DateTimeFormatter.ofPattern("dd/MM/yyy"));
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
-				if (txtNome.getText().isEmpty()) {
+				if (nome.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
 
-				} else if (txtSobrenome.getText().isEmpty()) {
+				} else if (sobrenome.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
 
-				} else if (txtCPF.getText().isEmpty()) {
+				} else if (cpfS.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
 
-				} else if (txtEmail.getText().isEmpty()) {
+				} else if (email.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
 
+				} else if (dataNascimento != null) {
+					JOptionPane.showMessageDialog(null, "A data de nascimento deve ser inserida!");
+
 				} else if (senha.isEmpty()) {
+
 					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
 
 				} else if (!senha.equals(confSenha)) {
 					JOptionPane.showMessageDialog(null, "As senhas não conferem");
 
 				} else {
-					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
-							DateTimeFormatter.ofPattern("dd/MM/yyy"));
 
 					cpfS = cpfS.replace(".", "");
 					cpfS = cpfS.replace("-", "");
