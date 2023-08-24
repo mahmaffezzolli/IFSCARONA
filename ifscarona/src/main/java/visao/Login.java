@@ -63,16 +63,17 @@ public class Login extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-				
-				JLabel lblNewLabel_5 = new JLabel("");
-				lblNewLabel_5.setIcon(new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
-				lblNewLabel_5.setBounds(81, 304, 385, 151);
-				contentPane.add(lblNewLabel_5);
-		
-				JLabel lblNewLabel_1 = new JLabel("Login");
-				lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 63));
-				lblNewLabel_1.setBounds(976, 115, 327, 107);
-				contentPane.add(lblNewLabel_1);
+
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(
+				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
+		lblNewLabel_5.setBounds(81, 304, 385, 151);
+		contentPane.add(lblNewLabel_5);
+
+		JLabel lblNewLabel_1 = new JLabel("Login");
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 63));
+		lblNewLabel_1.setBounds(976, 115, 327, 107);
+		contentPane.add(lblNewLabel_1);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(
@@ -147,16 +148,11 @@ public class Login extends JFrame {
 
 				} else {
 
-					boolean loginSucesso = false;
-
-					for (Pessoa pessoa : pDAO.listarPessoas()) {
-						if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-							loginSucesso = true;
-						}
-					}
+					boolean loginSucesso = pDAO.login(email, senha);
 
 					if (loginSucesso) {
 						JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+						JOptionPane.showMessageDialog(null, "Seu email: " + email + " e senha: " + senha);
 
 					} else {
 						JOptionPane.showMessageDialog(null, "Você não é cadastrado");

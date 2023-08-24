@@ -162,8 +162,33 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public boolean login(Pessoa pessoa) {
-		
+	public boolean login(String email, String senha) {
+
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM pessoas WHERE email = ? AND senha = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, senha);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				return true;
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 }

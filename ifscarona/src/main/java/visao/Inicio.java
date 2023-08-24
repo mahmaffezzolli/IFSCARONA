@@ -91,7 +91,7 @@ public class Inicio extends JFrame {
 		btnCadastrar.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 					new CadastroUsuario().setVisible(true);
 				} catch (ParseException e1) {
@@ -106,9 +106,7 @@ public class Inicio extends JFrame {
 				setVisible(false);
 
 			}
-			
-			
-			
+
 		});
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnCadastrar.setBackground(new Color(255, 251, 233));

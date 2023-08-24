@@ -255,7 +255,7 @@ public class CadastroUsuario extends JFrame {
 				} else if (email.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
 
-				} else if (dataNascimento != null) {
+				} else if (dataNascimento == null) {
 					JOptionPane.showMessageDialog(null, "A data de nascimento deve ser inserida!");
 
 				} else if (senha.isEmpty()) {
