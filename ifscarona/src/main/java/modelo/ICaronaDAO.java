@@ -8,7 +8,7 @@ public interface ICaronaDAO {
 
 	public boolean alterarCarona(Carona carona);
 
-	public ArrayList<Carona> listarCarona(Carona carona);
+	public ArrayList<Carona> listarCaronas();
 
 	public boolean deletarCarona(Carona carona);
 

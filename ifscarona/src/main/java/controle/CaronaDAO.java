@@ -103,7 +103,7 @@ public class CaronaDAO implements ICaronaDAO {
 	}
 
 	@Override
-	public ArrayList<Carona> listarCarona(Carona carona) {
+	public ArrayList<Carona> listarCaronas() {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 

@@ -8,7 +8,7 @@ public interface IVeiculoDAO {
 
 	public boolean alterarVeiculo(Veiculo veiculo);
 
-	public ArrayList<Veiculo> listarVeiculo(Veiculo veiculo);
+	public ArrayList<Veiculo> listarVeiculos();
 
 	public boolean deletarVeiculo(Veiculo veiculo);
 

@@ -107,7 +107,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 		return false;
 	}
 
-	public ArrayList<Trajeto> listarTrajeto(Trajeto trajeto) {
+	public ArrayList<Trajeto> listarTrajetos() {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 

@@ -112,7 +112,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 		return false;
 	}
 
-	public ArrayList<Veiculo> listarVeiculo(Veiculo veiculo) {
+	public ArrayList<Veiculo> listarVeiculos() {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
