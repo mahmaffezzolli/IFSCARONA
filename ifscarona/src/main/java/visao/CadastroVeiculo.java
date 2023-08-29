@@ -36,17 +36,14 @@ public class CadastroVeiculo extends JFrame {
 	private JTextField txtfundoVerde;
 	private JLabel lblCadastroVeiculo;
 	private JLabel lblMarca;
-	private JTextField txtCPF;
 	private JLabel lblModelo;
 	private JTextField txtModelo;
-	private JTextField txtDataNascimento;
 	private JButton btnCadastrar;
 	private JLabel lblIconeCor;
 	private JLabel lblIconeModelo;
 	private JTextField txtCor;
 	private JLabel lblCor;
 	private JLabel lblIconeMarca;
-	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 	private JTextField txtPlaca;
 	private JLabel lblIconePlaca;
 	private JLabel lblLogo;
@@ -153,74 +150,10 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrar.setBounds(1066, 647, 178, 54);
 		contentPane.add(btnCadastrar);
 
-		btnCadastrar.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
+			
 
-				Pessoa p = new Pessoa();
-
-				String nome = txtPlaca.getText();
-				String sobrenome = txtCor.getText();
-				String cpfS = String.valueOf(txtCPF.getText());
-				String email = txtModelo.getText();
-				LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
-						DateTimeFormatter.ofPattern("dd/MM/yyy"));
-				String senha = String.valueOf(txtSenha.getPassword());
-				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
-
-				if (nome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
-
-				} else if (sobrenome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
-
-				} else if (cpfS.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
-
-				} else if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
-
-				} else if (dataNascimento == null) {
-					JOptionPane.showMessageDialog(null, "A data de nascimento deve ser inserida!");
-
-				} else if (senha.isEmpty()) {
-
-					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
-
-				} else if (!senha.equals(confSenha)) {
-					JOptionPane.showMessageDialog(null, "As senhas não conferem");
-
-				} else {
-
-					cpfS = cpfS.replace(".", "");
-					cpfS = cpfS.replace("-", "");
-					cpfS = cpfS.trim();
-					Long cpf = Long.parseLong(cpfS);
-
-					p.setCpf(cpf);
-					p.setNome(nome);
-					p.setSobrenome(sobrenome);
-					p.setEmail(email);
-					p.setSenha(senha);
-					p.setDataNasc(dataNascimento);
-
-					boolean success = pDAO.cadastrarPessoa(p);
-					if (success) {
-						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-						// Optionally, clear input fields or navigate to another screen
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao cadastrar pessoa.");
-					}
-				}
-			}
-		});
-
-		txtDataNascimento = new JTextField();
-		/*****************/
-		MaskFormatter mascaraData = null;
-		mascaraData = new MaskFormatter("##/##/####");
-
+				
 		txtModelo = new JTextField();
 		txtModelo.setToolTipText("");
 		txtModelo.setColumns(10);
@@ -233,10 +166,6 @@ public class CadastroVeiculo extends JFrame {
 		lblModelo.setBounds(999, 509, 147, 14);
 		contentPane.add(lblModelo);
 
-		txtCPF = new JTextField();
-		/*****************/
-		MaskFormatter mascaraCPF = null;
-		mascaraCPF = new MaskFormatter("###.###.###-##");
 
 		lblMarca = new JLabel("Marca:");
 		lblMarca.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -265,4 +194,4 @@ public class CadastroVeiculo extends JFrame {
 		txtfundoVerde.setBounds(111, -2, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 	}
-}
+		}
