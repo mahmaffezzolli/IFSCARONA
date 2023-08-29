@@ -26,6 +26,7 @@ import controle.PessoaDAO;
 import modelo.Pessoa;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
+import java.awt.Dimension;
 
 public class CadastroUsuario extends JFrame {
 	private JPanel contentPane;
@@ -34,10 +35,12 @@ public class CadastroUsuario extends JFrame {
 	private JLabel lblCadastro;
 	private JLabel lblCPF;
 	private JTextField txtCPF;
+	private JTextField txtCPF_1;
 	private JLabel lblEmail;
 	private JTextField txtEmail;
 	private JLabel lblDataNascimento;
 	private JTextField txtDataNascimento;
+	private JTextField txtDataNascimento_1;
 	private JLabel lblSenha;
 	private JLabel lblConfirmacaoSenha;
 	private JButton btnCadastrar;
@@ -134,13 +137,15 @@ public class CadastroUsuario extends JFrame {
 			}
 		});
 		txtConfirmacaoSenha = new JPasswordField();
+		txtConfirmacaoSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtConfirmacaoSenha.setBackground(new Color(255, 251, 233));
 		txtConfirmacaoSenha.setBounds(1266, 429, 336, 46);
 		contentPane.add(txtConfirmacaoSenha);
 
 		txtSenha = new JPasswordField();
+		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtSenha.setBackground(new Color(255, 251, 233));
-		txtSenha.setBounds(1266, 321, 336, 46);
+		txtSenha.setBounds(1266, 326, 336, 46);
 		contentPane.add(txtSenha);
 
 		lblIconeNome = new JLabel("New label");
@@ -154,6 +159,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblNome);
 
 		txtNome = new JTextField();
+		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtNome.setToolTipText("");
 		txtNome.setColumns(10);
 		txtNome.setBackground(new Color(255, 251, 233));
@@ -171,6 +177,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblSobrenome);
 
 		txtSobrenome = new JTextField();
+		txtSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtSobrenome.setToolTipText("");
 		txtSobrenome.setColumns(10);
 		txtSobrenome.setBackground(new Color(255, 251, 233));
@@ -303,12 +310,13 @@ public class CadastroUsuario extends JFrame {
 		/*****************/
 		MaskFormatter mascaraData = null;
 		mascaraData = new MaskFormatter("##/##/####");
-		txtDataNascimento = new JFormattedTextField(mascaraData);
+		txtDataNascimento_1 = new JFormattedTextField(mascaraData);
+		txtDataNascimento_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		/*****************/
-		txtDataNascimento.setColumns(10);
-		txtDataNascimento.setBackground(new Color(255, 251, 233));
-		txtDataNascimento.setBounds(1266, 227, 336, 45);
-		contentPane.add(txtDataNascimento);
+		txtDataNascimento_1.setColumns(10);
+		txtDataNascimento_1.setBackground(new Color(255, 251, 233));
+		txtDataNascimento_1.setBounds(1266, 227, 336, 45);
+		contentPane.add(txtDataNascimento_1);
 
 		lblDataNascimento = new JLabel("Data de Nascimento:");
 		lblDataNascimento.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -331,13 +339,14 @@ public class CadastroUsuario extends JFrame {
 		/*****************/
 		MaskFormatter mascaraCPF = null;
 		mascaraCPF = new MaskFormatter("###.###.###-##");
-		txtCPF = new JFormattedTextField(mascaraCPF);
+		txtCPF_1 = new JFormattedTextField(mascaraCPF);
+		txtCPF_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		/*****************/
-		txtCPF.setToolTipText("");
-		txtCPF.setColumns(10);
-		txtCPF.setBackground(new Color(255, 251, 233));
-		txtCPF.setBounds(745, 430, 336, 45);
-		contentPane.add(txtCPF);
+		txtCPF_1.setToolTipText("");
+		txtCPF_1.setColumns(10);
+		txtCPF_1.setBackground(new Color(255, 251, 233));
+		txtCPF_1.setBounds(745, 430, 336, 45);
+		contentPane.add(txtCPF_1);
 
 		lblCPF = new JLabel("CPF:");
 		lblCPF.setFont(new Font("Arial", Font.PLAIN, 15));
