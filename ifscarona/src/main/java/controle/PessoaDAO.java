@@ -63,13 +63,12 @@ public class PessoaDAO implements IPessoaDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE pessoas SET nome = ?, sobrenome = ?, email = ?, senha = ? WHERE cpf = ?";
+		String query = "UPDATE pessoas SET nome = ?, sobrenome = ?, senha = ? WHERE cpf = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, pessoa.getNome());
 			ps.setString(2, pessoa.getSobrenome());
-			ps.setString(3, pessoa.getEmail());
 			ps.setString(4, pessoa.getSenha());
 			ps.setLong(5, pessoa.getCpf());
 			ps.executeUpdate();

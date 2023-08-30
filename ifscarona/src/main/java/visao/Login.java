@@ -151,13 +151,22 @@ public class Login extends JFrame {
 					boolean loginSucesso = pDAO.login(email, senha);
 
 					if (loginSucesso) {
+
 						JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
-						JOptionPane.showMessageDialog(null, "Seu email: " + email + " e senha: " + senha);
+
+						new Perfil().setVisible(true);
+
+						this.dispose();
 
 					} else {
 						JOptionPane.showMessageDialog(null, "Você não é cadastrado");
 					}
 				}
+			}
+
+			private void dispose() {
+				setVisible(false);
+
 			}
 		});
 

@@ -20,15 +20,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
-import java.awt.Dimension;
 
 public class CadastroUsuario extends JFrame {
+
 	private JPanel contentPane;
 	private JTextField txtfundoBege;
 	private JTextField txtfundoVerde;
@@ -228,74 +227,6 @@ public class CadastroUsuario extends JFrame {
 		lblIconeSobrenome.setBounds(676, 327, 59, 45);
 		contentPane.add(lblIconeSobrenome);
 
-		btnCadastrar = new JButton("CADASTRAR");
-		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
-		btnCadastrar.setBackground(new Color(255, 251, 233));
-		btnCadastrar.setBounds(1342, 536, 178, 54);
-		contentPane.add(btnCadastrar);
-
-		btnCadastrar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				Pessoa p = new Pessoa();
-
-				String nome = txtNome.getText();
-				String sobrenome = txtSobrenome.getText();
-				String cpfS = String.valueOf(txtCPF.getText());
-				String email = txtEmail.getText();
-				LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
-						DateTimeFormatter.ofPattern("dd/MM/yyy"));
-				String senha = String.valueOf(txtSenha.getPassword());
-				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
-
-				if (nome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
-
-				} else if (sobrenome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
-
-				} else if (cpfS.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
-
-				} else if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
-
-				} else if (dataNascimento == null) {
-					JOptionPane.showMessageDialog(null, "A data de nascimento deve ser inserida!");
-
-				} else if (senha.isEmpty()) {
-
-					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
-
-				} else if (!senha.equals(confSenha)) {
-					JOptionPane.showMessageDialog(null, "As senhas não conferem");
-
-				} else {
-
-					cpfS = cpfS.replace(".", "");
-					cpfS = cpfS.replace("-", "");
-					cpfS = cpfS.trim();
-					Long cpf = Long.parseLong(cpfS);
-
-					p.setCpf(cpf);
-					p.setNome(nome);
-					p.setSobrenome(sobrenome);
-					p.setEmail(email);
-					p.setSenha(senha);
-					p.setDataNasc(dataNascimento);
-
-					boolean success = pDAO.cadastrarPessoa(p);
-					if (success) {
-						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-						// Optionally, clear input fields or navigate to another screen
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao cadastrar pessoa.");
-					}
-				}
-			}
-		});
 		lblConfirmacaoSenha = new JLabel("Confirmação de Senha:");
 		lblConfirmacaoSenha.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblConfirmacaoSenha.setBounds(1266, 404, 178, 14);
@@ -307,16 +238,17 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblSenha);
 
 		txtDataNascimento = new JTextField();
+
 		/*****************/
 		MaskFormatter mascaraData = null;
 		mascaraData = new MaskFormatter("##/##/####");
-		txtDataNascimento_1 = new JFormattedTextField(mascaraData);
-		txtDataNascimento_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtDataNascimento = new JFormattedTextField(mascaraData);
 		/*****************/
-		txtDataNascimento_1.setColumns(10);
-		txtDataNascimento_1.setBackground(new Color(255, 251, 233));
-		txtDataNascimento_1.setBounds(1266, 227, 336, 45);
-		contentPane.add(txtDataNascimento_1);
+
+		txtDataNascimento.setColumns(10);
+		txtDataNascimento.setBackground(new Color(255, 251, 233));
+		txtDataNascimento.setBounds(1266, 227, 336, 45);
+		contentPane.add(txtDataNascimento);
 
 		lblDataNascimento = new JLabel("Data de Nascimento:");
 		lblDataNascimento.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -336,17 +268,18 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblEmail);
 
 		txtCPF = new JTextField();
+
 		/*****************/
 		MaskFormatter mascaraCPF = null;
 		mascaraCPF = new MaskFormatter("###.###.###-##");
-		txtCPF_1 = new JFormattedTextField(mascaraCPF);
-		txtCPF_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtCPF = new JFormattedTextField(mascaraCPF);
 		/*****************/
-		txtCPF_1.setToolTipText("");
-		txtCPF_1.setColumns(10);
-		txtCPF_1.setBackground(new Color(255, 251, 233));
-		txtCPF_1.setBounds(745, 430, 336, 45);
-		contentPane.add(txtCPF_1);
+
+		txtCPF.setToolTipText("");
+		txtCPF.setColumns(10);
+		txtCPF.setBackground(new Color(255, 251, 233));
+		txtCPF.setBounds(745, 430, 336, 45);
+		contentPane.add(txtCPF);
 
 		lblCPF = new JLabel("CPF:");
 		lblCPF.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -357,6 +290,76 @@ public class CadastroUsuario extends JFrame {
 		lblCadastro.setFont(new Font("Dialog", Font.BOLD, 53));
 		lblCadastro.setBounds(1009, 65, 327, 107);
 		contentPane.add(lblCadastro);
+
+		btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnCadastrar.setBackground(new Color(255, 251, 233));
+		btnCadastrar.setBounds(1342, 536, 178, 54);
+		contentPane.add(btnCadastrar);
+
+		btnCadastrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				Pessoa p = new Pessoa();
+
+				String nome = txtNome.getText();
+				String sobrenome = txtSobrenome.getText();
+				String cpfS = String.valueOf(txtCPF.getText());
+				String email = txtEmail.getText();
+				
+				String senha = String.valueOf(txtSenha.getPassword());
+				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
+
+				if (nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
+
+				} else if (sobrenome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
+
+				} else if (cpfS.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
+
+				} else if (email.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+
+				} else if (txtDataNascimento == null) {
+					JOptionPane.showMessageDialog(null, "A data de nascimento deve ser inserida!");
+
+				} else if (senha.isEmpty()) {
+
+					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+
+				} else if (!senha.equals(confSenha)) {
+					JOptionPane.showMessageDialog(null, "As senhas não conferem");
+
+				} else {
+
+					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
+							DateTimeFormatter.ofPattern("dd/MM/yyy"));
+					
+					cpfS = cpfS.replace(".", "");
+					cpfS = cpfS.replace("-", "");
+					cpfS = cpfS.trim();
+					Long cpf = Long.parseLong(cpfS);
+
+					p.setCpf(cpf);
+					p.setNome(nome);
+					p.setSobrenome(sobrenome);
+					p.setEmail(email);
+					p.setSenha(senha);
+					p.setDataNasc(dataNascimento);
+
+					boolean success = pDAO.cadastrarPessoa(p);
+					if (success) {
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao cadastrar pessoa.");
+					}
+				}
+			}
+		});
 
 		txtfundoBege = new JTextField();
 		txtfundoBege.setEnabled(false);
