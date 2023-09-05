@@ -23,7 +23,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import controle.PessoaDAO;
+import controle.VeiculoDAO;
 import modelo.Pessoa;
+import modelo.Veiculo;
+
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
 import java.awt.Dimension;
@@ -38,11 +41,12 @@ public class CadastroVeiculo extends JFrame {
 	private JLabel lblMarca;
 	private JLabel lblModelo;
 	private JTextField txtModelo;
-	private JButton btnCadastrar;
+	private JButton btnCadastrarVeiculo;
 	private JLabel lblIconeCor;
 	private JLabel lblIconeModelo;
 	private JTextField txtCor;
 	private JLabel lblCor;
+	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private JLabel lblIconeMarca;
 	private JTextField txtPlaca;
 	private JLabel lblIconePlaca;
@@ -144,12 +148,48 @@ public class CadastroVeiculo extends JFrame {
 		lblIconeCor.setBounds(930, 324, 59, 45);
 		contentPane.add(lblIconeCor);
 
-		btnCadastrar = new JButton("CADASTRAR");
-		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
-		btnCadastrar.setBackground(new Color(255, 251, 233));
-		btnCadastrar.setBounds(1066, 647, 178, 54);
-		contentPane.add(btnCadastrar);
+		btnCadastrarVeiculo = new JButton("CADASTRAR");
+		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
+		btnCadastrarVeiculo.setBounds(1066, 647, 178, 54);
+		contentPane.add(btnCadastrarVeiculo);
+		
+		btnCadastrarVeiculo.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
 
+			Veiculo v = new Veiculo();
+
+			String placa = txtPlaca.getText();
+			String modelo = txtModelo.getText();
+			String cor = txtCor.getText();
+
+			if (placa.isEmpty()) {
+				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+				campoNaoPreenchido.setVisible(true);
+
+			} else if (modelo.isEmpty()) {
+				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+				campoNaoPreenchido.setVisible(true);
+
+			} else if (cor.isEmpty()) {
+				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+				campoNaoPreenchido.setVisible(true);
+
+				v.setCor(cor);
+				v.setModelo(modelo);
+				v.setPlaca(placa);
+				
+				boolean success = vDAO.cadastrarVeiculo(v);
+				if (success) {
+					CadastroRealizado cadastroRealizado = new CadastroRealizado();
+					cadastroRealizado.setVisible(true);
+				} else {
+					CadastroErro cadastroErro = new CadastroErro();
+					cadastroErro.setVisible(true);
+				}
+			}
+		}
+	});
 
 			
 
