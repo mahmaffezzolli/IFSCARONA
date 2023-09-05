@@ -139,10 +139,12 @@ public class Login extends JFrame {
 				String senha = String.valueOf(txtSenha.getPassword());
 
 				if (txtEmail.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (senha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else {
 
@@ -150,14 +152,16 @@ public class Login extends JFrame {
 
 					if (loginSucesso) {
 
-						JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+						CadastroRealizado cadastroRealizado = new CadastroRealizado();
+						cadastroRealizado.setVisible(true);
 
 						new Perfil().setVisible(true);
 
 						this.dispose();
 
 					} else {
-						JOptionPane.showMessageDialog(null, "Você não é cadastrado");
+						CadastroInexistente cadastroInexistente = new CadastroInexistente();
+						cadastroInexistente.setVisible(true);
 					}
 				}
 			}
