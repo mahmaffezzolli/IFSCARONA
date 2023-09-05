@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
+import modelo.Sessao;
 
 public class Perfil extends JFrame {
 
@@ -25,7 +26,6 @@ public class Perfil extends JFrame {
 	private JTextField txtCPF;
 	private JTextField txtData;
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
-	private Pessoa p = new Pessoa();
 
 	/**
 	 * Launch the application.
@@ -117,29 +117,13 @@ public class Perfil extends JFrame {
 		lblData.setBounds(241, 357, 153, 20);
 		contentPane.add(lblData);
 
-		for (Pessoa pessoa : pDAO.listarPessoas()) {
-				
-			String cpf = String.valueOf(pessoa.getCpf());
-			
-			txtNome.setText(pessoa.getNome());
-			txtSobrenome.setText(pessoa.getSobrenome());
-			txtEmail.setText(pessoa.getEmail());
-			
+		Pessoa pessoaLogada = Sessao.getPessoaLogada();
+		if (pessoaLogada != null) {
+			txtNome.setText(pessoaLogada.getNome());
+			txtSobrenome.setText(pessoaLogada.getSobrenome());
+			txtEmail.setText(pessoaLogada.getEmail());
+			txtCPF.setText(String.valueOf(pessoaLogada.getCpf()));
 		}
-		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSalvar.setBounds(415, 438, 101, 29);
-		contentPane.add(btnSalvar);
 
-		btnSalvar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-					
-				
-			}
-		});
 	}
 }

@@ -61,25 +61,18 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				new Login().setVisible(true);
-				this.dispose();
-
-			}
-
-			private void dispose() {
-				setVisible(false);
-
+				Inicio.this.dispose();
 			}
 
 		});
-		
+
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\tela inicio canto.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio canto.png")));
 		lblNewLabel_2.setBounds(1508, -14, 416, 483);
 		contentPane.add(lblNewLabel_2);
 
 		lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\dunso.png"));
+		lblNewLabel_4.setIcon(new ImageIcon(Inicio.class.getResource("/assets/dunso.png")));
 		lblNewLabel_4.setBounds(0, -108, 800, 1169);
 		contentPane.add(lblNewLabel_4);
 		btnLogar.setBounds(815, 574, 141, 40);
@@ -96,13 +89,7 @@ public class Inicio extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				this.dispose();
-
-			}
-
-			private void dispose() {
-				setVisible(false);
-
+				Inicio.this.dispose();
 			}
 
 		});
@@ -122,13 +109,12 @@ public class Inicio extends JFrame {
 		contentPane.add(lblBemvindoAo);
 
 		lblImage = new JLabel("");
-		lblImage.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
+		lblImage.setIcon(new ImageIcon(Inicio.class.getResource("/assets/car.png")));
 		lblImage.setBounds(875, 81, 337, 260);
 		contentPane.add(lblImage);
 
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\tela inicio fundo botoes.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio fundo botoes.png")));
 		lblNewLabel_1.setBounds(748, 203, 559, 600);
 		contentPane.add(lblNewLabel_1);
 

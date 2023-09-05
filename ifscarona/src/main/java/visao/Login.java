@@ -17,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -25,6 +24,7 @@ import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
+import modelo.Sessao;
 
 public class Login extends JFrame {
 
@@ -65,8 +65,7 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
+		lblNewLabel_5.setIcon(new ImageIcon(Login.class.getResource("/assets/car.png")));
 		lblNewLabel_5.setBounds(81, 304, 385, 151);
 		contentPane.add(lblNewLabel_5);
 
@@ -76,23 +75,24 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\b1340120-e126-4821-b15c-e3627d2a38a6.png"));
+		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-15, 417, 590, 172);
 		contentPane.add(lblLogo);
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\senha.png"));
+		lblNewLabel_4.setIcon(
+				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\senha.png"));
 		lblNewLabel_4.setBounds(876, 572, 60, 60);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\icons8-nova-mensagem-60.png"));
+		lblNewLabel.setIcon(new ImageIcon(
+				"C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\icons8-nova-mensagem-60.png"));
 		lblNewLabel.setBounds(876, 417, 60, 45);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\fundoClaro.png"));
+		lblNewLabel_3.setIcon(new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
 		lblNewLabel_3.setBounds(0, -238, 481, 1650);
 		contentPane.add(lblNewLabel_3);
 
@@ -132,33 +132,27 @@ public class Login extends JFrame {
 		btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
-
+			
 			public void actionPerformed(ActionEvent e) {
-
 				String email = txtEmail.getText();
 				String senha = String.valueOf(txtSenha.getPassword());
 
-				if (txtEmail.getText().isEmpty()) {
+				if (txtEmail.getText().isEmpty() || senha.isEmpty()) {
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
-
-				} else if (senha.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-					campoNaoPreenchido.setVisible(true);
-
 				} else {
+					Pessoa pessoaLogada = pDAO.login(email, senha);
 
-					boolean loginSucesso = pDAO.login(email, senha);
-
-					if (loginSucesso) {
+					if (pessoaLogada != null) {
+						Sessao.setPessoaLogada(pessoaLogada);
 
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 
-						new Perfil().setVisible(true);
+						Perfil perfil = new Perfil();
+						perfil.setVisible(true);
 
-						this.dispose();
-
+						dispose();
 					} else {
 						CadastroInexistente cadastroInexistente = new CadastroInexistente();
 						cadastroInexistente.setVisible(true);
@@ -168,7 +162,6 @@ public class Login extends JFrame {
 
 			private void dispose() {
 				setVisible(false);
-
 			}
 		});
 
