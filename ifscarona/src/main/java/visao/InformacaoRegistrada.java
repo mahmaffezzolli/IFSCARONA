@@ -49,10 +49,10 @@ public class InformacaoRegistrada extends JFrame {
 		lblAviso.setBounds(33, 28, 68, 66);
 		contentPane.add(lblAviso);
 		
-		JLabel lblCadastroInexistente = new JLabel("Cadastro Inexistente!");
-		lblCadastroInexistente.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroInexistente.setBounds(150, 54, 138, 14);
-		contentPane.add(lblCadastroInexistente);
+		JLabel lblInformacaoRegistrada = new JLabel("Informação já registrada!");
+		lblInformacaoRegistrada.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblInformacaoRegistrada.setBounds(137, 55, 169, 18);
+		contentPane.add(lblInformacaoRegistrada);
 		
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setBackground(new Color(255, 251, 233));
