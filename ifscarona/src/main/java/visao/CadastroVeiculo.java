@@ -154,18 +154,25 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.setBounds(1066, 647, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 		
+		//Validações
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 
+			
+			 // Cria uma instância de Veiculo
 			Veiculo v = new Veiculo();
-
+			
+			 // Obtem os valores dos campos de texto
 			String placa = txtPlaca.getText();
 			String modelo = txtModelo.getText();
 			String cor = txtCor.getText();
-
+			
+			// Verifica se algum dos campos está vazio
 			if (placa.isEmpty()) {
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-				campoNaoPreenchido.setVisible(true);
+				
+			// Se algum campo estiver vazio, exibir o aviso
+			campoNaoPreenchido.setVisible(true);
 
 			} else if (modelo.isEmpty()) {
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
@@ -175,14 +182,20 @@ public class CadastroVeiculo extends JFrame {
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 				campoNaoPreenchido.setVisible(true);
 
+				// Se todos os campos estiverem preenchidos, configurar os valores do veículo
 				v.setCor(cor);
 				v.setModelo(modelo);
 				v.setPlaca(placa);
 				
+				  // Tenta cadastrar o veículo e verificar se foi bem-sucedido
 				boolean success = vDAO.cadastrarVeiculo(v);
 				if (success) {
+					
+					// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
 					CadastroRealizado cadastroRealizado = new CadastroRealizado();
 					cadastroRealizado.setVisible(true);
+					
+					// Se o cadastro falhar, exibir uma mensagem de erro
 				} else {
 					CadastroErro cadastroErro = new CadastroErro();
 					cadastroErro.setVisible(true);
@@ -191,11 +204,9 @@ public class CadastroVeiculo extends JFrame {
 		}
 	});
 
-			
 
 				
 		txtModelo = new JTextField();
-		txtModelo.setToolTipText("");
 		txtModelo.setColumns(10);
 		txtModelo.setBackground(new Color(255, 251, 233));
 		txtModelo.setBounds(999, 533, 336, 45);
@@ -231,7 +242,7 @@ public class CadastroVeiculo extends JFrame {
 		txtfundoVerde.setEditable(false);
 		txtfundoVerde.setColumns(10);
 		txtfundoVerde.setBackground(new Color(159, 203, 154));
-		txtfundoVerde.setBounds(111, -2, 1939, 1106);
+		txtfundoVerde.setBounds(-25, -2, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 	}
 		}
