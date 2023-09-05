@@ -64,7 +64,7 @@ public class Principal extends JFrame {
 		
 		JButton btnLogar = new JButton("Filtrar");
 		btnLogar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { 
 			}
 		});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
@@ -86,7 +86,7 @@ public class Principal extends JFrame {
 		contentPane.add(rdbtnHoraSegunda);
 		
 		JLabel lblFundoFiltro = new JLabel("");
-		lblFundoFiltro.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\tela inicio fundo botoes.png"));
+		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
 		lblFundoFiltro.setBounds(723, 303, 320, 420);
 		contentPane.add(lblFundoFiltro);
 		
@@ -103,7 +103,7 @@ public class Principal extends JFrame {
 		
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\fundoClaro.png"));
+				new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
 		lblFundo.setBounds(-5, -239, 468, 1650);
 		contentPane.add(lblFundo);
 		

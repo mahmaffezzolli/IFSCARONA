@@ -66,7 +66,7 @@ public class Login extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
+				new ImageIcon(Login.class.getResource("/assets/car.png")));
 		lblNewLabel_5.setBounds(81, 304, 385, 151);
 		contentPane.add(lblNewLabel_5);
 
@@ -76,7 +76,7 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\b1340120-e126-4821-b15c-e3627d2a38a6.png"));
+		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-15, 417, 590, 172);
 		contentPane.add(lblLogo);
 
@@ -92,7 +92,7 @@ public class Login extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\fundoClaro.png"));
+				new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
 		lblNewLabel_3.setBounds(0, -238, 481, 1650);
 		contentPane.add(lblNewLabel_3);
 
