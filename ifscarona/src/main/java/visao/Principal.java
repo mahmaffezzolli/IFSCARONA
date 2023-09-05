@@ -98,7 +98,7 @@ public class Principal extends JFrame {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
-		lblLogo.setBounds(-15, 417, 590, 172);
+		lblLogo.setBounds(-5, 426, 590, 172);
 		contentPane.add(lblLogo);
 		
 		JLabel lblFundo = new JLabel("");
