@@ -1,8 +1,10 @@
 package visao;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
@@ -35,6 +38,7 @@ public class Perfil extends JFrame {
 			public void run() {
 				try {
 					Perfil frame = new Perfil();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,74 +51,80 @@ public class Perfil extends JFrame {
 	 * Create the frame.
 	 */
 	public Perfil() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 988, 603);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds(0, 0, 1935, 1049);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(159, 203, 154));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(new Color(255, 251, 233));
+		contentPane.setBorder(new LineBorder(new Color(255, 251, 233), 2, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icon-profile.png")));
+		lblNewLabel.setBounds(111, 103, 263, 280);
+		contentPane.add(lblNewLabel);
+
 		txtNome = new JTextField();
+		txtNome.setBounds(169, 464, 126, 29);
 		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtNome.setBounds(412, 124, 126, 29);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setBounds(95, 633, 64, 20);
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNome.setBounds(338, 127, 64, 20);
 		contentPane.add(lblNome);
 
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
+		lblSobrenome.setBounds(54, 687, 101, 20);
 		lblSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblSobrenome.setBounds(298, 184, 101, 20);
 		contentPane.add(lblSobrenome);
 
 		txtSobrenome = new JTextField();
+		txtSobrenome.setBounds(169, 522, 126, 29);
 		txtSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtSobrenome.setColumns(10);
-		txtSobrenome.setBounds(409, 181, 129, 29);
 		contentPane.add(txtSobrenome);
 
 		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setBounds(103, 525, 56, 20);
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEmail.setBounds(332, 246, 56, 20);
 		contentPane.add(lblEmail);
 
 		txtEmail = new JTextField();
+		txtEmail.setBounds(169, 684, 126, 29);
 		txtEmail.setEnabled(false);
 		txtEmail.setEditable(false);
 		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(412, 243, 129, 29);
 		contentPane.add(txtEmail);
 
 		txtCPF = new JTextField();
+		txtCPF.setBounds(169, 577, 126, 29);
 		txtCPF.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtCPF.setEnabled(false);
 		txtCPF.setEditable(false);
 		txtCPF.setColumns(10);
-		txtCPF.setBounds(410, 298, 129, 29);
 		contentPane.add(txtCPF);
 
 		txtData = new JTextField();
+		txtData.setBounds(169, 630, 126, 29);
 		txtData.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtData.setEnabled(false);
 		txtData.setEditable(false);
 		txtData.setColumns(10);
-		txtData.setBounds(409, 348, 129, 29);
 		contentPane.add(txtData);
 
 		JLabel lblCPF = new JLabel("CPF:");
+		lblCPF.setBounds(103, 467, 56, 20);
 		lblCPF.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCPF.setBounds(337, 300, 56, 20);
 		contentPane.add(lblCPF);
 
 		JLabel lblData = new JLabel("Data de nascimento:");
+		lblData.setBounds(6, 580, 153, 20);
 		lblData.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblData.setBounds(241, 357, 153, 20);
 		contentPane.add(lblData);
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();

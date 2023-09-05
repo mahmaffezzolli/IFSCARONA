@@ -65,7 +65,8 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(Login.class.getResource("/assets/car.png")));
+		lblNewLabel_5.setIcon(
+				new ImageIcon(Login.class.getResource("/assets/car.png")));
 		lblNewLabel_5.setBounds(81, 304, 385, 151);
 		contentPane.add(lblNewLabel_5);
 
@@ -92,7 +93,8 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
+		lblNewLabel_3.setIcon(
+				new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
 		lblNewLabel_3.setBounds(0, -238, 481, 1650);
 		contentPane.add(lblNewLabel_3);
 

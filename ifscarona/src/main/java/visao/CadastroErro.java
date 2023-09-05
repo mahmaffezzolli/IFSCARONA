@@ -45,7 +45,7 @@ public class CadastroErro extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\Aviso.png"));
+		lblAviso.setIcon(new ImageIcon(CadastroErro.class.getResource("/assets/Aviso.png")));
 		lblAviso.setBounds(33, 28, 60, 66);
 		contentPane.add(lblAviso);
 		

@@ -61,7 +61,7 @@ public class Principal extends JFrame {
 		
 		JButton btnLogar = new JButton("Filtrar");
 		btnLogar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { 
 			}
 		});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
@@ -83,24 +83,24 @@ public class Principal extends JFrame {
 		contentPane.add(rdbtnHoraSegunda);
 		
 		JLabel lblFundoFiltro = new JLabel("");
-		lblFundoFiltro.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\tela inicio fundo botoes.png"));
+		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
 		lblFundoFiltro.setBounds(723, 303, 320, 420);
 		contentPane.add(lblFundoFiltro);
 		
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
+				new ImageIcon(Principal.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(81, 304, 385, 151);
 		contentPane.add(lblCarro);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\b1340120-e126-4821-b15c-e3627d2a38a6.png"));
-		lblLogo.setBounds(-15, 417, 590, 172);
+		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
+		lblLogo.setBounds(-5, 426, 590, 172);
 		contentPane.add(lblLogo);
 		
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\fundoClaro.png"));
+				new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
 		lblFundo.setBounds(-5, -239, 468, 1650);
 		contentPane.add(lblFundo);
 		
