@@ -66,7 +66,7 @@ public class Login extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(
-				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
+				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
 		lblNewLabel_5.setBounds(81, 304, 385, 151);
 		contentPane.add(lblNewLabel_5);
 
@@ -76,26 +76,23 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(
-				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png"));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\b1340120-e126-4821-b15c-e3627d2a38a6.png"));
 		lblLogo.setBounds(-15, 417, 590, 172);
 		contentPane.add(lblLogo);
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(
-				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/icons8-senha-60.png"));
+		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\senha.png"));
 		lblNewLabel_4.setBounds(876, 572, 60, 60);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(
-				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/icons8-nova-mensagem-60.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\icons8-nova-mensagem-60.png"));
 		lblNewLabel.setBounds(876, 417, 60, 45);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(
-				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/fundoClaro.png"));
+				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\fundoClaro.png"));
 		lblNewLabel_3.setBounds(0, -238, 481, 1650);
 		contentPane.add(lblNewLabel_3);
 
@@ -105,6 +102,7 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel_2);
 
 		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEmail.setBackground(new Color(255, 251, 233));
 		txtEmail.setToolTipText("");
 		txtEmail.setBounds(946, 417, 336, 45);
@@ -179,6 +177,7 @@ public class Login extends JFrame {
 		contentPane.add(lblSenha);
 
 		txtSenha = new JPasswordField();
+		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtSenha.setToolTipText("");
 		txtSenha.setColumns(10);
 		txtSenha.setBackground(new Color(255, 251, 233));

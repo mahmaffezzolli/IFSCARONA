@@ -24,7 +24,6 @@ public class Inicio extends JFrame {
 	private JLabel lblBemvindoAo;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_2;
 
 	/**
 	 * Launch the application.
@@ -72,17 +71,16 @@ public class Inicio extends JFrame {
 			}
 
 		});
-
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(
-				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/b378852d-354d-4cd5-9896-a0888a6e0b86.png"));
-		lblNewLabel_2.setBounds(1367, -14, 548, 492);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\tela inicio canto.png"));
+		lblNewLabel_2.setBounds(1508, -14, 416, 483);
 		contentPane.add(lblNewLabel_2);
 
 		lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(
-				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dunso.png"));
-		lblNewLabel_4.setBounds(0, -137, 800, 1169);
+				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\dunso.png"));
+		lblNewLabel_4.setBounds(0, -108, 800, 1169);
 		contentPane.add(lblNewLabel_4);
 		btnLogar.setBounds(815, 574, 141, 40);
 		contentPane.add(btnLogar);
@@ -125,13 +123,12 @@ public class Inicio extends JFrame {
 
 		lblImage = new JLabel("");
 		lblImage.setIcon(
-				new ImageIcon("/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/car.png"));
+				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
 		lblImage.setBounds(875, 81, 337, 260);
 		contentPane.add(lblImage);
 
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(
-				"/home/maria/Área de Trabalho/IFSCARONA/ifscarona/src/main/java/assets/dd400250-652b-4da0-9bcc-ecb003be729e.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\tela inicio fundo botoes.png"));
 		lblNewLabel_1.setBounds(748, 203, 559, 600);
 		contentPane.add(lblNewLabel_1);
 
@@ -145,5 +142,4 @@ public class Inicio extends JFrame {
 		textField.setColumns(10);
 
 	}
-
 }
