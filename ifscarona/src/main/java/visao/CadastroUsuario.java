@@ -313,26 +313,32 @@ public class CadastroUsuario extends JFrame {
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
 				if (nome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (sobrenome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (cpfS.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (email.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (txtDataNascimento == null) {
-					JOptionPane.showMessageDialog(null, "A data de nascimento deve ser inserida!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (senha.isEmpty()) {
-
-					JOptionPane.showMessageDialog(null, "A senha deve ser inserida!");
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (!senha.equals(confSenha)) {
-					JOptionPane.showMessageDialog(null, "As senhas não conferem");
+					SenhasNaoConferem senhasNaoConferem = new SenhasNaoConferem();
+					senhasNaoConferem.setVisible(true);
 
 				} else {
 
@@ -353,9 +359,11 @@ public class CadastroUsuario extends JFrame {
 
 					boolean success = pDAO.cadastrarPessoa(p);
 					if (success) {
-						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+						CadastroRealizado cadastroRealizado = new CadastroRealizado();
+						cadastroRealizado.setVisible(true);
 					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao cadastrar pessoa.");
+						CadastroErro cadastroErro = new CadastroErro();
+						cadastroErro.setVisible(true);
 					}
 				}
 			}
