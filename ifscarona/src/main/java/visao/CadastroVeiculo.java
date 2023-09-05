@@ -83,10 +83,13 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JComboBox BoxMarca = new JComboBox();
 		BoxMarca.setBackground(new Color(255, 251, 233));
-		BoxMarca.setModel(new DefaultComboBoxModel(new String[] {"SELECIONE A MARCA ", "AUDI", "BMW", "CAOA CHERRY", "CHEVROLET", "CITROEN", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "LAND ROVER", "MERCEDES-BENZ", "MITSUBISHI", "NISSAN", "PEUGEOT", "PORSCHE", "RENAULT", "TOYOTA", "VOLKSWAGEN", "VOLVO"}));
+		BoxMarca.setModel(
+				new DefaultComboBoxModel(new String[] { "SELECIONE A MARCA ", "AUDI", "BMW", "CAOA CHERRY", "CHEVROLET",
+						"CITROEN", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "LAND ROVER", "MERCEDES-BENZ",
+						"MITSUBISHI", "NISSAN", "PEUGEOT", "PORSCHE", "RENAULT", "TOYOTA", "VOLKSWAGEN", "VOLVO" }));
 		BoxMarca.setToolTipText("");
 		BoxMarca.setBounds(999, 430, 336, 45);
 		contentPane.add(BoxMarca);
@@ -103,7 +106,8 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblLogo);
 
 		lblIconePlaca = new JLabel("New label");
-		lblIconePlaca.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/icons8-placa-do-automóvel-60.png")));
+		lblIconePlaca
+				.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/icons8-placa-do-automóvel-60.png")));
 		lblIconePlaca.setBounds(930, 227, 59, 45);
 		contentPane.add(lblIconePlaca);
 
@@ -153,59 +157,56 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
 		btnCadastrarVeiculo.setBounds(1066, 647, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
-		
-		//Validações
+
+		// Validações
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 
-			
-			 // Cria uma instância de Veiculo
-			Veiculo v = new Veiculo();
-			
-			 // Obtem os valores dos campos de texto
-			String placa = txtPlaca.getText();
-			String modelo = txtModelo.getText();
-			String cor = txtCor.getText();
-			
-			// Verifica se algum dos campos está vazio
-			if (placa.isEmpty()) {
-				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-				
-			// Se algum campo estiver vazio, exibir o aviso
-			campoNaoPreenchido.setVisible(true);
+				// Cria uma instância de Veiculo
+				Veiculo v = new Veiculo();
 
-			} else if (modelo.isEmpty()) {
-				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-				campoNaoPreenchido.setVisible(true);
+				// Obtem os valores dos campos de texto
+				String placa = txtPlaca.getText();
+				String modelo = txtModelo.getText();
+				String cor = txtCor.getText();
 
-			} else if (cor.isEmpty()) {
-				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-				campoNaoPreenchido.setVisible(true);
+				// Verifica se algum dos campos está vazio
+				if (placa.isEmpty()) {
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
-				// Se todos os campos estiverem preenchidos, configurar os valores do veículo
-				v.setCor(cor);
-				v.setModelo(modelo);
-				v.setPlaca(placa);
-				
-				  // Tenta cadastrar o veículo e verificar se foi bem-sucedido
-				boolean success = vDAO.cadastrarVeiculo(v);
-				if (success) {
-					
-					// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
-					CadastroRealizado cadastroRealizado = new CadastroRealizado();
-					cadastroRealizado.setVisible(true);
-					
-					// Se o cadastro falhar, exibir uma mensagem de erro
-				} else {
-					CadastroErro cadastroErro = new CadastroErro();
-					cadastroErro.setVisible(true);
+					// Se algum campo estiver vazio, exibir o aviso
+					campoNaoPreenchido.setVisible(true);
+
+				} else if (modelo.isEmpty()) {
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
+
+				} else if (cor.isEmpty()) {
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
+
+					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
+					v.setCor(cor);
+					v.setModelo(modelo);
+					v.setPlaca(placa);
+
+					// Tenta cadastrar o veículo e verificar se foi bem-sucedido
+					boolean success = vDAO.cadastrarVeiculo(v);
+					if (success) {
+
+						// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
+						CadastroRealizado cadastroRealizado = new CadastroRealizado();
+						cadastroRealizado.setVisible(true);
+
+						// Se o cadastro falhar, exibir uma mensagem de erro
+					} else {
+						CadastroErro cadastroErro = new CadastroErro();
+						cadastroErro.setVisible(true);
+					}
 				}
 			}
-		}
-	});
+		});
 
-
-				
 		txtModelo = new JTextField();
 		txtModelo.setColumns(10);
 		txtModelo.setBackground(new Color(255, 251, 233));
@@ -216,7 +217,6 @@ public class CadastroVeiculo extends JFrame {
 		lblModelo.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblModelo.setBounds(999, 509, 147, 14);
 		contentPane.add(lblModelo);
-
 
 		lblMarca = new JLabel("Marca:");
 		lblMarca.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -245,4 +245,4 @@ public class CadastroVeiculo extends JFrame {
 		txtfundoVerde.setBounds(-25, -2, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 	}
-		}
+}
