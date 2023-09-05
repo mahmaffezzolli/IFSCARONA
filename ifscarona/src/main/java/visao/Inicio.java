@@ -61,8 +61,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				new Login().setVisible(true);
-				this.dispose();
-
+				 Inicio.this.dispose();
 			}
 
 			private void dispose() {
@@ -96,8 +95,7 @@ public class Inicio extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				this.dispose();
-
+				 Inicio.this.dispose();
 			}
 
 			private void dispose() {

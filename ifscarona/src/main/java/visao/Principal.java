@@ -92,12 +92,12 @@ public class Principal extends JFrame {
 		
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(
-				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\car.png"));
+				new ImageIcon(Principal.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(81, 304, 385, 151);
 		contentPane.add(lblCarro);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\b1340120-e126-4821-b15c-e3627d2a38a6.png"));
+		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-15, 417, 590, 172);
 		contentPane.add(lblLogo);
 		
