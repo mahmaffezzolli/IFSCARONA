@@ -17,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -25,6 +24,7 @@ import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
+import modelo.Sessao;
 
 public class Login extends JFrame {
 
@@ -81,12 +81,14 @@ public class Login extends JFrame {
 		contentPane.add(lblLogo);
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\senha.png"));
+		lblNewLabel_4.setIcon(
+				new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\senha.png"));
 		lblNewLabel_4.setBounds(876, 572, 60, 60);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\icons8-nova-mensagem-60.png"));
+		lblNewLabel.setIcon(new ImageIcon(
+				"C:\\Users\\Aluno\\Desktop\\IFSCARONA\\ifscarona\\src\\main\\java\\assets\\icons8-nova-mensagem-60.png"));
 		lblNewLabel.setBounds(876, 417, 60, 45);
 		contentPane.add(lblNewLabel);
 
@@ -132,33 +134,27 @@ public class Login extends JFrame {
 		btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
-
+			
 			public void actionPerformed(ActionEvent e) {
-
 				String email = txtEmail.getText();
 				String senha = String.valueOf(txtSenha.getPassword());
 
-				if (txtEmail.getText().isEmpty()) {
+				if (txtEmail.getText().isEmpty() || senha.isEmpty()) {
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
-
-				} else if (senha.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-					campoNaoPreenchido.setVisible(true);
-
 				} else {
+					Pessoa pessoaLogada = pDAO.login(email, senha);
 
-					boolean loginSucesso = pDAO.login(email, senha);
-
-					if (loginSucesso) {
+					if (pessoaLogada != null) {
+						Sessao.setPessoaLogada(pessoaLogada);
 
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 
-						new Perfil().setVisible(true);
+						Perfil perfil = new Perfil();
+						perfil.setVisible(true);
 
-						this.dispose();
-
+						dispose();
 					} else {
 						CadastroInexistente cadastroInexistente = new CadastroInexistente();
 						cadastroInexistente.setVisible(true);
@@ -168,7 +164,6 @@ public class Login extends JFrame {
 
 			private void dispose() {
 				setVisible(false);
-
 			}
 		});
 

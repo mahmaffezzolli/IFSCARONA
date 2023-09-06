@@ -122,7 +122,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 
-		String query = "SELECT * FROM pessoa where ";
+		String query = "SELECT * FROM pessoas";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -161,33 +161,35 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public boolean login(String email, String senha) {
+	public Pessoa login(String email, String senha) {
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
 
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+	    String query = "SELECT * FROM pessoas WHERE email = ? AND senha = ?";
+	    
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
+	        ps.setString(1, email);
+	        ps.setString(2, senha);
 
-		String query = "SELECT * FROM pessoas WHERE email = ? AND senha = ?";
+	        ResultSet rs = ps.executeQuery();
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, email);
-			ps.setString(2, senha);
+	        if (rs.next()) {
+	            Pessoa pessoa = new Pessoa();
+	            pessoa.setCpf(rs.getLong("cpf"));
+	            pessoa.setNome(rs.getString("nome"));
+	            pessoa.setSobrenome(rs.getString("sobrenome"));
+	            pessoa.setEmail(rs.getString("email"));
+	            
+	            return pessoa;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
 
-			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-
-				return true;
-			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			c.fecharConexao();
-		}
-
-		return false;
+	    return null; 
 	}
+
 }

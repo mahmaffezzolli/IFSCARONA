@@ -64,13 +64,8 @@ public class Inicio extends JFrame {
 				 Inicio.this.dispose();
 			}
 
-			private void dispose() {
-				setVisible(false);
-
-			}
-
 		});
-		
+
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio canto.png")));
 		lblNewLabel_2.setBounds(1508, -14, 416, 483);
@@ -96,11 +91,6 @@ public class Inicio extends JFrame {
 					e1.printStackTrace();
 				}
 				 Inicio.this.dispose();
-			}
-
-			private void dispose() {
-				setVisible(false);
-
 			}
 
 		});

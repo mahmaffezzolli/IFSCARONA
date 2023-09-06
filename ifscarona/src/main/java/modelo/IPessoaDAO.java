@@ -12,6 +12,6 @@ public interface IPessoaDAO {
 
 	public boolean deletarPessoa(Pessoa pessoa);
 	
-	public boolean login(String email, String senha);
+	public Pessoa login(String email, String senha);
 
 }

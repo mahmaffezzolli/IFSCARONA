@@ -18,7 +18,7 @@ import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
-import javax.swing.ImageIcon;
+import modelo.Sessao;
 
 public class Perfil extends JFrame {
 
@@ -29,8 +29,6 @@ public class Perfil extends JFrame {
 	private JTextField txtCPF;
 	private JTextField txtData;
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
-	private Pessoa p = new Pessoa();
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -129,36 +127,13 @@ public class Perfil extends JFrame {
 		lblData.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		contentPane.add(lblData);
 
-		for (Pessoa pessoa : pDAO.listarPessoas()) {
-
-			String cpf = String.valueOf(pessoa.getCpf());
-
-			txtNome.setText(pessoa.getNome());
-			txtSobrenome.setText(pessoa.getSobrenome());
-			txtEmail.setText(pessoa.getEmail());
-
+		Pessoa pessoaLogada = Sessao.getPessoaLogada();
+		if (pessoaLogada != null) {
+			txtNome.setText(pessoaLogada.getNome());
+			txtSobrenome.setText(pessoaLogada.getSobrenome());
+			txtEmail.setText(pessoaLogada.getEmail());
+			txtCPF.setText(String.valueOf(pessoaLogada.getCpf()));
 		}
 
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBackground(new Color(255, 251, 233));
-		btnSalvar.setBounds(173, 765, 101, 29);
-		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		contentPane.add(btnSalvar);
-
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBackground(new Color(159, 203, 154));
-		textField.setBounds(0, -51, 475, 1061);
-		contentPane.add(textField);
-
-		btnSalvar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
 	}
 }
