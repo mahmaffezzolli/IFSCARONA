@@ -3,6 +3,8 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -58,6 +60,13 @@ public class InformacaoRegistrada extends JFrame {
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(177, 123, 84, 23);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Fecha a janela atual
+                dispose();
+            }
+        });
 	}
 
 }

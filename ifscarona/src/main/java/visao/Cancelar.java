@@ -3,8 +3,6 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class CampoNaoPreenchido extends JFrame {
+public class Cancelar extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +22,7 @@ public class CampoNaoPreenchido extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CampoNaoPreenchido frame = new CampoNaoPreenchido();
+					Cancelar frame = new Cancelar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +34,7 @@ public class CampoNaoPreenchido extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CampoNaoPreenchido() {
+	public Cancelar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -47,25 +45,24 @@ public class CampoNaoPreenchido extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/Aviso.png")));
+		lblAviso.setIcon(new ImageIcon(Cancelar.class.getResource("/assets/Aviso.png")));
 		lblAviso.setBounds(36, 33, 68, 66);
 		contentPane.add(lblAviso);
 		
-		JLabel lblCampoNaoPreenchido = new JLabel("Campo não preenchido!");
-		lblCampoNaoPreenchido.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCampoNaoPreenchido.setBounds(139, 56, 162, 18);
-		contentPane.add(lblCampoNaoPreenchido);
+		JLabel lblCancelar = new JLabel("Deseja cancelar?");
+		lblCancelar.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblCancelar.setBounds(157, 56, 162, 18);
+		contentPane.add(lblCancelar);
 		
-		JButton btnOk = new JButton("OK");
-		btnOk.setBackground(new Color(255, 251, 233));
-		btnOk.setBounds(177, 123, 84, 23);
-		contentPane.add(btnOk);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
-	                dispose();
-	            }
-	        });
+		JButton btnSim = new JButton("SIM");
+		btnSim.setBackground(new Color(255, 251, 233));
+		btnSim.setBounds(131, 123, 84, 23);
+		contentPane.add(btnSim);
+		
+		JButton btnNao = new JButton("NÃO");
+		btnNao.setBackground(new Color(255, 251, 233));
+		btnNao.setBounds(235, 123, 84, 23);
+		contentPane.add(btnNao);
 	}
 
 }

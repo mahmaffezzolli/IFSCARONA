@@ -52,6 +52,7 @@ public class CadastroVeiculo extends JFrame {
 	private JLabel lblIconePlaca;
 	private JLabel lblLogo;
 	private JLabel lblCarro;
+	private JButton btnDeletarVeiculo;
 
 	/**
 	 * Launch the application.
@@ -83,6 +84,14 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		btnDeletarVeiculo = new JButton("CANCELAR");
+		btnDeletarVeiculo.setBorder(new LineBorder(new Color(255, 0, 0), 4, true));
+		btnDeletarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
+		btnDeletarVeiculo.setForeground(new Color(255, 0, 0));
+		btnDeletarVeiculo.setBackground(new Color(255, 251, 233));
+		btnDeletarVeiculo.setBounds(1180, 646, 178, 54);
+		contentPane.add(btnDeletarVeiculo);
 
 		JComboBox BoxMarca = new JComboBox();
 		BoxMarca.setBackground(new Color(255, 251, 233));
@@ -153,9 +162,10 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblIconeCor);
 
 		btnCadastrarVeiculo = new JButton("CADASTRAR");
+		btnCadastrarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
-		btnCadastrarVeiculo.setBounds(1066, 647, 178, 54);
+		btnCadastrarVeiculo.setBounds(951, 646, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 
 		// Validações

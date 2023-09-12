@@ -290,6 +290,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblCadastro);
 
 		btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
 		btnCadastrar.setBounds(1342, 536, 178, 54);
