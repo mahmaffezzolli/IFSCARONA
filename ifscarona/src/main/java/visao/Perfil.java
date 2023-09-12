@@ -241,6 +241,10 @@ public class Perfil extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
+				TelaExcluirConta.setVisible(true);
+				
 			}
 		});
 		btnExcluir.setBackground(new Color(255, 182, 193));

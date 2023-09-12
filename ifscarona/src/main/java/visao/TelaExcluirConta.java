@@ -6,12 +6,22 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.PessoaDAO;
+import modelo.Pessoa;
+import modelo.Sessao;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaExcluirConta extends JFrame {
 
 	private JPanel contentPane;
+	private PessoaDAO pDAO = PessoaDAO.getInstancia();
+
 
 	/**
 	 * Launch the application.
@@ -53,8 +63,25 @@ public class TelaExcluirConta extends JFrame {
 		lblTexto2.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		lblTexto2.setBounds(146, 73, 135, 14);
 		contentPane.add(lblTexto2);
-		
+
 		JButton btnSim = new JButton("SIM");
+		btnSim.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Pessoa pessoaLogada = Sessao.getPessoaLogada();
+				
+				boolean success = pDAO.deletarPessoa(pessoaLogada);
+				
+				if (success) {
+					JOptionPane.showMessageDialog(null, "foi");
+
+				} else {
+					JOptionPane.showMessageDialog(null, "nao");
+
+				}
+
+			}
+		});
 		btnSim.setForeground(new Color(255, 255, 255));
 		btnSim.setBorder(null);
 		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
