@@ -332,6 +332,19 @@ public class CadastroUsuario extends JFrame {
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
+				
+				if (nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
+					
+				} else if (sobrenome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
+					
+				} else if (txtCPF.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
+					
+				} else if (txtEmail.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
+					
 				} else if (senha.isEmpty()) {
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
@@ -345,6 +358,7 @@ public class CadastroUsuario extends JFrame {
 					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
 					
+					//
 					cpfS = cpfS.replace(".", "");
 					cpfS = cpfS.replace("-", "");
 					cpfS = cpfS.trim();
@@ -367,7 +381,10 @@ public class CadastroUsuario extends JFrame {
 					}
 				}
 			}
-		});
+			}
+		}
+		);
+		
 
 		txtfundoBege = new JTextField();
 		txtfundoBege.setEnabled(false);

@@ -74,6 +74,8 @@ public class Login extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 63));
 		lblNewLabel_1.setBounds(976, 115, 327, 107);
 		contentPane.add(lblNewLabel_1);
+				
+			
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
