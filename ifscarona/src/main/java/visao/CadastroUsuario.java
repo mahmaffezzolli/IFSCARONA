@@ -34,12 +34,10 @@ public class CadastroUsuario extends JFrame {
 	private JLabel lblCadastro;
 	private JLabel lblCPF;
 	private JTextField txtCPF;
-	private JTextField txtCPF_1;
 	private JLabel lblEmail;
 	private JTextField txtEmail;
 	private JLabel lblDataNascimento;
 	private JTextField txtDataNascimento;
-	private JTextField txtDataNascimento_1;
 	private JLabel lblSenha;
 	private JLabel lblConfirmacaoSenha;
 	private JButton btnCadastrar;
@@ -303,6 +301,8 @@ public class CadastroUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Pessoa p = new Pessoa();
+				
+				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
 				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
@@ -313,23 +313,18 @@ public class CadastroUsuario extends JFrame {
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
 				if (nome.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (sobrenome.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (cpfS.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (email.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (txtDataNascimento == null) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
 				
@@ -346,7 +341,6 @@ public class CadastroUsuario extends JFrame {
 					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
 					
 				} else if (senha.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (!senha.equals(confSenha)) {
