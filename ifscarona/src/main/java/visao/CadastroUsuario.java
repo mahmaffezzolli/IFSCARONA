@@ -302,14 +302,14 @@ public class CadastroUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Pessoa p = new Pessoa();
-				
+
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
 				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
 				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
-				
+
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
@@ -317,30 +317,14 @@ public class CadastroUsuario extends JFrame {
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (sobrenome.isEmpty()) {
-					campoNaoPreenchido.setVisible(true);
-
-				} else if (cpfS.isEmpty()) {
-					campoNaoPreenchido.setVisible(true);
-
-				} else if (email.isEmpty()) {
-					campoNaoPreenchido.setVisible(true);
-
-				} else if (txtDataNascimento == null) {
-					campoNaoPreenchido.setVisible(true);
-
-				
-				if (nome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O nome deve ser inserido!");
-					
-				} else if (sobrenome.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
-					
+
 				} else if (txtCPF.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O cpf deve ser inserido!");
-					
+					campoNaoPreenchido.setVisible(true);
+
 				} else if (txtEmail.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O email deve ser inserido!");
-					
+					campoNaoPreenchido.setVisible(true);
+
 				} else if (senha.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
@@ -352,7 +336,7 @@ public class CadastroUsuario extends JFrame {
 
 					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
-					
+
 					//
 					cpfS = cpfS.replace(".", "");
 					cpfS = cpfS.replace("-", "");
@@ -376,10 +360,8 @@ public class CadastroUsuario extends JFrame {
 					}
 				}
 			}
-			}
-		}
-		);
-		
+
+		});
 
 		txtfundoBege = new JTextField();
 		txtfundoBege.setEnabled(false);
