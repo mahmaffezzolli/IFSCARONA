@@ -1,20 +1,15 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
@@ -59,7 +54,7 @@ public class Perfil extends JFrame {
 	 * Create the frame.
 	 */
 	public Perfil() {
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, 1935, 1049);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -74,14 +69,14 @@ public class Perfil extends JFrame {
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(159, 203, 153));
 		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
-		btnHome.setBounds(150, 773, 75, 65);
+		btnHome.setBounds(165, 773, 75, 65);
 		contentPane.add(btnHome);
 		
 		JButton btnLogOut = new JButton("");
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
 		btnLogOut.setIcon(new ImageIcon(Perfil.class.getResource("/assets/Log-out.png")));
-		btnLogOut.setBounds(150, 858, 75, 65);
+		btnLogOut.setBounds(165, 858, 75, 65);
 		contentPane.add(btnLogOut);
 
 		txtNome = new JTextField();
@@ -139,10 +134,10 @@ public class Perfil extends JFrame {
 		lblData.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblData);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Perfil.class.getResource("/assets/perfil.png")));
-		lblNewLabel.setBounds(42, 77, 300, 273);
-		contentPane.add(lblNewLabel);
+		JLabel lblIcon = new JLabel("");
+		lblIcon.setIcon(new ImageIcon(Perfil.class.getResource("/assets/perfil.png")));
+		lblIcon.setBounds(55, 80, 300, 273);
+		contentPane.add(lblIcon);
 		
 		textField = new JTextField();
 		textField.setBorder(null);
@@ -150,18 +145,18 @@ public class Perfil extends JFrame {
 		textField.setEditable(false);
 		textField.setColumns(10);
 		textField.setBackground(new Color(159, 203, 154));
-		textField.setBounds(0, -31, 390, 1061);
+		textField.setBounds(0, -31, 410, 1061);
 		contentPane.add(textField);
 		
-		JLabel lblNewLabel_1 = new JLabel("Dados Pessoais");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1.setBounds(619, 77, 317, 81);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblDados = new JLabel("Dados Pessoais");
+		lblDados.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblDados.setBounds(619, 77, 317, 81);
+		contentPane.add(lblDados);
 		
-		JLabel lblNewLabel_2 = new JLabel("Veículo");
-		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_2.setBounds(1437, 87, 151, 61);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblVeiculo = new JLabel("Veículo");
+		lblVeiculo.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblVeiculo.setBounds(1437, 87, 145, 61);
+		contentPane.add(lblVeiculo);
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
