@@ -20,6 +20,8 @@ import javax.swing.border.LineBorder;
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class Perfil extends JFrame {
 
@@ -31,6 +33,10 @@ public class Perfil extends JFrame {
 	private JTextField txtData;
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -62,70 +68,75 @@ public class Perfil extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JButton btnHome = new JButton("");
+		btnHome.setBorder(null);
+		btnHome.setForeground(new Color(0, 0, 0));
+		btnHome.setBackground(new Color(159, 203, 153));
+		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
+		btnHome.setBounds(150, 773, 75, 65);
+		contentPane.add(btnHome);
+		
+		JButton btnLogOut = new JButton("");
+		btnLogOut.setBorder(null);
+		btnLogOut.setBackground(new Color(159, 203, 153));
+		btnLogOut.setIcon(new ImageIcon(Perfil.class.getResource("/assets/Log-out.png")));
+		btnLogOut.setBounds(150, 858, 75, 65);
+		contentPane.add(btnLogOut);
 
 		txtNome = new JTextField();
-		txtNome.setEnabled(false);
-		txtNome.setEditable(false);
-		txtNome.setBounds(135, 430, 207, 29);
+		txtNome.setBounds(728, 249, 256, 29);
 		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(77, 433, 48, 20);
-		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNome.setBounds(580, 250, 59, 20);
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblNome);
 
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setBounds(38, 473, 87, 20);
-		lblSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSobrenome.setBounds(580, 290, 108, 20);
+		lblSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblSobrenome);
 
 		txtSobrenome = new JTextField();
-		txtSobrenome.setEnabled(false);
-		txtSobrenome.setEditable(false);
-		txtSobrenome.setBounds(135, 470, 207, 29);
+		txtSobrenome.setBounds(728, 289, 256, 29);
 		txtSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtSobrenome.setColumns(10);
 		contentPane.add(txtSobrenome);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(80, 517, 45, 20);
-		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEmail.setBounds(580, 334, 59, 20);
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblEmail);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(135, 604, 207, 29);
-		txtEmail.setEnabled(false);
-		txtEmail.setEditable(false);
+		txtEmail.setBounds(728, 415, 256, 29);
 		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtEmail.setColumns(10);
 		contentPane.add(txtEmail);
 
 		txtCPF = new JTextField();
-		txtCPF.setBounds(135, 514, 207, 29);
+		txtCPF.setBounds(728, 333, 256, 29);
 		txtCPF.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtCPF.setEnabled(false);
-		txtCPF.setEditable(false);
 		txtCPF.setColumns(10);
 		contentPane.add(txtCPF);
 
 		txtData = new JTextField();
-		txtData.setBounds(135, 555, 207, 29);
+		txtData.setBounds(728, 375, 256, 29);
 		txtData.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtData.setEnabled(false);
-		txtData.setEditable(false);
 		txtData.setColumns(10);
 		contentPane.add(txtData);
 
 		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds(92, 558, 33, 20);
-		lblCPF.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCPF.setBounds(578, 375, 40, 20);
+		lblCPF.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblCPF);
 
 		JLabel lblData = new JLabel("Data nasc.");
-		lblData.setBounds(52, 603, 73, 29);
-		lblData.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblData.setBounds(580, 412, 98, 29);
+		lblData.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblData);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -134,6 +145,7 @@ public class Perfil extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
+		textField.setBorder(null);
 		textField.setEnabled(false);
 		textField.setEditable(false);
 		textField.setColumns(10);
@@ -143,13 +155,63 @@ public class Perfil extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Dados Pessoais");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1.setBounds(712, 77, 317, 81);
+		lblNewLabel_1.setBounds(619, 77, 317, 81);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Veículo");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_2.setBounds(1401, 87, 151, 61);
+		lblNewLabel_2.setBounds(1437, 87, 151, 61);
 		contentPane.add(lblNewLabel_2);
+		
+		JSeparator separator = new JSeparator();
+		separator.setForeground(new Color(0, 0, 0));
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(1171, 108, 9, 778);
+		contentPane.add(separator);
+		
+		JLabel lblPlaca = new JLabel("Placa:");
+		lblPlaca.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPlaca.setBounds(1297, 250, 59, 20);
+		contentPane.add(lblPlaca);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_1.setColumns(10);
+		textField_1.setBounds(1447, 249, 256, 29);
+		contentPane.add(textField_1);
+		
+		JLabel lblCor = new JLabel("Cor:");
+		lblCor.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCor.setBounds(1297, 290, 108, 20);
+		contentPane.add(lblCor);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_2.setColumns(10);
+		textField_2.setBounds(1447, 289, 256, 29);
+		contentPane.add(textField_2);
+		
+		JLabel lblMarca = new JLabel("Marca:");
+		lblMarca.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMarca.setBounds(1299, 334, 75, 20);
+		contentPane.add(lblMarca);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_3.setColumns(10);
+		textField_3.setBounds(1447, 333, 256, 29);
+		contentPane.add(textField_3);
+		
+		JLabel lblModelo = new JLabel("Modelo:");
+		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblModelo.setBounds(1297, 375, 77, 20);
+		contentPane.add(lblModelo);
+		
+		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textField_4.setColumns(10);
+		textField_4.setBounds(1447, 375, 256, 29);
+		contentPane.add(textField_4);
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
 		if (pessoaLogada != null) {
