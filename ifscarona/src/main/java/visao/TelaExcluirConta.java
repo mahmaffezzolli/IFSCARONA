@@ -3,10 +3,6 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,6 +22,8 @@ public class TelaExcluirConta extends JFrame {
 				try {
 					TelaExcluirConta frame = new TelaExcluirConta();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,11 +43,16 @@ public class TelaExcluirConta extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblTexto = new JLabel("TEM CERTEZA QUE DESEJA");
 		lblTexto.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		lblTexto.setBounds(126, 43, 185, 18);
 		contentPane.add(lblTexto);
+
+		JLabel lblTexto2 = new JLabel("EXCLUIR A CONTA?");
+		lblTexto2.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		lblTexto2.setBounds(146, 73, 135, 14);
+		contentPane.add(lblTexto2);
 		
 		JButton btnSim = new JButton("SIM");
 		btnSim.setForeground(new Color(255, 255, 255));
@@ -58,12 +61,7 @@ public class TelaExcluirConta extends JFrame {
 		btnSim.setBackground(new Color(174, 57, 57));
 		btnSim.setBounds(108, 127, 84, 31);
 		contentPane.add(btnSim);
-		
-		JLabel lblNewLabel = new JLabel("EXCLUIR A CONTA?");
-		lblNewLabel.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		lblNewLabel.setBounds(146, 73, 135, 14);
-		contentPane.add(lblNewLabel);
-		
+
 		JButton btnNo = new JButton("NÃO");
 		btnNo.setForeground(Color.WHITE);
 		btnNo.setFont(new Font("Nirmala UI", Font.BOLD, 16));
@@ -71,12 +69,6 @@ public class TelaExcluirConta extends JFrame {
 		btnNo.setBackground(new Color(0, 0, 0));
 		btnNo.setBounds(227, 127, 84, 31);
 		contentPane.add(btnNo);
-		
-		btnSim.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
-	                dispose();
-	            }
-	        });
+
 	}
 }

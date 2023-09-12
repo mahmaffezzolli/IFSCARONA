@@ -65,8 +65,7 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(
-				new ImageIcon(Login.class.getResource("/assets/car.png")));
+		lblNewLabel_5.setIcon(new ImageIcon(Login.class.getResource("/assets/car.png")));
 		lblNewLabel_5.setBounds(81, 304, 385, 151);
 		contentPane.add(lblNewLabel_5);
 
@@ -74,8 +73,6 @@ public class Login extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 63));
 		lblNewLabel_1.setBounds(976, 115, 327, 107);
 		contentPane.add(lblNewLabel_1);
-				
-			
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
@@ -95,8 +92,7 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(
-				new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
 		lblNewLabel_3.setBounds(0, -238, 481, 1650);
 		contentPane.add(lblNewLabel_3);
 
@@ -136,7 +132,7 @@ public class Login extends JFrame {
 		btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
 				String email = txtEmail.getText();
 				String senha = String.valueOf(txtSenha.getPassword());
