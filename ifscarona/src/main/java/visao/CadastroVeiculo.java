@@ -52,7 +52,7 @@ public class CadastroVeiculo extends JFrame {
 	private JLabel lblIconePlaca;
 	private JLabel lblLogo;
 	private JLabel lblCarro;
-	private JButton btnDeletarVeiculo;
+	private JButton btnCancelarVeiculo;
 
 	/**
 	 * Launch the application.
@@ -85,13 +85,20 @@ public class CadastroVeiculo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnDeletarVeiculo = new JButton("CANCELAR");
-		btnDeletarVeiculo.setBorder(new LineBorder(new Color(255, 0, 0), 4, true));
-		btnDeletarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
-		btnDeletarVeiculo.setForeground(new Color(255, 0, 0));
-		btnDeletarVeiculo.setBackground(new Color(255, 251, 233));
-		btnDeletarVeiculo.setBounds(1180, 646, 178, 54);
-		contentPane.add(btnDeletarVeiculo);
+		btnCancelarVeiculo = new JButton("CANCELAR");
+		btnCancelarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnCancelarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
+		btnCancelarVeiculo.setForeground(new Color(0, 0, 0));
+		btnCancelarVeiculo.setBackground(new Color(255, 251, 233));
+		btnCancelarVeiculo.setBounds(1180, 646, 178, 54);
+		contentPane.add(btnCancelarVeiculo);
+		  btnCancelarVeiculo.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                // Crie uma instância da tela de Cancelar e a torne visível
+	                Cancelar telaCancelar = new Cancelar();
+	                telaCancelar.setVisible(true);
+	            }
+	        });
 
 		JComboBox BoxMarca = new JComboBox();
 		BoxMarca.setBackground(new Color(255, 251, 233));
@@ -163,7 +170,7 @@ public class CadastroVeiculo extends JFrame {
 
 		btnCadastrarVeiculo = new JButton("CADASTRAR");
 		btnCadastrarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
-		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(0, 128, 64), 4, true));
 		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
 		btnCadastrarVeiculo.setBounds(951, 646, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);

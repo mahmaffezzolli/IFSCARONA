@@ -3,6 +3,8 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -59,10 +61,29 @@ public class Cancelar extends JFrame {
 		btnSim.setBounds(131, 123, 84, 23);
 		contentPane.add(btnSim);
 		
+		btnSim.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Abre a tela de perfil 
+                Perfil Perfil = new Perfil();
+                Perfil.setVisible(true);
+
+                // Fecha a janela atual (Cancelar)
+                dispose();
+            }
+        });
+		
+		
 		JButton btnNao = new JButton("NÃO");
 		btnNao.setBackground(new Color(255, 251, 233));
 		btnNao.setBounds(235, 123, 84, 23);
 		contentPane.add(btnNao);
+		
+		btnNao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Fecha a janela atual
+                dispose();
+            }
+        });
 	}
 
 }
