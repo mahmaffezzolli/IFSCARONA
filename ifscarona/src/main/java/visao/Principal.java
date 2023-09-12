@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
@@ -56,35 +57,35 @@ public class Principal extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(1255, 235, 11, 534);
+		separator.setBounds(1122, 241, 11, 534);
 		contentPane.add(separator);
 		
-		JButton btnLogar = new JButton("Filtrar");
+		JButton btnLogar = new JButton("Requisitar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
 			}
 		});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
-		btnLogar.setBounds(802, 628, 162, 33);
+		btnLogar.setBounds(695, 615, 162, 33);
 		contentPane.add(btnLogar);
 		
 		JRadioButton rdbtnHoraPrimeira = new JRadioButton("06:00 - 12:00");
 		rdbtnHoraPrimeira.setBackground(new Color(240, 240, 240));
-		rdbtnHoraPrimeira.setBounds(815, 351, 139, 43);
+		rdbtnHoraPrimeira.setBounds(705, 338, 139, 43);
 		contentPane.add(rdbtnHoraPrimeira);
 		
 		JRadioButton rdbtnHoraTerceira = new JRadioButton("18h em diante");
-		rdbtnHoraTerceira.setBounds(815, 535, 139, 43);
+		rdbtnHoraTerceira.setBounds(705, 520, 139, 43);
 		contentPane.add(rdbtnHoraTerceira);
 		
 		JRadioButton rdbtnHoraSegunda = new JRadioButton("12:01 - 18:00");
-		rdbtnHoraSegunda.setBounds(815, 439, 139, 43);
+		rdbtnHoraSegunda.setBounds(705, 424, 139, 43);
 		contentPane.add(rdbtnHoraSegunda);
 		
 		JLabel lblFundoFiltro = new JLabel("");
 		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro.setBounds(723, 303, 320, 420);
+		lblFundoFiltro.setBounds(616, 291, 320, 420);
 		contentPane.add(lblFundoFiltro);
 		
 		JLabel lblCarro = new JLabel("");
@@ -106,8 +107,35 @@ public class Principal extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Filtrar viagens");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1.setBounds(740, 201, 327, 107);
+		lblNewLabel_1.setBounds(621, 180, 385, 107);
 		contentPane.add(lblNewLabel_1);
+		
+		JButton btnPerfil = new JButton("Perfil ");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				new Perfil().setVisible(true);
+				 Principal.this.dispose();
+			}
+
+	
+			
+		});
+		btnPerfil.setBackground(new Color(244, 234, 213));
+		btnPerfil.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
+		btnPerfil.setBounds(1317, 338, 169, 43);
+		contentPane.add(btnPerfil);
+		
+		JButton btnNewButton_1 = new JButton("Oferecer");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
+		btnNewButton_1.setBackground(new Color(244, 234, 213));
+		btnNewButton_1.setBounds(1317, 520, 169, 43);
+		contentPane.add(btnNewButton_1);
 
 	}
 }
