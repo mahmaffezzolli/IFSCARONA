@@ -87,6 +87,7 @@ public class Perfil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
 		btnLogOut.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -96,6 +97,7 @@ public class Perfil extends JFrame {
 				inicio.setVisible(true);
 			}
 		});
+		
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
 		btnLogOut.setIcon(new ImageIcon(Perfil.class.getResource("/assets/Log-out.png")));
@@ -237,13 +239,29 @@ public class Perfil extends JFrame {
 		txtMarca.setBounds(1411, 368, 300, 40);
 		contentPane.add(txtMarca);
 
+		if (txtPlaca.getText().isEmpty() && txtMarca.getText().isEmpty() && txtCor.getText().isEmpty()
+				&& txtModelo.getText().isEmpty()) {
+
+			txtPlaca.setEditable(false);
+			txtPlaca.setEnabled(false);
+			//
+			txtCor.setEditable(false);
+			txtCor.setEnabled(false);
+			//
+			txtModelo.setEditable(false);
+			txtModelo.setEnabled(false);
+			//
+			txtMarca.setEditable(false);
+			txtMarca.setEnabled(false);
+		}
+
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
-		
+
 		btnSalvar.setBackground(new Color(255, 255, 255));
 		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		btnSalvar.setBounds(579, 665, 138, 40);
@@ -252,12 +270,13 @@ public class Perfil extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
 				TelaExcluirConta.setVisible(true);
-				
+
 			}
 		});
+
 		btnExcluir.setBackground(new Color(255, 182, 193));
 		btnExcluir.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		btnExcluir.setBounds(827, 665, 138, 40);
@@ -274,29 +293,32 @@ public class Perfil extends JFrame {
 		btnNewButton_3.setBackground(new Color(255, 182, 193));
 		btnNewButton_3.setBounds(1546, 665, 138, 40);
 		contentPane.add(btnNewButton_3);
-		
+
 		JButton btnAddVeiculo = new JButton("Adicionar Veículo");
 		btnAddVeiculo.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 					new CadastroVeiculo().setVisible(true);
+
+					dispose();
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
-			
+
 		});
-		
+
 		btnAddVeiculo.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		btnAddVeiculo.setBackground(Color.WHITE);
 		btnAddVeiculo.setBounds(1420, 767, 165, 40);
 		contentPane.add(btnAddVeiculo);
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
+
 		if (pessoaLogada != null) {
 			txtSobrenome.setText(pessoaLogada.getSobrenome());
 			txtEmail.setText(pessoaLogada.getEmail());
