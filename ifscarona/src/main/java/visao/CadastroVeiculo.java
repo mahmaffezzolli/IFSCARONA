@@ -84,23 +84,23 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		btnCancelarVeiculo = new JButton("CANCELAR");
-		btnCancelarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnCancelarVeiculo.setBorder(null);
 		btnCancelarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCancelarVeiculo.setForeground(new Color(0, 0, 0));
 		btnCancelarVeiculo.setBackground(new Color(255, 251, 233));
 		btnCancelarVeiculo.setBounds(1180, 646, 178, 54);
 		contentPane.add(btnCancelarVeiculo);
-		  btnCancelarVeiculo.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Crie uma instância da tela de Cancelar e a torne visível
-	                Cancelar telaCancelar = new Cancelar();
-	                telaCancelar.setVisible(true);
-	            }
-	        });
+		btnCancelarVeiculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Crie uma instância da tela de Cancelar e a torne visível
+				Cancelar telaCancelar = new Cancelar();
+				telaCancelar.setVisible(true);
+			}
+		});
 
-		JComboBox BoxMarca = new JComboBox();
+		JComboBox<String> BoxMarca = new JComboBox<String>();
 		BoxMarca.setBackground(new Color(255, 251, 233));
 		BoxMarca.setModel(
 				new DefaultComboBoxModel(new String[] { "SELECIONE A MARCA ", "AUDI", "BMW", "CAOA CHERRY", "CHEVROLET",
@@ -133,7 +133,7 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblPlaca);
 
 		txtPlaca = new JTextField();
-		txtPlaca.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);
 		txtPlaca.setBackground(new Color(255, 251, 233));
@@ -151,7 +151,7 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblCor);
 
 		txtCor = new JTextField();
-		txtCor.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtCor.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
 		txtCor.setToolTipText("");
 		txtCor.setColumns(10);
 		txtCor.setBackground(new Color(255, 251, 233));
@@ -165,13 +165,14 @@ public class CadastroVeiculo extends JFrame {
 
 		lblIconeCor = new JLabel("New label");
 		lblIconeCor.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/cor.png")));
-		lblIconeCor.setBounds(930, 324, 59, 45);
+		lblIconeCor.setBounds(930, 315, 59, 54);
 		contentPane.add(lblIconeCor);
 
 		btnCadastrarVeiculo = new JButton("CADASTRAR");
+		btnCadastrarVeiculo.setForeground(new Color(255, 255, 255));
 		btnCadastrarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
-		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(0, 128, 64), 4, true));
-		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
+		btnCadastrarVeiculo.setBorder(null);
+		btnCadastrarVeiculo.setBackground(new Color(34, 139, 34));
 		btnCadastrarVeiculo.setBounds(951, 646, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 
@@ -182,30 +183,35 @@ public class CadastroVeiculo extends JFrame {
 				// Cria uma instância de Veiculo
 				Veiculo v = new Veiculo();
 
+				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+
 				// Obtem os valores dos campos de texto
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
 				String cor = txtCor.getText();
+				String marca = (String) BoxMarca.getSelectedItem();
 
 				// Verifica se algum dos campos está vazio
 				if (placa.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
 					// Se algum campo estiver vazio, exibir o aviso
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (modelo.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
+
+				} else if (marca.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (cor.isEmpty()) {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 					campoNaoPreenchido.setVisible(true);
 
+				} else {
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
+					v.setMarca(marca);
 
 					// Tenta cadastrar o veículo e verificar se foi bem-sucedido
 					boolean success = vDAO.cadastrarVeiculo(v);
@@ -245,6 +251,24 @@ public class CadastroVeiculo extends JFrame {
 		lblCadastroVeiculo.setBounds(951, 65, 461, 107);
 		contentPane.add(lblCadastroVeiculo);
 
+		JButton btnHome = new JButton("");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal principal = new Principal();
+				principal.setVisible(true);
+
+				dispose();
+
+			}
+		});
+
+		btnHome.setBorder(null);
+		btnHome.setForeground(new Color(0, 0, 0));
+		btnHome.setBackground(new Color(244, 234, 214));
+		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
+		btnHome.setBounds(165, 773, 75, 65);
+		contentPane.add(btnHome);
+
 		txtfundoBege = new JTextField();
 		txtfundoBege.setEnabled(false);
 		txtfundoBege.setEditable(false);
@@ -261,5 +285,6 @@ public class CadastroVeiculo extends JFrame {
 		txtfundoVerde.setBackground(new Color(159, 203, 154));
 		txtfundoVerde.setBounds(-25, -2, 1939, 1106);
 		contentPane.add(txtfundoVerde);
+
 	}
 }
