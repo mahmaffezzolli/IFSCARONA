@@ -26,6 +26,8 @@ public class InformacaoRegistrada extends JFrame {
 				try {
 					InformacaoRegistrada frame = new InformacaoRegistrada();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,18 +49,20 @@ public class InformacaoRegistrada extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(InformacaoRegistrada.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(33, 28, 68, 66);
+		lblAviso.setIcon(new ImageIcon(InformacaoRegistrada.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 48, 57, 57);
 		contentPane.add(lblAviso);
 		
 		JLabel lblInformacaoRegistrada = new JLabel("Informação já registrada!");
 		lblInformacaoRegistrada.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblInformacaoRegistrada.setBounds(137, 55, 169, 18);
+		lblInformacaoRegistrada.setBounds(144, 59, 169, 18);
 		contentPane.add(lblInformacaoRegistrada);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 23);
+		btnNewButton.setBounds(176, 118, 84, 31);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {

@@ -26,6 +26,8 @@ public class CadastroErro extends JFrame {
 				try {
 					CadastroErro frame = new CadastroErro();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,8 +49,8 @@ public class CadastroErro extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(CadastroErro.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(33, 28, 60, 66);
+		lblAviso.setIcon(new ImageIcon(CadastroErro.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 45, 48, 48);
 		contentPane.add(lblAviso);
 		
 		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar pessoa!");
@@ -57,8 +59,10 @@ public class CadastroErro extends JFrame {
 		contentPane.add(lblCadastroErro);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setBorder(null);
+		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 23);
+		btnNewButton.setBounds(177, 123, 84, 31);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {

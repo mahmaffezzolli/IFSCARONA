@@ -26,6 +26,8 @@ public class CadastroRealizado extends JFrame {
 				try {
 					CadastroRealizado frame = new CadastroRealizado();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,18 +49,20 @@ public class CadastroRealizado extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(CadastroRealizado.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(33, 28, 60, 66);
+		lblAviso.setIcon(new ImageIcon(CadastroRealizado.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 44, 48, 48);
 		contentPane.add(lblAviso);
 		
 		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com secesso!");
 		lblCadastroRealizado.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroRealizado.setBounds(110, 55, 221, 18);
+		lblCadastroRealizado.setBounds(115, 60, 221, 18);
 		contentPane.add(lblCadastroRealizado);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 23);
+		btnNewButton.setBounds(177, 123, 84, 31);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {

@@ -26,6 +26,8 @@ public class Cancelar extends JFrame {
 				try {
 					Cancelar frame = new Cancelar();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,8 +49,8 @@ public class Cancelar extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(Cancelar.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(36, 33, 68, 66);
+		lblAviso.setIcon(new ImageIcon(Cancelar.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 47, 48, 43);
 		contentPane.add(lblAviso);
 		
 		JLabel lblCancelar = new JLabel("Deseja cancelar?");
@@ -57,8 +59,11 @@ public class Cancelar extends JFrame {
 		contentPane.add(lblCancelar);
 		
 		JButton btnSim = new JButton("SIM");
-		btnSim.setBackground(new Color(255, 251, 233));
-		btnSim.setBounds(131, 123, 84, 23);
+		btnSim.setForeground(new Color(255, 255, 255));
+		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		btnSim.setBorder(null);
+		btnSim.setBackground(new Color(174, 57, 57));
+		btnSim.setBounds(108, 126, 84, 31);
 		contentPane.add(btnSim);
 		
 		btnSim.addActionListener(new ActionListener() {
@@ -74,8 +79,11 @@ public class Cancelar extends JFrame {
 		
 		
 		JButton btnNao = new JButton("NÃO");
-		btnNao.setBackground(new Color(255, 251, 233));
-		btnNao.setBounds(235, 123, 84, 23);
+		btnNao.setForeground(new Color(255, 255, 255));
+		btnNao.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		btnNao.setBorder(null);
+		btnNao.setBackground(new Color(0, 0, 0));
+		btnNao.setBounds(231, 126, 84, 31);
 		contentPane.add(btnNao);
 		
 		btnNao.addActionListener(new ActionListener() {
