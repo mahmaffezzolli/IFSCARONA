@@ -74,6 +74,8 @@ insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (0733
 
 SELECT COUNT(*) FROM pessoas;
 SELECT * FROM pessoas order by cpf;
+SELECT * FROM veiculos;
+
 
 -- update
 

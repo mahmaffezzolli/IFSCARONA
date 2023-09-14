@@ -309,7 +309,6 @@ public class CadastroUsuario extends JFrame {
 				String sobrenome = txtSobrenome.getText();
 				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
-
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
@@ -317,7 +316,7 @@ public class CadastroUsuario extends JFrame {
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (sobrenome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O sobrenome deve ser inserido!");
+					campoNaoPreenchido.setVisible(true);
 
 				} else if (txtCPF.getText().isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
@@ -354,6 +353,7 @@ public class CadastroUsuario extends JFrame {
 					if (success) {
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
+						dispose();
 					} else {
 						CadastroErro cadastroErro = new CadastroErro();
 						cadastroErro.setVisible(true);
