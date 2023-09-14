@@ -78,13 +78,17 @@ public class Perfil extends JFrame {
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");
+		btnLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnLogOut.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Sessao.setPessoaLogada(null);
 				dispose();
-				Login login = new Login();
-				login.setVisible(true);
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
 			}
 		});
 		btnLogOut.setBorder(null);
