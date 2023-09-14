@@ -26,6 +26,8 @@ public class CadastroInexistente extends JFrame {
 				try {
 					CadastroInexistente frame = new CadastroInexistente();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,18 +49,20 @@ public class CadastroInexistente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(CadastroInexistente.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(33, 28, 68, 66);
+		lblAviso.setIcon(new ImageIcon(CadastroInexistente.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 43, 48, 48);
 		contentPane.add(lblAviso);
 		
 		JLabel lblCadastroInexistente = new JLabel("Cadastro Inexistente!");
 		lblCadastroInexistente.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroInexistente.setBounds(150, 54, 138, 14);
+		lblCadastroInexistente.setBounds(153, 60, 138, 14);
 		contentPane.add(lblCadastroInexistente);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 23);
+		btnNewButton.setBounds(177, 123, 84, 31);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {

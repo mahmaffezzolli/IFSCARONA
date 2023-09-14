@@ -16,6 +16,7 @@ import modelo.Sessao;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class TelaExcluirConta extends JFrame {
 
@@ -48,20 +49,20 @@ public class TelaExcluirConta extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(new Color(159, 203, 154));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblTexto = new JLabel("TEM CERTEZA QUE DESEJA");
+		JLabel lblTexto = new JLabel("Tem certeza que deseja");
 		lblTexto.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		lblTexto.setBounds(126, 43, 185, 18);
+		lblTexto.setBounds(128, 48, 162, 18);
 		contentPane.add(lblTexto);
 
-		JLabel lblTexto2 = new JLabel("EXCLUIR A CONTA?");
+		JLabel lblTexto2 = new JLabel("excluir a conta?");
 		lblTexto2.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		lblTexto2.setBounds(146, 73, 135, 14);
+		lblTexto2.setBounds(157, 77, 103, 14);
 		contentPane.add(lblTexto2);
 
 		JButton btnSim = new JButton("SIM");
@@ -96,6 +97,11 @@ public class TelaExcluirConta extends JFrame {
 		btnNo.setBackground(new Color(0, 0, 0));
 		btnNo.setBounds(227, 127, 84, 31);
 		contentPane.add(btnNo);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(TelaExcluirConta.class.getResource("/assets/alerta.png")));
+		lblNewLabel.setBounds(45, 48, 46, 39);
+		contentPane.add(lblNewLabel);
 
 	}
 }

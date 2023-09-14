@@ -26,6 +26,8 @@ public class CampoNaoPreenchido extends JFrame {
 				try {
 					CampoNaoPreenchido frame = new CampoNaoPreenchido();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,8 +49,8 @@ public class CampoNaoPreenchido extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(36, 33, 68, 66);
+		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
 		
 		JLabel lblCampoNaoPreenchido = new JLabel("Campo não preenchido!");
@@ -57,8 +59,10 @@ public class CampoNaoPreenchido extends JFrame {
 		contentPane.add(lblCampoNaoPreenchido);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
-		btnOk.setBounds(177, 123, 84, 23);
+		btnOk.setBounds(177, 123, 84, 31);
 		contentPane.add(btnOk);
 		 btnOk.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

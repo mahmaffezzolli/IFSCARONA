@@ -26,6 +26,8 @@ public class SenhasNaoConferem extends JFrame {
 				try {
 					SenhasNaoConferem frame = new SenhasNaoConferem();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,8 +49,8 @@ public class SenhasNaoConferem extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(SenhasNaoConferem.class.getResource("/assets/Aviso.png")));
-		lblAviso.setBounds(33, 28, 68, 66);
+		lblAviso.setIcon(new ImageIcon(SenhasNaoConferem.class.getResource("/assets/alerta.png")));
+		lblAviso.setBounds(45, 48, 56, 56);
 		contentPane.add(lblAviso);
 		
 		JLabel lblSenhaNaoConfere = new JLabel("As senhas não conferem!");
@@ -57,8 +59,11 @@ public class SenhasNaoConferem extends JFrame {
 		contentPane.add(lblSenhaNaoConfere);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setBorder(null);
+		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 23);
+		btnNewButton.setBounds(179, 109, 84, 31);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {
