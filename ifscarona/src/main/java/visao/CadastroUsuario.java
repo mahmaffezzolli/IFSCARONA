@@ -309,6 +309,7 @@ public class CadastroUsuario extends JFrame {
 				String sobrenome = txtSobrenome.getText();
 				String cpfS = String.valueOf(txtCPF.getText());
 				String email = txtEmail.getText();
+
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
@@ -336,7 +337,6 @@ public class CadastroUsuario extends JFrame {
 					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
 
-					//
 					cpfS = cpfS.replace(".", "");
 					cpfS = cpfS.replace("-", "");
 					cpfS = cpfS.trim();
