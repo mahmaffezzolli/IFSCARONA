@@ -13,7 +13,10 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
   `email` VARCHAR(45) NOT NULL,
   `data_nasc` DATE NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cpf`)
+  PRIMARY KEY (`cpf`),
+   CONSTRAINT `fk_Pessoa_Veiculo1`
+    FOREIGN KEY (`id_veiculo`)
+    REFERENCES `veiculos` (`id_veiculo`)
 );
 
 CREATE TABLE IF NOT EXISTS `trajetos` (
