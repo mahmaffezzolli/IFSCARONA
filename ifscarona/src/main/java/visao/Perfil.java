@@ -280,9 +280,11 @@ public class Perfil extends JFrame {
 					boolean success = pDAO.alterarPessoa(pessoaLogada);
 
 					if (success) {
-						JOptionPane.showMessageDialog(null, "Dados pessoais atualizados com sucesso.");
+						DadosAtualizados dadosAtualizados = new DadosAtualizados();
+						dadosAtualizados.setVisible(true);
 					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados pessoais.");
+						ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+						erroAoAtualizar.setVisible(true);
 					}
 
 
