@@ -69,6 +69,7 @@ insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (5164
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (0759956294, 'Cristabel', 'Crompton', 'ccrompton2@va.gov', '1975-05-15', 'tI7#J,n<jP0+SdE');
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (1134080441, 'Chrissy', 'Squeers', 'csqueers3@google.com.au', '1975-05-15', 'cJ4>4/Zm8afHxyB');
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (0733404561, 'Michelina', 'Chessil', 'mchessil4@globo.com', '1975-05-15', 'rT3|BvQ+Ve');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (1111111111, 'IFSC', 'Arona', 'abc', '2023-03-01', '123');
 
 -- select
 

@@ -4,29 +4,25 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-<<<<<<< Updated upstream
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-=======
-import javax.swing.ImageIcon;
->>>>>>> Stashed changes
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
 
 public class Perfil extends JFrame {
 
@@ -75,23 +71,24 @@ public class Perfil extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton btnHome = new JButton("");
-		btnHome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnHome.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				Principal principal = new Principal();
+				principal.setVisible(true);
 			}
 		});
+
 		btnHome.setBorder(null);
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(159, 203, 153));
 		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
-		btnHome.setBounds(165, 773, 75, 65);
+		btnHome.setBounds(165, 640, 75, 65);
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");
-		btnLogOut.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
+
 		btnLogOut.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -101,7 +98,7 @@ public class Perfil extends JFrame {
 				inicio.setVisible(true);
 			}
 		});
-		
+
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
 		btnLogOut.setIcon(new ImageIcon(Perfil.class.getResource("/assets/Log-out.png")));
@@ -109,6 +106,8 @@ public class Perfil extends JFrame {
 		contentPane.add(btnLogOut);
 
 		txtSobrenome = new JTextField();
+		txtSobrenome.setEnabled(false);
+		txtSobrenome.setEditable(false);
 		txtSobrenome.setBounds(695, 299, 300, 40);
 		txtSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		contentPane.add(txtSobrenome);
@@ -146,6 +145,8 @@ public class Perfil extends JFrame {
 		contentPane.add(txtCPF);
 
 		txtNome = new JTextField();
+		txtNome.setEnabled(false);
+		txtNome.setEditable(false);
 		txtNome.setBounds(695, 233, 300, 40);
 		txtNome.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtNome.setColumns(10);
@@ -259,10 +260,39 @@ public class Perfil extends JFrame {
 			txtMarca.setEnabled(false);
 		}
 
-		JButton btnSalvar = new JButton("Salvar");
+		JButton btnSalvar = new JButton("Editar");
 		btnSalvar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				
+				if (btnSalvar.getText().equals("Editar")) {
 
+					txtNome.setEnabled(true);
+					txtNome.setEditable(true);
+					txtSobrenome.setEnabled(true);
+					txtSobrenome.setEditable(true);
+					btnSalvar.setText("Salvar");
+					
+				} else if (btnSalvar.getText().equals("Salvar")) {
+
+					Pessoa pessoaLogada = Sessao.getPessoaLogada();
+					
+					boolean success = pDAO.alterarPessoa(pessoaLogada);
+
+					if (success) {
+						JOptionPane.showMessageDialog(null, "Dados pessoais atualizados com sucesso.");
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados pessoais.");
+					}
+
+
+					txtNome.setEnabled(false);
+					txtNome.setEditable(false);
+					txtSobrenome.setEnabled(false);
+					txtSobrenome.setEditable(false);
+					
+					btnSalvar.setText("Editar");
+				}
 			}
 		});
 
@@ -273,6 +303,7 @@ public class Perfil extends JFrame {
 
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 
 				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();

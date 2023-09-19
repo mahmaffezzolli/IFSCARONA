@@ -23,7 +23,6 @@ public class TelaExcluirConta extends JFrame {
 	private JPanel contentPane;
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -68,21 +67,14 @@ public class TelaExcluirConta extends JFrame {
 		JButton btnSim = new JButton("SIM");
 		btnSim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Pessoa pessoaLogada = Sessao.getPessoaLogada();
-				
+
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
-				
-				if (success) {
-					JOptionPane.showMessageDialog(null, "foi");
-
-				} else {
-					JOptionPane.showMessageDialog(null, "nao");
-
-				}
 
 			}
 		});
+		
 		btnSim.setForeground(new Color(255, 255, 255));
 		btnSim.setBorder(null);
 		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
@@ -97,7 +89,7 @@ public class TelaExcluirConta extends JFrame {
 		btnNo.setBackground(new Color(0, 0, 0));
 		btnNo.setBounds(227, 127, 84, 31);
 		contentPane.add(btnNo);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaExcluirConta.class.getResource("/assets/alerta.png")));
 		lblNewLabel.setBounds(45, 48, 46, 39);

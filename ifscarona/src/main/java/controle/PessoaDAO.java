@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
 
@@ -63,27 +65,31 @@ public class PessoaDAO implements IPessoaDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE pessoas SET nome = ?, sobrenome = ?, senha = ? WHERE cpf = ?";
+		String query = "UPDATE pessoas SET nome = ?, sobrenome = ? WHERE cpf = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, pessoa.getNome());
 			ps.setString(2, pessoa.getSobrenome());
-			ps.setString(4, pessoa.getSenha());
-			ps.setLong(5, pessoa.getCpf());
-			ps.executeUpdate();
+			ps.setLong(3, pessoa.getCpf());
 
-			return true;
+			int rowsAffected = ps.executeUpdate();
 
+			if (rowsAffected > 0) {
+				System.out.println("Dados pessoais atualizados com sucesso.");
+				return true;
+			} else {
+				System.out.println("Nenhum dado foi atualizado.");
+				return false;
+
+			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
+			return false;
 		} finally {
-
 			c.fecharConexao();
 		}
 
-		return false;
 	}
 
 	@Override
@@ -162,34 +168,34 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public Pessoa login(String email, String senha) {
-	    ConexaoBanco c = ConexaoBanco.getInstancia();
-	    Connection con = c.conectar();
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
 
-	    String query = "SELECT * FROM pessoas WHERE email = ? AND senha = ?";
-	    
-	    try {
-	        PreparedStatement ps = con.prepareStatement(query);
-	        ps.setString(1, email);
-	        ps.setString(2, senha);
+		String query = "SELECT * FROM pessoas WHERE email = ? AND senha = ?";
 
-	        ResultSet rs = ps.executeQuery();
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, senha);
 
-	        if (rs.next()) {
-	            Pessoa pessoa = new Pessoa();
-	            pessoa.setCpf(rs.getLong("cpf"));
-	            pessoa.setNome(rs.getString("nome"));
-	            pessoa.setSobrenome(rs.getString("sobrenome"));
-	            pessoa.setEmail(rs.getString("email"));
-	            
-	            return pessoa;
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        c.fecharConexao();
-	    }
+			ResultSet rs = ps.executeQuery();
 
-	    return null; 
+			if (rs.next()) {
+				Pessoa pessoa = new Pessoa();
+				pessoa.setCpf(rs.getLong("cpf"));
+				pessoa.setNome(rs.getString("nome"));
+				pessoa.setSobrenome(rs.getString("sobrenome"));
+				pessoa.setEmail(rs.getString("email"));
+
+				return pessoa;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
 	}
 
 }
