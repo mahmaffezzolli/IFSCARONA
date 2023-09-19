@@ -13,10 +13,7 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
   `email` VARCHAR(45) NOT NULL,
   `data_nasc` DATE NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cpf`),
-   CONSTRAINT `fk_Pessoa_Veiculo1`
-    FOREIGN KEY (`id_veiculo`)
-    REFERENCES `veiculos` (`id_veiculo`)
+  PRIMARY KEY (`cpf`)
 );
 
 CREATE TABLE IF NOT EXISTS `trajetos` (
@@ -32,7 +29,10 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   `cor` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_veiculo`)
+  PRIMARY KEY (`id_veiculo`),
+  CONSTRAINT `fk_Veiculo_Pessoa1`
+    FOREIGN KEY (`pessoas_cpf`)
+    REFERENCES `pessoas` (`cpf`)
 );
 
 CREATE TABLE IF NOT EXISTS `caronas` (
