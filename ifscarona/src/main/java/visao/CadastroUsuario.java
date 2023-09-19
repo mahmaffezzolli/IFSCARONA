@@ -301,10 +301,13 @@ public class CadastroUsuario extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				//instacia da classe pessoa
 				Pessoa p = new Pessoa();
 
+				//instancia tela de erro
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
+				//armazenando os valores dentro das variáveis 
 				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
 				String cpfS = String.valueOf(txtCPF.getText());
@@ -313,6 +316,7 @@ public class CadastroUsuario extends JFrame {
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 
+				//validação se o campo é vazio, se for, abre a tela de erro
 				if (nome.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
@@ -333,15 +337,18 @@ public class CadastroUsuario extends JFrame {
 					senhasNaoConferem.setVisible(true);
 
 				} else {
-
+					
+					//tranformando em fotmato de data
 					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
 
+					//removendo a máscara
 					cpfS = cpfS.replace(".", "");
 					cpfS = cpfS.replace("-", "");
 					cpfS = cpfS.trim();
 					Long cpf = Long.parseLong(cpfS);
 
+					//atribuindo os valores de uma pessoa
 					p.setCpf(cpf);
 					p.setNome(nome);
 					p.setSobrenome(sobrenome);
@@ -349,6 +356,7 @@ public class CadastroUsuario extends JFrame {
 					p.setSenha(senha);
 					p.setDataNasc(dataNascimento);
 
+					
 					boolean success = pDAO.cadastrarPessoa(p);
 					if (success) {
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();

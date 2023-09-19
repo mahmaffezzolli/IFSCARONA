@@ -84,7 +84,7 @@ public class Perfil extends JFrame {
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(159, 203, 153));
 		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
-		btnHome.setBounds(165, 640, 75, 65);
+		btnHome.setBounds(165, 740, 75, 65);
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");
@@ -262,9 +262,9 @@ public class Perfil extends JFrame {
 
 		JButton btnSalvar = new JButton("Editar");
 		btnSalvar.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (btnSalvar.getText().equals("Editar")) {
 
 					txtNome.setEnabled(true);
@@ -272,11 +272,14 @@ public class Perfil extends JFrame {
 					txtSobrenome.setEnabled(true);
 					txtSobrenome.setEditable(true);
 					btnSalvar.setText("Salvar");
-					
+
 				} else if (btnSalvar.getText().equals("Salvar")) {
 
 					Pessoa pessoaLogada = Sessao.getPessoaLogada();
-					
+
+					pessoaLogada.setNome(txtNome.getText());
+					pessoaLogada.setSobrenome(txtSobrenome.getText());
+
 					boolean success = pDAO.alterarPessoa(pessoaLogada);
 
 					if (success) {
@@ -287,12 +290,11 @@ public class Perfil extends JFrame {
 						erroAoAtualizar.setVisible(true);
 					}
 
-
 					txtNome.setEnabled(false);
 					txtNome.setEditable(false);
 					txtSobrenome.setEnabled(false);
 					txtSobrenome.setEditable(false);
-					
+
 					btnSalvar.setText("Editar");
 				}
 			}
