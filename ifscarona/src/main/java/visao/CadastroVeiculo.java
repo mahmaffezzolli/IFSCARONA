@@ -86,7 +86,7 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.setLayout(null);
 
 		btnCancelarVeiculo = new JButton("CANCELAR");
-		btnCancelarVeiculo.setBorder(null);
+		btnCancelarVeiculo.setBorder(new LineBorder(new Color(255, 128, 128), 4, true));
 		btnCancelarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCancelarVeiculo.setForeground(new Color(0, 0, 0));
 		btnCancelarVeiculo.setBackground(new Color(255, 251, 233));
@@ -169,10 +169,10 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblIconeCor);
 
 		btnCadastrarVeiculo = new JButton("CADASTRAR");
-		btnCadastrarVeiculo.setForeground(new Color(255, 255, 255));
+		btnCadastrarVeiculo.setForeground(new Color(0, 0, 0));
 		btnCadastrarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
-		btnCadastrarVeiculo.setBorder(null);
-		btnCadastrarVeiculo.setBackground(new Color(34, 139, 34));
+		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
+		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
 		btnCadastrarVeiculo.setBounds(951, 646, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 
