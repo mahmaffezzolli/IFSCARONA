@@ -44,7 +44,6 @@ public class CadastroVeiculo extends JFrame {
 	private JButton btnCadastrarVeiculo;
 	private JLabel lblIconeCor;
 	private JLabel lblIconeModelo;
-	private JTextField txtCor;
 	private JLabel lblCor;
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private JLabel lblIconeMarca;
@@ -53,6 +52,7 @@ public class CadastroVeiculo extends JFrame {
 	private JLabel lblLogo;
 	private JLabel lblCarro;
 	private JButton btnCancelarVeiculo;
+	private JComboBox<String> BoxCor;
 
 	/**
 	 * Launch the application.
@@ -84,6 +84,13 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		BoxCor = new JComboBox<String>();
+		BoxCor.setModel(new DefaultComboBoxModel(new String[] {"SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t", "Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t"}));
+		BoxCor.setToolTipText("");
+		BoxCor.setBackground(new Color(255, 251, 233));
+		BoxCor.setBounds(999, 322, 336, 45);
+		contentPane.add(BoxCor);
 
 		btnCancelarVeiculo = new JButton("CANCELAR");
 		btnCancelarVeiculo.setBorder(new LineBorder(new Color(255, 128, 128), 4, true));
@@ -149,14 +156,6 @@ public class CadastroVeiculo extends JFrame {
 		lblCor.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblCor.setBounds(999, 297, 122, 14);
 		contentPane.add(lblCor);
-
-		txtCor = new JTextField();
-		txtCor.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
-		txtCor.setToolTipText("");
-		txtCor.setColumns(10);
-		txtCor.setBackground(new Color(255, 251, 233));
-		txtCor.setBounds(999, 322, 336, 45);
-		contentPane.add(txtCor);
 
 		lblIconeModelo = new JLabel("New label");
 		lblIconeModelo.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/MODELO.png")));
