@@ -187,7 +187,7 @@ public class CadastroVeiculo extends JFrame {
 				// Obtem os valores dos campos de texto
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
-				String cor = txtCor.getText();
+				String cor = (String) BoxCor.getSelectedItem();
 				String marca = (String) BoxMarca.getSelectedItem();
 
 				// Verifica se algum dos campos está vazio

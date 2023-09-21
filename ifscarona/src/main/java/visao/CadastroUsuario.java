@@ -191,7 +191,6 @@ public class CadastroUsuario extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Login loginFrame = new Login();
 				loginFrame.setVisible(true);
-				CadastroUsuario.this.dispose();
 			}
 		});
 		lblPossuiCadastro = new JLabel("Possui cadastro?");
@@ -348,7 +347,6 @@ public class CadastroUsuario extends JFrame {
 					cpfS = cpfS.trim();
 					Long cpf = Long.parseLong(cpfS);
 
-					//atribuindo os valores de uma pessoa
 					p.setCpf(cpf);
 					p.setNome(nome);
 					p.setSobrenome(sobrenome);

@@ -29,9 +29,10 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   `cor` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
+  `cpf_pessoa` BIGINT NOT NULL,
   PRIMARY KEY (`id_veiculo`),
   CONSTRAINT `fk_Veiculo_Pessoa1`
-    FOREIGN KEY (`pessoas_cpf`)
+    FOREIGN KEY (`cpf_pessoa`)
     REFERENCES `pessoas` (`cpf`)
 );
 

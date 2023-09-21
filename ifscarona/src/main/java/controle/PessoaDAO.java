@@ -81,8 +81,8 @@ public class PessoaDAO implements IPessoaDAO {
 			} else {
 				System.out.println("Nenhum dado foi atualizado.");
 				return false;
-
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
