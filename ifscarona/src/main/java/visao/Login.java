@@ -71,7 +71,7 @@ public class Login extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("Login");
 		lblNewLabel_1.setFont(new Font("Nirmala UI", Font.BOLD, 65));
-		lblNewLabel_1.setBounds(970, 115, 180, 110);
+		lblNewLabel_1.setBounds(951, 115, 363, 110);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblLogo = new JLabel("");
@@ -86,7 +86,7 @@ public class Login extends JFrame {
 
 		JLabel lblEmail = new JLabel("E-mail institucional");
 		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
-		lblEmail.setBounds(900, 360, 140, 15);
+		lblEmail.setBounds(900, 360, 191, 15);
 		contentPane.add(lblEmail);
 
 		txtEmail = new JTextField();
