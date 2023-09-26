@@ -53,7 +53,7 @@ public class CadastroErroVeiculo extends JFrame {
 		lblAviso.setBounds(45, 45, 48, 48);
 		contentPane.add(lblAviso);
 		
-		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar pessoa!");
+		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar veículo!");
 		lblCadastroErro.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblCadastroErro.setBounds(135, 55, 176, 18);
 		contentPane.add(lblCadastroErro);

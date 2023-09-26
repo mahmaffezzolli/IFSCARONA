@@ -178,48 +178,50 @@ public class CadastroVeiculo extends JFrame {
 		// Validações
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				// Cria uma instância de Veiculo
 				Veiculo v = new Veiculo();
-
+				
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-
+				
 				// Obtem os valores dos campos de texto
+				
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
 				String marca = (String) BoxMarca.getSelectedItem();
-
+				
 				// Verifica se algum dos campos está vazio
 				if (placa.isEmpty()) {
-
+					
 					// Se algum campo estiver vazio, exibir o aviso
+					
 					campoNaoPreenchido.setVisible(true);
-
 				} else if (modelo.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-
 				} else if (marca.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-
 				} else if (cor.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-
 				} else {
+					
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
+					
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
 					v.setMarca(marca);
-
+					
 					// Tenta cadastrar o veículo e verificar se foi bem-sucedido
 					boolean success = vDAO.cadastrarVeiculo(v);
+					
 					if (success) {
-
+						
 						// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
+						
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
-
+						
 						// Se o cadastro falhar, exibir uma mensagem de erro
 					} else {
 						CadastroErro cadastroErro = new CadastroErro();
@@ -228,6 +230,7 @@ public class CadastroVeiculo extends JFrame {
 				}
 			}
 		});
+
 
 		txtModelo = new JTextField();
 		txtModelo.setColumns(10);
@@ -245,9 +248,9 @@ public class CadastroVeiculo extends JFrame {
 		lblMarca.setBounds(999, 397, 122, 14);
 		contentPane.add(lblMarca);
 
-		lblCadastroVeiculo = new JLabel("Cadastro Veículo");
+		lblCadastroVeiculo = new JLabel("Cadastro de Veículo");
 		lblCadastroVeiculo.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblCadastroVeiculo.setBounds(951, 65, 461, 107);
+		lblCadastroVeiculo.setBounds(930, 58, 514, 107);
 		contentPane.add(lblCadastroVeiculo);
 
 		JButton btnHome = new JButton("");
