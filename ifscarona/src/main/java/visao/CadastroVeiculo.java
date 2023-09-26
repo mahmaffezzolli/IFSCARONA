@@ -224,8 +224,8 @@ public class CadastroVeiculo extends JFrame {
 						
 						// Se o cadastro falhar, exibir uma mensagem de erro
 					} else {
-						CadastroErro cadastroErro = new CadastroErro();
-						cadastroErro.setVisible(true);
+						CadastroErroVeiculo cadastroErroVeiculo = new CadastroErroVeiculo();
+						cadastroErroVeiculo.setVisible(true);
 					}
 				}
 			}

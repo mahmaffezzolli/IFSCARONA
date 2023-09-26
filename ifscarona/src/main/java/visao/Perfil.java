@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -21,8 +20,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
+import controle.VeiculoDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
+import modelo.Veiculo;
 
 public class Perfil extends JFrame {
 
@@ -33,6 +34,7 @@ public class Perfil extends JFrame {
 	private JTextField txtNome;
 	private JTextField txtData;
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
+	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private JTextField textField;
 	private JTextField txtPlaca;
 	private JTextField txtModelo;
@@ -321,17 +323,60 @@ public class Perfil extends JFrame {
 		btnExcluir.setBounds(827, 665, 138, 40);
 		contentPane.add(btnExcluir);
 
-		JButton btnNewButton_2 = new JButton("Salvar");
-		btnNewButton_2.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnNewButton_2.setBackground(new Color(255, 255, 255));
-		btnNewButton_2.setBounds(1314, 665, 138, 40);
-		contentPane.add(btnNewButton_2);
+		JButton btnSalvarV = new JButton("Editar");
+		btnSalvarV.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (btnSalvarV.getText().equals("Editar")) {
+					txtPlaca.setEnabled(true);
+					txtCor.setEditable(true);
+					txtMarca.setEnabled(true);
+					txtModelo.setEditable(true);
+					btnSalvarV.setText("Salvar");
+					
+				} else if (btnSalvarV.getText().equals("Salvar")) {
+					Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+					veiculoLogado.setPlaca(txtPlaca.getText());
+					veiculoLogado.setCor(txtCor.getText());
+					veiculoLogado.setMarca(txtMarca.getText());
+					veiculoLogado.setModelo(txtModelo.getText());
+					
+					boolean success = vDAO.alterarVeiculo(veiculoLogado);
+					if (success) {
+						DadosAtualizados dadosAtualizados = new DadosAtualizados();
+						dadosAtualizados.setVisible(true);
+					} else {
+						ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+						erroAoAtualizar.setVisible(true);
+					}
+					txtPlaca.setEnabled(false);
+					txtCor.setEditable(false);
+					txtMarca.setEnabled(false);
+					txtModelo.setEditable(false);
+					btnSalvarV.setText("Editar");
+				}
+			}
+		});
+		
+		btnSalvarV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnSalvarV.setBackground(new Color(255, 255, 255));
+		btnSalvarV.setBounds(1314, 665, 138, 40);
+		contentPane.add(btnSalvarV);
 
-		JButton btnNewButton_3 = new JButton("Excluir");
-		btnNewButton_3.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnNewButton_3.setBackground(new Color(255, 182, 193));
-		btnNewButton_3.setBounds(1546, 665, 138, 40);
-		contentPane.add(btnNewButton_3);
+		JButton btnExcluirV = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
+				TelaExcluirConta.setVisible(true);
+
+			}
+		});
+		btnExcluirV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnExcluirV.setBackground(new Color(255, 182, 193));
+		btnExcluirV.setBounds(1546, 665, 138, 40);
+		contentPane.add(btnExcluirV);
 
 		JButton btnAddVeiculo = new JButton("Adicionar Veículo");
 		btnAddVeiculo.addActionListener(new ActionListener() {
@@ -363,6 +408,19 @@ public class Perfil extends JFrame {
 			txtEmail.setText(pessoaLogada.getEmail());
 			txtNome.setText(pessoaLogada.getNome());
 			txtCPF.setText(String.valueOf(pessoaLogada.getCpf()));
+			
+			
+		}
+		
+		Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+			
+		if (veiculoLogado != null) {
+			txtPlaca.setText(veiculoLogado.getPlaca());
+			txtCor.setText(veiculoLogado.getCor());
+			txtMarca.setText(veiculoLogado.getMarca());
+			txtModelo.setText(veiculoLogado.getModelo());
+			
+			
 		}
 
 	}
