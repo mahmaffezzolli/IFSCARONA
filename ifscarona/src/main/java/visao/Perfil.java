@@ -208,6 +208,8 @@ public class Perfil extends JFrame {
 		contentPane.add(lblPlaca);
 
 		txtPlaca = new JTextField();
+		txtPlaca.setEnabled(false);
+		txtPlaca.setEditable(false);
 		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtPlaca.setColumns(10);
 		txtPlaca.setBounds(1411, 233, 294, 40);
@@ -219,6 +221,8 @@ public class Perfil extends JFrame {
 		contentPane.add(lblCor);
 
 		txtModelo = new JTextField();
+		txtModelo.setEnabled(false);
+		txtModelo.setEditable(false);
 		txtModelo.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtModelo.setColumns(10);
 		txtModelo.setBounds(1411, 441, 300, 40);
@@ -230,6 +234,8 @@ public class Perfil extends JFrame {
 		contentPane.add(lblMarca);
 
 		txtCor = new JTextField();
+		txtCor.setEnabled(false);
+		txtCor.setEditable(false);
 		txtCor.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtCor.setColumns(10);
 		txtCor.setBounds(1411, 299, 300, 40);
@@ -241,27 +247,14 @@ public class Perfil extends JFrame {
 		contentPane.add(lblModelo);
 
 		txtMarca = new JTextField();
+		txtMarca.setEnabled(false);
+		txtMarca.setEditable(false);
 		txtMarca.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtMarca.setColumns(10);
 		txtMarca.setBounds(1411, 368, 300, 40);
 		contentPane.add(txtMarca);
 
-		if (txtPlaca.getText().isEmpty() && txtMarca.getText().isEmpty() && txtCor.getText().isEmpty()
-				&& txtModelo.getText().isEmpty()) {
-
-			txtPlaca.setEditable(false);
-			txtPlaca.setEnabled(false);
-			//
-			txtCor.setEditable(false);
-			txtCor.setEnabled(false);
-			//
-			txtModelo.setEditable(false);
-			txtModelo.setEnabled(false);
-			//
-			txtMarca.setEditable(false);
-			txtMarca.setEnabled(false);
-		}
-
+		
 		JButton btnSalvar = new JButton("Editar");
 		btnSalvar.addActionListener(new ActionListener() {
 
@@ -328,9 +321,9 @@ public class Perfil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (btnSalvarV.getText().equals("Editar")) {
-					txtPlaca.setEnabled(true);
+					txtPlaca.setEditable(true);
 					txtCor.setEditable(true);
-					txtMarca.setEnabled(true);
+					txtMarca.setEditable(true);
 					txtModelo.setEditable(true);
 					btnSalvarV.setText("Salvar");
 					
@@ -350,9 +343,9 @@ public class Perfil extends JFrame {
 						erroAoAtualizar.setVisible(true);
 					}
 					txtPlaca.setEnabled(false);
-					txtCor.setEditable(false);
+					txtCor.setEnabled(false);
 					txtMarca.setEnabled(false);
-					txtModelo.setEditable(false);
+					txtModelo.setEnabled(false);
 					btnSalvarV.setText("Editar");
 				}
 			}
@@ -364,7 +357,7 @@ public class Perfil extends JFrame {
 		contentPane.add(btnSalvarV);
 
 		JButton btnExcluirV = new JButton("Excluir");
-		btnExcluir.addActionListener(new ActionListener() {
+		btnExcluirV.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 

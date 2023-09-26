@@ -197,6 +197,7 @@ public class CadastroVeiculo extends JFrame {
 					// Se algum campo estiver vazio, exibir o aviso
 					
 					campoNaoPreenchido.setVisible(true);
+					
 				} else if (modelo.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 				} else if (marca.isEmpty()) {
