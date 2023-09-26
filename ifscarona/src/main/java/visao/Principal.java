@@ -125,9 +125,12 @@ public class Principal extends JFrame {
 		JButton btnNewButton_1 = new JButton("Oferecer");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new OferecerCarona().setVisible(true);
+				Principal.this.dispose();
+				
 
 			}
-		});
+			});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
 		btnNewButton_1.setBounds(1317, 520, 169, 43);
