@@ -100,7 +100,7 @@ public class Principal extends JFrame {
 
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
-		lblFundo.setBounds(-5, -239, 468, 1650);
+		lblFundo.setBounds(-5, -237, 468, 1650);
 		contentPane.add(lblFundo);
 
 		JLabel lblNewLabel_1 = new JLabel("Filtrar viagens");
