@@ -55,7 +55,7 @@ public class CampoNaoPreenchido extends JFrame {
 		
 		JLabel lblCampoNaoPreenchido = new JLabel("Campo não preenchido!");
 		lblCampoNaoPreenchido.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCampoNaoPreenchido.setBounds(139, 56, 162, 18);
+		lblCampoNaoPreenchido.setBounds(139, 56, 235, 18);
 		contentPane.add(lblCampoNaoPreenchido);
 		
 		JButton btnOk = new JButton("OK");

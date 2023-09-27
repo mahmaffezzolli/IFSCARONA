@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 
 public class Principal extends JFrame {
 
@@ -53,6 +54,18 @@ public class Principal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JCheckBox chckbxEmDiante = new JCheckBox("18 em diante");
+		chckbxEmDiante.setBounds(705, 505, 152, 43);
+		contentPane.add(chckbxEmDiante);
+		
+		JCheckBox checkBox_1 = new JCheckBox("06:00 - 12:00");
+		checkBox_1.setBounds(705, 338, 152, 43);
+		contentPane.add(checkBox_1);
+		
+		JCheckBox checkBox = new JCheckBox("12:01 - 18:00");
+		checkBox.setBounds(705, 422, 152, 43);
+		contentPane.add(checkBox);
 
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
@@ -63,29 +76,23 @@ public class Principal extends JFrame {
 		JButton btnLogar = new JButton("Requisitar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
-		});
+				 if (chckbxEmDiante.isSelected() || checkBox_1.isSelected() || checkBox.isSelected()) {
+						new RequisitarCarona().setVisible(true);
+						 Principal.this.dispose();
+			        } else {
+			        	CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+						campoNaoPreenchido.setVisible(true);
+			        }
+			    }
+			});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.setBounds(695, 615, 162, 33);
 		contentPane.add(btnLogar);
 
-		JRadioButton rdbtnHoraPrimeira = new JRadioButton("06:00 - 12:00");
-		rdbtnHoraPrimeira.setBackground(new Color(240, 240, 240));
-		rdbtnHoraPrimeira.setBounds(705, 338, 139, 43);
-		contentPane.add(rdbtnHoraPrimeira);
-
-		JRadioButton rdbtnHoraTerceira = new JRadioButton("18h em diante");
-		rdbtnHoraTerceira.setBounds(705, 520, 139, 43);
-		contentPane.add(rdbtnHoraTerceira);
-
-		JRadioButton rdbtnHoraSegunda = new JRadioButton("12:01 - 18:00");
-		rdbtnHoraSegunda.setBounds(705, 424, 139, 43);
-		contentPane.add(rdbtnHoraSegunda);
-
 		JLabel lblFundoFiltro = new JLabel("");
 		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro.setBounds(616, 291, 320, 420);
+		lblFundoFiltro.setBounds(620, 279, 320, 420);
 		contentPane.add(lblFundoFiltro);
 
 		JLabel lblCarro = new JLabel("");
@@ -135,6 +142,10 @@ public class Principal extends JFrame {
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
 		btnNewButton_1.setBounds(1317, 520, 169, 43);
 		contentPane.add(btnNewButton_1);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
+		chckbxNewCheckBox.setBounds(705, 338, 129, 23);
+		contentPane.add(chckbxNewCheckBox);
 
 	}
 }
