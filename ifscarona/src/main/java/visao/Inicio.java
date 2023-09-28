@@ -8,6 +8,8 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -46,10 +48,12 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1940, 1119);
+		Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds(0, 0, 1935, 1049);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(new Color(255, 251, 233));
+		contentPane.setBorder(new LineBorder(new Color(255, 251, 233), 2, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
