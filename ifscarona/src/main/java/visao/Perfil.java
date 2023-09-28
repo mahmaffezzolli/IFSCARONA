@@ -369,8 +369,8 @@ public class Perfil extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
-				TelaExcluirConta.setVisible(true);
+				TelaExcluirVeiculo TelaExcluirVeiculo = new TelaExcluirVeiculo();
+				TelaExcluirVeiculo.setVisible(true);
 
 			}
 		});
