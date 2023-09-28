@@ -332,10 +332,13 @@ public class Perfil extends JFrame {
 					txtMarca.setEnabled(true);
 					txtModelo.setEditable(true);
 					txtModelo.setEnabled(true);
+					txtCPF2.setEditable(true);
+					txtCPF2.setEnabled(true);
 					btnSalvarV.setText("Salvar");
 					
 				} else if (btnSalvarV.getText().equals("Salvar")) {
 					Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+					veiculoLogado.setCpf_pessoa(txtCPF2.getText());
 					veiculoLogado.setPlaca(txtPlaca.getText());
 					veiculoLogado.setCor(txtCor.getText());
 					veiculoLogado.setMarca(txtMarca.getText());

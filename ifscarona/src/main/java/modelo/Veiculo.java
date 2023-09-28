@@ -2,19 +2,21 @@ package modelo;
 
 public class Veiculo {
 
-	private Integer idVeiculo;
+	private String cpf_pessoa;
 	private String placa;
 	private String cor;
 	private String marca;
 	private String modelo;
 	private Pessoa pessoa;
 
-	public Integer getIdVeiculo() {
-		return idVeiculo;
+	
+
+	public String getCpf_pessoa() {
+		return cpf_pessoa;
 	}
 
-	public void setIdVeiculo(Integer idVeiculo) {
-		this.idVeiculo = idVeiculo;
+	public void setCpf_pessoa(String cpf) {
+		this.cpf_pessoa = cpf;
 	}
 
 	public String getPlaca() {

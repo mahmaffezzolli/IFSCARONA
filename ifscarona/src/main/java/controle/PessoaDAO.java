@@ -198,7 +198,7 @@ public class PessoaDAO implements IPessoaDAO {
 		return null;
 	}
 	
-	public Pessoa pegaPessoa(Long cpf) {
+	public Pessoa pegaPessoa(String cpf) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
@@ -206,7 +206,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, cpf);
+			ps.setString(1, cpf);
 
 			ResultSet rs = ps.executeQuery();
 

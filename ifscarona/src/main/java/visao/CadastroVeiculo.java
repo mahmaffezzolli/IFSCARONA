@@ -203,7 +203,7 @@ public class CadastroVeiculo extends JFrame {
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 				
 				// Obtem os valores dos campos de texto
-				Long cpf = Long.valueOf(textCpf.getText());
+				String cpf = String.valueOf(textCpf.getText());
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
@@ -221,6 +221,8 @@ public class CadastroVeiculo extends JFrame {
 				} else if (marca.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 				} else if (cor.isEmpty()) {
+					campoNaoPreenchido.setVisible(true);
+				} else if (cpf.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 				} else {
 					

@@ -61,7 +61,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE veiculos SET placa = ?, cor =?, marca = ?, modelo = ? WHERE id_veiculo = ?";
+		String query = "UPDATE veiculos SET placa = ?, cor =?, marca = ?, modelo = ? WHERE cpf_pessoa = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -69,7 +69,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(2, veiculo.getCor());
 			ps.setString(3, veiculo.getMarca());
 			ps.setString(4, veiculo.getModelo());
-			ps.setInt(5, veiculo.getIdVeiculo());
+			ps.setLong(5, veiculo.getPessoa().getCpf());
 
 			ps.executeUpdate();
 
@@ -92,11 +92,11 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM veiculos WHERE id_veiculo = ?";
+		String query = "DELETE FROM veiculos WHERE cpf_pessoa = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, veiculo.getIdVeiculo());
+			ps.setString(1, veiculo.getCpf_pessoa());
 
 			ps.executeUpdate();
 
@@ -130,7 +130,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 			while (rs.next()) {
 
-				Integer idVeiculo = rs.getInt("id_veiculo");
+				String cpf= rs.getString("cpf");
 				String placa = rs.getString("placa");
 				String cor = rs.getString("cor");
 				String marca = rs.getString("marca");
@@ -138,7 +138,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 				Veiculo v = new Veiculo();
 
-				v.setIdVeiculo(idVeiculo);
+				v.setCpf_pessoa(cpf);
 				v.setPlaca(placa);
 				v.setCor(cor);
 				v.setMarca(marca);
