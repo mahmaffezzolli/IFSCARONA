@@ -124,7 +124,12 @@ public class Principal extends JFrame {
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				new Perfil().setVisible(true);
+				try {
+					new Perfil().setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				Principal.this.dispose();
 			}
 
