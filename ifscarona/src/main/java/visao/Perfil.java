@@ -83,6 +83,8 @@ public class Perfil extends JFrame {
 			}
 		});
 
+		
+	
 		btnHome.setBorder(null);
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(159, 203, 153));
