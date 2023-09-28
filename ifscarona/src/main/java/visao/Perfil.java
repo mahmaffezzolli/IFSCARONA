@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +19,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
@@ -61,8 +63,9 @@ public class Perfil extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws ParseException 
 	 */
-	public Perfil() {
+	public Perfil() throws ParseException {
 		Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, 1935, 1049);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -360,6 +363,8 @@ public class Perfil extends JFrame {
 					txtMarca.setEnabled(false);
 					txtModelo.setEditable(false);
 					txtModelo.setEnabled(false);
+					txtCPF2.setEditable(false);
+					txtCPF2.setEnabled(false);
 					btnSalvarV.setText("Editar");
 				}
 			}
@@ -414,12 +419,18 @@ public class Perfil extends JFrame {
 		contentPane.add(lbCPF);
 		
 		txtCPF2 = new JTextField();
+		/*****************/
+		MaskFormatter mascaraCPF2 = null;
+		mascaraCPF2 = new MaskFormatter("###.###.###-##");
+		txtCPF2 = new JFormattedTextField(mascaraCPF2);
+		/*****************/
 		txtCPF2.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtCPF2.setEnabled(false);
 		txtCPF2.setEditable(false);
 		txtCPF2.setColumns(10);
 		txtCPF2.setBounds(1411, 512, 300, 40);
 		contentPane.add(txtCPF2);
+		
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
 
