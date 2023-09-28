@@ -321,10 +321,14 @@ public class Perfil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (btnSalvarV.getText().equals("Editar")) {
+					txtPlaca.setEnabled(true);
 					txtPlaca.setEditable(true);
 					txtCor.setEditable(true);
+					txtCor.setEnabled(true);
 					txtMarca.setEditable(true);
+					txtMarca.setEnabled(true);
 					txtModelo.setEditable(true);
+					txtModelo.setEnabled(true);
 					btnSalvarV.setText("Salvar");
 					
 				} else if (btnSalvarV.getText().equals("Salvar")) {
@@ -343,8 +347,12 @@ public class Perfil extends JFrame {
 						erroAoAtualizar.setVisible(true);
 					}
 					txtPlaca.setEnabled(false);
+					txtPlaca.setEditable(false);
 					txtCor.setEnabled(false);
+					txtCor.setEditable(false);
+					txtMarca.setEditable(false);
 					txtMarca.setEnabled(false);
+					txtModelo.setEditable(false);
 					txtModelo.setEnabled(false);
 					btnSalvarV.setText("Editar");
 				}
