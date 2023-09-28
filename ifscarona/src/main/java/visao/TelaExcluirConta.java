@@ -88,7 +88,13 @@ public class TelaExcluirConta extends JFrame {
 		btnSim.setBounds(108, 127, 84, 31);
 		contentPane.add(btnSim);
 
+
 		JButton btnNo = new JButton("NÃO");
+		btnNo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnNo.setForeground(Color.WHITE);
 		btnNo.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		btnNo.setBorder(null);

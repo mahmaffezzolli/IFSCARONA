@@ -91,6 +91,12 @@ public class TelaExcluirVeiculo extends JFrame {
 		contentPane.add(btnSim);
 
 		JButton btnNo = new JButton("NÃO");
+		btnNo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+			
 		btnNo.setForeground(Color.WHITE);
 		btnNo.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		btnNo.setBorder(null);

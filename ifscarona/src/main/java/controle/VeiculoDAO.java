@@ -30,7 +30,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO veiculos " + "(placa, cor, marca, modelo) " + "VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO veiculos (placa, cor, marca, modelo) VALUES (?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
