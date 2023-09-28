@@ -7,6 +7,7 @@ public class Veiculo {
 	private String cor;
 	private String marca;
 	private String modelo;
+	private Pessoa pessoa;
 
 	public Integer getIdVeiculo() {
 		return idVeiculo;
@@ -46,6 +47,14 @@ public class Veiculo {
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 }

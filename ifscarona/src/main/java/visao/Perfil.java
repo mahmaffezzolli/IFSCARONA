@@ -40,6 +40,7 @@ public class Perfil extends JFrame {
 	private JTextField txtModelo;
 	private JTextField txtCor;
 	private JTextField txtMarca;
+	private JTextField txtCPF2;
 
 	/**
 	 * Launch the application.
@@ -401,6 +402,19 @@ public class Perfil extends JFrame {
 		btnAddVeiculo.setBackground(Color.WHITE);
 		btnAddVeiculo.setBounds(1420, 767, 165, 40);
 		contentPane.add(btnAddVeiculo);
+		
+		JLabel lbCPF = new JLabel("CPF:");
+		lbCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lbCPF.setBounds(1271, 512, 94, 20);
+		contentPane.add(lbCPF);
+		
+		txtCPF2 = new JTextField();
+		txtCPF2.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtCPF2.setEnabled(false);
+		txtCPF2.setEditable(false);
+		txtCPF2.setColumns(10);
+		txtCPF2.setBounds(1411, 512, 300, 40);
+		contentPane.add(txtCPF2);
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
 

@@ -72,6 +72,7 @@ public class TelaExcluirConta extends JFrame {
 
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
 				
+				// TODO que que ta acontecendo???????
 				Inicio inicio = new Inicio();
 				Perfil perfil = new Perfil();
 				inicio.setVisible(true);

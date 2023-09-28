@@ -53,6 +53,8 @@ public class CadastroVeiculo extends JFrame {
 	private JLabel lblCarro;
 	private JButton btnCancelarVeiculo;
 	private JComboBox<String> BoxCor;
+	private JTextField textCpf;
+	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -85,6 +87,22 @@ public class CadastroVeiculo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblIconeCPF = new JLabel("");
+		lblIconeCPF.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/cpf.png")));
+		lblIconeCPF.setBounds(930, 608, 59, 65);
+		contentPane.add(lblIconeCPF);
+		
+		JLabel lblCpf = new JLabel("CPF:");
+		lblCpf.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblCpf.setBounds(999, 589, 147, 14);
+		contentPane.add(lblCpf);
+		
+		textCpf = new JTextField();
+		textCpf.setColumns(10);
+		textCpf.setBackground(new Color(255, 251, 233));
+		textCpf.setBounds(999, 616, 336, 45);
+		contentPane.add(textCpf);
+		
 		BoxCor = new JComboBox<String>();
 		BoxCor.setModel(new DefaultComboBoxModel(new String[] {"SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t", "Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t"}));
 		BoxCor.setToolTipText("");
@@ -97,7 +115,7 @@ public class CadastroVeiculo extends JFrame {
 		btnCancelarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCancelarVeiculo.setForeground(new Color(0, 0, 0));
 		btnCancelarVeiculo.setBackground(new Color(255, 251, 233));
-		btnCancelarVeiculo.setBounds(1180, 646, 178, 54);
+		btnCancelarVeiculo.setBounds(1179, 706, 178, 54);
 		contentPane.add(btnCancelarVeiculo);
 		btnCancelarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,7 +190,7 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
-		btnCadastrarVeiculo.setBounds(951, 646, 178, 54);
+		btnCadastrarVeiculo.setBounds(950, 706, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 
 		// Validações
@@ -185,7 +203,7 @@ public class CadastroVeiculo extends JFrame {
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 				
 				// Obtem os valores dos campos de texto
-				
+				Long cpf = Long.valueOf(textCpf.getText());
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
@@ -207,7 +225,8 @@ public class CadastroVeiculo extends JFrame {
 				} else {
 					
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
-					
+				
+					v.setPessoa(pDAO.pegaPessoa(cpf));
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);

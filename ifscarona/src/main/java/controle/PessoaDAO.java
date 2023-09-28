@@ -197,5 +197,35 @@ public class PessoaDAO implements IPessoaDAO {
 
 		return null;
 	}
+	
+	public Pessoa pegaPessoa(Long cpf) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM pessoas WHERE cpf = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, cpf);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				Pessoa pessoa = new Pessoa();
+				pessoa.setCpf(rs.getLong("cpf"));
+				pessoa.setNome(rs.getString("nome"));
+				pessoa.setSobrenome(rs.getString("sobrenome"));
+				pessoa.setEmail(rs.getString("email"));
+
+				return pessoa;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
+	}
 
 }

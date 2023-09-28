@@ -30,7 +30,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO veiculos (placa, cor, marca, modelo) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO veiculos (placa, cor, marca, modelo, cpf_pessoa) VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -39,6 +39,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(2, veiculo.getCor());
 			ps.setString(3, veiculo.getMarca());
 			ps.setString(4, veiculo.getModelo());
+			ps.setLong(5, veiculo.getPessoa().getCpf());
 
 			ps.executeUpdate();
 
