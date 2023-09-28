@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -69,7 +70,13 @@ public class Cancelar extends JFrame {
 		btnSim.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Abre a tela de perfil 
-                Perfil Perfil = new Perfil();
+                Perfil Perfil = null;
+				try {
+					Perfil = new Perfil();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
                 Perfil.setVisible(true);
 
                 // Fecha a janela atual (Cancelar)
