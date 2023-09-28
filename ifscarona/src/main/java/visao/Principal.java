@@ -12,6 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import modelo.Pessoa;
+import modelo.Sessao;
+
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -55,6 +59,7 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+				
 		JCheckBox chckbxEmDiante = new JCheckBox("18 em diante");
 		chckbxEmDiante.setBounds(705, 505, 152, 43);
 		contentPane.add(chckbxEmDiante);
