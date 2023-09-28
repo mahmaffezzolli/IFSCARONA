@@ -430,6 +430,7 @@ public class Perfil extends JFrame {
 		txtCPF2.setColumns(10);
 		txtCPF2.setBounds(1411, 512, 300, 40);
 		contentPane.add(txtCPF2);
+		txtCPF2.setText(String.valueOf(Sessao.getPessoaLogada().getCpf()));
 		
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
@@ -453,6 +454,14 @@ public class Perfil extends JFrame {
 			
 			
 		}
+		
+		if(Sessao.getVeiculoLogado()!=null) {
+			txtMarca.setText(Sessao.getVeiculoLogado().getMarca());
+			txtCor.setText(Sessao.getVeiculoLogado().getCor());
+			txtModelo.setText(Sessao.getVeiculoLogado().getModelo());
+			txtPlaca.setText(Sessao.getVeiculoLogado().getPlaca());
+		}
+		
 
 	}
 }
