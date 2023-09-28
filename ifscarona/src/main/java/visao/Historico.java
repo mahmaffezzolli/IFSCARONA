@@ -3,9 +3,8 @@ package visao;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,20 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 
-import modelo.Carona;
-
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JTable;
-
-public class ListagemCaronas extends JFrame {
-	 private DefaultTableModel tableModel;
-	 private JTable table;
+public class Historico extends JFrame {
 
 	private JPanel contentPane;
 
@@ -38,7 +27,7 @@ public class ListagemCaronas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ListagemCaronas frame = new ListagemCaronas();
+					Historico frame = new Historico();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +39,7 @@ public class ListagemCaronas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ListagemCaronas() {
+	public Historico() {
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -93,21 +82,19 @@ public class ListagemCaronas extends JFrame {
 		lblFundo.setBounds(-2, -224, 468, 1650);
 		contentPane.add(lblFundo);
 		
-		 tableModel = new DefaultTableModel();
-	        tableModel.addColumn("Nome do Motorista");
-	        tableModel.addColumn("Hora de Saída");
-	        tableModel.addColumn("Veículo");
-	        
-	        
-	        // Inicialize a tabela com o modelo de tabela
-	        table = new JTable(tableModel);
-
-	        // Adicione a tabela a um JScrollPane para rolagem
-	        JScrollPane scrollPane = new JScrollPane(table);
-	        scrollPane.setBounds(616, 170, 1060, 651);
-	        contentPane.add(scrollPane);
+		JLabel lblNewLabel_1_2 = new JLabel("Histórico");
+		lblNewLabel_1_2.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
+		contentPane.add(lblNewLabel_1_2);
+		
+		
+		JLabel lblFundoFiltro = new JLabel("");
+		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
+		lblFundoFiltro.setBounds(850, 235, 852, 678);
+		contentPane.add(lblFundoFiltro);
 		
 
-
+		
 	}
+
 }

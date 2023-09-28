@@ -195,7 +195,7 @@ public class RequisitarCarona extends JFrame {
 		lblNewLabel_1_1.setBounds(1274, 293, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JButton btnNewButton = new JButton("Requisiar");
+		JButton btnNewButton = new JButton("Requisitar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
