@@ -74,11 +74,7 @@ public class TelaExcluirVeiculo extends JFrame {
 
 				boolean success = vDAO.deletarVeiculo(veiculoLogado);
 				
-				Inicio inicio = new Inicio();
-				Perfil perfil = new Perfil();
-				inicio.setVisible(true);
-				
-				perfil.dispose();
+
 				dispose();
 			}
 		});
