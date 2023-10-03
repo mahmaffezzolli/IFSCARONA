@@ -76,11 +76,9 @@ insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (0733
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (1111111111, 'IFSC', 'Arona', 'abc', '2023-03-01', '123');
 
 -- select
-
 SELECT COUNT(*) FROM pessoas;
 SELECT * FROM pessoas order by cpf;
 SELECT * FROM veiculos;
-
 
 -- update
 

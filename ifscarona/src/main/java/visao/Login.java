@@ -178,12 +178,12 @@ public class Login extends JFrame {
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(lblLinkAqui);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/assets/icons8-nova-mensagem-60.png")));
 		lblNewLabel.setBounds(808, 390, 99, 45);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(Login.class.getResource("/assets/senha.png")));
 		lblNewLabel_2.setBounds(816, 545, 120, 60);

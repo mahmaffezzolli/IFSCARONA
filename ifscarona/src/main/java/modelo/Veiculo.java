@@ -9,8 +9,6 @@ public class Veiculo {
 	private String modelo;
 	private Pessoa pessoa;
 
-	
-
 	public String getCpf_pessoa() {
 		return cpf_pessoa;
 	}
