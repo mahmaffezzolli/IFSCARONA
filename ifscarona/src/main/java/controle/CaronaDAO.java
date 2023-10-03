@@ -13,7 +13,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 	private static CaronaDAO instancia;
 
-	private CaronaDAO() {
+	public CaronaDAO() {
 
 	}
 

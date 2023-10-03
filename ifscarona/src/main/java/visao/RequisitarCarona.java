@@ -80,7 +80,6 @@ public class RequisitarCarona extends JFrame {
 	        chckbxBlumenau = new JCheckBox("Blumenau");
 	        chckbxBlumenau.setBounds(845, 387, 129, 23);
 	        contentPane.add(chckbxBlumenau);
-		
 	        chckbxGaspar.addItemListener(new ItemListener() {
 	            @Override
 	            public void itemStateChanged(ItemEvent e) {
@@ -185,7 +184,7 @@ public class RequisitarCarona extends JFrame {
 		lblFundoFiltro1.setBounds(723, 518, 320, 133);
 		contentPane.add(lblFundoFiltro1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
+		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?"); 
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
 		lblNewLabel_1.setBounds(676, 278, 530, 107);
 		contentPane.add(lblNewLabel_1);
