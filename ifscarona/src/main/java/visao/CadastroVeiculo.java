@@ -25,6 +25,7 @@ import javax.swing.text.MaskFormatter;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Pessoa;
+import modelo.Sessao;
 import modelo.Veiculo;
 
 import javax.swing.JPasswordField;
@@ -228,7 +229,7 @@ public class CadastroVeiculo extends JFrame {
 					
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
 				
-					v.setPessoa(pDAO.pegaPessoa(cpf));
+					v.setPessoa(Sessao.getPessoaLogada());
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
@@ -310,5 +311,8 @@ public class CadastroVeiculo extends JFrame {
 		txtfundoVerde.setBounds(-25, -2, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 
+	textCpf.setText(Sessao.getPessoaLogada().getCpf().toString());
+	textCpf.setEditable(false);
+	textCpf.setBackground(Color.gray);
 	}
 }

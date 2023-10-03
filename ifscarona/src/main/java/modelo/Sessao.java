@@ -19,6 +19,5 @@ public class Sessao {
 	public static void setVeiculoLogado(Veiculo veiculo) {
 		veiculoLogado = veiculo;
 	}
-    
  
 }

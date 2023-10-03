@@ -43,6 +43,7 @@ public class Perfil extends JFrame {
 	private JTextField txtCor;
 	private JTextField txtMarca;
 	private JTextField txtCPF2;
+	private JButton btnSalvar, btnExcluir, btnSalvarV;
 
 	/**
 	 * Launch the application.
@@ -63,7 +64,8 @@ public class Perfil extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @throws ParseException 
+	 * 
+	 * @throws ParseException
 	 */
 	public Perfil() throws ParseException {
 		Toolkit.getDefaultToolkit().getScreenSize();
@@ -86,8 +88,6 @@ public class Perfil extends JFrame {
 			}
 		});
 
-		
-	
 		btnHome.setBorder(null);
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(159, 203, 153));
@@ -145,6 +145,11 @@ public class Perfil extends JFrame {
 		contentPane.add(lblEmail);
 
 		txtCPF = new JTextField();
+		/*****************/
+		MaskFormatter mascaraCPF = null;
+		mascaraCPF = new MaskFormatter("###.###.###-##");
+		txtCPF = new JFormattedTextField(mascaraCPF);
+		/*****************/
 		txtCPF.setEnabled(false);
 		txtCPF.setEditable(false);
 		txtCPF.setBounds(695, 441, 300, 40);
@@ -260,44 +265,13 @@ public class Perfil extends JFrame {
 		txtMarca.setBounds(1411, 368, 300, 40);
 		contentPane.add(txtMarca);
 
-		
-		JButton btnSalvar = new JButton("Editar");
+		btnSalvar = new JButton("Editar");
 		btnSalvar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				if (btnSalvar.getText().equals("Editar")) {
+				editarPessoa();
 
-					txtNome.setEnabled(true);
-					txtNome.setEditable(true);
-					txtSobrenome.setEnabled(true);
-					txtSobrenome.setEditable(true);
-					btnSalvar.setText("Salvar");
-
-				} else if (btnSalvar.getText().equals("Salvar")) {
-
-					Pessoa pessoaLogada = Sessao.getPessoaLogada();
-
-					pessoaLogada.setNome(txtNome.getText());
-					pessoaLogada.setSobrenome(txtSobrenome.getText());
-
-					boolean success = pDAO.alterarPessoa(pessoaLogada);
-
-					if (success) {
-						DadosAtualizados dadosAtualizados = new DadosAtualizados();
-						dadosAtualizados.setVisible(true);
-					} else {
-						ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
-						erroAoAtualizar.setVisible(true);
-					}
-
-					txtNome.setEnabled(false);
-					txtNome.setEditable(false);
-					txtSobrenome.setEnabled(false);
-					txtSobrenome.setEditable(false);
-
-					btnSalvar.setText("Editar");
-				}
 			}
 		});
 
@@ -306,7 +280,7 @@ public class Perfil extends JFrame {
 		btnSalvar.setBounds(579, 665, 138, 40);
 		contentPane.add(btnSalvar);
 
-		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -322,54 +296,14 @@ public class Perfil extends JFrame {
 		btnExcluir.setBounds(827, 665, 138, 40);
 		contentPane.add(btnExcluir);
 
-		JButton btnSalvarV = new JButton("Editar");
+		btnSalvarV = new JButton("Editar");
 		btnSalvarV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if (btnSalvarV.getText().equals("Editar")) {
-					txtPlaca.setEnabled(true);
-					txtPlaca.setEditable(true);
-					txtCor.setEditable(true);
-					txtCor.setEnabled(true);
-					txtMarca.setEditable(true);
-					txtMarca.setEnabled(true);
-					txtModelo.setEditable(true);
-					txtModelo.setEnabled(true);
-					txtCPF2.setEditable(true);
-					txtCPF2.setEnabled(true);
-					btnSalvarV.setText("Salvar");
-					
-				} else if (btnSalvarV.getText().equals("Salvar")) {
-					Veiculo veiculoLogado = Sessao.getVeiculoLogado();
-					veiculoLogado.setCpf_pessoa(txtCPF2.getText());
-					veiculoLogado.setPlaca(txtPlaca.getText());
-					veiculoLogado.setCor(txtCor.getText());
-					veiculoLogado.setMarca(txtMarca.getText());
-					veiculoLogado.setModelo(txtModelo.getText());
-					
-					boolean success = vDAO.alterarVeiculo(veiculoLogado);
-					if (success) {
-						DadosAtualizados dadosAtualizados = new DadosAtualizados();
-						dadosAtualizados.setVisible(true);
-					} else {
-						ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
-						erroAoAtualizar.setVisible(true);
-					}
-					txtPlaca.setEnabled(false);
-					txtPlaca.setEditable(false);
-					txtCor.setEnabled(false);
-					txtCor.setEditable(false);
-					txtMarca.setEditable(false);
-					txtMarca.setEnabled(false);
-					txtModelo.setEditable(false);
-					txtModelo.setEnabled(false);
-					txtCPF2.setEditable(false);
-					txtCPF2.setEnabled(false);
-					btnSalvarV.setText("Editar");
-				}
+
+				editarVeiculo();
 			}
 		});
-		
+
 		btnSalvarV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		btnSalvarV.setBackground(new Color(255, 255, 255));
 		btnSalvarV.setBounds(1314, 665, 138, 40);
@@ -412,12 +346,12 @@ public class Perfil extends JFrame {
 		btnAddVeiculo.setBackground(Color.WHITE);
 		btnAddVeiculo.setBounds(1420, 767, 165, 40);
 		contentPane.add(btnAddVeiculo);
-		
+
 		JLabel lbCPF = new JLabel("CPF:");
 		lbCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		lbCPF.setBounds(1271, 512, 94, 20);
 		contentPane.add(lbCPF);
-		
+
 		txtCPF2 = new JTextField();
 		/*****************/
 		MaskFormatter mascaraCPF2 = null;
@@ -430,8 +364,6 @@ public class Perfil extends JFrame {
 		txtCPF2.setColumns(10);
 		txtCPF2.setBounds(1411, 512, 300, 40);
 		contentPane.add(txtCPF2);
-		txtCPF2.setText(String.valueOf(Sessao.getPessoaLogada().getCpf()));
-		
 
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
 
@@ -440,28 +372,102 @@ public class Perfil extends JFrame {
 			txtEmail.setText(pessoaLogada.getEmail());
 			txtNome.setText(pessoaLogada.getNome());
 			txtCPF.setText(String.valueOf(pessoaLogada.getCpf()));
-			
-			
+			txtData.setText(String.valueOf(pessoaLogada.getDataNasc()));
+
 		}
-		
+
 		Veiculo veiculoLogado = Sessao.getVeiculoLogado();
-			
+
 		if (veiculoLogado != null) {
 			txtPlaca.setText(veiculoLogado.getPlaca());
 			txtCor.setText(veiculoLogado.getCor());
 			txtMarca.setText(veiculoLogado.getMarca());
 			txtModelo.setText(veiculoLogado.getModelo());
-			
-			
-		}
-		
-		if(Sessao.getVeiculoLogado()!=null) {
-			txtMarca.setText(Sessao.getVeiculoLogado().getMarca());
-			txtCor.setText(Sessao.getVeiculoLogado().getCor());
-			txtModelo.setText(Sessao.getVeiculoLogado().getModelo());
-			txtPlaca.setText(Sessao.getVeiculoLogado().getPlaca());
-		}
-		
+			txtCPF2.setText(String.valueOf(Sessao.getPessoaLogada().getCpf()));
 
+		}
+
+	}
+
+	public void editarPessoa() {
+		if (btnSalvar.getText().equals("Editar")) {
+
+			txtNome.setEnabled(true);
+			txtNome.setEditable(true);
+			txtSobrenome.setEnabled(true);
+			txtSobrenome.setEditable(true);
+			btnSalvar.setText("Salvar");
+
+		} else if (btnSalvar.getText().equals("Salvar")) {
+
+			Pessoa pessoaLogada = Sessao.getPessoaLogada();
+
+			pessoaLogada.setNome(txtNome.getText());
+			pessoaLogada.setSobrenome(txtSobrenome.getText());
+
+			boolean success = pDAO.alterarPessoa(pessoaLogada);
+
+			if (success) {
+				DadosAtualizados dadosAtualizados = new DadosAtualizados();
+				dadosAtualizados.setVisible(true);
+			} else {
+				ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+				erroAoAtualizar.setVisible(true);
+			}
+
+			txtNome.setEnabled(false);
+			txtNome.setEditable(false);
+			txtSobrenome.setEnabled(false);
+			txtSobrenome.setEditable(false);
+
+			btnSalvar.setText("Editar");
+		}
+	}
+
+	public void editarVeiculo() {
+		
+		if (btnSalvarV.getText().equals("Editar")) {
+			txtPlaca.setEnabled(true);
+			txtPlaca.setEditable(true);
+			txtCor.setEditable(true);
+			txtCor.setEnabled(true);
+			txtMarca.setEditable(true);
+			txtMarca.setEnabled(true);
+			txtModelo.setEditable(true);
+			txtModelo.setEnabled(true);
+			txtCPF2.setEditable(true);
+			txtCPF2.setEnabled(true);
+			btnSalvarV.setText("Salvar");
+
+		} else if (btnSalvarV.getText().equals("Salvar")) {
+
+			Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+
+			veiculoLogado.setCpf_pessoa(txtCPF2.getText());
+			veiculoLogado.setPlaca(txtPlaca.getText());
+			veiculoLogado.setCor(txtCor.getText());
+			veiculoLogado.setMarca(txtMarca.getText());
+			veiculoLogado.setModelo(txtModelo.getText());
+
+			boolean success = vDAO.alterarVeiculo(veiculoLogado);
+			if (success) {
+				DadosAtualizados dadosAtualizados = new DadosAtualizados();
+				dadosAtualizados.setVisible(true);
+			} else {
+				ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+				erroAoAtualizar.setVisible(true);
+			}
+			txtPlaca.setEnabled(false);
+			txtPlaca.setEditable(false);
+			txtCor.setEnabled(false);
+			txtCor.setEditable(false);
+			txtMarca.setEditable(false);
+			txtMarca.setEnabled(false);
+			txtModelo.setEditable(false);
+			txtModelo.setEnabled(false);
+			txtCPF2.setEditable(false);
+			txtCPF2.setEnabled(false);
+			btnSalvarV.setText("Editar");
+		}
 	}
 }

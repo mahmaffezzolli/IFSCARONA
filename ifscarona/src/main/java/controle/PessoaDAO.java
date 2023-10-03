@@ -5,12 +5,14 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
+import modelo.Veiculo;
 
 public class PessoaDAO implements IPessoaDAO {
 
@@ -141,7 +143,7 @@ public class PessoaDAO implements IPessoaDAO {
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String email = rs.getString("email");
-				// LocalDate dataNasc = rs.getLocalDate(Date.valueOf(pessoa.getDataNasc()));
+				LocalDate dataNasc = rs.getDate("data_nasc").toLocalDate();
 				String senha = rs.getString("senha");
 
 				Pessoa p = new Pessoa();
@@ -149,7 +151,7 @@ public class PessoaDAO implements IPessoaDAO {
 				p.setNome(nome);
 				p.setSobrenome(sobrenome);
 				p.setEmail(email);
-				// p.setDataNasc(dataNasc);
+				p.setDataNasc(dataNasc);
 				p.setSenha(senha);
 
 				pessoas.add(p);
@@ -171,7 +173,10 @@ public class PessoaDAO implements IPessoaDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "SELECT * FROM pessoas WHERE email = ? AND senha = ?";
+		String query = "SELECT * FROM pessoas "
+				+ "INNER JOIN veiculos "
+				+ " WHERE pessoas.email = ? AND pessoas.senha = ?"
+				+ " AND pessoas.id_veiculo = veiculos.id_veiculo";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -186,6 +191,15 @@ public class PessoaDAO implements IPessoaDAO {
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setSobrenome(rs.getString("sobrenome"));
 				pessoa.setEmail(rs.getString("email"));
+				pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
+				
+				Veiculo veiculo = new Veiculo();
+				veiculo.setCor(rs.getString("cor"));
+				veiculo.setMarca(rs.getString("marca"));
+				veiculo.setModelo(rs.getString(0));
+				veiculo.setPlaca(rs.getString("placa"));
+				veiculo.setCpf_pessoa(rs.getString("cpf_pessoa"));
+				pessoa.setVeiculo(veiculo);
 
 				return pessoa;
 			}
@@ -216,6 +230,7 @@ public class PessoaDAO implements IPessoaDAO {
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setSobrenome(rs.getString("sobrenome"));
 				pessoa.setEmail(rs.getString("email"));
+				pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
 
 				return pessoa;
 			}
