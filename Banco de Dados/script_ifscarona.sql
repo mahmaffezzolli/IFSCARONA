@@ -6,16 +6,6 @@ CREATE DATABASE if not EXISTS bd_ifscarona;
 
 USE bd_ifscarona;
 
-CREATE TABLE IF NOT EXISTS `pessoas` (
-  `cpf` BIGINT NOT NULL,
-  `nome` VARCHAR(45) NOT NULL,
-  `sobrenome` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `data_nasc` DATE NOT NULL,
-  `senha` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cpf`)
-);
-
 CREATE TABLE IF NOT EXISTS `trajetos` (
   `id_trajeto` INT NOT NULL AUTO_INCREMENT,
   `origem` VARCHAR(45) NOT NULL,
@@ -30,10 +20,21 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
   `cpf_pessoa` BIGINT NOT NULL,
-  PRIMARY KEY (`id_veiculo`),
-  CONSTRAINT `fk_Veiculo_Pessoa1`
-    FOREIGN KEY (`cpf_pessoa`)
-    REFERENCES `pessoas` (`cpf`)
+  PRIMARY KEY (`id_veiculo`)
+);
+
+CREATE TABLE IF NOT EXISTS `pessoas` (
+  `cpf` BIGINT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `sobrenome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `data_nasc` DATE NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  `veiculo_id` INT,
+  PRIMARY KEY (`cpf`),
+  CONSTRAINT `fk_Pessoa_Veiculo1`
+    FOREIGN KEY (`veiculo_id`)
+    REFERENCES `veiculos`(`id_veiculo`)
 );
 
 CREATE TABLE IF NOT EXISTS `caronas` (
