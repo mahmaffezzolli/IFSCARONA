@@ -30,10 +30,10 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
   `email` VARCHAR(45) NOT NULL,
   `data_nasc` DATE NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `veiculo_id` INT,
+  `id_veiculo` INT,
   PRIMARY KEY (`cpf`),
   CONSTRAINT `fk_Pessoa_Veiculo1`
-    FOREIGN KEY (`veiculo_id`)
+    FOREIGN KEY (`id_veiculo`)
     REFERENCES `veiculos`(`id_veiculo`)
 );
 

@@ -10,6 +10,7 @@ public class Pessoa {
 	private LocalDate dataNasc;
 	private String senha;
 	private String email;
+	private Integer idVeiculo;
 	private Veiculo veiculo;
 
 	public Veiculo getVeiculo() {
@@ -66,6 +67,14 @@ public class Pessoa {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getIdVeiculo() {
+		return idVeiculo;
+	}
+
+	public void setIdVeiculo(Integer idVeiculo) {
+		this.idVeiculo = idVeiculo;
 	}
 
 }

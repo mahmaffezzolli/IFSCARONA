@@ -170,47 +170,50 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public Pessoa login(String email, String senha) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
 
-		String query = "SELECT * FROM pessoas "
-				+ "INNER JOIN veiculos "
-				+ " WHERE pessoas.email = ? AND pessoas.senha = ?"
-				+ " AND pessoas.id_veiculo = veiculos.id_veiculo";
+	    String query = "SELECT * FROM pessoas "
+	            + "LEFT JOIN veiculos ON pessoas.id_veiculo = veiculos.id_veiculo "
+	            + "WHERE pessoas.email = ? AND pessoas.senha = ?";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, email);
-			ps.setString(2, senha);
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
+	        ps.setString(1, email);
+	        ps.setString(2, senha);
 
-			ResultSet rs = ps.executeQuery();
+	        ResultSet rs = ps.executeQuery();
 
-			if (rs.next()) {
-				Pessoa pessoa = new Pessoa();
-				pessoa.setCpf(rs.getLong("cpf"));
-				pessoa.setNome(rs.getString("nome"));
-				pessoa.setSobrenome(rs.getString("sobrenome"));
-				pessoa.setEmail(rs.getString("email"));
-				pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
-				
-				Veiculo veiculo = new Veiculo();
-				veiculo.setCor(rs.getString("cor"));
-				veiculo.setMarca(rs.getString("marca"));
-				veiculo.setModelo(rs.getString(0));
-				veiculo.setPlaca(rs.getString("placa"));
-				veiculo.setCpf_pessoa(rs.getString("cpf_pessoa"));
-				pessoa.setVeiculo(veiculo);
+	        if (rs.next()) {
+	            Pessoa pessoa = new Pessoa();
+	            pessoa.setCpf(rs.getLong("cpf"));
+	            pessoa.setNome(rs.getString("nome"));
+	            pessoa.setSobrenome(rs.getString("sobrenome"));
+	            pessoa.setEmail(rs.getString("email"));
+	            pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
 
-				return pessoa;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			c.fecharConexao();
-		}
+	            if (rs.getString("placa") != null) {
+	                Veiculo veiculo = new Veiculo();
+	                veiculo.setCor(rs.getString("cor"));
+	                veiculo.setMarca(rs.getString("marca"));
+	                veiculo.setModelo(rs.getString("modelo"));
+	                veiculo.setPlaca(rs.getString("placa"));
+	                veiculo.setCpf_pessoa(rs.getString("cpf_pessoa"));
+	                pessoa.setVeiculo(veiculo);
+	            }
 
-		return null;
+	            return pessoa;
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
+
+	    return null;
 	}
+
 	
 	public Pessoa pegaPessoa(String cpf) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
