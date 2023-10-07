@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.IVeiculoDAO;
+import modelo.Pessoa;
 import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
@@ -38,8 +39,8 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(1, veiculo.getPlaca());
 			ps.setString(2, veiculo.getCor());
 			ps.setString(3, veiculo.getMarca());
-			ps.setString(4, veiculo.getModelo());
-			ps.setLong(5, veiculo.getPessoa().getCpf());
+			ps.setString(4, veiculo.getModelo()); 
+			ps.setString(5, veiculo.getPessoa().getCpf());
 
 			ps.executeUpdate();
 
@@ -61,29 +62,27 @@ public class VeiculoDAO implements IVeiculoDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE veiculos SET placa = ?, cor =?, marca = ?, modelo = ? WHERE cpf_pessoa = ?";
+		
+			String query = "UPDATE veiculos SET placa = ?, cor = ?, marca = ?, modelo = ? WHERE cpf_pessoa = ?";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, veiculo.getPlaca());
-			ps.setString(2, veiculo.getCor());
-			ps.setString(3, veiculo.getMarca());
-			ps.setString(4, veiculo.getModelo());
-			ps.setLong(5, veiculo.getPessoa().getCpf());
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, veiculo.getPlaca());
+				ps.setString(2, veiculo.getCor());
+				ps.setString(3, veiculo.getMarca());
+				ps.setString(4, veiculo.getModelo());
+				ps.setString(5, veiculo.getPessoa().getCpf());
 
-			ps.executeUpdate();
+				ps.executeUpdate();
 
-			return true;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			c.fecharConexao();
-		}
-
-		return false;
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				c.fecharConexao();
+			}
+		
+		return false; 
 	}
 
 	@Override
@@ -130,7 +129,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 			while (rs.next()) {
 
-				String cpf= rs.getString("cpf");
+				String cpf = rs.getString("cpf_pessoa");
 				String placa = rs.getString("placa");
 				String cor = rs.getString("cor");
 				String marca = rs.getString("marca");
@@ -157,6 +156,53 @@ public class VeiculoDAO implements IVeiculoDAO {
 		}
 
 		return veiculos;
+	}
+
+	public Veiculo conexaoVeiculoPessoa(Pessoa pessoa) {
+
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		Veiculo veiculo = null;
+
+		String query = "SELECT * FROM veiculos WHERE cpf_pessoa = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, pessoa.getCpf());
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				String cpfPessoa = rs.getString("cpf_pessoa");
+				String placa = rs.getString("placa");
+				String cor = rs.getString("cor");
+				String marca = rs.getString("marca");
+				String modelo = rs.getString("modelo");
+
+				veiculo = new Veiculo();
+
+				veiculo.setCpf_pessoa(cpfPessoa);
+				veiculo.setPessoa(pessoa);
+				veiculo.setPlaca(placa);
+				veiculo.setCor(cor);
+				veiculo.setMarca(marca);
+				veiculo.setModelo(modelo);
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			c.fecharConexao();
+
+		}
+
+		return veiculo;
 	}
 
 }

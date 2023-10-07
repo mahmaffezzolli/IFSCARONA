@@ -70,7 +70,7 @@ public class TelaExcluirVeiculo extends JFrame {
 		btnSim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+				Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
 
 				boolean success = vDAO.deletarVeiculo(veiculoLogado);
 				

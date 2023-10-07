@@ -1,23 +1,14 @@
 package modelo;
 
 public class Sessao {
-    private static Pessoa pessoaLogada;
-    private static Veiculo veiculoLogado;
+	private static Pessoa pessoaLogada;
 
-    public static Pessoa getPessoaLogada() {
-        return pessoaLogada;
-    }
-
-    public static void setPessoaLogada(Pessoa pessoa) {
-        pessoaLogada = pessoa;
-    }
-
-	public static Veiculo getVeiculoLogado() {
-		return veiculoLogado;
+	public static Pessoa getPessoaLogada() {
+		return pessoaLogada;
 	}
 
-	public static void setVeiculoLogado(Veiculo veiculo) {
-		veiculoLogado = veiculo;
+	public static void setPessoaLogada(Pessoa pessoa) {
+		pessoaLogada = pessoa;
 	}
- 
+
 }

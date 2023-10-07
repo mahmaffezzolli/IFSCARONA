@@ -6,7 +6,7 @@ public class Pessoa {
 
 	private String nome;
 	private String sobrenome;
-	private Long cpf;
+	private String cpf;
 	private LocalDate dataNasc;
 	private String senha;
 	private String email;
@@ -37,11 +37,11 @@ public class Pessoa {
 		this.sobrenome = sobrenome;
 	}
 
-	public Long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

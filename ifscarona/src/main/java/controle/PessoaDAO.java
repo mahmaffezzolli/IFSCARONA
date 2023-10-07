@@ -43,7 +43,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 			ps.setString(1, pessoa.getNome());
 			ps.setString(2, pessoa.getSobrenome());
-			ps.setLong(3, pessoa.getCpf());
+			ps.setString(3, pessoa.getCpf());
 			ps.setDate(4, Date.valueOf(pessoa.getDataNasc()));
 			ps.setString(5, pessoa.getSenha());
 			ps.setString(6, pessoa.getEmail());
@@ -73,7 +73,7 @@ public class PessoaDAO implements IPessoaDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, pessoa.getNome());
 			ps.setString(2, pessoa.getSobrenome());
-			ps.setLong(3, pessoa.getCpf());
+			ps.setString(3, pessoa.getCpf());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -104,7 +104,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, pessoa.getCpf());
+			ps.setString(1, pessoa.getCpf());
 
 			ps.executeUpdate();
 
@@ -139,7 +139,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 			while (rs.next()) {
 
-				Long cpf = rs.getLong("cpf");
+				String cpf = rs.getString("cpf");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String email = rs.getString("email");
@@ -186,7 +186,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 	        if (rs.next()) {
 	            Pessoa pessoa = new Pessoa();
-	            pessoa.setCpf(rs.getLong("cpf"));
+	            pessoa.setCpf(rs.getString("cpf"));
 	            pessoa.setNome(rs.getString("nome"));
 	            pessoa.setSobrenome(rs.getString("sobrenome"));
 	            pessoa.setEmail(rs.getString("email"));
@@ -229,7 +229,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 			if (rs.next()) {
 				Pessoa pessoa = new Pessoa();
-				pessoa.setCpf(rs.getLong("cpf"));
+				pessoa.setCpf(rs.getString("cpf"));
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setSobrenome(rs.getString("sobrenome"));
 				pessoa.setEmail(rs.getString("email"));

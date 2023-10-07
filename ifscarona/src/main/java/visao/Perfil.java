@@ -376,7 +376,7 @@ public class Perfil extends JFrame {
 
 		}
 
-		Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+		Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(pessoaLogada);
 
 		if (veiculoLogado != null) {
 			txtPlaca.setText(veiculoLogado.getPlaca());
@@ -384,6 +384,8 @@ public class Perfil extends JFrame {
 			txtMarca.setText(veiculoLogado.getMarca());
 			txtModelo.setText(veiculoLogado.getModelo());
 			txtCPF2.setText(String.valueOf(Sessao.getPessoaLogada().getCpf()));
+
+			btnAddVeiculo.setEnabled(false);
 
 		}
 
@@ -425,8 +427,9 @@ public class Perfil extends JFrame {
 	}
 
 	public void editarVeiculo() {
-		
+
 		if (btnSalvarV.getText().equals("Editar")) {
+
 			txtPlaca.setEnabled(true);
 			txtPlaca.setEditable(true);
 			txtCor.setEditable(true);
@@ -435,28 +438,35 @@ public class Perfil extends JFrame {
 			txtMarca.setEnabled(true);
 			txtModelo.setEditable(true);
 			txtModelo.setEnabled(true);
-			txtCPF2.setEditable(true);
-			txtCPF2.setEnabled(true);
+
 			btnSalvarV.setText("Salvar");
 
 		} else if (btnSalvarV.getText().equals("Salvar")) {
 
-			Veiculo veiculoLogado = Sessao.getVeiculoLogado();
+			Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
 
-			veiculoLogado.setCpf_pessoa(txtCPF2.getText());
-			veiculoLogado.setPlaca(txtPlaca.getText());
-			veiculoLogado.setCor(txtCor.getText());
-			veiculoLogado.setMarca(txtMarca.getText());
-			veiculoLogado.setModelo(txtModelo.getText());
+			if (veiculoLogado != null && veiculoLogado.getPessoa() != null) {
 
-			boolean success = vDAO.alterarVeiculo(veiculoLogado);
-			if (success) {
-				DadosAtualizados dadosAtualizados = new DadosAtualizados();
-				dadosAtualizados.setVisible(true);
+				veiculoLogado.setCpf_pessoa(txtCPF2.getText());
+				veiculoLogado.setPlaca(txtPlaca.getText());
+				veiculoLogado.setCor(txtCor.getText());
+				veiculoLogado.setMarca(txtMarca.getText());
+				veiculoLogado.setModelo(txtModelo.getText());
+
+				boolean success = vDAO.alterarVeiculo(veiculoLogado);
+
+				if (success) {
+					DadosAtualizados dadosAtualizados = new DadosAtualizados();
+					dadosAtualizados.setVisible(true);
+				} else {
+					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+					erroAoAtualizar.setVisible(true);
+				}
+
 			} else {
-				ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
-				erroAoAtualizar.setVisible(true);
+				System.out.println("Pessoa é null");
 			}
+
 			txtPlaca.setEnabled(false);
 			txtPlaca.setEditable(false);
 			txtCor.setEnabled(false);
@@ -470,4 +480,5 @@ public class Perfil extends JFrame {
 			btnSalvarV.setText("Editar");
 		}
 	}
+
 }
