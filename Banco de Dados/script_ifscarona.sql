@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   `cor` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
-  `cpf_pessoa` BIGINT NOT NULL,
+  `cpf_pessoa` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_veiculo`)
 );
 
 CREATE TABLE IF NOT EXISTS `pessoas` (
-  `cpf` BIGINT NOT NULL,
+  `cpf` VARCHAR(45) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
 
 CREATE TABLE IF NOT EXISTS `caronas` (
   `id_carona` INT NOT NULL AUTO_INCREMENT,
-  `cpf_motorista` BIGINT(11) NOT NULL,
+  `cpf_motorista` VARCHAR(45) NOT NULL,
   `id_trajeto` INT NOT NULL,
   `id_veiculo` INT NOT NULL,
   PRIMARY KEY (`id_carona`),
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `caronas` (
 
 CREATE TABLE IF NOT EXISTS `caronas_has_pessoas` (
   `caronas_id_carona` INT NOT NULL AUTO_INCREMENT,
-  `pessoas_cpf` BIGINT(11) NOT NULL,
+  `pessoas_cpf` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`caronas_id_carona`, `pessoas_cpf`),
   CONSTRAINT `fk_caronas_has_pessoas_caronas1`
     FOREIGN KEY (`caronas_id_carona`)
@@ -68,13 +68,13 @@ CREATE TABLE IF NOT EXISTS `caronas_has_pessoas` (
 
 -- insert into pessoas
 
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (1003081967, 'Kelli', 'Walker', 'kloughlan0@state.gov', '1975-05-15', 'xH2%lR7a');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (2671235844, 'Malvina', 'Luna', 'mluna0@toplist.cz', '1975-05-15', 'dM7`\Yo9');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (5164124882, 'Carlin', 'Seakes', 'cseakes1@irs.gov', '1975-05-15', 'xY1,ib)Cs0');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (0759956294, 'Cristabel', 'Crompton', 'ccrompton2@va.gov', '1975-05-15', 'tI7#J,n<jP0+SdE');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (1134080441, 'Chrissy', 'Squeers', 'csqueers3@google.com.au', '1975-05-15', 'cJ4>4/Zm8afHxyB');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (0733404561, 'Michelina', 'Chessil', 'mchessil4@globo.com', '1975-05-15', 'rT3|BvQ+Ve');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values (1111111111, 'IFSC', 'Arona', 'abc', '2023-03-01', '123');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('10030181967', 'Kelli', 'Walker', 'kloughlan0@state.gov', '1975-05-15', 'xH2%lR7a');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('26712351844', 'Malvina', 'Luna', 'mluna0@toplist.cz', '1975-05-15', 'dM7`\Yo9');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('51614124882', 'Carlin', 'Seakes', 'cseakes1@irs.gov', '1975-05-15', 'xY1,ib)Cs0');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('07599156294', 'Cristabel', 'Crompton', 'ccrompton2@va.gov', '1975-05-15', 'tI7#J,n<jP0+SdE');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('11340801441', 'Chrissy', 'Squeers', 'csqueers3@google.com.au', '1975-05-15', 'cJ4>4/Zm8afHxyB');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('07334041561', 'Michelina', 'Chessil', 'mchessil4@globo.com', '1975-05-15', 'rT3|BvQ+Ve');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('11111111111', 'IFSC', 'Arona', 'abc', '2023-03-01', '123');
 
 -- select
 SELECT COUNT(*) FROM pessoas;
@@ -83,10 +83,10 @@ SELECT * FROM veiculos;
 
 -- update
 
-UPDATE pessoas set nome = 'Ash', sobrenome = 'Mezadri', email = 'Ash2005@gmail.com', data_nasc = '2005-06-10', senha = 'jurema123' Where cpf = 1003081967;
+UPDATE pessoas set nome = 'Ash', sobrenome = 'Mezadri', email = 'Ash2005@gmail.com', data_nasc = '2005-06-10', senha = 'jurema123' Where cpf = '10030181967';
 
 -- delete
 
-DELETE FROM pessoas WHERE cpf = 1003081967;
+DELETE FROM pessoas WHERE cpf = '10030181967';
 
 desc pessoas;

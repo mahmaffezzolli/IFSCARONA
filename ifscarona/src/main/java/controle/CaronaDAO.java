@@ -37,7 +37,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 			ps.setInt(1, carona.getTrajeto().getIdTrajeto());
 			// ps.setString(2, carona.getPassageiro());
-			ps.setLong(3, carona.getMotorista().getCpf());
+			ps.setString(3, carona.getMotorista().getCpf());
 
 			ps.executeUpdate();
 
