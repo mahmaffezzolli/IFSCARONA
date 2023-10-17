@@ -45,15 +45,13 @@ public class TrajetoDAOTest {
 		assertEquals(true, sucesso);
 	}
 
-//	@Test
-//	public void testCadastrarPessoaErro() {
-//		Pessoa pessoa = null;
-//
-//		PessoaDAO pDAO = PessoaDAO.getInstancia();
-//		Boolean erro = pDAO.cadastrarPessoa(pessoa);
-//
-//		assertEquals(false, erro);
-//	}
+	@Test
+	public void testCadastrarTrajetoErro() {
+	Trajeto trajeto = null;
 
+	TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+	Boolean erro = tDAO.cadastrarTrajeto(trajeto);
+		assertEquals(false, erro);	}
+	
 }
 
