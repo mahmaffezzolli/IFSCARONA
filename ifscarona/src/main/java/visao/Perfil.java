@@ -447,7 +447,8 @@ public class Perfil extends JFrame {
 
 			if (veiculoLogado != null && veiculoLogado.getPessoa() != null) {
 
-				veiculoLogado.setCpf_pessoa(txtCPF2.getText());
+				//veiculoLogado.setPessoa();
+				//veiculoLogado.setCpf_pessoa(txtCPF2.getText());
 				veiculoLogado.setPlaca(txtPlaca.getText());
 				veiculoLogado.setCor(txtCor.getText());
 				veiculoLogado.setMarca(txtMarca.getText());

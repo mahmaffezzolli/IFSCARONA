@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import modelo.IVeiculoDAO;
 import modelo.Pessoa;
+import modelo.Sessao;
 import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
@@ -95,7 +96,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, veiculo.getCpf_pessoa());
+			ps.setString(1, veiculo.getPessoa().getCpf());
 
 			ps.executeUpdate();
 
@@ -136,8 +137,8 @@ public class VeiculoDAO implements IVeiculoDAO {
 				String modelo = rs.getString("modelo");
 
 				Veiculo v = new Veiculo();
-
-				v.setCpf_pessoa(cpf);
+				
+				//v.setPessoa();
 				v.setPlaca(placa);
 				v.setCor(cor);
 				v.setMarca(marca);
@@ -183,7 +184,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 				veiculo = new Veiculo();
 
-				veiculo.setCpf_pessoa(cpfPessoa);
+				veiculo.setPessoa(pessoa);
 				veiculo.setPessoa(pessoa);
 				veiculo.setPlaca(placa);
 				veiculo.setCor(cor);

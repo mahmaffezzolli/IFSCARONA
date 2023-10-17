@@ -194,7 +194,8 @@ public class PessoaDAO implements IPessoaDAO {
 					veiculo.setMarca(rs.getString("marca"));
 					veiculo.setModelo(rs.getString("modelo"));
 					veiculo.setPlaca(rs.getString("placa"));
-					veiculo.setCpf_pessoa(rs.getString("cpf_pessoa"));
+					//veiculo.setCpf_pessoa(rs.getString("cpf_pessoa"));
+					veiculo.setPessoa(pessoa);
 					pessoa.setVeiculo(veiculo);
 				}
 

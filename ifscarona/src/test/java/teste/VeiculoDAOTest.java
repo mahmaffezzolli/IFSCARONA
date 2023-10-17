@@ -24,7 +24,7 @@ public class VeiculoDAOTest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
-		veiculo.setCpf_pessoa(pessoa.getCpf());
+		//veiculo.setPessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
 		veiculo.setPessoa(pessoa);
@@ -49,7 +49,7 @@ public class VeiculoDAOTest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
-		veiculo.setCpf_pessoa(pessoa.getCpf());
+		//veiculo.setCpf_pessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
 		veiculo.setPessoa(pessoa);
@@ -74,7 +74,7 @@ public class VeiculoDAOTest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
-		veiculo.setCpf_pessoa(pessoa.getCpf());
+		//veiculo.setCpf_pessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
 		veiculo.setPessoa(pessoa);

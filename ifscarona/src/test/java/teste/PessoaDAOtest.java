@@ -27,7 +27,7 @@ public class PessoaDAOtest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor(null);
-		veiculo.setCpf_pessoa(null);
+		veiculo.setPessoa(null);
 		veiculo.setMarca(null);
 		veiculo.setModelo(null);
 		veiculo.setPessoa(pessoa);
