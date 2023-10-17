@@ -6,7 +6,7 @@ public class Veiculo {
 	private String cor;
 	private String marca;
 	private String modelo;
-	private Pessoa pessoa;
+	private Pessoa motorista;
 
 	public String getPlaca() {
 		return placa;
@@ -40,12 +40,12 @@ public class Veiculo {
 		this.modelo = modelo;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Pessoa getMotorista() {
+		return motorista;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setMotorista(Pessoa motorista) {
+		this.motorista = motorista;
 	}
 
 }

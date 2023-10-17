@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `caronas` (
   `cpf_motorista` VARCHAR(45) NOT NULL,
   `id_trajeto` INT NOT NULL,
   `id_veiculo` INT NOT NULL,
+  `qnt_passageiros` INT NOT NULL,
   PRIMARY KEY (`id_carona`),
   CONSTRAINT `fk_Carona_Pessoa1`
     FOREIGN KEY (`cpf_motorista`)

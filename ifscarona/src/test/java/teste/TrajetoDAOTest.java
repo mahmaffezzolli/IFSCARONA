@@ -23,10 +23,10 @@ public class TrajetoDAOTest {
 		
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor(null);
-		veiculo.setPessoa(null);
+		veiculo.setMotorista(null);
 		veiculo.setMarca(null);
 		veiculo.setModelo(null);
-		veiculo.setPessoa(null);
+		veiculo.setMotorista(null);
 		veiculo.setPlaca(null);
 		
 		Pessoa pessoa = new Pessoa();

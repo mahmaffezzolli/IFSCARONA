@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.IVeiculoDAO;
+import modelo.Motorista;
 import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
@@ -41,7 +42,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(2, veiculo.getCor());
 			ps.setString(3, veiculo.getMarca());
 			ps.setString(4, veiculo.getModelo()); 
-			ps.setString(5, veiculo.getPessoa().getCpf());
+			ps.setString(5, veiculo.getMotorista().getCpf());
 
 			ps.executeUpdate();
 
@@ -72,7 +73,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 				ps.setString(2, veiculo.getCor());
 				ps.setString(3, veiculo.getMarca());
 				ps.setString(4, veiculo.getModelo());
-				ps.setString(5, veiculo.getPessoa().getCpf());
+				ps.setString(5, veiculo.getMotorista().getCpf());
 
 				ps.executeUpdate();
 
@@ -96,7 +97,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, veiculo.getPessoa().getCpf());
+			ps.setString(1, veiculo.getMotorista().getCpf());
 
 			ps.executeUpdate();
 
@@ -159,7 +160,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 		return veiculos;
 	}
 
-	public Veiculo conexaoVeiculoPessoa(Pessoa pessoa) {
+	public Veiculo conexaoVeiculoPessoa(Pessoa motorista) {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
@@ -170,13 +171,12 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, pessoa.getCpf());
+			ps.setString(1, motorista.getCpf());
 
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
 
-				String cpfPessoa = rs.getString("cpf_pessoa");
 				String placa = rs.getString("placa");
 				String cor = rs.getString("cor");
 				String marca = rs.getString("marca");
@@ -184,8 +184,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 				veiculo = new Veiculo();
 
-				veiculo.setPessoa(pessoa);
-				veiculo.setPessoa(pessoa);
+				veiculo.setMotorista(motorista);
 				veiculo.setPlaca(placa);
 				veiculo.setCor(cor);
 				veiculo.setMarca(marca);

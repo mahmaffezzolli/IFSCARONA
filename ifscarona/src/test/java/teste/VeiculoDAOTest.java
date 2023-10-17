@@ -27,7 +27,7 @@ public class VeiculoDAOTest {
 		//veiculo.setPessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
-		veiculo.setPessoa(pessoa);
+		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("1234abc");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
@@ -52,7 +52,7 @@ public class VeiculoDAOTest {
 		//veiculo.setCpf_pessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
-		veiculo.setPessoa(pessoa);
+		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
@@ -77,7 +77,7 @@ public class VeiculoDAOTest {
 		//veiculo.setCpf_pessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
-		veiculo.setPessoa(pessoa);
+		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();

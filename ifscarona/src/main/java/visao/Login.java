@@ -134,7 +134,7 @@ public class Login extends JFrame {
 
 					if (pessoaLogada != null) {
 						Sessao.setPessoaLogada(pessoaLogada);
-
+						
 						Principal principal = new Principal();
 						principal.setVisible(true);
 
