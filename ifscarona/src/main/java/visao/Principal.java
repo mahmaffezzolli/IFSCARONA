@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import controle.VeiculoDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
+import modelo.Veiculo;
 
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
@@ -27,6 +29,7 @@ import javax.swing.JCheckBox;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
+	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -140,6 +143,16 @@ public class Principal extends JFrame {
 		contentPane.add(btnPerfil);
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
+		
+		Pessoa pessoaLogada = Sessao.getPessoaLogada();
+		
+		Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(pessoaLogada);
+		
+		if(veiculoLogado == null) {
+			btnNewButton_1.setEnabled(false);
+		}
+		
+		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new OferecerCarona().setVisible(true);
