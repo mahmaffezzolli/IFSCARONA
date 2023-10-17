@@ -40,11 +40,16 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
 CREATE TABLE IF NOT EXISTS `caronas` (
   `id_carona` INT NOT NULL AUTO_INCREMENT,
   `cpf_motorista` VARCHAR(45) NOT NULL,
+  `cpf_passageiro` VARCHAR(45) NOT NULL,
   `id_trajeto` INT NOT NULL,
   `id_veiculo` INT NOT NULL,
+  `qnt_passageiros` INT NOT NULL,
   PRIMARY KEY (`id_carona`),
   CONSTRAINT `fk_Carona_Pessoa1`
     FOREIGN KEY (`cpf_motorista`)
+    REFERENCES `pessoas` (`cpf`),
+  CONSTRAINT `fk_Carona_Pessoa2`
+    FOREIGN KEY (`cpf_passageiro`)
     REFERENCES `pessoas` (`cpf`),
   CONSTRAINT `fk_Carona_Trajeto1`
     FOREIGN KEY (`id_trajeto`)

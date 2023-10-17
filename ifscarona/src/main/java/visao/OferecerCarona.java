@@ -17,8 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import controle.CaronaDAO;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
@@ -30,6 +32,7 @@ public class OferecerCarona extends JFrame {
 	    private JComboBox<String> comboBox2;
 	    private JCheckBox chckbxGaspar;
 	    private JCheckBox chckbxBlumenau;
+	    private CaronaDAO cDAO = CaronaDAO.getInstancia();
 
 
 	/**
@@ -200,6 +203,9 @@ public class OferecerCarona extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected()) {
+					
+					
+					
 					new ListagemCaronas().setVisible(true);
 					 OferecerCarona.this.dispose();
 		        } else {
