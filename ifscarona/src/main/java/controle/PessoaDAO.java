@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
 import modelo.Veiculo;
