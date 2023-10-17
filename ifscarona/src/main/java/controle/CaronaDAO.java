@@ -30,7 +30,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO caronas " + "(trajeto, passageiro, motorista) " + "VALUES (?, ?, ?)";
+		String query = "INSERT INTO caronas " + "(id_trajeto, cpf_motorista, id_veiculo, qnt_passageiro) " + "VALUES (?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

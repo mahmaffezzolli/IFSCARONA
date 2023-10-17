@@ -445,7 +445,7 @@ public class Perfil extends JFrame {
 
 			Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
 
-			if (veiculoLogado != null && veiculoLogado.getPessoa() != null) {
+			if (veiculoLogado != null && veiculoLogado.getMotorista() != null) {
 
 				//veiculoLogado.setPessoa();
 				//veiculoLogado.setCpf_pessoa(txtCPF2.getText());

@@ -27,14 +27,14 @@ public class PessoaDAOtest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor(null);
-		veiculo.setPessoa(null);
+		veiculo.setMotorista(null);
 		veiculo.setMarca(null);
 		veiculo.setModelo(null);
-		veiculo.setPessoa(pessoa);
+		veiculo.setMotorista(null);
 		veiculo.setPlaca(null);
 
 		// Setou veiculo da pessoa
-		pessoa.setVeiculo(veiculo);
+		//pessoa.setVeiculo(veiculo);
 
 		PessoaDAO pDAO = PessoaDAO.getInstancia();
 		Boolean sucesso = pDAO.cadastrarPessoa(pessoa);

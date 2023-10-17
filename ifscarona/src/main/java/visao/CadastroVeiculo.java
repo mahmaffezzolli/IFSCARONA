@@ -229,7 +229,7 @@ public class CadastroVeiculo extends JFrame {
 					
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
 				
-					v.setPessoa(Sessao.getPessoaLogada());
+					v.setMotorista(Sessao.getPessoaLogada());
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
