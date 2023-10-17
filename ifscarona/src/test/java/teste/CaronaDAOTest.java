@@ -29,7 +29,8 @@ public class CaronaDAOTest {
 		pessoa.setSenha(null);
 		pessoa.setSobrenome(null);
 		
-		carona.setPassageiro(pessoa);
+		//setou pessoa da carona
+		//carona.setPassageiro(pessoa);
 		
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Boolean sucesso = cDAO.cadastrarCarona(carona);
@@ -38,5 +39,15 @@ public class CaronaDAOTest {
 		
 	
 	}
+	
+//	@Test
+//	public void testCadastrarCaronaErro() {
+//		Pessoa pessoa = null;
+//
+//		PessoaDAO pDAO = PessoaDAO.getInstancia();
+//		Boolean erro = pDAO.cadastrarPessoa(pessoa);
+//
+//		assertEquals(false, erro);
+//	}
 
 }
