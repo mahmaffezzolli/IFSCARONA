@@ -26,35 +26,38 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 	@Override
 	public boolean cadastrarTrajeto(Trajeto trajeto) {
+		if(trajeto != null) {
+			ConexaoBanco c = ConexaoBanco.getInstancia();
+			Connection con = c.conectar();
 
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+			String query = "INSERT INTO trajetos " + "(origem, destino) " + "VALUES (?, ?)";
 
-		String query = "INSERT INTO trajetos " + "(origem, destino) " + "VALUES (?, ?)";
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, trajeto.getOrigem());
+				ps.setString(2, trajeto.getDestino());
 
-			ps.setString(1, trajeto.getOrigem());
-			ps.setString(2, trajeto.getDestino());
+				ps.executeUpdate();
 
-			ps.executeUpdate();
+				return true;
 
-			return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+			} finally {
+				c.fecharConexao();
 
-		} finally {
-			c.fecharConexao();
-
+			}
+		
 		}
 		return false;
 	}
-
+		
 	@Override
 	public boolean alterarTrajeto(Trajeto trajeto) {
 
+		if(trajeto != null) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
@@ -77,12 +80,13 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 			c.fecharConexao();
 		}
-
+		}
 		return false;
 	}
 
 	@Override
 	public boolean deletarTrajeto(Trajeto trajeto) {
+		if(trajeto != null) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
@@ -102,13 +106,17 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} finally {
 
+			c.fecharConexao();
+		}
+		}
 		return false;
 	}
 
 	public ArrayList<Trajeto> listarTrajetos() {
 
+		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
@@ -144,8 +152,8 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 			c.fecharConexao();
 		}
-
+		
 		return trajetos;
 	}
-
-}
+	}
+	
