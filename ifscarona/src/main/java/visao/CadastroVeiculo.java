@@ -5,32 +5,20 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
-import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
 
-import javax.swing.JPasswordField;
-import javax.swing.JCheckBox;
-import java.awt.Dimension;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
@@ -55,7 +43,6 @@ public class CadastroVeiculo extends JFrame {
 	private JButton btnCancelarVeiculo;
 	private JComboBox<String> BoxCor;
 	private JTextField textCpf;
-	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 
 	/**
 	 * Launch the application.
