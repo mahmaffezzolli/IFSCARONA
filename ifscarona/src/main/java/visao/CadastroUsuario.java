@@ -312,7 +312,7 @@ public class CadastroUsuario extends JFrame {
 				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
 
-				String cpfS = txtCPF.getText(); 	
+				String cpfS = txtCPF.getText();
 
 				String email = txtEmail.getText();
 
@@ -347,11 +347,11 @@ public class CadastroUsuario extends JFrame {
 
 					// removendo a máscara
 					cpfS = cpfS.replaceAll("[.-]", "").trim();
-					
+
 					int cpfLength = cpfS.length();
 					if (cpfLength < 11) {
 
-					    cpfS = "0".repeat(11 - cpfLength) + cpfS;
+						cpfS = "0".repeat(11 - cpfLength) + cpfS;
 					}
 
 					Long cpf = Long.parseLong(cpfS);
@@ -364,6 +364,7 @@ public class CadastroUsuario extends JFrame {
 					p.setDataNasc(dataNascimento);
 
 					boolean success = pDAO.cadastrarPessoa(p);
+
 					if (success) {
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
@@ -377,6 +378,7 @@ public class CadastroUsuario extends JFrame {
 						CadastroErro cadastroErro = new CadastroErro();
 						cadastroErro.setVisible(true);
 					}
+
 				}
 			}
 

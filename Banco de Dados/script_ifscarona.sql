@@ -77,10 +77,11 @@ insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('113
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('07334041561', 'Michelina', 'Chessil', 'mchessil4@globo.com', '1975-05-15', 'rT3|BvQ+Ve');
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('11111111111', 'IFSC', 'Arona', 'abc', '2023-03-01', '123');
 
--- select
 SELECT COUNT(*) FROM pessoas;
 SELECT * FROM pessoas order by cpf;
 SELECT * FROM veiculos;
+SELECT * FROM trajetos;
+
 
 -- update
 

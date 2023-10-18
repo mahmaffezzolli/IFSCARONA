@@ -26,7 +26,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 	@Override
 	public boolean cadastrarTrajeto(Trajeto trajeto) {
-		if(trajeto != null) {
+		if (trajeto != null) {
 			ConexaoBanco c = ConexaoBanco.getInstancia();
 			Connection con = c.conectar();
 
@@ -49,74 +49,73 @@ public class TrajetoDAO implements ITrajetoDAO {
 				c.fecharConexao();
 
 			}
-		
+
 		}
 		return false;
 	}
-		
+
 	@Override
 	public boolean alterarTrajeto(Trajeto trajeto) {
 
-		if(trajeto != null) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+		if (trajeto != null) {
+			ConexaoBanco c = ConexaoBanco.getInstancia();
+			Connection con = c.conectar();
 
-		String query = "UPDATE trajetos SET origem = ?, destino = ? WHERE id_trajeto = ?";
+			String query = "UPDATE trajetos SET origem = ?, destino = ? WHERE id_trajeto = ?";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, trajeto.getOrigem());
-			ps.setString(2, trajeto.getDestino());
-			ps.setInt(3, trajeto.getIdTrajeto());
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, trajeto.getOrigem());
+				ps.setString(2, trajeto.getDestino());
+				ps.setInt(3, trajeto.getIdTrajeto());
 
-			ps.executeUpdate();
+				ps.executeUpdate();
 
-			return true;
+				return true;
 
-		} catch (SQLException e) {
+			} catch (SQLException e) {
 
-			e.printStackTrace();
-		} finally {
+				e.printStackTrace();
+			} finally {
 
-			c.fecharConexao();
-		}
+				c.fecharConexao();
+			}
 		}
 		return false;
 	}
 
 	@Override
 	public boolean deletarTrajeto(Trajeto trajeto) {
-		if(trajeto != null) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
+		if (trajeto != null) {
+			ConexaoBanco c = ConexaoBanco.getInstancia();
 
-		Connection con = c.conectar();
+			Connection con = c.conectar();
 
-		String query = "DELETE FROM trajetos WHERE id_trajeto = ?";
+			String query = "DELETE FROM trajetos WHERE id_trajeto = ?";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, trajeto.getIdTrajeto());
-			ps.setString(1, trajeto.getOrigem());
-			ps.setString(1, trajeto.getDestino());
-			ps.executeUpdate();
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, trajeto.getIdTrajeto());
+				ps.setString(1, trajeto.getOrigem());
+				ps.setString(1, trajeto.getDestino());
+				ps.executeUpdate();
 
-			c.fecharConexao();
+				c.fecharConexao();
 
-			return true;
+				return true;
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
 
-			c.fecharConexao();
-		}
+				c.fecharConexao();
+			}
 		}
 		return false;
 	}
 
 	public ArrayList<Trajeto> listarTrajetos() {
 
-		
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
@@ -152,8 +151,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 			c.fecharConexao();
 		}
-		
+
 		return trajetos;
 	}
-	}
-	
+}
