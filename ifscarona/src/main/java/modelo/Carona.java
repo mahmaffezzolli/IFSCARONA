@@ -1,11 +1,18 @@
 package modelo;
 
+import java.sql.Time;
+import java.time.LocalDate;
+
 public class Carona {
 
 	private Integer idCarona;
 	private Trajeto trajeto;
-	private Pessoa[] passageiro;
+	private Pessoa passageiro;
 	private Pessoa motorista;
+	private Veiculo veiculo;
+	private Integer qntPassageiro;
+	private LocalDate data;
+	private Time horario;
 
 	public Integer getIdCarona() {
 		return idCarona;
@@ -23,11 +30,11 @@ public class Carona {
 		this.trajeto = trajeto;
 	}
 
-	public Pessoa[] getPassageiro() {
+	public Pessoa getPassageiro() {
 		return passageiro;
 	}
 
-	public void setPassageiro(Pessoa[] passageiro) {
+	public void setPassageiro(Pessoa passageiro) {
 		this.passageiro = passageiro;
 	}
 
@@ -37,6 +44,38 @@ public class Carona {
 
 	public void setMotorista(Pessoa motorista) {
 		this.motorista = motorista;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public Integer getQntPassageiro() {
+		return qntPassageiro;
+	}
+
+	public void setQntPassageiro(Integer qntPassageiro) {
+		this.qntPassageiro = qntPassageiro;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public Time getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Time horario) {
+		this.horario = horario;
 	}
 
 }

@@ -76,6 +76,10 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
+		
+		JCheckBox cbIFSC = new JCheckBox("IFSC");
+		cbIFSC.setBounds(845, 472, 129, 23);
+		contentPane.add(cbIFSC);
 
 		chckbxGaspar = new JCheckBox("Gaspar");
 		chckbxGaspar.setBounds(845, 432, 129, 23);
@@ -179,12 +183,12 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblFundoFiltro = new JLabel("");
 		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro.setBounds(723, 360, 320, 133);
+		lblFundoFiltro.setBounds(723, 360, 320, 151);
 		contentPane.add(lblFundoFiltro);
 
 		JLabel lblFundoFiltro1 = new JLabel("");
 		lblFundoFiltro1.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro1.setBounds(723, 518, 320, 133);
+		lblFundoFiltro1.setBounds(723, 518, 320, 151);
 		contentPane.add(lblFundoFiltro1);
 
 		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");

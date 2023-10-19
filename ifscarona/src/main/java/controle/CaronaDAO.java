@@ -1,6 +1,7 @@
 package controle;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,15 +31,19 @@ public class CaronaDAO implements ICaronaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO caronas " + "(id_trajeto, cpf_motorista, id_veiculo, qnt_passageiro) " + "VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO caronas " + "(id_trajeto, cpf_motorista, cpf_passageiro, id_veiculo, qnt_passageiro, horario, data) " + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ps.setInt(1, carona.getTrajeto().getIdTrajeto());
-			// ps.setString(2, carona.getPassageiro());
-			ps.setString(3, carona.getMotorista().getCpf());
-
+			ps.setString(2, carona.getMotorista().getCpf());
+			ps.setString(3, carona.getPassageiro().getCpf());
+			ps.setInt(4, carona.getVeiculo().getIdVeiculo());
+			ps.setInt(5, carona.getQntPassageiro());
+			ps.setDate(6,  Date.valueOf(carona.getData()));
+			ps.setTime(7, carona.getHorario());
+			
 			ps.executeUpdate();
 
 			return true;
