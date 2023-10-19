@@ -40,9 +40,12 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
 CREATE TABLE IF NOT EXISTS `caronas` (
   `id_carona` INT NOT NULL AUTO_INCREMENT,
   `cpf_motorista` VARCHAR(45) NOT NULL,
+  `cpf_passageiro` VARCHAR(45),
   `id_trajeto` INT NOT NULL,
   `id_veiculo` INT NOT NULL,
   `qnt_passageiros` INT NOT NULL,
+  `horario` TIME NOT NULL,
+  `data` DATE NOT NULL,
   PRIMARY KEY (`id_carona`),
   CONSTRAINT `fk_Carona_Pessoa1`
     FOREIGN KEY (`cpf_motorista`)
@@ -81,6 +84,7 @@ SELECT COUNT(*) FROM pessoas;
 SELECT * FROM pessoas order by cpf;
 SELECT * FROM veiculos;
 SELECT * FROM trajetos;
+SELECT * FROM caronas;
 
 
 -- update
