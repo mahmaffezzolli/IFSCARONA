@@ -12,15 +12,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.PessoaDAO;
 import modelo.Pessoa;
@@ -84,7 +88,7 @@ public class Login extends JFrame {
 		lblNewLabel_3.setBounds(0, -238, 398, 1650);
 		contentPane.add(lblNewLabel_3);
 
-		JLabel lblEmail = new JLabel("E-mail institucional");
+		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
 		lblEmail.setBounds(900, 360, 191, 15);
 		contentPane.add(lblEmail);
@@ -123,38 +127,60 @@ public class Login extends JFrame {
 		btnLogar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+
 				String email = txtEmail.getText();
+
 				String senha = String.valueOf(txtSenha.getPassword());
 
 				if (txtEmail.getText().isEmpty() || senha.isEmpty()) {
+
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+
 					campoNaoPreenchido.setVisible(true);
+
+				} else if (isValidEmailAddress(email) == false) {
+
+					EmaiInvalido Emailnvalido = new EmaiInvalido();
+
+					Emailnvalido.setVisible(true);
+
 				} else {
+
 					Pessoa pessoaLogada = pDAO.login(email, senha);
 
 					if (pessoaLogada != null) {
+
 						Sessao.setPessoaLogada(pessoaLogada);
-						
+
 						Principal principal = new Principal();
+
 						principal.setVisible(true);
 
 						dispose();
+
 					} else {
-						CadastroInexistente cadastroInexistente = new CadastroInexistente();
-						cadastroInexistente.setVisible(true);
+
+						SenhaIncorreta senhaincorreta = new SenhaIncorreta();
+
+						senhaincorreta.setVisible(true);
+
 					}
+
 				}
+
 			}
 
 			private void dispose() {
-				setVisible(false);
-			}
-		});
 
+				setVisible(false);
+
+			}
+
+		});
 		btnLogar.setBounds(952, 740, 220, 45);
 		contentPane.add(btnLogar);
 
-		JLabel lblSenha = new JLabel("Senha");
+		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
 		lblSenha.setBounds(900, 530, 50, 15);
 		contentPane.add(lblSenha);
@@ -204,6 +230,26 @@ public class Login extends JFrame {
 			}
 
 		});
+
+	}
+
+	public static boolean isValidEmailAddress(String email) {
+
+		boolean result = true;
+
+		try {
+
+			InternetAddress emailAddr = new InternetAddress(email);
+
+			emailAddr.validate();
+
+		} catch (AddressException ex) {
+
+			result = false;
+
+		}
+
+		return result;
 
 	}
 }

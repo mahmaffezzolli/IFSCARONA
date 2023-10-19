@@ -14,12 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
+
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Sessao;
 import modelo.Veiculo;
 
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.DefaultComboBoxModel;
 
 public class CadastroVeiculo extends JFrame {
@@ -146,6 +149,11 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblPlaca);
 
 		txtPlaca = new JTextField();
+		/*****************/
+		MaskFormatter mascaraPlaca = null;
+		mascaraPlaca = new MaskFormatter("*******");
+		txtPlaca = new JFormattedTextField(mascaraPlaca);
+		/*****************/
 		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);

@@ -194,7 +194,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_1.setBounds(1274, 293, 530, 107);
+		lblNewLabel_1_1.setBounds(1277, 278, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("Oferecer");
