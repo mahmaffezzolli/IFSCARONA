@@ -10,6 +10,9 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -261,7 +264,7 @@ public class CadastroUsuario extends JFrame {
 		txtEmail.setBounds(745, 536, 336, 45);
 		contentPane.add(txtEmail);
 
-		lblEmail = new JLabel("E-mail institucional:");
+		lblEmail = new JLabel("E-mail:");
 		lblEmail.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblEmail.setBounds(745, 507, 147, 14);
 		contentPane.add(lblEmail);
@@ -331,7 +334,12 @@ public class CadastroUsuario extends JFrame {
 
 				} else if (txtEmail.getText().isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
+				} else if (isValidEmailAddress(email) == false) {
 
+					EmaiInvalido Emailnvalido = new EmaiInvalido();
+
+					Emailnvalido.setVisible(true);
+					
 				} else if (senha.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
@@ -401,4 +409,24 @@ public class CadastroUsuario extends JFrame {
 		txtfundoVerde.setBounds(124, 0, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 	}
+	
+	public static boolean isValidEmailAddress(String email) {
+
+		boolean result = true;
+
+		try {
+
+		InternetAddress emailAddr = new InternetAddress(email);
+
+		emailAddr.validate();
+
+		} catch (AddressException ex) {
+
+		result = false;
+
+		}
+
+		return result;
+
+		}
 }
