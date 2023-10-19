@@ -17,15 +17,13 @@ import javax.mail.internet.InternetAddress;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import javax.swing.text.MaskFormatter;
-
+import controle.JavaMail;
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
@@ -149,6 +147,13 @@ public class Login extends JFrame {
 					Pessoa pessoaLogada = pDAO.login(email, senha);
 
 					if (pessoaLogada != null) {
+						
+						try {
+							JavaMail.sendEmail("assh.armanini@gmal.com");
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 
 						Sessao.setPessoaLogada(pessoaLogada);
 

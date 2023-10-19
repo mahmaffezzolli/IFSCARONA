@@ -78,7 +78,7 @@ insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('516
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('07599156294', 'Cristabel', 'Crompton', 'ccrompton2@va.gov', '1975-05-15', 'tI7#J,n<jP0+SdE');
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('11340801441', 'Chrissy', 'Squeers', 'csqueers3@google.com.au', '1975-05-15', 'cJ4>4/Zm8afHxyB');
 insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('07334041561', 'Michelina', 'Chessil', 'mchessil4@globo.com', '1975-05-15', 'rT3|BvQ+Ve');
-insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('11111111111', 'IFSC', 'Arona', 'abc', '2023-03-01', '123');
+insert into pessoas (cpf, nome, sobrenome, email, data_nasc, senha) values ('11111111111', 'IFSC', 'Arona', 'abc@gmail.com', '2023-03-01', '123');
 
 SELECT COUNT(*) FROM pessoas;
 SELECT * FROM pessoas order by cpf;
