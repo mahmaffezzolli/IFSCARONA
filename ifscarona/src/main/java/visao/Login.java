@@ -147,13 +147,13 @@ public class Login extends JFrame {
 					Pessoa pessoaLogada = pDAO.login(email, senha);
 
 					if (pessoaLogada != null) {
-						
-						try {
-							JavaMail.sendEmail("assh.armanini@gmal.com");
-						} catch (Exception e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+
+						//try {
+						//	JavaMail.sendEmail("assh.armanini@gmal.com");
+						//} catch (Exception e1) {
+						//	// TODO Auto-generated catch block
+						//	e1.printStackTrace();
+						//}
 
 						Sessao.setPessoaLogada(pessoaLogada);
 

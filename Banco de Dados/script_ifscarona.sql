@@ -86,6 +86,7 @@ SELECT * FROM veiculos;
 SELECT * FROM trajetos;
 SELECT * FROM caronas;
 
+SELECT * FROM veiculos WHERE cpf_pessoa = 88881154048;
 
 -- update
 

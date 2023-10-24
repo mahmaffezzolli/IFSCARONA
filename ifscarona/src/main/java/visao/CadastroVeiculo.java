@@ -16,7 +16,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Sessao;
 import modelo.Veiculo;
@@ -26,6 +25,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.DefaultComboBoxModel;
 
 public class CadastroVeiculo extends JFrame {
+
 	private JPanel contentPane;
 	private JTextField txtfundoBege;
 	private JTextField txtfundoVerde;
@@ -77,25 +77,26 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblIconeCPF = new JLabel("");
 		lblIconeCPF.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/cpf.png")));
 		lblIconeCPF.setBounds(930, 608, 59, 65);
 		contentPane.add(lblIconeCPF);
-		
+
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblCpf.setBounds(999, 589, 147, 14);
 		contentPane.add(lblCpf);
-		
+
 		textCpf = new JTextField();
 		textCpf.setColumns(10);
 		textCpf.setBackground(new Color(255, 251, 233));
 		textCpf.setBounds(999, 616, 336, 45);
 		contentPane.add(textCpf);
-		
+
 		BoxCor = new JComboBox<String>();
-		BoxCor.setModel(new DefaultComboBoxModel(new String[] {"SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t", "Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t"}));
+		BoxCor.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t",
+				"Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t" }));
 		BoxCor.setToolTipText("");
 		BoxCor.setBackground(new Color(255, 251, 233));
 		BoxCor.setBounds(999, 322, 336, 45);
@@ -192,26 +193,26 @@ public class CadastroVeiculo extends JFrame {
 		// Validações
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				// Cria uma instância de Veiculo
 				Veiculo v = new Veiculo();
-				
+
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-				
+
 				// Obtem os valores dos campos de texto
 				String cpf = String.valueOf(textCpf.getText());
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
 				String marca = (String) BoxMarca.getSelectedItem();
-				
+
 				// Verifica se algum dos campos está vazio
 				if (placa.isEmpty()) {
-					
+
 					// Se algum campo estiver vazio, exibir o aviso
-					
+
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else if (modelo.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 				} else if (marca.isEmpty()) {
@@ -221,25 +222,25 @@ public class CadastroVeiculo extends JFrame {
 				} else if (cpf.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 				} else {
-					
+
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
-				
+
 					v.setMotorista(Sessao.getPessoaLogada());
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
 					v.setMarca(marca);
-					
+
 					// Tenta cadastrar o veículo e verificar se foi bem-sucedido
 					boolean success = vDAO.cadastrarVeiculo(v);
-					
+
 					if (success) {
-						
+
 						// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
-						
+
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
-						
+
 						// Se o cadastro falhar, exibir uma mensagem de erro
 					} else {
 						CadastroErroVeiculo cadastroErroVeiculo = new CadastroErroVeiculo();
@@ -248,7 +249,6 @@ public class CadastroVeiculo extends JFrame {
 				}
 			}
 		});
-
 
 		txtModelo = new JTextField();
 		txtModelo.setColumns(10);
@@ -306,8 +306,8 @@ public class CadastroVeiculo extends JFrame {
 		txtfundoVerde.setBounds(-25, -2, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 
-	textCpf.setText(Sessao.getPessoaLogada().getCpf().toString());
-	textCpf.setEditable(false);
-	textCpf.setBackground(Color.gray);
+		textCpf.setText(Sessao.getPessoaLogada().getCpf().toString());
+		textCpf.setEditable(false);
+		textCpf.setBackground(Color.gray);
 	}
 }

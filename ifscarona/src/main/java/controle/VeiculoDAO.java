@@ -41,12 +41,16 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(1, veiculo.getPlaca());
 			ps.setString(2, veiculo.getCor());
 			ps.setString(3, veiculo.getMarca());
-			ps.setString(4, veiculo.getModelo()); 
+			ps.setString(4, veiculo.getModelo());
 			ps.setString(5, veiculo.getMotorista().getCpf());
 
-			ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 
-			return true;
+			if (rowsAffected > 0) {
+				return true;
+			} else {
+				return false;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,27 +68,31 @@ public class VeiculoDAO implements IVeiculoDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		
-			String query = "UPDATE veiculos SET placa = ?, cor = ?, marca = ?, modelo = ? WHERE cpf_pessoa = ?";
+		String query = "UPDATE veiculos SET placa = ?, cor = ?, marca = ?, modelo = ? WHERE cpf_pessoa = ?";
 
-			try {
-				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, veiculo.getPlaca());
-				ps.setString(2, veiculo.getCor());
-				ps.setString(3, veiculo.getMarca());
-				ps.setString(4, veiculo.getModelo());
-				ps.setString(5, veiculo.getMotorista().getCpf());
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, veiculo.getPlaca());
+			ps.setString(2, veiculo.getCor());
+			ps.setString(3, veiculo.getMarca());
+			ps.setString(4, veiculo.getModelo());
+			ps.setString(5, veiculo.getMotorista().getCpf());
 
-				ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 
+			if (rowsAffected > 0) {
 				return true;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				c.fecharConexao();
+			} else {
+				return false;
 			}
-		
-		return false; 
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false;
 	}
 
 	@Override
@@ -99,9 +107,13 @@ public class VeiculoDAO implements IVeiculoDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, veiculo.getMotorista().getCpf());
 
-			ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 
-			return true;
+			if (rowsAffected > 0) {
+				return true;
+			} else {
+				return false;
+			}
 
 		} catch (SQLException e) {
 
@@ -137,9 +149,12 @@ public class VeiculoDAO implements IVeiculoDAO {
 				String marca = rs.getString("marca");
 				String modelo = rs.getString("modelo");
 
+				Pessoa p = new Pessoa();
+				p.setCpf(cpf);
+
 				Veiculo v = new Veiculo();
-				
-				//v.setPessoa();
+
+				v.setMotorista(p);
 				v.setPlaca(placa);
 				v.setCor(cor);
 				v.setMarca(marca);
@@ -161,48 +176,45 @@ public class VeiculoDAO implements IVeiculoDAO {
 	}
 
 	public Veiculo conexaoVeiculoPessoa(Pessoa motorista) {
-
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
-
-		Veiculo veiculo = null;
-
-		String query = "SELECT * FROM veiculos WHERE cpf_pessoa = ?";
-
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, motorista.getCpf());
-
-			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-
-				String placa = rs.getString("placa");
-				String cor = rs.getString("cor");
-				String marca = rs.getString("marca");
-				String modelo = rs.getString("modelo");
-
-				veiculo = new Veiculo();
-
-				veiculo.setMotorista(motorista);
-				veiculo.setPlaca(placa);
-				veiculo.setCor(cor);
-				veiculo.setMarca(marca);
-				veiculo.setModelo(modelo);
-
-			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
-		} finally {
-
-			c.fecharConexao();
-
-		}
-
-		return veiculo;
+		
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
+	    
+	    Veiculo veiculo = null;
+	    
+	    String query = "SELECT * FROM veiculos WHERE cpf_pessoa = ?";
+	    
+	    try (PreparedStatement ps = con.prepareStatement(query)) {
+	    	
+	        ps.setString(1, motorista.getCpf());
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	        	
+	            if (rs.next()) {
+	                String placa = rs.getString("placa");
+	                String cor = rs.getString("cor");
+	                String marca = rs.getString("marca");
+	                String modelo = rs.getString("modelo");
+	                Integer idVeiculo = rs.getInt("id_veiculo");
+	                
+	                veiculo = new Veiculo();
+	                
+	                veiculo.setMotorista(motorista);
+	                veiculo.setPlaca(placa);
+	                veiculo.setCor(cor);
+	                veiculo.setMarca(marca);
+	                veiculo.setModelo(modelo);
+	                veiculo.setIdVeiculo(idVeiculo);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
+	    
+	    return veiculo;
 	}
+
 
 }

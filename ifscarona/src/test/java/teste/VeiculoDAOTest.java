@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
+import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Pessoa;
 import modelo.Veiculo;
@@ -24,7 +25,6 @@ public class VeiculoDAOTest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
-		//veiculo.setPessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
 		veiculo.setMotorista(pessoa);
@@ -49,7 +49,6 @@ public class VeiculoDAOTest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
-		//veiculo.setCpf_pessoa(pessoa.getCpf());
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
 		veiculo.setMotorista(pessoa);
@@ -74,7 +73,7 @@ public class VeiculoDAOTest {
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
-		//veiculo.setCpf_pessoa(pessoa.getCpf());
+		veiculo.setMotorista(pessoa);
 		veiculo.setMarca("Audi");
 		veiculo.setModelo("Volvo");
 		veiculo.setMotorista(pessoa);
@@ -84,6 +83,35 @@ public class VeiculoDAOTest {
 		Boolean sucesso = vDAO.deletarVeiculo(veiculo);
 		assertEquals(true, sucesso);
 
+	}
+
+	@Test
+	public void testMetodoConexaoVeiculoPessoa() {
+
+		Pessoa motorista = new Pessoa();
+		motorista.setNome("Letícia");
+		motorista.setCpf("88881154048");
+		motorista.setDataNasc(LocalDate.of(2006, 2, 18));
+		motorista.setEmail("gabriele@email.com");
+		motorista.setSenha("123456789");
+		motorista.setSobrenome("Bratkhufhjhjh");
+		PessoaDAO pDAO = PessoaDAO.getInstancia();
+		pDAO.cadastrarPessoa(motorista);
+
+		Veiculo veiculo = new Veiculo();
+		veiculo.setCor("Vermelho");
+		veiculo.setMotorista(motorista);
+		veiculo.setMarca("Audi");
+		veiculo.setModelo("Volvo");
+		veiculo.setPlaca("5678def");
+
+		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+		vDAO.cadastrarVeiculo(veiculo);
+
+		Veiculo v = vDAO.conexaoVeiculoPessoa(motorista);
+		String cpf = v.getMotorista().getCpf();
+
+		assertEquals("88881154048", cpf);
 	}
 
 }
