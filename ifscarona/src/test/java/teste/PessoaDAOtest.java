@@ -12,8 +12,6 @@ import modelo.Veiculo;
 
 public class PessoaDAOtest {
 
-	// TESTE UNITARIO = TESTAR CADA UNIDADE DO CODIGO
-	// annotation
 	@Test
 	public void testCadastrarPessoaSucesso() {
 
@@ -51,5 +49,62 @@ public class PessoaDAOtest {
 //
 //		assertEquals(false, erro);
 //	}
+//	
+	@Test
+	public void testAtualizarPessoaSucesso() {
+
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Letícia");
+		pessoa.setCpf("88881154048");
+		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
+		pessoa.setEmail("lele@email.com");
+		pessoa.setSenha("123456789");
+		pessoa.setSobrenome("leleeeeee");
+
+		Veiculo veiculo = new Veiculo();
+		veiculo.setCor(null);
+		veiculo.setMotorista(null);
+		veiculo.setMarca(null);
+		veiculo.setModelo(null);
+		veiculo.setMotorista(null);
+		veiculo.setPlaca(null);
+
+		// Setou veiculo da pessoa
+		//pessoa.setVeiculo(veiculo);
+
+		PessoaDAO pDAO = PessoaDAO.getInstancia();
+		Boolean sucesso = pDAO.cadastrarPessoa(pessoa);
+
+		assertEquals(true, sucesso);
+	}
+	
+	@Test
+	public void testDeletarPessoaSucesso() {
+
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Letícia");
+		pessoa.setCpf("88881154048");
+		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
+		pessoa.setEmail("lele@email.com");
+		pessoa.setSenha("123456789");
+		pessoa.setSobrenome("leleeeeee");
+
+		Veiculo veiculo = new Veiculo();
+		veiculo.setCor(null);
+		veiculo.setMotorista(null);
+		veiculo.setMarca(null);
+		veiculo.setModelo(null);
+		veiculo.setMotorista(null);
+		veiculo.setPlaca(null);
+
+		// Setou veiculo da pessoa
+		//pessoa.setVeiculo(veiculo);
+
+		PessoaDAO pDAO = PessoaDAO.getInstancia();
+		Boolean sucesso = pDAO.cadastrarPessoa(pessoa);
+
+		assertEquals(true, sucesso);
+	}
+	
 
 }
