@@ -40,7 +40,7 @@ public class CaronaDAO implements ICaronaDAO {
 			ps.setString(2, carona.getMotorista().getCpf());
 			ps.setString(3, carona.getPassageiro().getCpf());
 			ps.setInt(4, carona.getVeiculo().getIdVeiculo());
-			ps.setInt(5, carona.getQntPassageiro());
+			ps.setString(5, carona.getQntPassageiro());
 			ps.setDate(6,  Date.valueOf(carona.getData()));
 			ps.setTime(7, carona.getHorario());
 			
