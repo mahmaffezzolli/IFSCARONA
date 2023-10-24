@@ -24,8 +24,8 @@ public class Inicio extends JFrame {
 	private JLabel lblImage;
 	private JButton btnCadastrar;
 	private JLabel lblBemvindoAo;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_4;
+	private JLabel lblFundoClaro;
+	private JLabel lblCanto2;
 
 	/**
 	 * Launch the application.
@@ -72,17 +72,17 @@ public class Inicio extends JFrame {
 
 		});
 
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio canto.png")));
-		lblNewLabel_2.setBounds(1508, -14, 416, 483);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblCanto1 = new JLabel("New label");
+		lblCanto1.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio canto.png")));
+		lblCanto1.setBounds(1508, -14, 416, 483);
+		contentPane.add(lblCanto1);
 
-		lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(
+		lblCanto2 = new JLabel("");
+		lblCanto2.setIcon(
 				new ImageIcon(Inicio.class.getResource("/assets/dunso.png")));
-		lblNewLabel_4.setBounds(0, -108, 800, 1169);
-		contentPane.add(lblNewLabel_4);
-		btnLogar.setBounds(815, 574, 141, 40);
+		lblCanto2.setBounds(0, -108, 800, 1169);
+		contentPane.add(lblCanto2);
+		btnLogar.setBounds(810, 574, 146, 51);
 		contentPane.add(btnLogar);
 
 		btnCadastrar = new JButton("Cadastrar");
@@ -102,13 +102,13 @@ public class Inicio extends JFrame {
 		});
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
-		btnCadastrar.setBounds(981, 574, 129, 40);
+		btnCadastrar.setBounds(981, 574, 154, 51);
 		contentPane.add(btnCadastrar);
 
-		JLabel lblNewLabel = new JLabel("IFSCarona");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 49));
-		lblNewLabel.setBounds(824, 385, 311, 112);
-		contentPane.add(lblNewLabel);
+		JLabel lblLogo = new JLabel("IFSCarona");
+		lblLogo.setFont(new Font("Dialog", Font.BOLD, 49));
+		lblLogo.setBounds(824, 385, 311, 112);
+		contentPane.add(lblLogo);
 
 		lblBemvindoAo = new JLabel("Bem-Vindo ao");
 		lblBemvindoAo.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -121,10 +121,10 @@ public class Inicio extends JFrame {
 		lblImage.setBounds(875, 81, 337, 260);
 		contentPane.add(lblImage);
 
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblNewLabel_1.setBounds(748, 203, 559, 600);
-		contentPane.add(lblNewLabel_1);
+		lblFundoClaro = new JLabel("");
+		lblFundoClaro.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio fundo botoes.png")));
+		lblFundoClaro.setBounds(748, 203, 559, 600);
+		contentPane.add(lblFundoClaro);
 
 		textField = new JTextField();
 		textField.setFont(new Font("TlwgTypewriter", Font.BOLD, 22));

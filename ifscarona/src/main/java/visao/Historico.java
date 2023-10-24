@@ -82,10 +82,10 @@ public class Historico extends JFrame {
 		lblFundo.setBounds(-2, -224, 468, 1650);
 		contentPane.add(lblFundo);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Histórico");
-		lblNewLabel_1_2.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
-		contentPane.add(lblNewLabel_1_2);
+		JLabel lblTitulo = new JLabel("Histórico");
+		lblTitulo.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblTitulo.setBounds(965, 59, 552, 107);
+		contentPane.add(lblTitulo);
 		
 		
 		JLabel lblFundoFiltro = new JLabel("");

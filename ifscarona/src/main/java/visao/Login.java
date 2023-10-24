@@ -66,25 +66,25 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(Login.class.getResource("/assets/car.png")));
-		lblNewLabel_5.setBounds(81, 304, 385, 151);
-		contentPane.add(lblNewLabel_5);
+		JLabel lblCarro = new JLabel("");
+		lblCarro.setIcon(new ImageIcon(Login.class.getResource("/assets/car.png")));
+		lblCarro.setBounds(81, 304, 385, 151);
+		contentPane.add(lblCarro);
 
-		JLabel lblNewLabel_1 = new JLabel("Login");
-		lblNewLabel_1.setFont(new Font("Nirmala UI", Font.BOLD, 65));
-		lblNewLabel_1.setBounds(951, 115, 363, 110);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblTitulo = new JLabel("Login");
+		lblTitulo.setFont(new Font("Nirmala UI", Font.BOLD, 65));
+		lblTitulo.setBounds(951, 115, 363, 110);
+		contentPane.add(lblTitulo);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-15, 417, 590, 172);
 		contentPane.add(lblLogo);
 
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
-		lblNewLabel_3.setBounds(0, -238, 398, 1650);
-		contentPane.add(lblNewLabel_3);
+		JLabel lblFundoClaro = new JLabel("");
+		lblFundoClaro.setIcon(new ImageIcon(Login.class.getResource("/assets/fundoClaro.png")));
+		lblFundoClaro.setBounds(0, -238, 398, 1650);
+		contentPane.add(lblFundoClaro);
 
 		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
@@ -210,15 +210,15 @@ public class Login extends JFrame {
 		lblLinkAqui.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(lblLinkAqui);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/assets/icons8-nova-mensagem-60.png")));
-		lblNewLabel.setBounds(808, 390, 99, 45);
-		contentPane.add(lblNewLabel);
+		JLabel lblIconeEmail = new JLabel("");
+		lblIconeEmail.setIcon(new ImageIcon(Login.class.getResource("/assets/icons8-nova-mensagem-60.png")));
+		lblIconeEmail.setBounds(808, 390, 99, 45);
+		contentPane.add(lblIconeEmail);
 
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(Login.class.getResource("/assets/senha.png")));
-		lblNewLabel_2.setBounds(816, 545, 120, 60);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblIconeSenha = new JLabel("");
+		lblIconeSenha.setIcon(new ImageIcon(Login.class.getResource("/assets/senha.png")));
+		lblIconeSenha.setBounds(816, 545, 120, 60);
+		contentPane.add(lblIconeSenha);
 
 		lblLinkAqui.addMouseListener(new MouseAdapter() {
 			@Override

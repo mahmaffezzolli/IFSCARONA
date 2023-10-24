@@ -118,10 +118,10 @@ public class Principal extends JFrame {
 		lblFundo.setBounds(-5, -237, 468, 1650);
 		contentPane.add(lblFundo);
 
-		JLabel lblNewLabel_1 = new JLabel("Filtrar viagens");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1.setBounds(621, 180, 385, 107);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblFiltro = new JLabel("Filtrar viagens");
+		lblFiltro.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblFiltro.setBounds(621, 180, 385, 107);
+		contentPane.add(lblFiltro);
 
 		JButton btnPerfil = new JButton("Perfil ");
 		btnPerfil.addActionListener(new ActionListener() {
