@@ -386,7 +386,6 @@ public class Perfil extends JFrame {
 			txtCPF2.setText(String.valueOf(Sessao.getPessoaLogada().getCpf()));
 
 			btnAddVeiculo.setEnabled(false);
-
 		}
 
 	}
