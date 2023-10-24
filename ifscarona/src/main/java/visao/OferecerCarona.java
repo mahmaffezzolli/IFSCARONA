@@ -25,6 +25,7 @@ import javax.swing.border.LineBorder;
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
 import modelo.Carona;
+import modelo.Sessao;
 import modelo.Trajeto;
 
 public class OferecerCarona extends JFrame {
@@ -32,7 +33,7 @@ public class OferecerCarona extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
-	private JComboBox<Integer> cmbLugar;
+	private JComboBox<String> cmbLugar;
 	private JCheckBox chckbxGaspar;
 	private JCheckBox chckbxBlumenau;
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
@@ -210,6 +211,7 @@ public class OferecerCarona extends JFrame {
 				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected()) {
 
 					definirTrajeto();
+					oferecerCarona();
 					
 					new ListagemCaronas().setVisible(true);
 					OferecerCarona.this.dispose();
@@ -252,24 +254,33 @@ public class OferecerCarona extends JFrame {
 		
 		boolean success = tDAO.cadastrarTrajeto(t);
 
-		
 	}
 
 	public void oferecerCarona() {
 		
-		Integer qntLugar;
+		String qntLugar;
 		
 		Carona c = new Carona();
 		
 		c.setData(null);
 		c.setHorario(null);
 		
-		qntLugar = (Integer) cmbLugar.getSelectedItem();
+		qntLugar = (String) cmbLugar.getSelectedItem();
+		
 		c.setQntPassageiro(qntLugar);
-		c.setMotorista(null);
+		c.setMotorista(Sessao.getMotoristaLogado());
+		c.setVeiculo(Sessao.getMotoristaLogado().getVeiculo());
 		c.setTrajeto(null);
-		c.setVeiculo(null);
+		
+		boolean success = cDAO.cadastrarCarona(c);
 
+		if (success) {
+			System.out.println("foi");
+
+		} else {
+			System.out.println("não foi");
+
+		}
 		
 		
 	}

@@ -10,7 +10,7 @@ public class Carona {
 	private Pessoa passageiro;
 	private Pessoa motorista;
 	private Veiculo veiculo;
-	private Integer qntPassageiro;
+	private String qntPassageiro;
 	private LocalDate data;
 	private Time horario;
 
@@ -54,12 +54,12 @@ public class Carona {
 		this.veiculo = veiculo;
 	}
 
-	public Integer getQntPassageiro() {
+	public String getQntPassageiro() {
 		return qntPassageiro;
 	}
 
-	public void setQntPassageiro(Integer qntPassageiro) {
-		this.qntPassageiro = qntPassageiro;
+	public void setQntPassageiro(String qntLugar) {
+		this.qntPassageiro = qntLugar;
 	}
 
 	public LocalDate getData() {
