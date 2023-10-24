@@ -24,6 +24,7 @@ import javax.swing.border.LineBorder;
 
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
+import modelo.Carona;
 import modelo.Trajeto;
 
 public class OferecerCarona extends JFrame {
@@ -31,6 +32,7 @@ public class OferecerCarona extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
+	private JComboBox<Integer> cmbLugar;
 	private JCheckBox chckbxGaspar;
 	private JCheckBox chckbxBlumenau;
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
@@ -128,11 +130,11 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel.setBounds(1358, 443, 67, 65);
 		contentPane.add(lblNewLabel);
 
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		comboBox_2.setBounds(1443, 461, 169, 22);
-		comboBox_2.setBackground(new Color(255, 251, 233));
-		contentPane.add(comboBox_2);
+		cmbLugar = new JComboBox();
+		cmbLugar.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
+		cmbLugar.setBounds(1443, 461, 169, 22);
+		cmbLugar.setBackground(new Color(255, 251, 233));
+		contentPane.add(cmbLugar);
 
 		cmbGaspar = new JComboBox<>();
 		cmbGaspar.setModel(new DefaultComboBoxModel<>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
@@ -250,6 +252,25 @@ public class OferecerCarona extends JFrame {
 		
 		boolean success = tDAO.cadastrarTrajeto(t);
 
+		
+	}
+
+	public void oferecerCarona() {
+		
+		Integer qntLugar;
+		
+		Carona c = new Carona();
+		
+		c.setData(null);
+		c.setHorario(null);
+		
+		qntLugar = (Integer) cmbLugar.getSelectedItem();
+		c.setQntPassageiro(qntLugar);
+		c.setMotorista(null);
+		c.setTrajeto(null);
+		c.setVeiculo(null);
+
+		
 		
 	}
 }
