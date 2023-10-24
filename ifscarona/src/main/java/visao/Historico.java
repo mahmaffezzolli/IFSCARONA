@@ -13,13 +13,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
+import java.awt.ScrollPane;
 
 public class Historico extends JFrame {
 
+	private DefaultTableModel tableModel;
+	 private JTable table;
 	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
@@ -87,14 +92,20 @@ public class Historico extends JFrame {
 		lblTitulo.setBounds(965, 59, 552, 107);
 		contentPane.add(lblTitulo);
 		
-		
-		JLabel lblFundoFiltro = new JLabel("");
-		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro.setBounds(850, 235, 852, 678);
-		contentPane.add(lblFundoFiltro);
+		 tableModel = new DefaultTableModel();
+	        tableModel.addColumn("Nome do Motorista");
+	        tableModel.addColumn("Hora de Saída");
+	        tableModel.addColumn("Data de Saída");
+	        tableModel.addColumn("Placa do Carro");
+
+	        table = new JTable(tableModel);
+
+	        JScrollPane scrollPane = new JScrollPane(table);
+	        scrollPane.setBounds(616, 170, 1060, 651);
+	        contentPane.add(scrollPane);
 		
 
+		
 		
 	}
-
 }

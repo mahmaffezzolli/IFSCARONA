@@ -140,7 +140,7 @@ public class Principal extends JFrame {
 		});
 		btnPerfil.setBackground(new Color(244, 234, 213));
 		btnPerfil.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
-		btnPerfil.setBounds(1317, 338, 169, 59);
+		btnPerfil.setBounds(1317, 478, 169, 59);
 		contentPane.add(btnPerfil);
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
@@ -165,12 +165,25 @@ public class Principal extends JFrame {
 			});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
-		btnNewButton_1.setBounds(1317, 520, 169, 59);
+		btnNewButton_1.setBounds(1317, 666, 169, 59);
 		contentPane.add(btnNewButton_1);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
 		chckbxNewCheckBox.setBounds(705, 338, 129, 23);
 		contentPane.add(chckbxNewCheckBox);
+		
+		JButton btnNewButton = new JButton("Histórico");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Historico().setVisible(true);
+				Principal.this.dispose();
+			}
+		});
+		btnNewButton.setBackground(new Color(244, 234, 213));
+		btnNewButton.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(1317, 318, 169, 59);
+		contentPane.add(btnNewButton);
 
 	}
 }
