@@ -18,7 +18,6 @@ import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
 
-import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
@@ -95,7 +94,7 @@ public class Principal extends JFrame {
 			});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
-		btnLogar.setBounds(695, 615, 162, 33);
+		btnLogar.setBounds(695, 615, 162, 43);
 		contentPane.add(btnLogar);
 
 		JLabel lblFundoFiltro = new JLabel("");
@@ -105,7 +104,7 @@ public class Principal extends JFrame {
 
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Principal.class.getResource("/assets/car.png")));
-		lblCarro.setBounds(81, 304, 385, 151);
+		lblCarro.setBounds(106, 302, 385, 151);
 		contentPane.add(lblCarro);
 
 		JLabel lblLogo = new JLabel("");
@@ -118,12 +117,13 @@ public class Principal extends JFrame {
 		lblFundo.setBounds(-5, -237, 468, 1650);
 		contentPane.add(lblFundo);
 
-		JLabel lblNewLabel_1 = new JLabel("Filtrar viagens");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1.setBounds(621, 180, 385, 107);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblFiltro = new JLabel("Filtrar viagens");
+		lblFiltro.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblFiltro.setBounds(634, 176, 385, 107);
+		contentPane.add(lblFiltro);
 
 		JButton btnPerfil = new JButton("Perfil ");
+		btnPerfil.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -139,10 +139,11 @@ public class Principal extends JFrame {
 		});
 		btnPerfil.setBackground(new Color(244, 234, 213));
 		btnPerfil.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
-		btnPerfil.setBounds(1317, 338, 169, 43);
+		btnPerfil.setBounds(1317, 478, 169, 59);
 		contentPane.add(btnPerfil);
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
 		
@@ -163,12 +164,25 @@ public class Principal extends JFrame {
 			});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
-		btnNewButton_1.setBounds(1317, 520, 169, 43);
+		btnNewButton_1.setBounds(1317, 666, 169, 59);
 		contentPane.add(btnNewButton_1);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
 		chckbxNewCheckBox.setBounds(705, 338, 129, 23);
 		contentPane.add(chckbxNewCheckBox);
+		
+		JButton btnNewButton = new JButton("Histórico");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Historico().setVisible(true);
+				Principal.this.dispose();
+			}
+		});
+		btnNewButton.setBackground(new Color(244, 234, 213));
+		btnNewButton.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(1317, 318, 169, 59);
+		contentPane.add(btnNewButton);
 
 	}
 }
