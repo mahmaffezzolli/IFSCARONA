@@ -23,7 +23,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import controle.JavaMail;
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import modelo.Sessao;

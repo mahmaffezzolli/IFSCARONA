@@ -18,7 +18,6 @@ import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
 
-import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;

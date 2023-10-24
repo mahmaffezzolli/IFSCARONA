@@ -67,7 +67,6 @@ public class CadastroInexistente extends JFrame {
 		
 		btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
                 dispose();
             }
         });
