@@ -68,7 +68,7 @@ public class Login extends JFrame {
 
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Login.class.getResource("/assets/car.png")));
-		lblCarro.setBounds(81, 304, 385, 151);
+		lblCarro.setBounds(97, 300, 385, 151);
 		contentPane.add(lblCarro);
 
 		JLabel lblTitulo = new JLabel("Login");
