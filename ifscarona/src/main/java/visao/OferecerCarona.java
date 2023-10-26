@@ -210,8 +210,8 @@ public class OferecerCarona extends JFrame {
 
 				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected()) {
 
-					definirTrajeto();
-					oferecerCarona();
+					Trajeto t = definirTrajeto();
+					oferecerCarona(t);
 
 					new ListagemCaronas().setVisible(true);
 					OferecerCarona.this.dispose();
@@ -234,7 +234,7 @@ public class OferecerCarona extends JFrame {
 
 	}
 
-	public void definirTrajeto() {
+	public Trajeto definirTrajeto() {
 
 		Trajeto t = new Trajeto();
 		String bairro;
@@ -253,10 +253,11 @@ public class OferecerCarona extends JFrame {
 		}
 
 		Long success = tDAO.cadastrarTrajeto(t);
-
+		t.setIdTrajeto(success);
+		return t;
 	}
 
-	public void oferecerCarona() {
+	public void oferecerCarona(Trajeto t) {
 
 		String qntLugar;
 
@@ -270,7 +271,7 @@ public class OferecerCarona extends JFrame {
 		c.setQntPassageiro(Integer.valueOf(qntLugar));
 		c.setMotorista(Sessao.getMotoristaLogado());
 		c.setVeiculo(Sessao.getMotoristaLogado().getVeiculo());
-		c.setTrajeto(null);
+		c.setTrajeto(t);
 
 		Long success = cDAO.cadastrarCarona(c);
 

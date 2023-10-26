@@ -23,9 +23,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+
 import controle.PessoaDAO;
+import controle.VeiculoDAO;
+import modelo.Motorista;
 import modelo.Pessoa;
 import modelo.Sessao;
+import modelo.Veiculo;
 
 public class Login extends JFrame {
 
@@ -147,12 +151,17 @@ public class Login extends JFrame {
 
 					if (pessoaLogada != null) {
 
-						//try {
-						//	JavaMail.sendEmail("assh.armanini@gmal.com");
-						//} catch (Exception e1) {
-						//	// TODO Auto-generated catch block
-						//	e1.printStackTrace();
-						//}
+						VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+
+						// Pesquisa se a pessoa tem um veiculo
+						Veiculo v = vDAO.conexaoVeiculoPessoa(pessoaLogada);
+						if (v != null) {
+							Motorista m = new Motorista();
+							m.setCpf(senha);
+							//TODO TERMINAR
+							m.setVeiculo(v);
+							Sessao.setMotoristaLogado(m);
+						}
 
 						Sessao.setPessoaLogada(pessoaLogada);
 
@@ -181,7 +190,7 @@ public class Login extends JFrame {
 			}
 
 		});
-		btnLogar.setBounds(952, 740, 220, 45);
+		btnLogar.setBounds(200, 200, 220, 45);
 		contentPane.add(btnLogar);
 
 		JLabel lblSenha = new JLabel("Senha:");

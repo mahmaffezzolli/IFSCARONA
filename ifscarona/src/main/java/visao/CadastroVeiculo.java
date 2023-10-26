@@ -6,8 +6,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,12 +21,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import controle.VeiculoDAO;
+import modelo.Motorista;
 import modelo.Sessao;
 import modelo.Veiculo;
-
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.DefaultComboBoxModel;
 
 public class CadastroVeiculo extends JFrame {
 
@@ -226,6 +227,10 @@ public class CadastroVeiculo extends JFrame {
 					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
 
 					v.setMotorista(Sessao.getPessoaLogada());
+
+					Motorista m = (Motorista) v.getMotorista();
+					Sessao.setMotoristaLogado(m);
+
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
