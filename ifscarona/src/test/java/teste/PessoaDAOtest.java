@@ -17,7 +17,7 @@ public class PessoaDAOtest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88881154048");
+		pessoa.setCpf("99981154048");
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
@@ -55,7 +55,7 @@ public class PessoaDAOtest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88881154048");
+		pessoa.setCpf("98881154048");
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("lele@email.com");
 		pessoa.setSenha("123456789");
@@ -83,7 +83,7 @@ public class PessoaDAOtest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88881154048");
+		pessoa.setCpf("88981154048");
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("lele@email.com");
 		pessoa.setSenha("123456789");
