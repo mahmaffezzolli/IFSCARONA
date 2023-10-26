@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IVeiculoDAO {
 
-	public boolean cadastrarVeiculo(Veiculo veiculo);
+	public Long cadastrarVeiculo(Veiculo veiculo);
 
 	public boolean alterarVeiculo(Veiculo veiculo);
 

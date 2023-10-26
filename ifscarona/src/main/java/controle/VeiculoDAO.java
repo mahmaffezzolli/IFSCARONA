@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.IVeiculoDAO;
@@ -28,7 +29,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 	}
 
 	@Override
-	public boolean cadastrarVeiculo(Veiculo veiculo) {
+	public Long cadastrarVeiculo(Veiculo veiculo) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
@@ -36,7 +37,8 @@ public class VeiculoDAO implements IVeiculoDAO {
 		String query = "INSERT INTO veiculos (placa, cor, marca, modelo, cpf_pessoa) VALUES (?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			;
 
 			ps.setString(1, veiculo.getPlaca());
 			ps.setString(2, veiculo.getCor());
@@ -44,12 +46,14 @@ public class VeiculoDAO implements IVeiculoDAO {
 			ps.setString(4, veiculo.getModelo());
 			ps.setString(5, veiculo.getMotorista().getCpf());
 
-			int rowsAffected = ps.executeUpdate();
+			ps.executeUpdate();
 
-			if (rowsAffected > 0) {
-				return true;
-			} else {
-				return false;
+			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					return generatedKeys.getLong(1);
+				} else {
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
 			}
 
 		} catch (SQLException e) {
@@ -60,7 +64,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		}
 
-		return false;
+		return 0l;
 	}
 
 	@Override
@@ -104,7 +108,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 		String query = "DELETE FROM veiculos WHERE cpf_pessoa = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, veiculo.getMotorista().getCpf());
 
 			int rowsAffected = ps.executeUpdate();
@@ -176,45 +180,44 @@ public class VeiculoDAO implements IVeiculoDAO {
 	}
 
 	public Veiculo conexaoVeiculoPessoa(Pessoa motorista) {
-		
-	    ConexaoBanco c = ConexaoBanco.getInstancia();
-	    Connection con = c.conectar();
-	    
-	    Veiculo veiculo = null;
-	    
-	    String query = "SELECT * FROM veiculos WHERE cpf_pessoa = ?";
-	    
-	    try (PreparedStatement ps = con.prepareStatement(query)) {
-	    	
-	        ps.setString(1, motorista.getCpf());
-	        
-	        try (ResultSet rs = ps.executeQuery()) {
-	        	
-	            if (rs.next()) {
-	                String placa = rs.getString("placa");
-	                String cor = rs.getString("cor");
-	                String marca = rs.getString("marca");
-	                String modelo = rs.getString("modelo");
-	                Integer idVeiculo = rs.getInt("id_veiculo");
-	                
-	                veiculo = new Veiculo();
-	                
-	                veiculo.setMotorista(motorista);
-	                veiculo.setPlaca(placa);
-	                veiculo.setCor(cor);
-	                veiculo.setMarca(marca);
-	                veiculo.setModelo(modelo);
-	                veiculo.setIdVeiculo(idVeiculo);
-	            }
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        c.fecharConexao();
-	    }
-	    
-	    return veiculo;
-	}
 
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		Veiculo veiculo = null;
+
+		String query = "SELECT * FROM veiculos WHERE cpf_pessoa = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+			ps.setString(1, motorista.getCpf());
+
+			try (ResultSet rs = ps.executeQuery()) {
+
+				if (rs.next()) {
+					String placa = rs.getString("placa");
+					String cor = rs.getString("cor");
+					String marca = rs.getString("marca");
+					String modelo = rs.getString("modelo");
+					Long idVeiculo = rs.getLong("id_veiculo");
+
+					veiculo = new Veiculo();
+					veiculo.setMotorista(motorista);
+					veiculo.setPlaca(placa);
+					veiculo.setCor(cor);
+					veiculo.setMarca(marca);
+					veiculo.setModelo(modelo);
+					veiculo.setIdVeiculo(idVeiculo);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return veiculo;
+	}
 
 }

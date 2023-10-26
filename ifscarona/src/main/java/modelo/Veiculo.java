@@ -7,7 +7,7 @@ public class Veiculo {
 	private String marca;
 	private String modelo;
 	private Pessoa motorista;
-	private Integer idVeiculo;
+	private Long idVeiculo;
 
 	public String getPlaca() {
 		return placa;
@@ -49,11 +49,11 @@ public class Veiculo {
 		this.motorista = motorista;
 	}
 
-	public Integer getIdVeiculo() {
+	public Long getIdVeiculo() {
 		return idVeiculo;
 	}
 
-	public void setIdVeiculo(Integer idVeiculo) {
+	public void setIdVeiculo(Long idVeiculo) {
 		this.idVeiculo = idVeiculo;
 	}
 

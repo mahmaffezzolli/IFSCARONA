@@ -31,8 +31,8 @@ public class VeiculoDAOTest {
 		veiculo.setPlaca("1234abc");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Boolean sucesso = vDAO.cadastrarVeiculo(veiculo);
-		assertEquals(true, sucesso);
+		Long sucesso = vDAO.cadastrarVeiculo(veiculo);
+		assertEquals(true, sucesso > 0);
 
 	}
 

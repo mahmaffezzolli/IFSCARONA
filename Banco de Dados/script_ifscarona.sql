@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `caronas` (
   `id_trajeto` INT NOT NULL,
   `id_veiculo` INT NOT NULL,
   `qnt_passageiros` INT NOT NULL,
-  `horario` TIME NOT NULL,
-  `data` DATE NOT NULL,
+  `horario` TIME,
+  `data` DATE,
   PRIMARY KEY (`id_carona`),
   CONSTRAINT `fk_Carona_Pessoa1`
     FOREIGN KEY (`cpf_motorista`)

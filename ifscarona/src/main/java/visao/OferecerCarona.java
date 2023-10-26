@@ -79,7 +79,7 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
-		
+
 		JCheckBox cbIFSC = new JCheckBox("IFSC");
 		cbIFSC.setBounds(845, 472, 129, 23);
 		contentPane.add(cbIFSC);
@@ -212,7 +212,7 @@ public class OferecerCarona extends JFrame {
 
 					definirTrajeto();
 					oferecerCarona();
-					
+
 					new ListagemCaronas().setVisible(true);
 					OferecerCarona.this.dispose();
 
@@ -222,7 +222,7 @@ public class OferecerCarona extends JFrame {
 				}
 			}
 		});
-		
+
 		btnNewButton.setBackground(new Color(251, 251, 233));
 		btnNewButton.setBounds(1090, 801, 169, 54);
 		contentPane.add(btnNewButton);
@@ -242,46 +242,45 @@ public class OferecerCarona extends JFrame {
 		t.setOrigem("IFSC");
 
 		if (chckbxGaspar.isSelected()) {
-			
+
 			bairro = (String) cmbGaspar.getSelectedItem();
 			t.setDestino("Gaspar, " + bairro);
-			
+
 		} else if (chckbxBlumenau.isSelected()) {
-			
+
 			bairro = (String) cmbBlumenau.getSelectedItem();
 			t.setDestino("Blumenau, " + bairro);
 		}
-		
+
 		boolean success = tDAO.cadastrarTrajeto(t);
 
 	}
 
 	public void oferecerCarona() {
-		
+
 		String qntLugar;
-		
+
 		Carona c = new Carona();
-		
+
 		c.setData(null);
 		c.setHorario(null);
-		
+
 		qntLugar = (String) cmbLugar.getSelectedItem();
-		
-		c.setQntPassageiro(qntLugar);
+
+		c.setQntPassageiro(Integer.valueOf(qntLugar));
 		c.setMotorista(Sessao.getMotoristaLogado());
 		c.setVeiculo(Sessao.getMotoristaLogado().getVeiculo());
 		c.setTrajeto(null);
-		
-		boolean success = cDAO.cadastrarCarona(c);
 
-		if (success) {
+		Long success = cDAO.cadastrarCarona(c);
+
+		if (success > 0) {
 			System.out.println("foi");
 
 		} else {
 			System.out.println("não foi");
 
 		}
-		
-		
+
 	}
 }

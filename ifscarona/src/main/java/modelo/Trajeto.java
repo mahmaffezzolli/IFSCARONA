@@ -11,6 +11,7 @@ public class Trajeto {
 	}
 
 	public void setIdTrajeto(Integer idTrajeto) {
+				
 		this.idTrajeto = idTrajeto;
 	}
 

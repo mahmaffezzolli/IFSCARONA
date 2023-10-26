@@ -16,10 +16,10 @@ import modelo.Trajeto;
 import modelo.Veiculo;
 
 public class CaronaDAOTest {
-	
+
 	@Test
 	public void testCadastrarCarona() {
-		
+
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setSobrenome("Lima");
@@ -27,56 +27,55 @@ public class CaronaDAOTest {
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 28));
 		pessoa.setEmail("leticia.lc2005@gamil.com");
 		pessoa.setSenha("legal321");
-		
+
 		PessoaDAO pDAO = PessoaDAO.getInstancia();
 		pDAO.cadastrarPessoa(pessoa);
 
-		
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("IFSC");
 		trajeto.setOrigem("Blumenau");
-		
+
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 		tDAO.cadastrarTrajeto(trajeto);
-		
+
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Preto");
 		veiculo.setMarca("Cherry");
 		veiculo.setModelo("SUV");
 		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("12345678");
-		
+
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		vDAO.cadastrarVeiculo(veiculo);
-		
+		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
+		veiculo.setIdVeiculo(idVeiculo);
+
 		Carona carona = new Carona();
 		carona.setMotorista(pessoa);
 		carona.setPassageiro(null);
 		carona.setTrajeto(trajeto);
+		carona.setQntPassageiro(2);
 		carona.setVeiculo(veiculo);
 		carona.setData(LocalDate.of(2023, 12, 24));
 		carona.setHorario(null);
-		
-		//setou pessoa da carona
+
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
-		Boolean sucesso = cDAO.cadastrarCarona(carona);
-		
-		assertEquals(true, sucesso);
-	
+		Long sucesso = cDAO.cadastrarCarona(carona);
+		assertEquals(true, sucesso > 0);
+
 	}
-	
-	//@Test
-	//public void testCadastrarCaronaErro() {
-		//Carona carona = null;
 
-	    //CaronaDAO cDAO = CaronaDAO.getInstancia();
-	    //Boolean erro = cDAO.cadastrarCarona(carona);
+	// @Test
+	// public void testCadastrarCaronaErro() {
+	// Carona carona = null;
 
-		//assertEquals(false, erro);
-	//}
-	
-	public void testAtualizarCarona(){
-		
+	// CaronaDAO cDAO = CaronaDAO.getInstancia();
+	// Boolean erro = cDAO.cadastrarCarona(carona);
+
+	// assertEquals(false, erro);
+	// }
+
+	public void testAtualizarCarona() {
+
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setSobrenome("Lima");
@@ -84,18 +83,18 @@ public class CaronaDAOTest {
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 28));
 		pessoa.setEmail("leticia.lc2005@gamil.com");
 		pessoa.setSenha("legal321");
-		
+
 		Trajeto trajeto = new Trajeto();
 		trajeto.setOrigem("Gaspar");
 		trajeto.setDestino("Blumenau");
-		
+
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Preto");
 		veiculo.setMarca("Cherry");
 		veiculo.setModelo("SUV");
 		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("12345678");
-		
+
 		Carona carona = new Carona();
 		carona.setMotorista(pessoa);
 		carona.setPassageiro(pessoa);
@@ -104,17 +103,14 @@ public class CaronaDAOTest {
 		carona.setData(LocalDate.of(2023, 25, 11));
 		carona.setHorario(null);
 		carona.setPassageiro(pessoa);
-		
-		//setou pessoa da carona
-		carona.setPassageiro(pessoa);
+
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Boolean sucesso = cDAO.alterarCarona(carona);
-				
-	    assertEquals(true, sucesso);
+		assertEquals(true, sucesso);
 	}
-	
-	public  void testDeletarCarona() {
-		
+
+	public void testDeletarCarona() {
+
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setSobrenome("Lima");
@@ -122,18 +118,18 @@ public class CaronaDAOTest {
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 28));
 		pessoa.setEmail("leticia.lc2005@gamil.com");
 		pessoa.setSenha("legal321");
-		
+
 		Trajeto trajeto = new Trajeto();
 		trajeto.setOrigem("Gaspar");
 		trajeto.setDestino("Blumenau");
-		
+
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Preto");
 		veiculo.setMarca("Cherry");
 		veiculo.setModelo("SUV");
 		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("12345678");
-		
+
 		Carona carona = new Carona();
 		carona.setMotorista(pessoa);
 		carona.setPassageiro(pessoa);
@@ -142,14 +138,14 @@ public class CaronaDAOTest {
 		carona.setData(LocalDate.of(2023, 24, 10));
 		carona.setHorario(null);
 		carona.setPassageiro(pessoa);
-		
-		//setou pessoa da carona
+
+		// setou pessoa da carona
 		carona.setPassageiro(pessoa);
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Boolean sucesso = cDAO.deletarCarona(carona);
-		
+
 		assertEquals(true, sucesso);
-		
+
 	}
 
 }

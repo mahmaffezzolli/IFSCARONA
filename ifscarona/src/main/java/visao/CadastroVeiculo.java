@@ -232,9 +232,9 @@ public class CadastroVeiculo extends JFrame {
 					v.setMarca(marca);
 
 					// Tenta cadastrar o veículo e verificar se foi bem-sucedido
-					boolean success = vDAO.cadastrarVeiculo(v);
+					Long success = vDAO.cadastrarVeiculo(v);
 
-					if (success) {
+					if (success > 0) {
 
 						// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
 
