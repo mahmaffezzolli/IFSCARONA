@@ -252,7 +252,7 @@ public class OferecerCarona extends JFrame {
 			t.setDestino("Blumenau, " + bairro);
 		}
 
-		boolean success = tDAO.cadastrarTrajeto(t);
+		Long success = tDAO.cadastrarTrajeto(t);
 
 	}
 

@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import controle.PessoaDAO;
 import controle.TrajetoDAO;
 import modelo.Pessoa;
 import modelo.Trajeto;
@@ -18,9 +17,8 @@ public class TrajetoDAOTest {
 
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("blumenau");
-		trajeto.setIdTrajeto(123);
 		trajeto.setOrigem("Ifsc");
-		
+
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor(null);
 		veiculo.setMotorista(null);
@@ -28,7 +26,7 @@ public class TrajetoDAOTest {
 		veiculo.setModelo(null);
 		veiculo.setMotorista(null);
 		veiculo.setPlaca(null);
-		
+
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setCpf("88881154048");
@@ -36,22 +34,20 @@ public class TrajetoDAOTest {
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("Bratkhufhjhjh");
-		
-		
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		Boolean sucesso = tDAO.cadastrarTrajeto(trajeto);
+		Long sucesso = tDAO.cadastrarTrajeto(trajeto);
 
-		assertEquals(true, sucesso);
+		assertEquals(true, sucesso > 0);
 	}
 
 	@Test
 	public void testCadastrarTrajetoErro() {
-	Trajeto trajeto = null;
+		Trajeto trajeto = null;
 
-	TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-	Boolean erro = tDAO.cadastrarTrajeto(trajeto);
-		assertEquals(false, erro);	}
-	
+		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		Long erro = tDAO.cadastrarTrajeto(trajeto);
+		assertEquals(true, erro == 0);
+	}
+
 }
-

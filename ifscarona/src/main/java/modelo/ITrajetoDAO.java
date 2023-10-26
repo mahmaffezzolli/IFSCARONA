@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface ITrajetoDAO {
 
-	public boolean cadastrarTrajeto(Trajeto trajeto);
+	public Long cadastrarTrajeto(Trajeto trajeto);
 
 	public boolean alterarTrajeto(Trajeto trajeto);
 

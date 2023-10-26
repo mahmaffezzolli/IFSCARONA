@@ -2,16 +2,15 @@ package modelo;
 
 public class Trajeto {
 
-	private Integer idTrajeto;
+	private Long idTrajeto;
 	private String origem;
 	private String destino;
 
-	public Integer getIdTrajeto() {
+	public Long getIdTrajeto() {
 		return idTrajeto;
 	}
 
-	public void setIdTrajeto(Integer idTrajeto) {
-				
+	public void setIdTrajeto(Long idTrajeto) {
 		this.idTrajeto = idTrajeto;
 	}
 

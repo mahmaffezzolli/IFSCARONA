@@ -35,15 +35,16 @@ public class CaronaDAOTest {
 		trajeto.setDestino("IFSC");
 		trajeto.setOrigem("Blumenau");
 
-		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		tDAO.cadastrarTrajeto(trajeto);
-
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Preto");
 		veiculo.setMarca("Cherry");
 		veiculo.setModelo("SUV");
 		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("12345678");
+
+		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		Long id = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(id);
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
