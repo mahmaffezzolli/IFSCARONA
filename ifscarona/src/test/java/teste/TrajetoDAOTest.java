@@ -59,12 +59,14 @@ public class TrajetoDAOTest {
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("Blumenau");
 		trajeto.setOrigem("IFSC");
+		trajeto.setIdTrajeto(123);
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 		Boolean sucesso = tDAO.deletarTrajeto(trajeto);
 		assertEquals(true, sucesso);
 
 	}
+	
 	
 	
 	@Test
@@ -75,6 +77,11 @@ public class TrajetoDAOTest {
 		Boolean erro = tDAO.deletarTrajeto(trajeto);
 		assertEquals(false, erro);
 	}
+	
+	
+	
+	
+	
 	
 	
 }
