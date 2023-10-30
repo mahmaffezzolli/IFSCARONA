@@ -25,7 +25,7 @@ public class CaronaDAOTest {
 		pessoa.setSobrenome("Lima");
 		pessoa.setCpf("23345309811");
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 28));
-		pessoa.setEmail("leticia.lc2005@gamil.com");
+		pessoa.setEmail("leticia.lc2005@gmail.com");
 		pessoa.setSenha("legal321");
 
 		PessoaDAO pDAO = PessoaDAO.getInstancia();
@@ -65,15 +65,15 @@ public class CaronaDAOTest {
 
 	}
 
-	// @Test
-	// public void testCadastrarCaronaErro() {
-	// Carona carona = null;
+	 @Test
+	 public void testCadastrarCaronaErro() {
+	 Carona carona = null;
 
-	// CaronaDAO cDAO = CaronaDAO.getInstancia();
-	// Boolean erro = cDAO.cadastrarCarona(carona);
+	 CaronaDAO cDAO = CaronaDAO.getInstancia();
+	 Long erro = cDAO.cadastrarCarona(carona);
 
-	// assertEquals(false, erro);
-	// }
+	 assertEquals(false, erro >= 1);
+	 }
 
 	public void testAtualizarCarona() {
 
