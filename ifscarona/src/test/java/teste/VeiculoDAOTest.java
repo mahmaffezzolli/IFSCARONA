@@ -3,6 +3,8 @@ package teste;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import controle.PessoaDAO;
@@ -82,6 +84,33 @@ public class VeiculoDAOTest {
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 		Boolean sucesso = vDAO.deletarVeiculo(veiculo);
 		assertEquals(true, sucesso);
+
+	}
+	
+	@Test
+	public void testMetodoReadVeiculo() {
+		
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Letícia");
+		pessoa.setCpf("89081154048");
+		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
+		pessoa.setEmail("gabriele@email.com");
+		pessoa.setSenha("123456789");
+		pessoa.setSobrenome("Bratkhufhjhjh");
+
+		Veiculo veiculo = new Veiculo();
+		veiculo.setCor("Vermelho");
+		veiculo.setMotorista(pessoa);
+		veiculo.setMarca("Audi");
+		veiculo.setModelo("Volvo");
+		veiculo.setMotorista(pessoa);
+		veiculo.setPlaca("5678def");
+
+		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+		vDAO.cadastrarVeiculo(veiculo);
+        ArrayList<Veiculo> veiculos = vDAO.listarVeiculos();
+        
+        assertEquals(false, veiculos.isEmpty());
 
 	}
 
