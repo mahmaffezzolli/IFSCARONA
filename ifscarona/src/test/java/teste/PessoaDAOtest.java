@@ -1,6 +1,7 @@
 package teste;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.time.LocalDate;
 
@@ -39,17 +40,28 @@ public class PessoaDAOtest {
 
 		assertEquals(true, sucesso);
 	}
+	 @Test
+	    public void testListarPessoasSucesso() {
+	        // Simulate a successful list operation
+	        PessoaDAO pDAO = PessoaDAO.getInstancia();
 
-//	@Test
-//	public void testCadastrarPessoaErro() {
-//		Pessoa pessoa = null;
-//
-//		PessoaDAO pDAO = PessoaDAO.getInstancia();
-//		Boolean erro = pDAO.cadastrarPessoa(pessoa);
-//
-//		assertEquals(false, erro);
-//	}
-//	
+	        // Assert that the list operation returned a non-empty list
+	        assertFalse(pDAO.listarPessoas().isEmpty());
+	    }
+
+	    @Test
+	    public void testDeletarPessoaErroPessoaInexistente() {
+	        // Attempt to delete a person that does not exist in the database
+	        Pessoa pessoa = new Pessoa();
+	        pessoa.setCpf("88888888888"); // Non-existent CPF
+
+	        PessoaDAO pDAO = PessoaDAO.getInstancia();
+	        boolean sucesso = pDAO.deletarPessoa(pessoa);
+
+	        // Assert that the deletion failed (non-existent person)
+	        assertEquals(false, sucesso);
+	    }
+	    
 	@Test
 	public void testAtualizarPessoaSucesso() {
 
