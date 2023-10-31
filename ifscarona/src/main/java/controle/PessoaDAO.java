@@ -29,34 +29,38 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public boolean cadastrarPessoa(Pessoa pessoa) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
+	    if (pessoa == null || pessoa.getNome() == null || pessoa.getCpf() == null || pessoa.getDataNasc() == null || pessoa.getEmail() == null || pessoa.getSenha() == null) {
+	        // At least one required attribute is null
+	        return false;
+	    }
 
-		Connection con = c.conectar();
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
 
-		String query = "INSERT INTO pessoas " + "(nome, sobrenome, cpf, data_nasc, senha, email) "
-				+ "VALUES (?, ?, ?, ?, ?, ?)";
+	    String query = "INSERT INTO pessoas " + "(nome, sobrenome, cpf, data_nasc, senha, email) "
+	            + "VALUES (?, ?, ?, ?, ?, ?)";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setString(1, pessoa.getNome());
-			ps.setString(2, pessoa.getSobrenome());
-			ps.setString(3, pessoa.getCpf());
-			ps.setDate(4, Date.valueOf(pessoa.getDataNasc()));
-			ps.setString(5, pessoa.getSenha());
-			ps.setString(6, pessoa.getEmail());
+	        ps.setString(1, pessoa.getNome());
+	        ps.setString(2, pessoa.getSobrenome());
+	        ps.setString(3, pessoa.getCpf());
+	        ps.setDate(4, Date.valueOf(pessoa.getDataNasc()));
+	        ps.setString(5, pessoa.getSenha());
+	        ps.setString(6, pessoa.getEmail());
 
-			ps.executeUpdate();
+	        ps.executeUpdate();
 
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} finally {
-			c.fecharConexao();
-		}
-		return false;
+	        return true;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
+	    return false;
 	}
+
 
 	@Override
 	public boolean alterarPessoa(Pessoa pessoa) {
