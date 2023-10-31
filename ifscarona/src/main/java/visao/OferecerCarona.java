@@ -80,16 +80,12 @@ public class OferecerCarona extends JFrame {
 			}
 		});
 
-		JCheckBox cbIFSC = new JCheckBox("IFSC");
-		cbIFSC.setBounds(845, 472, 129, 23);
-		contentPane.add(cbIFSC);
-
 		chckbxGaspar = new JCheckBox("Gaspar");
-		chckbxGaspar.setBounds(845, 432, 129, 23);
+		chckbxGaspar.setBounds(845, 456, 129, 23);
 		contentPane.add(chckbxGaspar);
 
 		chckbxBlumenau = new JCheckBox("Blumenau");
-		chckbxBlumenau.setBounds(845, 387, 129, 23);
+		chckbxBlumenau.setBounds(845, 396, 129, 23);
 		contentPane.add(chckbxBlumenau);
 
 		chckbxGaspar.addItemListener(new ItemListener() {
@@ -111,7 +107,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_3.setBounds(744, 397, 87, 58);
+		lblNewLabel_3.setBounds(744, 410, 87, 58);
 		contentPane.add(lblNewLabel_3);
 
 		btnHome.setBorder(null);
@@ -128,12 +124,12 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/MODELO.png")));
-		lblNewLabel.setBounds(1358, 443, 67, 65);
+		lblNewLabel.setBounds(1357, 414, 67, 65);
 		contentPane.add(lblNewLabel);
 
 		cmbLugar = new JComboBox();
 		cmbLugar.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		cmbLugar.setBounds(1443, 461, 169, 22);
+		cmbLugar.setBounds(1435, 432, 169, 22);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
 
@@ -176,7 +172,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblFundoLugar = new JLabel("");
 		lblFundoLugar.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoLugar.setBounds(1344, 411, 320, 133);
+		lblFundoLugar.setBounds(1313, 374, 320, 133);
 		contentPane.add(lblFundoLugar);
 
 		JLabel lblFundo = new JLabel("");
@@ -201,7 +197,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_1.setBounds(1277, 278, 530, 107);
+		lblNewLabel_1_1.setBounds(1249, 278, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("Oferecer");
@@ -284,4 +280,6 @@ public class OferecerCarona extends JFrame {
 		}
 
 	}
+	
+	
 }
