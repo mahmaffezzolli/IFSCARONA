@@ -44,6 +44,7 @@ public class TrajetoDAOTest {
 		trajeto.setIdTrajeto(123l);
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		tDAO.cadastrarTrajeto(trajeto);
 		Boolean sucesso = tDAO.alterarTrajeto(trajeto);
 		assertEquals(true, sucesso);
 
@@ -55,6 +56,7 @@ public class TrajetoDAOTest {
 		Trajeto trajeto = null;
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		tDAO.cadastrarTrajeto(trajeto);
 		Boolean erro = tDAO.alterarTrajeto(trajeto);
 		assertEquals(false, erro);
 	}
@@ -64,9 +66,10 @@ public class TrajetoDAOTest {
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("Blumenau");
 		trajeto.setOrigem("IFSC");
-		trajeto.setIdTrajeto(123l);
+		trajeto.setIdTrajeto(12l);
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		tDAO.cadastrarTrajeto(trajeto);
 		Boolean sucesso = tDAO.deletarTrajeto(trajeto);
 		assertEquals(true, sucesso);
 
@@ -78,6 +81,7 @@ public class TrajetoDAOTest {
 		Trajeto trajeto = null;
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		tDAO.cadastrarTrajeto(trajeto);
 		Boolean erro = tDAO.deletarTrajeto(trajeto);
 		assertEquals(false, erro);
 	}
