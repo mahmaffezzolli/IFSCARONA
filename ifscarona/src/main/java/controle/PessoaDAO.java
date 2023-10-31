@@ -92,6 +92,7 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
+
 	public boolean deletarPessoa(Pessoa pessoa) {
 	    ConexaoBanco c = ConexaoBanco.getInstancia();
 	    Connection con = c.conectar();
