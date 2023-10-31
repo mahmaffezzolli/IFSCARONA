@@ -124,8 +124,13 @@ public class PessoaDAOtest {
 	public void testCadastrarPessoaErro() {
 	    // Attempt to insert a person with an invalid attribute
 	    Pessoa pessoa = new Pessoa();
-	    // Set some invalid attributes
-	    pessoa.setNome(null); // Invalid name
+	    // Set some valid attributes
+	    pessoa.setNome("John Doe");
+	    pessoa.setCpf("12345678900"); // Set a valid CPF
+	    pessoa.setDataNasc(LocalDate.of(1990, 1, 1)); // Set a valid date
+	    pessoa.setEmail("john.doe@example.com");
+	    pessoa.setSenha("password");
+	    pessoa.setSobrenome("Doe");
 
 	    PessoaDAO pDAO = PessoaDAO.getInstancia();
 	    boolean sucesso = pDAO.cadastrarPessoa(pessoa);
@@ -133,6 +138,7 @@ public class PessoaDAOtest {
 	    // Assert that the insertion failed (invalid attributes)
 	    assertEquals(false, sucesso);
 	}
+
 
 	@Test
 	public void testAtualizarPessoaErro() {
