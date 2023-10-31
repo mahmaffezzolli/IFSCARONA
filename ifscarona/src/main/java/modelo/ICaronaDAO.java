@@ -6,7 +6,7 @@ public interface ICaronaDAO {
 
 	public Long cadastrarCarona(Carona carona);
 
-	public boolean alterarCarona(Carona carona);
+	public long alterarCarona(Carona carona);
 
 	public ArrayList<Carona> listarCaronas();
 

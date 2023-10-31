@@ -161,27 +161,132 @@ public class CaronaDAO implements ICaronaDAO {
 	}
 
 	@Override
-	public boolean alterarCarona(Carona carona) {
+	public long alterarCarona(Carona carona) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
-
 		Connection con = c.conectar();
 
-		String query = "UPDATE caronas SET" + "trajeto = ? WHERE id_carona = ?";
+		int j = 0;
+		if (carona != null) {
+			Pessoa motorista = carona.getMotorista();
+			Pessoa passageiro = carona.getPassageiro();
+			Trajeto trajeto = carona.getTrajeto();
+			Veiculo veiculo = carona.getVeiculo();
+			Integer qntPassageiro = carona.getQntPassageiro();
+			Time horario = carona.getHorario();
+			LocalDate data = carona.getData();
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, carona.getIdCarona());
-			ps.executeUpdate();
+			/*
+			 * Algoritmo para montar o comando SQL
+			 */
+			StringBuilder query = new StringBuilder();
+			query.append("UPDATE caronas (");
 
-			c.fecharConexao();
+			if (carona.getMotorista() != null) {
+				query.append("cpf_motorista");
+				j++;
+			}
 
-			return true;
+			if (passageiro != null) {
+				query.append(", cpf_passageiro");
+				j++;
+			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+			if (trajeto != null) {
+				query.append(", id_trajeto");
+				j++;
+			}
+
+			if (veiculo != null) {
+				query.append(", id_veiculo");
+				j++;
+			}
+
+			if (qntPassageiro > 0) {
+				query.append(", qnt_passageiros");
+				j++;
+			}
+
+			if (horario != null) {
+				query.append(", horario");
+				j++;
+			}
+
+			if (data != null) {
+				query.append(", data");
+				j++;
+			}
+
+			query.append(") SET (");
+
+			for (int k = 0; k < j; k++) {
+				query.append("?");
+				if (k != (j - 1)) {
+					query.append(",");
+				}
+			}
+
+			query.append(")");
+
+			/*
+			 * Algoritmo para colocar os parametros
+			 * no comando SQL
+			 */
+			int i = 1;
+			try {
+				PreparedStatement ps = con.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS);
+
+				if (motorista != null) {
+					ps.setString(i, motorista.getCpf());
+					i++;
+				}
+
+				if (passageiro != null) {
+					ps.setString(i, passageiro.getCpf());
+					i++;
+				}
+
+				if (trajeto != null) {
+					ps.setLong(i, trajeto.getIdTrajeto());
+					i++;
+				}
+
+				if (veiculo != null) {
+					ps.setLong(i, veiculo.getIdVeiculo());
+					i++;
+				}
+
+				if (qntPassageiro > 0) {
+					ps.setInt(i, qntPassageiro);
+					i++;
+				}
+
+				if (horario != null) {
+					ps.setTime(i, horario);
+					i++;
+				}
+
+				if (data != null) {
+					ps.setDate(i, Date.valueOf(data));
+					i++;
+				}
+
+				ps.executeUpdate();
+
+				try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+					if (generatedKeys.next()) {
+						return generatedKeys.getLong(1);
+					} else {
+						throw new SQLException("Creating user failed, no ID obtained.");
+					}
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				c.fecharConexao();
+			}
 		}
-
-		return false;
+		return 0l; //l de long
 	}
 
 	@Override
