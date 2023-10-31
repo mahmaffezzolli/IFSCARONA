@@ -75,6 +75,7 @@ public class RequisitarCarona extends JFrame {
 
 			}
 		});
+<<<<<<< Updated upstream
 
 		chckbxGaspar = new JCheckBox("Gaspar");
 		chckbxGaspar.setBounds(845, 432, 129, 23);
@@ -98,6 +99,33 @@ public class RequisitarCarona extends JFrame {
 				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
 			}
 		});
+=======
+		
+		 chckbxGaspar = new JCheckBox("Gaspar");
+	        chckbxGaspar.setBounds(845, 432, 129, 23);
+	        contentPane.add(chckbxGaspar);
+
+	        chckbxBlumenau = new JCheckBox("Blumenau");
+	        chckbxBlumenau.setBounds(845, 387, 129, 23);
+	        contentPane.add(chckbxBlumenau);
+	        chckbxGaspar.addItemListener(new ItemListener() {
+	            @Override
+	            public void itemStateChanged(ItemEvent e) {
+	                comboBox2.setEnabled(!chckbxGaspar.isSelected());
+	                comboBox1.setEnabled(chckbxGaspar.isSelected());
+	            } 
+	        });
+
+	        chckbxBlumenau.addItemListener(new ItemListener() {
+	            @Override
+	            public void itemStateChanged(ItemEvent e) {
+	                comboBox1.setEnabled(!chckbxBlumenau.isSelected());
+	                comboBox2.setEnabled(chckbxBlumenau.isSelected());
+	            }
+	        });
+	        
+	        
+>>>>>>> Stashed changes
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-localização-50.png")));
