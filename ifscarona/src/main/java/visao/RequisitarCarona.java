@@ -23,11 +23,14 @@ import controle.TrajetoDAO;
 import modelo.Trajeto;
 
 import javax.swing.JComboBox;
+import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 
 public class RequisitarCarona extends JFrame {
 
+	protected static final AbstractButton comboBox2 = null;
+	protected static final AbstractButton comboBox1 = null;
 	private JPanel contentPane;
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
@@ -75,7 +78,6 @@ public class RequisitarCarona extends JFrame {
 
 			}
 		});
-<<<<<<< Updated upstream
 
 		chckbxGaspar = new JCheckBox("Gaspar");
 		chckbxGaspar.setBounds(845, 432, 129, 23);
@@ -99,7 +101,6 @@ public class RequisitarCarona extends JFrame {
 				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
 			}
 		});
-=======
 		
 		 chckbxGaspar = new JCheckBox("Gaspar");
 	        chckbxGaspar.setBounds(845, 432, 129, 23);
@@ -125,7 +126,6 @@ public class RequisitarCarona extends JFrame {
 	        });
 	        
 	        
->>>>>>> Stashed changes
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-localização-50.png")));
