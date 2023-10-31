@@ -29,38 +29,38 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public boolean cadastrarPessoa(Pessoa pessoa) {
-	    if (pessoa == null || pessoa.getNome() == null || pessoa.getCpf() == null || pessoa.getDataNasc() == null || pessoa.getEmail() == null || pessoa.getSenha() == null) {
-	        // At least one required attribute is null
-	        return false;
-	    }
+		if (pessoa == null || pessoa.getNome() == null || pessoa.getCpf() == null || pessoa.getDataNasc() == null
+				|| pessoa.getEmail() == null || pessoa.getSenha() == null) {
+			// At least one required attribute is null
+			return false;
+		}
 
-	    ConexaoBanco c = ConexaoBanco.getInstancia();
-	    Connection con = c.conectar();
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
 
-	    String query = "INSERT INTO pessoas " + "(nome, sobrenome, cpf, data_nasc, senha, email) "
-	            + "VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO pessoas " + "(nome, sobrenome, cpf, data_nasc, senha, email) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 
-	    try {
-	        PreparedStatement ps = con.prepareStatement(query);
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
 
-	        ps.setString(1, pessoa.getNome());
-	        ps.setString(2, pessoa.getSobrenome());
-	        ps.setString(3, pessoa.getCpf());
-	        ps.setDate(4, Date.valueOf(pessoa.getDataNasc()));
-	        ps.setString(5, pessoa.getSenha());
-	        ps.setString(6, pessoa.getEmail());
+			ps.setString(1, pessoa.getNome());
+			ps.setString(2, pessoa.getSobrenome());
+			ps.setString(3, pessoa.getCpf());
+			ps.setDate(4, Date.valueOf(pessoa.getDataNasc()));
+			ps.setString(5, pessoa.getSenha());
+			ps.setString(6, pessoa.getEmail());
 
-	        ps.executeUpdate();
+			ps.executeUpdate();
 
-	        return true;
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        c.fecharConexao();
-	    }
-	    return false;
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+		return false;
 	}
-
 
 	@Override
 	public boolean alterarPessoa(Pessoa pessoa) {
@@ -98,31 +98,30 @@ public class PessoaDAO implements IPessoaDAO {
 	@Override
 
 	public boolean deletarPessoa(Pessoa pessoa) {
-	    ConexaoBanco c = ConexaoBanco.getInstancia();
-	    Connection con = c.conectar();
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
 
-	    String query = "DELETE FROM pessoas WHERE cpf = ?";
+		String query = "DELETE FROM pessoas WHERE cpf = ?";
 
-	    try {
-	        PreparedStatement ps = con.prepareStatement(query);
-	        ps.setString(1, pessoa.getCpf());
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, pessoa.getCpf());
 
-	        int rowsAffected = ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 
-	        if (rowsAffected > 0) {
-	            return true; // Deletion was successful
-	        } else {
-	            return false; // No matching records found, so deletion failed
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        c.fecharConexao();
-	    }
+			if (rowsAffected > 0) {
+				return true; // Deletion was successful
+			} else {
+				return false; // No matching records found, so deletion failed
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
 
-	    return false; // Default to false in case of an exception
+		return false; // Default to false in case of an exception
 	}
-
 
 	@Override
 	public ArrayList<Pessoa> listarPessoas() {

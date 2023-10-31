@@ -99,8 +99,7 @@ public class CaronaDAO implements ICaronaDAO {
 			query.append(")");
 
 			/*
-			 * Algoritmo para colocar os parametros
-			 * no comando SQL
+			 * Algoritmo para colocar os parametros no comando SQL
 			 */
 			int i = 1;
 			try {
@@ -157,7 +156,7 @@ public class CaronaDAO implements ICaronaDAO {
 				c.fecharConexao();
 			}
 		}
-		return 0l; //l de long
+		return 0l; // l de long
 	}
 
 	@Override
@@ -228,8 +227,7 @@ public class CaronaDAO implements ICaronaDAO {
 			query.append(")");
 
 			/*
-			 * Algoritmo para colocar os parametros
-			 * no comando SQL
+			 * Algoritmo para colocar os parametros no comando SQL
 			 */
 			int i = 1;
 			try {
@@ -286,7 +284,7 @@ public class CaronaDAO implements ICaronaDAO {
 				c.fecharConexao();
 			}
 		}
-		return 0l; //l de long
+		return 0l; // l de long
 	}
 
 	@Override
@@ -302,12 +300,12 @@ public class CaronaDAO implements ICaronaDAO {
 			ps.setInt(1, carona.getIdCarona());
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;

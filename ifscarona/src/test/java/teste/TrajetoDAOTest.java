@@ -64,7 +64,7 @@ public class TrajetoDAOTest {
 	@Test
 	public void testDeleteTrajetoSucesso() {
 		Trajeto trajeto = new Trajeto();
-		trajeto.setDestino("Blumenau");
+		trajeto.setDestino("blumenau");
 		trajeto.setOrigem("IFSC");
 		trajeto.setIdTrajeto(12l);
 
@@ -90,7 +90,7 @@ public class TrajetoDAOTest {
 	@Test
 	public void testListarTrajetoSucesso() {
 		Trajeto trajeto = new Trajeto();
-		trajeto.setDestino("Blumenau");
+		trajeto.setDestino("blumenau");
 		trajeto.setOrigem("IFSC");
 		trajeto.setIdTrajeto(12l);
 
