@@ -93,30 +93,31 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public boolean deletarPessoa(Pessoa pessoa) {
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
 
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+	    String query = "DELETE FROM pessoas WHERE cpf = ?";
 
-		String query = "DELETE FROM pessoas WHERE cpf = ?";
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
+	        ps.setString(1, pessoa.getCpf());
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, pessoa.getCpf());
+	        int rowsAffected = ps.executeUpdate();
 
-			ps.executeUpdate();
+	        if (rowsAffected > 0) {
+	            return true; // Deletion was successful
+	        } else {
+	            return false; // No matching records found, so deletion failed
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
 
-			return true;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			c.fecharConexao();
-		}
-
-		return false;
+	    return false; // Default to false in case of an exception
 	}
+
 
 	@Override
 	public ArrayList<Pessoa> listarPessoas() {
