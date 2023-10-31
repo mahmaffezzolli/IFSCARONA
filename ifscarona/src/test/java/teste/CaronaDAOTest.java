@@ -74,8 +74,9 @@ public class CaronaDAOTest {
 
 	 assertEquals(false, erro >= 1);
 	}
-	
-	public void testAtualizarCarona() {
+	 
+	 @Test
+	 public void testAtualizarCarona() {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
