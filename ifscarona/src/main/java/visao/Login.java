@@ -190,7 +190,7 @@ public class Login extends JFrame {
 			}
 
 		});
-		btnLogar.setBounds(200, 200, 220, 45);
+		btnLogar.setBounds(952, 741, 220, 45);
 		contentPane.add(btnLogar);
 
 		JLabel lblSenha = new JLabel("Senha:");
