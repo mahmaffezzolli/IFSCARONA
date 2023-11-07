@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Carona {
 
-	private Integer idCarona;
+	private Long idCarona;
 	private Trajeto trajeto;
 	private Pessoa passageiro;
 	private Pessoa motorista;
@@ -14,12 +14,12 @@ public class Carona {
 	private LocalDate data;
 	private Time horario;
 
-	public Integer getIdCarona() {
+	public Long getIdCarona() {
 		return idCarona;
 	}
 
-	public void setIdCarona(Integer idCarona) {
-		this.idCarona = idCarona;
+	public void setIdCarona(Long sucesso) {
+		this.idCarona = sucesso;
 	}
 
 	public Trajeto getTrajeto() {
