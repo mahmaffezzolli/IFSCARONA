@@ -1,105 +1,123 @@
 package teste;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import controle.CaronaDAO;
 import controle.TrajetoDAO;
-import controle.VeiculoDAO;
 import modelo.Trajeto;
 
 public class TrajetoDAOTest {
+	
 	@Test
 	public void testCadastrarTrajetoSucesso() {
 
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("blumenau");
 		trajeto.setOrigem("Ifsc");
-		
+
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 		Long sucesso = tDAO.cadastrarTrajeto(trajeto);
-		assertEquals(true, sucesso > 0);
-		
+		assertTrue(sucesso > 0);
 	}
 
-	 @Test
-		public void testCadastrarTrajetoErro() {
-		Trajeto trajeto = null;
+	@Test
+	public void testCadastrarTrajetoErro() {
+		
+		Trajeto trajeto = new Trajeto();
+		trajeto.setDestino("gaspar");
+		trajeto.setOrigem("Ifsc");
+		trajeto.setDestino(null);
 
-		 TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		 Long erro = tDAO.cadastrarTrajeto(trajeto);
+		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(newTrajetoID);
 
-		assertEquals(false, erro>=1);
-		 }
+		Boolean erro = tDAO.alterarTrajeto(trajeto);
+		assertEquals(false, erro);
+	}
+
 	@Test
 	public void testAlterarTrajetoSucesso() {
 
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("Gaspar");
 		trajeto.setOrigem("IFSC");
-		trajeto.setIdTrajeto(123l);
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		tDAO.cadastrarTrajeto(trajeto);
+
+		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(newTrajetoID);
+
 		Boolean sucesso = tDAO.alterarTrajeto(trajeto);
 		assertEquals(true, sucesso);
-
 
 	}
 
 	@Test
 	public void testAlterarTrajetoErro() {
-		Trajeto trajeto = null;
+		Trajeto trajeto = new Trajeto();
+		trajeto.setDestino(null);
+		trajeto.setOrigem("Ifsc");
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		tDAO.cadastrarTrajeto(trajeto);
+
+		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(newTrajetoID);
+
 		Boolean erro = tDAO.alterarTrajeto(trajeto);
 		assertEquals(false, erro);
 	}
-	
+
 	@Test
 	public void testDeleteTrajetoSucesso() {
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("blumenau");
 		trajeto.setOrigem("IFSC");
-		trajeto.setIdTrajeto(12l);
-
+		
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		tDAO.cadastrarTrajeto(trajeto);
+		
+		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(newTrajetoID);
+		
 		Boolean sucesso = tDAO.deletarTrajeto(trajeto);
 		assertEquals(true, sucesso);
 
 	}
-	
-	
+
 	@Test
 	public void testDeletarTrajetoErro() {
-		Trajeto trajeto = null;
+		Trajeto trajeto = new Trajeto();
+		trajeto.setDestino(null);
+		trajeto.setOrigem("Ifsc");
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		tDAO.cadastrarTrajeto(trajeto);
+
+		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(newTrajetoID);
+		
 		Boolean erro = tDAO.deletarTrajeto(trajeto);
 		assertEquals(false, erro);
 	}
-	
-	
+
 	@Test
 	public void testListarTrajetoSucesso() {
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("blumenau");
 		trajeto.setOrigem("IFSC");
-		trajeto.setIdTrajeto(12l);
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		tDAO.cadastrarTrajeto(trajeto);
-		ArrayList<Trajeto>trajetos=tDAO.listarTrajetos();
 		
+		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(newTrajetoID);
+		
+		ArrayList<Trajeto> trajetos = tDAO.listarTrajetos();
 
-		assertEquals(false, trajetos.isEmpty ());
+		assertEquals(false, trajetos.isEmpty());
 
 	}
 }

@@ -79,10 +79,8 @@ public class PessoaDAO implements IPessoaDAO {
 			int rowsAffected = ps.executeUpdate();
 
 			if (rowsAffected > 0) {
-				System.out.println("Dados pessoais atualizados com sucesso.");
 				return true;
 			} else {
-				System.out.println("Nenhum dado foi atualizado.");
 				return false;
 			}
 
@@ -98,29 +96,33 @@ public class PessoaDAO implements IPessoaDAO {
 	@Override
 
 	public boolean deletarPessoa(Pessoa pessoa) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
 
-		String query = "DELETE FROM pessoas WHERE cpf = ?";
+		if (pessoa != null) {
+			
+			ConexaoBanco c = ConexaoBanco.getInstancia();
+			Connection con = c.conectar();
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, pessoa.getCpf());
+			String query = "DELETE FROM pessoas WHERE cpf = ?";
 
-			int rowsAffected = ps.executeUpdate();
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, pessoa.getCpf());
 
-			if (rowsAffected > 0) {
-				return true; // Deletion was successful
-			} else {
-				return false; // No matching records found, so deletion failed
+				int rowsAffected = ps.executeUpdate();
+
+				if (rowsAffected > 0) {
+					return true;
+				} else {
+					return false;
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				c.fecharConexao();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			c.fecharConexao();
 		}
-
-		return false; // Default to false in case of an exception
+		return false;
 	}
 
 	@Override

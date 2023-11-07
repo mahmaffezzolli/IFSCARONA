@@ -61,38 +61,42 @@ public class TrajetoDAO implements ITrajetoDAO {
 	@Override
 	public boolean alterarTrajeto(Trajeto trajeto) {
 
-		if (trajeto != null) {
-			ConexaoBanco c = ConexaoBanco.getInstancia();
-			Connection con = c.conectar();
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
 
-			String query = "UPDATE trajetos SET origem = ?, destino = ? WHERE id_trajeto = ?";
+		String query = "UPDATE trajetos SET origem = ?, destino = ? WHERE id_trajeto = ?";
 
-			try {
-				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, trajeto.getOrigem());
-				ps.setString(2, trajeto.getDestino());
-				ps.setLong(3, trajeto.getIdTrajeto());
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, trajeto.getOrigem());
+			ps.setString(2, trajeto.getDestino());
+			ps.setLong(3, trajeto.getIdTrajeto());
 
-				ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 
+			if (rowsAffected > 0) {
 				return true;
-
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			} finally {
-
-				c.fecharConexao();
+			} else {
+				return false;
 			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			c.fecharConexao();
+
 		}
 		return false;
 	}
 
 	@Override
 	public boolean deletarTrajeto(Trajeto trajeto) {
-		if (trajeto != null) {
-			ConexaoBanco c = ConexaoBanco.getInstancia();
 
+		if (trajeto != null) {
+
+			ConexaoBanco c = ConexaoBanco.getInstancia();
 			Connection con = c.conectar();
 
 			String query = "DELETE FROM trajetos WHERE id_trajeto = ?";
@@ -100,13 +104,14 @@ public class TrajetoDAO implements ITrajetoDAO {
 			try {
 				PreparedStatement ps = con.prepareStatement(query);
 				ps.setLong(1, trajeto.getIdTrajeto());
-				ps.setString(1, trajeto.getOrigem());
-				ps.setString(1, trajeto.getDestino());
-				ps.executeUpdate();
 
-				c.fecharConexao();
+				int rowsAffected = ps.executeUpdate();
 
-				return true;
+				if (rowsAffected > 0) {
+					return true;
+				} else {
+					return false;
+				}
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -159,6 +164,4 @@ public class TrajetoDAO implements ITrajetoDAO {
 		return trajetos;
 	}
 
-	
-	
 }
