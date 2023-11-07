@@ -22,6 +22,8 @@ public class TrajetoDAOTest {
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 		Long sucesso = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(sucesso);
+
 		assertTrue(sucesso > 0);
 	}
 
