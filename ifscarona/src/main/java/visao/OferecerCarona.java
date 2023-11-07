@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +23,9 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.UtilDateModel;
+import org.jdatepicker.impl.JDatePickerImpl;
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
 import modelo.Carona;
@@ -30,35 +34,51 @@ import modelo.Trajeto;
 
 public class OferecerCarona extends JFrame {
 
-	private JPanel contentPane;
-	private JComboBox<String> cmbGaspar;
-	private JComboBox<String> cmbBlumenau;
-	private JComboBox<String> cmbLugar;
-	private JCheckBox chckbxGaspar;
-	private JCheckBox chckbxBlumenau;
-	private CaronaDAO cDAO = CaronaDAO.getInstancia();
-	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+    private JPanel contentPane;
+    private JComboBox<String> cmbGaspar;
+    private JComboBox<String> cmbBlumenau;
+    private JComboBox<String> cmbLugar;
+    private JCheckBox chckbxGaspar;
+    private JCheckBox chckbxBlumenau;
+    private CaronaDAO cDAO = CaronaDAO.getInstancia();
+    private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+    private JDatePicker datePicker;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OferecerCarona frame = new OferecerCarona();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public OferecerCarona() {
+
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    OferecerCarona frame = new OferecerCarona();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public OferecerCarona() {
+
+    	
+    	 
+          
+//    	 UtilDateModel dateModel = new UtilDateModel();
+//
+//         // Crie o JDatePicker com o modelo de data
+//         JDatePickerImpl datePickerImpl = new JDatePickerImpl(dateModel);
+//
+//         // Defina a posição e tamanho do JDatePicker
+//         datePickerImpl.setBounds(1100, 500, 150, 30);
+//
+//         // Obtenha o componente JDatePicker a partir do JDatePickerImpl
+//         datePicker = datePickerImpl.getJDatePicker();
+//
+//         // Adicione o JDatePicker ao painel de conteúdo
+//         contentPane.add(datePickerImpl);
+		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -79,6 +99,8 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
+		
+
 
 		chckbxGaspar = new JCheckBox("Gaspar");
 		chckbxGaspar.setBounds(845, 456, 129, 23);
@@ -227,6 +249,11 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_2.setFont(new Font("Dialog", Font.BOLD, 40));
 		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
+		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/tela inicio fundo botoes.png")));
+		lblNewLabel_4.setBounds(1313, 519, 320, 133);
+		contentPane.add(lblNewLabel_4);
 
 	}
 
@@ -254,6 +281,8 @@ public class OferecerCarona extends JFrame {
 	}
 
 	public void oferecerCarona(Trajeto t) {
+		
+		
 
 		String qntLugar;
 
@@ -280,6 +309,4 @@ public class OferecerCarona extends JFrame {
 		}
 
 	}
-	
-	
 }
