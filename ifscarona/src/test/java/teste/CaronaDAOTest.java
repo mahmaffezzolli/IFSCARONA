@@ -81,14 +81,22 @@ public class CaronaDAOTest {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setSobrenome("Lima");
-		pessoa.setCpf("23345309811");
+		pessoa.setCpf("23344309811");
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 11));
 		pessoa.setEmail("leticia.lc2005@gamil.com");
 		pessoa.setSenha("legal321");
+		
+		PessoaDAO pDAO = PessoaDAO.getInstancia();
+		pDAO.cadastrarPessoa(pessoa);
+
 
 		Trajeto trajeto = new Trajeto();
 		trajeto.setOrigem("Gaspar");
 		trajeto.setDestino("Blumenau");
+		
+		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+		Long id = tDAO.cadastrarTrajeto(trajeto);
+		trajeto.setIdTrajeto(id);
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Preto");
@@ -96,6 +104,10 @@ public class CaronaDAOTest {
 		veiculo.setModelo("SUV");
 		veiculo.setMotorista(pessoa);
 		veiculo.setPlaca("12345678");
+
+		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
+		veiculo.setIdVeiculo(idVeiculo);
 
 		Carona carona = new Carona();
 		carona.setMotorista(pessoa);
@@ -111,13 +123,13 @@ public class CaronaDAOTest {
 		assertEquals(true, sucesso);
 	}
 	
-
+    @Test
 	public void testDeletarCarona() {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setSobrenome("Lima");
-		pessoa.setCpf("23345309811");
+		pessoa.setCpf("23345309800");
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 11));
 		pessoa.setEmail("leticia.lc2005@gamil.com");
 		pessoa.setSenha("legal321");
@@ -150,13 +162,13 @@ public class CaronaDAOTest {
 		assertEquals(true, sucesso);
 
 	}
-	
+	@Test
 	public void testeDeletarCaronaSucesso() {
 		
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
 		pessoa.setSobrenome("Lima");
-		pessoa.setCpf("78912309811");
+		pessoa.setCpf("78912309711");
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 11));
 		pessoa.setEmail("leticia.lc2005@gamil.com");
 		pessoa.setSenha("legal321");
