@@ -100,10 +100,14 @@ public class OferecerCarona extends JFrame {
 			}
 		});
 		
+		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
+		chckbxIfsc.setBounds(845, 469, 129, 23);
+		contentPane.add(chckbxIfsc);
+		
 
 
 		chckbxGaspar = new JCheckBox("Gaspar");
-		chckbxGaspar.setBounds(845, 456, 129, 23);
+		chckbxGaspar.setBounds(845, 432, 129, 23);
 		contentPane.add(chckbxGaspar);
 
 		chckbxBlumenau = new JCheckBox("Blumenau");

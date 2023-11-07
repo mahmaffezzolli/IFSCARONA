@@ -78,9 +78,13 @@ public class RequisitarCarona extends JFrame {
 
 			}
 		});
+		
+		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
+		chckbxIfsc.setBounds(845, 442, 129, 23);
+		contentPane.add(chckbxIfsc);
 
 		chckbxGaspar = new JCheckBox("Gaspar");
-		chckbxGaspar.setBounds(845, 432, 129, 23);
+		chckbxGaspar.setBounds(845, 414, 129, 23);
 		contentPane.add(chckbxGaspar);
 
 		chckbxBlumenau = new JCheckBox("Blumenau");
@@ -101,21 +105,10 @@ public class RequisitarCarona extends JFrame {
 				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
 			}
 		});
-		
-		 chckbxGaspar = new JCheckBox("Gaspar");
-	        chckbxGaspar.setBounds(845, 432, 129, 23);
-	        contentPane.add(chckbxGaspar);
 
 	        chckbxBlumenau = new JCheckBox("Blumenau");
 	        chckbxBlumenau.setBounds(845, 387, 129, 23);
 	        contentPane.add(chckbxBlumenau);
-	        chckbxGaspar.addItemListener(new ItemListener() {
-	            @Override
-	            public void itemStateChanged(ItemEvent e) {
-	                comboBox2.setEnabled(!chckbxGaspar.isSelected());
-	                comboBox1.setEnabled(chckbxGaspar.isSelected());
-	            } 
-	        });
 
 	        chckbxBlumenau.addItemListener(new ItemListener() {
 	            @Override
@@ -212,9 +205,9 @@ public class RequisitarCarona extends JFrame {
 		lblFundoFiltro1.setBounds(723, 518, 320, 133);
 		contentPane.add(lblFundoFiltro1);
 
-		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
+		JLabel lblNewLabel_1 = new JLabel("Para onde você vai?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(676, 278, 530, 107);
+		lblNewLabel_1.setBounds(709, 278, 530, 107);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares necessários?");
