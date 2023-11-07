@@ -36,6 +36,24 @@ public class TrajetoDAO implements ITrajetoDAO {
 			try {
 				PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
+				String destino = trajeto.getDestino();
+				if (destino != null) {
+					if (destino.isEmpty()) {
+						return 0l;
+					}
+				} else {
+					return 0l;
+				}
+
+				String origem = trajeto.getOrigem();
+				if (origem != null) {
+					if (origem.isEmpty()) {
+						return 0l;
+					}
+				} else {
+					return 0l;
+				}
+
 				ps.setString(1, trajeto.getOrigem());
 				ps.setString(2, trajeto.getDestino());
 
@@ -61,32 +79,50 @@ public class TrajetoDAO implements ITrajetoDAO {
 	@Override
 	public boolean alterarTrajeto(Trajeto trajeto) {
 
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+		if (trajeto != null) {
+			ConexaoBanco c = ConexaoBanco.getInstancia();
+			Connection con = c.conectar();
 
-		String query = "UPDATE trajetos SET origem = ?, destino = ? WHERE id_trajeto = ?";
+			String query = "UPDATE trajetos SET origem = ?, destino = ? WHERE id_trajeto = ?";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, trajeto.getOrigem());
-			ps.setString(2, trajeto.getDestino());
-			ps.setLong(3, trajeto.getIdTrajeto());
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
 
-			int rowsAffected = ps.executeUpdate();
+				String destino = trajeto.getDestino();
+				if (destino != null) {
+					if (destino.isEmpty()) {
+						return false;
+					}
+				} else {
+					return false;
+				}
 
-			if (rowsAffected > 0) {
-				return true;
-			} else {
-				return false;
+				String origem = trajeto.getOrigem();
+				if (origem != null) {
+					if (origem.isEmpty()) {
+						return false;
+					}
+				} else {
+					return false;
+				}
+
+				ps.setString(1, trajeto.getOrigem());
+				ps.setString(2, trajeto.getDestino());
+				ps.setLong(3, trajeto.getIdTrajeto());
+
+				int rowsAffected = ps.executeUpdate();
+				if (rowsAffected > 0) {
+					return true;
+				}
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} finally {
+
+				c.fecharConexao();
+
 			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			c.fecharConexao();
-
 		}
 		return false;
 	}

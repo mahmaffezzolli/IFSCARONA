@@ -8,9 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.IVeiculoDAO;
-import modelo.Motorista;
 import modelo.Pessoa;
-import modelo.Sessao;
 import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
@@ -105,11 +103,11 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM veiculos WHERE cpf_pessoa = ?";
+		String query = "DELETE FROM veiculos WHERE id_veiculo = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, veiculo.getMotorista().getCpf());
+			ps.setLong(1, veiculo.getIdVeiculo());
 
 			int rowsAffected = ps.executeUpdate();
 

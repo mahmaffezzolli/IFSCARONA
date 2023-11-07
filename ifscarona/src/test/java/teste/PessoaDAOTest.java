@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,14 +12,23 @@ import controle.PessoaDAO;
 import modelo.Pessoa;
 import modelo.Veiculo;
 
-public class PessoaDAOtest {
+public class PessoaDAOTest {
+
+	public static String geraCpfAleatorio() {
+
+		Random r = new Random();
+		long numbers = r.nextInt(1_000_000_000) // Last 9 digits
+				+ (r.nextInt(90) + 10) * 1_000_000_000L;
+
+		return String.valueOf(numbers);
+	}
 
 	@Test
 	public void testCadastrarPessoaSucesso() {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("99981154048");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
@@ -54,7 +64,7 @@ public class PessoaDAOtest {
 	public void testDeletarPessoaErroPessoaInexistente() {
 		// Attempt to delete a person that does not exist in the database
 		Pessoa pessoa = new Pessoa();
-		pessoa.setCpf("88888888888"); // Non-existent CPF
+		pessoa.setCpf(geraCpfAleatorio()); // Non-existent CPF
 
 		PessoaDAO pDAO = PessoaDAO.getInstancia();
 		boolean sucesso = pDAO.deletarPessoa(pessoa);
@@ -68,7 +78,7 @@ public class PessoaDAOtest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("98881154048");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("lele@email.com");
 		pessoa.setSenha("123456789");
@@ -96,7 +106,7 @@ public class PessoaDAOtest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88981154048");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("lele@email.com");
 		pessoa.setSenha("123456789");
@@ -134,7 +144,7 @@ public class PessoaDAOtest {
 	public void testAtualizarPessoaErro() {
 		// Attempt to update a person that does not exist in the database
 		Pessoa pessoa = new Pessoa();
-		pessoa.setCpf("88888888888"); // Non-existent CPF
+		pessoa.setCpf(geraCpfAleatorio()); // Non-existent CPF
 		// Set some new attributes
 		pessoa.setNome("Updated Name");
 

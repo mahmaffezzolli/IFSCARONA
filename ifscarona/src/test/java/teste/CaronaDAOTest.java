@@ -3,6 +3,7 @@ package teste;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,13 +18,22 @@ import modelo.Veiculo;
 
 public class CaronaDAOTest {
 
+	public static String geraCpfAleatorio() {
+
+		Random r = new Random();
+		long numbers = r.nextInt(1_000_000_000) // Last 9 digits
+				+ (r.nextInt(90) + 10) * 1_000_000_000L;
+
+		return String.valueOf(numbers);
+	}
+
 	@Test
 	public void testCadastrarCarona() {
 
 		Pessoa motorista = new Pessoa();
 		motorista.setNome("Letícia");
 		motorista.setSobrenome("Lima");
-		motorista.setCpf("23345309811");
+		motorista.setCpf(geraCpfAleatorio());
 		motorista.setDataNasc(LocalDate.of(2005, 12, 10));
 		motorista.setEmail("leticia.lc2005@gmail.com");
 		motorista.setSenha("legal321");
@@ -34,7 +44,7 @@ public class CaronaDAOTest {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Ash");
 		pessoa.setSobrenome("Ze");
-		pessoa.setCpf("12345309811");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 10));
 		pessoa.setEmail("leticia.lc2005@gmail.com");
 		pessoa.setSenha("legal321");
@@ -72,7 +82,7 @@ public class CaronaDAOTest {
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Long idCarona = cDAO.cadastrarCarona(carona);
 		carona.setIdCarona(idCarona);
-		
+
 		assertEquals(true, idCarona > 0);
 
 	}
@@ -93,7 +103,7 @@ public class CaronaDAOTest {
 		Pessoa motorista = new Pessoa();
 		motorista.setNome("Letícia");
 		motorista.setSobrenome("Lima");
-		motorista.setCpf("23345209811");
+		motorista.setCpf(geraCpfAleatorio());
 		motorista.setDataNasc(LocalDate.of(2005, 12, 10));
 		motorista.setEmail("leticia.lc2005@gmail.com");
 		motorista.setSenha("legal321");
@@ -104,7 +114,7 @@ public class CaronaDAOTest {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Ash");
 		pessoa.setSobrenome("Ze");
-		pessoa.setCpf("16345309811");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 10));
 		pessoa.setEmail("leticia.lc2005@gmail.com");
 		pessoa.setSenha("legal321");
@@ -142,9 +152,9 @@ public class CaronaDAOTest {
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Long idCarona = cDAO.cadastrarCarona(carona);
 		carona.setIdCarona(idCarona);
-		
+
 		Boolean sucesso = tDAO.alterarTrajeto(trajeto);
-		
+
 		assertEquals(true, sucesso);
 	}
 
@@ -154,7 +164,7 @@ public class CaronaDAOTest {
 		Pessoa motorista = new Pessoa();
 		motorista.setNome("Letícia");
 		motorista.setSobrenome("Lima");
-		motorista.setCpf("23345206811");
+		motorista.setCpf(geraCpfAleatorio());
 		motorista.setDataNasc(LocalDate.of(2005, 12, 10));
 		motorista.setEmail("leticia.lc2005@gmail.com");
 		motorista.setSenha("legal321");
@@ -165,7 +175,7 @@ public class CaronaDAOTest {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Ash");
 		pessoa.setSobrenome("Ze");
-		pessoa.setCpf("16375309811");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 10));
 		pessoa.setEmail("leticia.lc2005@gmail.com");
 		pessoa.setSenha("legal321");
@@ -203,9 +213,8 @@ public class CaronaDAOTest {
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Long idCarona = cDAO.cadastrarCarona(carona);
 		carona.setIdCarona(idCarona);
-		
-		Boolean sucesso = cDAO.deletarCarona(carona);
 
+		Boolean sucesso = cDAO.deletarCarona(carona);
 		assertEquals(true, sucesso);
 
 	}
@@ -216,7 +225,7 @@ public class CaronaDAOTest {
 		Pessoa motorista = new Pessoa();
 		motorista.setNome("Letícia");
 		motorista.setSobrenome("Lima");
-		motorista.setCpf("23345506811");
+		motorista.setCpf(geraCpfAleatorio());
 		motorista.setDataNasc(LocalDate.of(2005, 12, 10));
 		motorista.setEmail("leticia.lc2005@gmail.com");
 		motorista.setSenha("legal321");
@@ -227,7 +236,7 @@ public class CaronaDAOTest {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Ash");
 		pessoa.setSobrenome("Ze");
-		pessoa.setCpf("16375349811");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2005, 12, 10));
 		pessoa.setEmail("leticia.lc2005@gmail.com");
 		pessoa.setSenha("legal321");
@@ -265,7 +274,7 @@ public class CaronaDAOTest {
 		CaronaDAO cDAO = CaronaDAO.getInstancia();
 		Long idCarona = cDAO.cadastrarCarona(carona);
 		carona.setIdCarona(idCarona);
-		
+
 		Boolean sucesso = cDAO.deletarCarona(carona);
 
 		assertEquals(true, sucesso);

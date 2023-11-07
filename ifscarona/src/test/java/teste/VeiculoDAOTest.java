@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +15,21 @@ import modelo.Veiculo;
 
 public class VeiculoDAOTest {
 
+	public static String geraCpfAleatorio() {
+
+		Random r = new Random();
+		long numbers = r.nextInt(1_000_000_000) // Last 9 digits
+				+ (r.nextInt(90) + 10) * 1_000_000_000L;
+
+		return String.valueOf(numbers);
+	}
+
 	@Test
 	public void testMetodoInserirVeiculo() {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88881154048");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
@@ -43,11 +53,15 @@ public class VeiculoDAOTest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88881154048");
+		String geraCpfAleatorio = geraCpfAleatorio();
+		pessoa.setCpf(geraCpfAleatorio);
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("Bratkhufhjhjh");
+
+		PessoaDAO pDAO = PessoaDAO.getInstancia();
+		pDAO.cadastrarPessoa(pessoa);
 
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor("Vermelho");
@@ -57,6 +71,9 @@ public class VeiculoDAOTest {
 		veiculo.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
+		veiculo.setIdVeiculo(idVeiculo);
+
 		Boolean sucesso = vDAO.alterarVeiculo(veiculo);
 		assertEquals(true, sucesso);
 
@@ -67,7 +84,7 @@ public class VeiculoDAOTest {
 
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("88881154048");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
@@ -82,17 +99,20 @@ public class VeiculoDAOTest {
 		veiculo.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
+		veiculo.setIdVeiculo(idVeiculo);
+
 		Boolean sucesso = vDAO.deletarVeiculo(veiculo);
 		assertEquals(true, sucesso);
 
 	}
-	
+
 	@Test
 	public void testMetodoReadVeiculo() {
-		
+
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Letícia");
-		pessoa.setCpf("89081154048");
+		pessoa.setCpf(geraCpfAleatorio());
 		pessoa.setDataNasc(LocalDate.of(2006, 2, 18));
 		pessoa.setEmail("gabriele@email.com");
 		pessoa.setSenha("123456789");
@@ -108,9 +128,9 @@ public class VeiculoDAOTest {
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 		vDAO.cadastrarVeiculo(veiculo);
-        ArrayList<Veiculo> veiculos = vDAO.listarVeiculos();
-        
-        assertEquals(false, veiculos.isEmpty());
+		ArrayList<Veiculo> veiculos = vDAO.listarVeiculos();
+
+		assertEquals(false, veiculos.isEmpty());
 
 	}
 
@@ -119,7 +139,8 @@ public class VeiculoDAOTest {
 
 		Pessoa motorista = new Pessoa();
 		motorista.setNome("Letícia");
-		motorista.setCpf("88881154048");
+		String geraCpfAleatorio = geraCpfAleatorio();
+		motorista.setCpf(geraCpfAleatorio);
 		motorista.setDataNasc(LocalDate.of(2006, 2, 18));
 		motorista.setEmail("gabriele@email.com");
 		motorista.setSenha("123456789");
@@ -140,7 +161,7 @@ public class VeiculoDAOTest {
 		Veiculo v = vDAO.conexaoVeiculoPessoa(motorista);
 		String cpf = v.getMotorista().getCpf();
 
-		assertEquals("88881154048", cpf);
+		assertEquals(geraCpfAleatorio, cpf);
 	}
 
 }

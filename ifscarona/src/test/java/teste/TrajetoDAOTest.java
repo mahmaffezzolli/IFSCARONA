@@ -1,7 +1,6 @@
 package teste;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import controle.TrajetoDAO;
 import modelo.Trajeto;
 
 public class TrajetoDAOTest {
-	
+
 	@Test
 	public void testCadastrarTrajetoSucesso() {
 
@@ -29,7 +28,7 @@ public class TrajetoDAOTest {
 
 	@Test
 	public void testCadastrarTrajetoErro() {
-		
+
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("gaspar");
 		trajeto.setOrigem("Ifsc");
@@ -80,12 +79,12 @@ public class TrajetoDAOTest {
 		Trajeto trajeto = new Trajeto();
 		trajeto.setDestino("blumenau");
 		trajeto.setOrigem("IFSC");
-		
+
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		
+
 		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(newTrajetoID);
-		
+
 		Boolean sucesso = tDAO.deletarTrajeto(trajeto);
 		assertEquals(true, sucesso);
 
@@ -101,7 +100,7 @@ public class TrajetoDAOTest {
 
 		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(newTrajetoID);
-		
+
 		Boolean erro = tDAO.deletarTrajeto(trajeto);
 		assertEquals(false, erro);
 	}
@@ -113,15 +112,13 @@ public class TrajetoDAOTest {
 		trajeto.setOrigem("IFSC");
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-		
+
 		Long newTrajetoID = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(newTrajetoID);
-		
+
 		ArrayList<Trajeto> trajetos = tDAO.listarTrajetos();
 
 		assertEquals(false, trajetos.isEmpty());
 
 	}
 }
-	
-	
