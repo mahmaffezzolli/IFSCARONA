@@ -26,7 +26,6 @@ import javax.swing.border.LineBorder;
 
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
-import modelo.Motorista;
 import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
@@ -153,15 +152,7 @@ public class Login extends JFrame {
 
 						VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 
-						// Pesquisa se a pessoa tem um veiculo
 						Veiculo v = vDAO.conexaoVeiculoPessoa(pessoaLogada);
-						if (v != null) {
-							Motorista m = new Motorista();
-							m.setCpf(senha);
-							//TODO TERMINAR
-							m.setVeiculo(v);
-							Sessao.setMotoristaLogado(m);
-						}
 
 						Sessao.setPessoaLogada(pessoaLogada);
 

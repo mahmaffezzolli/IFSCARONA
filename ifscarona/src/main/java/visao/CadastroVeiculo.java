@@ -21,7 +21,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import controle.VeiculoDAO;
-import modelo.Motorista;
 import modelo.Sessao;
 import modelo.Veiculo;
 
@@ -191,62 +190,50 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.setBounds(950, 706, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 
-		// Validações
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// Cria uma instância de Veiculo
 				Veiculo v = new Veiculo();
 
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
-				// Obtem os valores dos campos de texto
 				String cpf = String.valueOf(textCpf.getText());
 				String placa = txtPlaca.getText();
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
 				String marca = (String) BoxMarca.getSelectedItem();
 
-				// Verifica se algum dos campos está vazio
 				if (placa.isEmpty()) {
-
-					// Se algum campo estiver vazio, exibir o aviso
-
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (modelo.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
+					
 				} else if (marca.isEmpty()) {
-					campoNaoPreenchido.setVisible(true);
+					campoNaoPreenchido.setVisible(true);	
+					
 				} else if (cor.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
+					
 				} else if (cpf.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
+					
 				} else {
 
-					// Se todos os campos estiverem preenchidos, configurar os valores do veículo
-
 					v.setMotorista(Sessao.getPessoaLogada());
-
-					Motorista m = (Motorista) v.getMotorista();
-					Sessao.setMotoristaLogado(m);
 
 					v.setCor(cor);
 					v.setModelo(modelo);
 					v.setPlaca(placa);
 					v.setMarca(marca);
 
-					// Tenta cadastrar o veículo e verificar se foi bem-sucedido
 					Long success = vDAO.cadastrarVeiculo(v);
+					v.setIdVeiculo(success);
 
 					if (success > 0) {
-
-						// Se o cadastro for bem-sucedido, exibir uma mensagem de sucesso
-
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 
-						// Se o cadastro falhar, exibir uma mensagem de erro
 					} else {
 						CadastroErroVeiculo cadastroErroVeiculo = new CadastroErroVeiculo();
 						cadastroErroVeiculo.setVisible(true);
