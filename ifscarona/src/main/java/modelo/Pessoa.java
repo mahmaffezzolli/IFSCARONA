@@ -10,6 +10,10 @@ public class Pessoa {
 	private LocalDate dataNasc;
 	private String senha;
 	private String email;
+	private Veiculo veiculo;
+	
+	public Pessoa() {
+	}
 
 	public String getNome() {
 		return nome;
@@ -59,5 +63,12 @@ public class Pessoa {
 		this.email = email;
 	}
 
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
 
 }

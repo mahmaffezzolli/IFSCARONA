@@ -298,8 +298,8 @@ public class OferecerCarona extends JFrame {
 		qntLugar = (String) cmbLugar.getSelectedItem();
 
 		c.setQntPassageiro(Integer.valueOf(qntLugar));
-		c.setMotorista(Sessao.getMotoristaLogado());
-		c.setVeiculo(Sessao.getMotoristaLogado().getVeiculo());
+		c.setMotorista(Sessao.getPessoaLogada());
+		c.setVeiculo(Sessao.getPessoaLogada().getVeiculo());
 		c.setTrajeto(t);
 
 		Long success = cDAO.cadastrarCarona(c);
