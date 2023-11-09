@@ -90,13 +90,7 @@ public class RequisitarCarona extends JFrame {
 		chckbxBlumenau = new JCheckBox("Blumenau");
 		chckbxBlumenau.setBounds(845, 387, 129, 23);
 		contentPane.add(chckbxBlumenau);
-		chckbxGaspar.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
-				cmbGaspar.setEnabled(chckbxGaspar.isSelected());
-			}
-		});
+		
 
 		chckbxBlumenau.addItemListener(new ItemListener() {
 			@Override
@@ -105,19 +99,19 @@ public class RequisitarCarona extends JFrame {
 				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
 			}
 		});
-
 	        chckbxBlumenau = new JCheckBox("Blumenau");
 	        chckbxBlumenau.setBounds(845, 387, 129, 23);
 	        contentPane.add(chckbxBlumenau);
 
-	        chckbxBlumenau.addItemListener(new ItemListener() {
-	            @Override
-	            public void itemStateChanged(ItemEvent e) {
-	                comboBox1.setEnabled(!chckbxBlumenau.isSelected());
-	                comboBox2.setEnabled(chckbxBlumenau.isSelected());
-	            }
-	        });
-	        
+	        chckbxGaspar.addItemListener(new ItemListener() {
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
+					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
+
+				}
+			});
+
 	        
 
 		JLabel lblNewLabel_3 = new JLabel("");
@@ -219,7 +213,7 @@ public class RequisitarCarona extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected()) {
+				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected() || chckbxIfsc.isSelected()) {
 
 					definirTrajeto();
 

@@ -106,7 +106,7 @@ public class ListagemCaronas extends JFrame {
 	        JScrollPane scrollPane = new JScrollPane(table);
 	        scrollPane.setBounds(616, 170, 1060, 651);
 	        contentPane.add(scrollPane);
-		
+	        
 
 
 	}
