@@ -9,6 +9,10 @@ public class Veiculo {
 	private Pessoa motorista;
 	private Long idVeiculo;
 
+	public Veiculo() {
+		
+	}
+	
 	public String getPlaca() {
 		return placa;
 	}
