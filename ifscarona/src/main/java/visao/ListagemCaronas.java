@@ -8,6 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Time;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.CaronaDAO;
 import modelo.Carona;
 
 import javax.swing.JList;
@@ -106,6 +110,29 @@ public class ListagemCaronas extends JFrame {
 	        JScrollPane scrollPane = new JScrollPane(table);
 	        scrollPane.setBounds(616, 170, 1060, 651);
 	        contentPane.add(scrollPane);
+	        
+	        ResultSet resultSet = CaronaDAO.getInstancia().listarCaronasResultSet();
+
+	     try {
+	         while (resultSet.next()) {
+	             String nomeMotorista = resultSet.getString("nome"); 
+	             Time horario = resultSet.getTime("horario");
+	             String veiculo = resultSet.getString("placa"); 
+
+	             Object[] rowData = {nomeMotorista, horario, veiculo};
+	             tableModel.addRow(rowData);
+	         }
+	     } catch (SQLException e) {
+	         e.printStackTrace();
+	     } finally {
+	         try {
+	             if (resultSet != null) {
+	                 resultSet.close();
+	             }
+	         } catch (SQLException e) {
+	             e.printStackTrace();
+	         }
+	     }
 	        
 
 

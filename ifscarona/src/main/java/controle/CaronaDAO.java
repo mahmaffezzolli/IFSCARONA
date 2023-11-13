@@ -247,5 +247,22 @@ public class CaronaDAO implements ICaronaDAO {
 
 		return caronas;
 	}
+	
+	public ResultSet listarCaronasResultSet() {
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
+	    
+	    String query = "SELECT * FROM caronas";
+
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
+	        return ps.executeQuery();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return null;
+	}
+
 
 }
