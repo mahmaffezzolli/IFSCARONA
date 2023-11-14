@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import modelo.Carro;
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
 import modelo.Veiculo;
@@ -194,6 +195,11 @@ public class PessoaDAO implements IPessoaDAO {
 				pessoa.setEmail(rs.getString("email"));
 				pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
 
+				VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+				Carro carro = vDAO.conexaoVeiculoPessoa(pessoa);
+				
+				pessoa.setVeiculo(carro);
+				
 				return pessoa;
 			}
 

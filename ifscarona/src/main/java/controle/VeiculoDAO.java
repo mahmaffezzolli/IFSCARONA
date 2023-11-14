@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import modelo.Carro;
 import modelo.IVeiculoDAO;
 import modelo.Pessoa;
-import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
 

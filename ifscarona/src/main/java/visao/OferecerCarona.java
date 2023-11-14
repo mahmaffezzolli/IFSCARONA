@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,37 +33,31 @@ import modelo.Trajeto;
 
 public class OferecerCarona extends JFrame {
 
-    private JPanel contentPane;
-    private JComboBox<String> cmbGaspar;
-    private JComboBox<String> cmbBlumenau;
-    private JComboBox<String> cmbLugar;
-    private JCheckBox chckbxGaspar;
-    private JCheckBox chckbxBlumenau;
-    private CaronaDAO cDAO = CaronaDAO.getInstancia();
-    private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-    private JDatePicker datePicker;
+	private JPanel contentPane;
+	private JComboBox<String> cmbGaspar;
+	private JComboBox<String> cmbBlumenau;
+	private JComboBox<String> cmbLugar;
+	private JCheckBox chckbxGaspar;
+	private JCheckBox chckbxBlumenau;
+	private CaronaDAO cDAO = CaronaDAO.getInstancia();
+	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+	private JDatePicker datePicker;
 
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					OferecerCarona frame = new OferecerCarona();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
+	public OferecerCarona() {
 
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    OferecerCarona frame = new OferecerCarona();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    public OferecerCarona() {
-
-    	
-    	 
-          
 //    	 UtilDateModel dateModel = new UtilDateModel();
 //
 //         // Crie o JDatePicker com o modelo de data
@@ -78,7 +71,7 @@ public class OferecerCarona extends JFrame {
 //
 //         // Adicione o JDatePicker ao painel de conteúdo
 //         contentPane.add(datePickerImpl);
-		
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -99,12 +92,10 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
-		
+
 		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
 		chckbxIfsc.setBounds(845, 469, 129, 23);
 		contentPane.add(chckbxIfsc);
-		
-
 
 		chckbxGaspar = new JCheckBox("Gaspar");
 		chckbxGaspar.setBounds(845, 432, 129, 23);
@@ -253,7 +244,7 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_2.setFont(new Font("Dialog", Font.BOLD, 40));
 		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("New label");
 		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/tela inicio fundo botoes.png")));
 		lblNewLabel_4.setBounds(1313, 519, 320, 133);
@@ -285,18 +276,14 @@ public class OferecerCarona extends JFrame {
 	}
 
 	public void oferecerCarona(Trajeto t) {
-		
-		
-
-		String qntLugar;
 
 		Carona c = new Carona();
+		
+		String qntLugar;
+		qntLugar = (String) cmbLugar.getSelectedItem();
 
 		c.setData(null);
 		c.setHorario(null);
-
-		qntLugar = (String) cmbLugar.getSelectedItem();
-
 		c.setQntPassageiro(Integer.valueOf(qntLugar));
 		c.setMotorista(Sessao.getPessoaLogada());
 		c.setVeiculo(Sessao.getPessoaLogada().getVeiculo());
