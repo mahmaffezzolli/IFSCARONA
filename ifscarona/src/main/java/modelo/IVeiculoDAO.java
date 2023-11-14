@@ -11,5 +11,7 @@ public interface IVeiculoDAO {
 	public ArrayList<Carro> listarVeiculos();
 
 	public boolean deletarVeiculo(Carro carro);
+	
+	public Carro conexaoVeiculoPessoa(Pessoa motorista);
 
 }

@@ -11,5 +11,7 @@ public interface ITrajetoDAO {
 	public ArrayList<Trajeto> listarTrajetos();
 
 	public boolean deletarTrajeto(Trajeto trajeto);
+	
+	public Trajeto pegaTrajeto(Long idTrajeto);
 
 }
