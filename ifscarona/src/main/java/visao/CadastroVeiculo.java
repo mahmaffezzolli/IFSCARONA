@@ -156,7 +156,7 @@ public class CadastroVeiculo extends JFrame {
 		mascaraPlaca = new MaskFormatter("*******");
 		txtPlaca = new JFormattedTextField(mascaraPlaca);
 		/*****************/
-		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
+		txtPlaca.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);
 		txtPlaca.setBackground(new Color(255, 251, 233));
