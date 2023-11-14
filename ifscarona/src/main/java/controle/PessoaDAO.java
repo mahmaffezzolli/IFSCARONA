@@ -28,11 +28,11 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public boolean cadastrarPessoa(Pessoa pessoa) {
+	public String cadastrarPessoa(Pessoa pessoa) {
 		if (pessoa == null || pessoa.getNome() == null || pessoa.getCpf() == null || pessoa.getDataNasc() == null
 				|| pessoa.getEmail() == null || pessoa.getSenha() == null) {
 			// At least one required attribute is null
-			return false;
+			return null;
 		}
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
@@ -53,13 +53,14 @@ public class PessoaDAO implements IPessoaDAO {
 
 			ps.executeUpdate();
 
-			return true;
+			return pessoa.getCpf();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			c.fecharConexao();
 		}
-		return false;
+		return null;
 	}
 
 	@Override
@@ -90,7 +91,6 @@ public class PessoaDAO implements IPessoaDAO {
 		} finally {
 			c.fecharConexao();
 		}
-
 	}
 
 	@Override
