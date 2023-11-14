@@ -370,9 +370,9 @@ public class CadastroUsuario extends JFrame {
 					p.setSenha(senha);
 					p.setDataNasc(dataNascimento);
 
-					boolean success = pDAO.cadastrarPessoa(p);
+					String success = pDAO.cadastrarPessoa(p);
 
-					if (success) {
+					if (success == cpfS) {
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IPessoaDAO {
 
-	public boolean cadastrarPessoa(Pessoa pessoa);
+	public String cadastrarPessoa(Pessoa pessoa);
 
 	public boolean alterarPessoa(Pessoa pessoa);
 
