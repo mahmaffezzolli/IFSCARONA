@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
+import modelo.Carro;
 import modelo.Pessoa;
-import modelo.Veiculo;
 
 public class VeiculoDAOTest {
 
@@ -35,15 +35,15 @@ public class VeiculoDAOTest {
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("Bratkhufhjhjh");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Vermelho");
-		veiculo.setMarca("Audi");
-		veiculo.setModelo("Volvo");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("1234abc");
+		Carro carro = new Carro();
+		carro.setCor("Vermelho");
+		carro.setMarca("Audi");
+		carro.setModelo("Volvo");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("1234abc");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long sucesso = vDAO.cadastrarVeiculo(veiculo);
+		Long sucesso = vDAO.cadastrarVeiculo(carro);
 		assertEquals(true, sucesso > 0);
 
 	}
@@ -63,18 +63,18 @@ public class VeiculoDAOTest {
 		PessoaDAO pDAO = PessoaDAO.getInstancia();
 		pDAO.cadastrarPessoa(pessoa);
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Vermelho");
-		veiculo.setMarca("Audi");
-		veiculo.setModelo("Volvo");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("5678def");
+		Carro carro = new Carro();
+		carro.setCor("Vermelho");
+		carro.setMarca("Audi");
+		carro.setModelo("Volvo");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
-		veiculo.setIdVeiculo(idVeiculo);
+		Long idVeiculo = vDAO.cadastrarVeiculo(carro);
+		carro.setIdVeiculo(idVeiculo);
 
-		Boolean sucesso = vDAO.alterarVeiculo(veiculo);
+		Boolean sucesso = vDAO.alterarVeiculo(carro);
 		assertEquals(true, sucesso);
 
 	}
@@ -90,19 +90,19 @@ public class VeiculoDAOTest {
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("Bratkhufhjhjh");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Vermelho");
-		veiculo.setMotorista(pessoa);
-		veiculo.setMarca("Audi");
-		veiculo.setModelo("Volvo");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("5678def");
+		Carro carro = new Carro();
+		carro.setCor("Vermelho");
+		carro.setMotorista(pessoa);
+		carro.setMarca("Audi");
+		carro.setModelo("Volvo");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
-		veiculo.setIdVeiculo(idVeiculo);
+		Long idVeiculo = vDAO.cadastrarVeiculo(carro);
+		carro.setIdVeiculo(idVeiculo);
 
-		Boolean sucesso = vDAO.deletarVeiculo(veiculo);
+		Boolean sucesso = vDAO.deletarVeiculo(carro);
 		assertEquals(true, sucesso);
 
 	}
@@ -118,17 +118,17 @@ public class VeiculoDAOTest {
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("Bratkhufhjhjh");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Vermelho");
-		veiculo.setMotorista(pessoa);
-		veiculo.setMarca("Audi");
-		veiculo.setModelo("Volvo");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("5678def");
+		Carro carro = new Carro();
+		carro.setCor("Vermelho");
+		carro.setMotorista(pessoa);
+		carro.setMarca("Audi");
+		carro.setModelo("Volvo");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		vDAO.cadastrarVeiculo(veiculo);
-		ArrayList<Veiculo> veiculos = vDAO.listarVeiculos();
+		vDAO.cadastrarVeiculo(carro);
+		ArrayList<Carro> veiculos = vDAO.listarVeiculos();
 
 		assertEquals(false, veiculos.isEmpty());
 
@@ -148,17 +148,17 @@ public class VeiculoDAOTest {
 		PessoaDAO pDAO = PessoaDAO.getInstancia();
 		pDAO.cadastrarPessoa(motorista);
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Vermelho");
-		veiculo.setMotorista(motorista);
-		veiculo.setMarca("Audi");
-		veiculo.setModelo("Volvo");
-		veiculo.setPlaca("5678def");
+		Carro carro = new Carro();
+		carro.setCor("Vermelho");
+		carro.setMotorista(motorista);
+		carro.setMarca("Audi");
+		carro.setModelo("Volvo");
+		carro.setPlaca("5678def");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		vDAO.cadastrarVeiculo(veiculo);
+		vDAO.cadastrarVeiculo(carro);
 
-		Veiculo v = vDAO.conexaoVeiculoPessoa(motorista);
+		Carro v = vDAO.conexaoVeiculoPessoa(motorista);
 		String cpf = v.getMotorista().getCpf();
 
 		assertEquals(geraCpfAleatorio, cpf);

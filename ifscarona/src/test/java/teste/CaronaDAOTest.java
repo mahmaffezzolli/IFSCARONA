@@ -12,9 +12,9 @@ import controle.PessoaDAO;
 import controle.TrajetoDAO;
 import controle.VeiculoDAO;
 import modelo.Carona;
+import modelo.Carro;
 import modelo.Pessoa;
 import modelo.Trajeto;
-import modelo.Veiculo;
 
 public class CaronaDAOTest {
 
@@ -55,27 +55,27 @@ public class CaronaDAOTest {
 		trajeto.setDestino("IFSC");
 		trajeto.setOrigem("Blumenau");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Preto");
-		veiculo.setMarca("Cherry");
-		veiculo.setModelo("SUV");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("12345678");
+		Carro carro = new Carro();
+		carro.setCor("Preto");
+		carro.setMarca("Cherry");
+		carro.setModelo("SUV");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("12345678");
 
 		TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 		Long id = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(id);
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
-		veiculo.setIdVeiculo(idVeiculo);
+		Long idVeiculo = vDAO.cadastrarVeiculo(carro);
+		carro.setIdVeiculo(idVeiculo);
 
 		Carona carona = new Carona();
 		carona.setMotorista(motorista);
 		carona.setPassageiro(null);
 		carona.setTrajeto(trajeto);
 		carona.setQntPassageiro(2);
-		carona.setVeiculo(veiculo);
+		carona.setVeiculo(carro);
 		carona.setData(LocalDate.of(2023, 12, 8));
 		carona.setHorario(null);
 
@@ -128,22 +128,22 @@ public class CaronaDAOTest {
 		Long id = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(id);
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Preto");
-		veiculo.setMarca("Cherry");
-		veiculo.setModelo("SUV");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("12345678");
+		Carro carro = new Carro();
+		carro.setCor("Preto");
+		carro.setMarca("Cherry");
+		carro.setModelo("SUV");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("12345678");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
-		veiculo.setIdVeiculo(idVeiculo);
+		Long idVeiculo = vDAO.cadastrarVeiculo(carro);
+		carro.setIdVeiculo(idVeiculo);
 
 		Carona carona = new Carona();
 		carona.setMotorista(motorista);
 		carona.setPassageiro(pessoa);
 		carona.setTrajeto(trajeto);
-		carona.setVeiculo(veiculo);
+		carona.setVeiculo(carro);
 		carona.setQntPassageiro(2);
 		carona.setData(LocalDate.of(2023, 12, 9));
 		carona.setHorario(null);
@@ -189,22 +189,22 @@ public class CaronaDAOTest {
 		Long id = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(id);
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Preto");
-		veiculo.setMarca("Cherry");
-		veiculo.setModelo("SUV");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("12345678");
+		Carro carro = new Carro();
+		carro.setCor("Preto");
+		carro.setMarca("Cherry");
+		carro.setModelo("SUV");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("12345678");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
-		veiculo.setIdVeiculo(idVeiculo);
+		Long idVeiculo = vDAO.cadastrarVeiculo(carro);
+		carro.setIdVeiculo(idVeiculo);
 
 		Carona carona = new Carona();
 		carona.setMotorista(motorista);
 		carona.setPassageiro(pessoa);
 		carona.setTrajeto(trajeto);
-		carona.setVeiculo(veiculo);
+		carona.setVeiculo(carro);
 		carona.setQntPassageiro(2);
 		carona.setData(LocalDate.of(2023, 12, 9));
 		carona.setHorario(null);
@@ -250,22 +250,22 @@ public class CaronaDAOTest {
 		Long id = tDAO.cadastrarTrajeto(trajeto);
 		trajeto.setIdTrajeto(id);
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor("Preto");
-		veiculo.setMarca("Cherry");
-		veiculo.setModelo("SUV");
-		veiculo.setMotorista(pessoa);
-		veiculo.setPlaca("12345678");
+		Carro carro = new Carro();
+		carro.setCor("Preto");
+		carro.setMarca("Cherry");
+		carro.setModelo("SUV");
+		carro.setMotorista(pessoa);
+		carro.setPlaca("12345678");
 
 		VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-		Long idVeiculo = vDAO.cadastrarVeiculo(veiculo);
-		veiculo.setIdVeiculo(idVeiculo);
+		Long idVeiculo = vDAO.cadastrarVeiculo(carro);
+		carro.setIdVeiculo(idVeiculo);
 
 		Carona carona = new Carona();
 		carona.setMotorista(motorista);
 		carona.setPassageiro(pessoa);
 		carona.setTrajeto(trajeto);
-		carona.setVeiculo(veiculo);
+		carona.setVeiculo(carro);
 		carona.setQntPassageiro(2);
 		carona.setData(LocalDate.of(2023, 12, 9));
 		carona.setHorario(null);
