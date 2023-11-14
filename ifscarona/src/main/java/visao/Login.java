@@ -104,7 +104,7 @@ public class Login extends JFrame {
 		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
 		showPasswordCheckBox.setBackground(new Color(238, 238, 238));
 		showPasswordCheckBox.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
-		showPasswordCheckBox.setBounds(1113, 610, 120, 15);
+		showPasswordCheckBox.setBounds(1113, 610, 117, 15);
 		contentPane.add(showPasswordCheckBox);
 
 		showPasswordCheckBox.addActionListener(new ActionListener() {
@@ -204,7 +204,7 @@ public class Login extends JFrame {
 
 		JLabel lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblLinkAqui.setBounds(1095, 797, 77, 14);
+		lblLinkAqui.setBounds(1084, 797, 77, 14);
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(lblLinkAqui);

@@ -106,12 +106,12 @@ public class Inicio extends JFrame {
 
 		JLabel lblLogo = new JLabel("IFSCarona");
 		lblLogo.setFont(new Font("Dialog", Font.BOLD, 49));
-		lblLogo.setBounds(824, 385, 311, 112);
+		lblLogo.setBounds(839, 393, 311, 112);
 		contentPane.add(lblLogo);
 
 		lblBemvindoAo = new JLabel("Bem-Vindo ao");
 		lblBemvindoAo.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblBemvindoAo.setBounds(944, 376, 217, 51);
+		lblBemvindoAo.setBounds(947, 393, 217, 51);
 		contentPane.add(lblBemvindoAo);
 
 		lblImage = new JLabel("");
