@@ -11,8 +11,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.Carona;
+import modelo.Carro;
 import modelo.ICaronaDAO;
 import modelo.Pessoa;
+import modelo.Sessao;
 import modelo.Trajeto;
 import modelo.Veiculo;
 
@@ -247,22 +249,71 @@ public class CaronaDAO implements ICaronaDAO {
 
 		return caronas;
 	}
-	
-	public ResultSet listarCaronasResultSet() {
-	    ConexaoBanco c = ConexaoBanco.getInstancia();
-	    Connection con = c.conectar();
-	    
-	    String query = "SELECT * FROM caronas";
 
-	    try {
-	        PreparedStatement ps = con.prepareStatement(query);
-	        return ps.executeQuery();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+	public Carona conexaoCaronaVeiculo(Veiculo carro) {
 
-	    return null;
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		Carona carona = null;
+
+		String query = "SELECT * FROM caronas WHERE id_veiculo= ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+			ps.setLong(1, carro.getIdVeiculo());
+
+			try (ResultSet rs = ps.executeQuery()) {
+
+				if (rs.next()) {
+
+					Long idCarona = rs.getLong("id_carona");
+					String cpfPassageiro = rs.getString("cpf_passageiro");
+					Long idTrajeto = rs.getLong("id_trajeto");
+					Trajeto trajeto = TrajetoDAO.getInstancia().pegaTrajeto(idTrajeto);
+					Integer passageiros = rs.getInt("qnt_passageiros");
+					Time horario = rs.getTime("horario");
+					// LocalDate data = rs.getDate("data").toLocalDate();
+
+					Pessoa motorista = Sessao.getPessoaLogada();
+					Pessoa passageiro = PessoaDAO.getInstancia().pegaPessoa(cpfPassageiro);
+
+					carona = new Carona();
+
+					carona.setIdCarona(idCarona);
+					carona.setMotorista(motorista);
+					carona.setHorario(horario);
+					carona.setPassageiro(passageiro);
+					carona.setQntPassageiro(passageiros);
+					carona.setTrajeto(trajeto);
+					carona.setVeiculo(carro);
+
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return carona;
 	}
 
+	public ResultSet listarCaronasResultSet() {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM caronas";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			return ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 
 }

@@ -8,11 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.CaronaDAO;
 import controle.VeiculoDAO;
+import modelo.Carona;
 import modelo.Carro;
 import modelo.Sessao;
-import modelo.Veiculo;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -21,6 +22,8 @@ public class TelaExcluirVeiculo extends JFrame {
 
 	private JPanel contentPane;
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+	private CaronaDAO cDAO = CaronaDAO.getInstancia();
+
 
 	/**
 	 * Launch the application.
@@ -68,6 +71,12 @@ public class TelaExcluirVeiculo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Carro veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
+				
+				Carona caronaCadastrada = cDAO.conexaoCaronaVeiculo(veiculoLogado);
+				
+				if (caronaCadastrada != null) {
+					cDAO.deletarCarona(caronaCadastrada);
+				}
 
 				boolean success = vDAO.deletarVeiculo(veiculoLogado);
 				

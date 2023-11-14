@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.ITrajetoDAO;
+import modelo.Pessoa;
 import modelo.Trajeto;
 
 public class TrajetoDAO implements ITrajetoDAO {
@@ -198,6 +199,35 @@ public class TrajetoDAO implements ITrajetoDAO {
 		}
 
 		return trajetos;
+	}
+	
+	public Trajeto pegaTrajeto(Long idTrajeto) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM trajetos WHERE id_trajeto = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, idTrajeto);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				Trajeto trajeto = new Trajeto();
+				trajeto.setDestino(rs.getString("destino"));
+				trajeto.setOrigem(rs.getString("origem"));
+				trajeto.setIdTrajeto(rs.getLong("id_trajeto"));
+
+				return trajeto;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
 	}
 
 }

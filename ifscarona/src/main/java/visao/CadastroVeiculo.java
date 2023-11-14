@@ -20,8 +20,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
+import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Carro;
+import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
 
@@ -39,6 +41,7 @@ public class CadastroVeiculo extends JFrame {
 	private JLabel lblIconeModelo;
 	private JLabel lblCor;
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 	private JLabel lblIconeMarca;
 	private JTextField txtPlaca;
 	private JLabel lblIconePlaca;
@@ -232,6 +235,12 @@ public class CadastroVeiculo extends JFrame {
 					v.setIdVeiculo(success);
 
 					if (success > 0) {
+						
+						Pessoa motorista = Sessao.getPessoaLogada();
+						
+						motorista.setVeiculo(v);
+		                pDAO.alterarPessoa(motorista);
+		                
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 
