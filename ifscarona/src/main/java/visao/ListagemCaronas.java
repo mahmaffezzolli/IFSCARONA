@@ -115,11 +115,11 @@ public class ListagemCaronas extends JFrame {
 
 	     try {
 	         while (resultSet.next()) {
-	             String nomeMotorista = resultSet.getString("nome"); 
+	             String nomeMotorista = resultSet.getString("nomeMotorista"); 
 	             Time horario = resultSet.getTime("horario");
-	             String veiculo = resultSet.getString("placa"); 
+	             String placa = resultSet.getString("placa"); 
 
-	             Object[] rowData = {nomeMotorista, horario, veiculo};
+	             Object[] rowData = {nomeMotorista, horario, placa};
 	             tableModel.addRow(rowData);
 	         }
 	     } catch (SQLException e) {
