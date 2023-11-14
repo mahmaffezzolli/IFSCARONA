@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import controle.VeiculoDAO;
+import modelo.Carro;
 import modelo.Sessao;
 import modelo.Veiculo;
 
@@ -193,7 +194,7 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Veiculo v = new Veiculo();
+				Carro v = new Carro();
 
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 

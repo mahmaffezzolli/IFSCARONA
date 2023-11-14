@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import modelo.Carro;
 import modelo.IVeiculoDAO;
 import modelo.Pessoa;
 import modelo.Veiculo;
@@ -27,7 +28,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 	}
 
 	@Override
-	public Long cadastrarVeiculo(Veiculo veiculo) {
+	public Long cadastrarVeiculo(Carro carro) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
@@ -38,11 +39,11 @@ public class VeiculoDAO implements IVeiculoDAO {
 			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			;
 
-			ps.setString(1, veiculo.getPlaca());
-			ps.setString(2, veiculo.getCor());
-			ps.setString(3, veiculo.getMarca());
-			ps.setString(4, veiculo.getModelo());
-			ps.setString(5, veiculo.getMotorista().getCpf());
+			ps.setString(1, carro.getPlaca());
+			ps.setString(2, carro.getCor());
+			ps.setString(3, carro.getMarca());
+			ps.setString(4, carro.getModelo());
+			ps.setString(5, carro.getMotorista().getCpf());
 
 			ps.executeUpdate();
 
@@ -66,7 +67,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 	}
 
 	@Override
-	public boolean alterarVeiculo(Veiculo veiculo) {
+	public boolean alterarVeiculo(Carro carro) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
@@ -74,11 +75,11 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, veiculo.getPlaca());
-			ps.setString(2, veiculo.getCor());
-			ps.setString(3, veiculo.getMarca());
-			ps.setString(4, veiculo.getModelo());
-			ps.setString(5, veiculo.getMotorista().getCpf());
+			ps.setString(1, carro.getPlaca());
+			ps.setString(2, carro.getCor());
+			ps.setString(3, carro.getMarca());
+			ps.setString(4, carro.getModelo());
+			ps.setString(5, carro.getMotorista().getCpf());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -98,7 +99,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 	}
 
 	@Override
-	public boolean deletarVeiculo(Veiculo veiculo) {
+	public boolean deletarVeiculo(Carro carro) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
@@ -107,7 +108,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			ps.setLong(1, veiculo.getIdVeiculo());
+			ps.setLong(1, carro.getIdVeiculo());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -128,13 +129,13 @@ public class VeiculoDAO implements IVeiculoDAO {
 		return false;
 	}
 
-	public ArrayList<Veiculo> listarVeiculos() {
+	public ArrayList<Carro> listarVeiculos() {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 
 		Connection con = c.conectar();
 
-		ArrayList<Veiculo> veiculos = new ArrayList<>();
+		ArrayList<Carro> carros = new ArrayList<>();
 
 		String query = "SELECT * FROM veiculos";
 
@@ -154,15 +155,15 @@ public class VeiculoDAO implements IVeiculoDAO {
 				Pessoa p = new Pessoa();
 				p.setCpf(cpf);
 
-				Veiculo v = new Veiculo();
+				Carro carro = new Carro();
 
-				v.setMotorista(p);
-				v.setPlaca(placa);
-				v.setCor(cor);
-				v.setMarca(marca);
-				v.setModelo(modelo);
+				carro.setMotorista(p);
+				carro.setPlaca(placa);
+				carro.setCor(cor);
+				carro.setMarca(marca);
+				carro.setModelo(modelo);
 
-				veiculos.add(v);
+				carros.add(carro);
 			}
 
 		} catch (SQLException e) {
@@ -174,15 +175,15 @@ public class VeiculoDAO implements IVeiculoDAO {
 			c.fecharConexao();
 		}
 
-		return veiculos;
+		return carros;
 	}
 
-	public Veiculo conexaoVeiculoPessoa(Pessoa motorista) {
+	public Carro conexaoVeiculoPessoa(Pessoa motorista) {
 
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		Veiculo veiculo = null;
+		Carro carro = null;
 
 		String query = "SELECT * FROM veiculos WHERE cpf_pessoa = ?";
 
@@ -200,13 +201,14 @@ public class VeiculoDAO implements IVeiculoDAO {
 					String modelo = rs.getString("modelo");
 					Long idVeiculo = rs.getLong("id_veiculo");
 
-					veiculo = new Veiculo();
-					veiculo.setMotorista(motorista);
-					veiculo.setPlaca(placa);
-					veiculo.setCor(cor);
-					veiculo.setMarca(marca);
-					veiculo.setModelo(modelo);
-					veiculo.setIdVeiculo(idVeiculo);
+					carro = new Carro();
+					
+					carro.setMotorista(motorista);
+					carro.setPlaca(placa);
+					carro.setCor(cor);
+					carro.setMarca(marca);
+					carro.setModelo(modelo);
+					carro.setIdVeiculo(idVeiculo);
 				}
 			}
 		} catch (SQLException e) {
@@ -215,7 +217,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 			c.fecharConexao();
 		}
 
-		return veiculo;
+		return carro;
 	}
 
 }

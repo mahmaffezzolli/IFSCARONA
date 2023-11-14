@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import controle.VeiculoDAO;
+import modelo.Carro;
 import modelo.Sessao;
 import modelo.Veiculo;
 
@@ -66,7 +67,7 @@ public class TelaExcluirVeiculo extends JFrame {
 		btnSim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
+				Carro veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
 
 				boolean success = vDAO.deletarVeiculo(veiculoLogado);
 				

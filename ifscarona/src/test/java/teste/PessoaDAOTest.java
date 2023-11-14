@@ -9,8 +9,8 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 import controle.PessoaDAO;
+import modelo.Carro;
 import modelo.Pessoa;
-import modelo.Veiculo;
 
 public class PessoaDAOTest {
 
@@ -34,13 +34,13 @@ public class PessoaDAOTest {
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("Bratkhufhjhjh");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor(null);
-		veiculo.setMotorista(null);
-		veiculo.setMarca(null);
-		veiculo.setModelo(null);
-		veiculo.setMotorista(null);
-		veiculo.setPlaca(null);
+		Carro carro = new Carro();
+		carro.setCor(null);
+		carro.setMotorista(null);
+		carro.setMarca(null);
+		carro.setModelo(null);
+		carro.setMotorista(null);
+		carro.setPlaca(null);
 
 		// Setou veiculo da pessoa
 		// pessoa.setVeiculo(veiculo);
@@ -84,13 +84,13 @@ public class PessoaDAOTest {
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("leleeeeee");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor(null);
-		veiculo.setMotorista(null);
-		veiculo.setMarca(null);
-		veiculo.setModelo(null);
-		veiculo.setMotorista(null);
-		veiculo.setPlaca(null);
+		Carro carro = new Carro();
+		carro.setCor(null);
+		carro.setMotorista(null);
+		carro.setMarca(null);
+		carro.setModelo(null);
+		carro.setMotorista(null);
+		carro.setPlaca(null);
 
 		// Setou veiculo da pessoa
 		// pessoa.setVeiculo(veiculo);
@@ -112,13 +112,13 @@ public class PessoaDAOTest {
 		pessoa.setSenha("123456789");
 		pessoa.setSobrenome("leleeeeee");
 
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor(null);
-		veiculo.setMotorista(null);
-		veiculo.setMarca(null);
-		veiculo.setModelo(null);
-		veiculo.setMotorista(null);
-		veiculo.setPlaca(null);
+		Carro carro = new Carro();
+		carro.setCor(null);
+		carro.setMotorista(null);
+		carro.setMarca(null);
+		carro.setModelo(null);
+		carro.setMotorista(null);
+		carro.setPlaca(null);
 
 		// Setou veiculo da pessoa
 		// pessoa.setVeiculo(veiculo);

@@ -23,6 +23,7 @@ import javax.swing.text.MaskFormatter;
 
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
+import modelo.Carro;
 import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
@@ -376,7 +377,7 @@ public class Perfil extends JFrame {
 
 		}
 
-		Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(pessoaLogada);
+		Carro veiculoLogado = vDAO.conexaoVeiculoPessoa(pessoaLogada);
 
 		if (veiculoLogado != null) {
 			txtPlaca.setText(veiculoLogado.getPlaca());
@@ -442,7 +443,7 @@ public class Perfil extends JFrame {
 
 		} else if (btnSalvarV.getText().equals("Salvar")) {
 
-			Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
+			Carro veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
 
 			if (veiculoLogado != null && veiculoLogado.getMotorista() != null) {
 
