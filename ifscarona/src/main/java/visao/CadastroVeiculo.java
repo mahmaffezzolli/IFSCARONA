@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -159,6 +160,7 @@ public class CadastroVeiculo extends JFrame {
 		mascaraPlaca = new MaskFormatter("*******");
 		txtPlaca = new JFormattedTextField(mascaraPlaca);
 		/*****************/
+		
 		txtPlaca.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);
@@ -197,16 +199,24 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+
 				Carro v = new Carro();
 
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
 				String cpf = String.valueOf(textCpf.getText());
-				String placa = txtPlaca.getText();
+		        String placa = txtPlaca.getText().replaceAll("[^a-zA-Z0-9]", "");
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
 				String marca = (String) BoxMarca.getSelectedItem();
 
+				 if (placa.length() != 7) {
+					 CaracteresVeiculo caracteresVeiculo = new CaracteresVeiculo();
+					 caracteresVeiculo.setVisible(true);
+			            return; 
+			        }
+			        
+			        
 				if (placa.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
