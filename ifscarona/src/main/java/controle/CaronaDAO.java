@@ -21,6 +21,10 @@ import modelo.Veiculo;
 public class CaronaDAO implements ICaronaDAO {
 
 	private static CaronaDAO instancia;
+	private PessoaDAO pDAO = PessoaDAO.getInstancia();
+	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
+
 
 	public CaronaDAO() {
 
@@ -315,7 +319,7 @@ public class CaronaDAO implements ICaronaDAO {
 
 		return null;
 	}
-	
+
 	public Carona pegaCarona(Long idCarona) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
@@ -329,25 +333,24 @@ public class CaronaDAO implements ICaronaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				
+
 				Carona carona = new Carona();
-				
 				carona.setIdCarona(rs.getLong("id_carona"));
-				Pessoa motorista = carona.getMotorista();
-				carona.setMotorista(motorista);
 				
-				Pessoa passageiro = carona.getPassageiro();
-				carona.setPassageiro(passageiro);
-				
-				Trajeto trajeto= carona.getTrajeto();
-				carona.setTrajeto(trajeto);
-				
-				Veiculo carro = carona.getVeiculo();
-				carona.setVeiculo(carro);
-				
+				Pessoa motorista = pDAO.pegaPessoa(rs.getString("cpf_motorista"));
+	            carona.setMotorista(motorista);
+	            
+	            Pessoa passageiro = pDAO.pegaPessoa(rs.getString("cpf_passageiro"));
+	            carona.setPassageiro(passageiro);
+
+	            Trajeto trajeto = tDAO.pegaTrajeto(rs.getLong("id_trajeto"));
+	            carona.setTrajeto(trajeto);
+
+	            Veiculo veiculo = vDAO.pegaVeiculo(rs.getLong("id_veiculo"));
+	            carona.setVeiculo(veiculo);
+
 				carona.setData(null);
 				carona.setHorario(rs.getTime("horario"));
-				
 				carona.setQntPassageiro(rs.getInt("qnt_passageiros"));
 
 				return carona;

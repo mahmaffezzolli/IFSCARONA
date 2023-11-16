@@ -220,11 +220,11 @@ public class VeiculoDAO implements IVeiculoDAO {
 		return carro;
 	}
 	
-	public Carro pegaCarro(Long idVeiculo) {
+	public Carro pegaVeiculo(Long idVeiculo) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "SELECT * FROM pessoas WHERE cpf = ?";
+		String query = "SELECT * FROM veiculos WHERE id_veiculo = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -237,6 +237,14 @@ public class VeiculoDAO implements IVeiculoDAO {
 				
 				carro.setIdVeiculo(rs.getLong("id_veiculo"));
 				carro.setPlaca(rs.getString("placa"));
+				carro.setCor(rs.getString("cor"));
+				carro.setMarca(rs.getString("marca"));
+				carro.setModelo(rs.getString("modelo"));
+				
+				PessoaDAO pDAO = PessoaDAO.getInstancia();
+	            String cpfMotorista = rs.getString("cpf_pessoa");
+	            Pessoa motorista = pDAO.pegaPessoa(cpfMotorista);
+	            carro.setMotorista(motorista);
 
 				return carro;
 			}

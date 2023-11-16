@@ -23,8 +23,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import org.jdatepicker.JDatePicker;
-import org.jdatepicker.impl.UtilDateModel;
-import org.jdatepicker.impl.JDatePickerImpl;
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
 import modelo.Carona;
