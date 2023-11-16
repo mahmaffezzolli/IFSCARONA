@@ -321,6 +321,8 @@ public class Perfil extends JFrame {
 
 				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
 				TelaExcluirConta.setVisible(true);
+				
+				dispose();
 
 			}
 		});
