@@ -274,7 +274,7 @@ public class CaronaDAO implements ICaronaDAO {
 					Trajeto trajeto = TrajetoDAO.getInstancia().pegaTrajeto(idTrajeto);
 					Integer passageiros = rs.getInt("qnt_passageiros");
 					Time horario = rs.getTime("horario");
-					// LocalDate data = rs.getDate("data").toLocalDate();
+					LocalDate data = rs.getDate("data").toLocalDate();
 
 					Pessoa motorista = Sessao.getPessoaLogada();
 					Pessoa passageiro = PessoaDAO.getInstancia().pegaPessoa(cpfPassageiro);
@@ -311,6 +311,51 @@ public class CaronaDAO implements ICaronaDAO {
 			return ps.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public Carona pegaCarona(Long idCarona) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM caronas WHERE id_carona = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, idCarona);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				
+				Carona carona = new Carona();
+				
+				carona.setIdCarona(rs.getLong("id_carona"));
+				Pessoa motorista = carona.getMotorista();
+				carona.setMotorista(motorista);
+				
+				Pessoa passageiro = carona.getPassageiro();
+				carona.setPassageiro(passageiro);
+				
+				Trajeto trajeto= carona.getTrajeto();
+				carona.setTrajeto(trajeto);
+				
+				Veiculo carro = carona.getVeiculo();
+				carona.setVeiculo(carro);
+				
+				carona.setData(null);
+				carona.setHorario(rs.getTime("horario"));
+				
+				carona.setQntPassageiro(rs.getInt("qnt_passageiros"));
+
+				return carona;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return null;

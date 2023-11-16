@@ -55,7 +55,7 @@ public class PessoaDAO implements IPessoaDAO {
 			ps.executeUpdate();
 
 			return pessoa.getCpf();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -99,7 +99,7 @@ public class PessoaDAO implements IPessoaDAO {
 	public boolean deletarPessoa(Pessoa pessoa) {
 
 		if (pessoa != null) {
-			
+
 			ConexaoBanco c = ConexaoBanco.getInstancia();
 			Connection con = c.conectar();
 
@@ -197,9 +197,9 @@ public class PessoaDAO implements IPessoaDAO {
 
 				VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 				Carro carro = vDAO.conexaoVeiculoPessoa(pessoa);
-				
+
 				pessoa.setVeiculo(carro);
-				
+
 				return pessoa;
 			}
 
@@ -231,6 +231,10 @@ public class PessoaDAO implements IPessoaDAO {
 				pessoa.setSobrenome(rs.getString("sobrenome"));
 				pessoa.setEmail(rs.getString("email"));
 				pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
+
+				VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+				Carro carro = vDAO.conexaoVeiculoPessoa(pessoa);
+				pessoa.setVeiculo(carro);
 
 				return pessoa;
 			}

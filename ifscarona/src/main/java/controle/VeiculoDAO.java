@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import modelo.Carro;
 import modelo.IVeiculoDAO;
 import modelo.Pessoa;
+import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
 
@@ -217,6 +218,35 @@ public class VeiculoDAO implements IVeiculoDAO {
 		}
 
 		return carro;
+	}
+	
+	public Carro pegaCarro(Long idVeiculo) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM pessoas WHERE cpf = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, idVeiculo);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				Carro carro = new Carro();
+				
+				carro.setIdVeiculo(rs.getLong("id_veiculo"));
+				carro.setPlaca(rs.getString("placa"));
+
+				return carro;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
 	}
 
 }
