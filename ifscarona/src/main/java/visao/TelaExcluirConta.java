@@ -70,7 +70,7 @@ public class TelaExcluirConta extends JFrame {
 				Pessoa pessoaLogada = Sessao.getPessoaLogada();
 
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
-				
+
 				
 				Inicio inicio = new Inicio();
 				inicio.setVisible(true);
