@@ -201,7 +201,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 					Long idVeiculo = rs.getLong("id_veiculo");
 
 					carro = new Carro();
-					
+
 					carro.setMotorista(motorista);
 					carro.setPlaca(placa);
 					carro.setCor(cor);

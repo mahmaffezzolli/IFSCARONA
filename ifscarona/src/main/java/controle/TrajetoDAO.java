@@ -200,7 +200,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 		return trajetos;
 	}
-	
+
 	public Trajeto pegaTrajeto(Long idTrajeto) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();

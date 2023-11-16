@@ -30,8 +30,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.JTable;
 
 public class ListagemCaronas extends JFrame {
-	 private DefaultTableModel tableModel;
-	 private JTable table;
+	private DefaultTableModel tableModel;
+	private JTable table;
 
 	private JPanel contentPane;
 
@@ -64,7 +64,7 @@ public class ListagemCaronas extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnHome = new JButton("");
 		btnHome.addMouseListener(new MouseAdapter() {
 			@Override
@@ -91,50 +91,47 @@ public class ListagemCaronas extends JFrame {
 		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-5, 426, 590, 172);
 		contentPane.add(lblLogo);
-		
+
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
 		lblFundo.setBounds(-2, -224, 468, 1650);
 		contentPane.add(lblFundo);
-		
-		 tableModel = new DefaultTableModel();
-	        tableModel.addColumn("Nome do Motorista");
-	        tableModel.addColumn("Hora de Saída");
-	        tableModel.addColumn("Veículo");
-	        
-	        
-	        // Inicialize a tabela com o modelo de tabela
-	        table = new JTable(tableModel);
 
-	        // Adicione a tabela a um JScrollPane para rolagem
-	        JScrollPane scrollPane = new JScrollPane(table);
-	        scrollPane.setBounds(616, 170, 1060, 651);
-	        contentPane.add(scrollPane);
-	        
-	        ResultSet resultSet = CaronaDAO.getInstancia().listarCaronasResultSet();
+		tableModel = new DefaultTableModel();
+		tableModel.addColumn("Nome do Motorista");
+		tableModel.addColumn("Hora de Saída");
+		tableModel.addColumn("Veículo");
 
-	     try {
-	         while (resultSet.next()) {
-	             String nomeMotorista = resultSet.getString("nomeMotorista"); 
-	             Time horario = resultSet.getTime("horario");
-	             String placa = resultSet.getString("placa"); 
+		// Inicialize a tabela com o modelo de tabela
+		table = new JTable(tableModel);
 
-	             Object[] rowData = {nomeMotorista, horario, placa};
-	             tableModel.addRow(rowData);
-	         }
-	     } catch (SQLException e) {
-	         e.printStackTrace();
-	     } finally {
-	         try {
-	             if (resultSet != null) {
-	                 resultSet.close();
-	             }
-	         } catch (SQLException e) {
-	             e.printStackTrace();
-	         }
-	     }
-	        
+		// Adicione a tabela a um JScrollPane para rolagem
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(616, 170, 1060, 651);
+		contentPane.add(scrollPane);
 
+		ResultSet resultSet = CaronaDAO.getInstancia().listarCaronasResultSet();
+
+		try {
+			while (resultSet.next()) {
+				String nomeMotorista = resultSet.getString("nomeMotorista");
+				Time horario = resultSet.getTime("horario");
+				String placa = resultSet.getString("placa");
+
+				Object[] rowData = { nomeMotorista, horario, placa };
+				tableModel.addRow(rowData);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 }

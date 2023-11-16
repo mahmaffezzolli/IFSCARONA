@@ -46,33 +46,33 @@ public class DadosAtualizados extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Dados Pessoais atualizados");
 		lblDadosPessoaisAtualizados.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblDadosPessoaisAtualizados.setBounds(125, 57, 186, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
 		btnOk.setBounds(177, 123, 84, 31);
 		contentPane.add(btnOk);
-		
+
 		JLabel lblSucesso = new JLabel("com sucesso!");
 		lblSucesso.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblSucesso.setBounds(164, 83, 97, 14);
 		contentPane.add(lblSucesso);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
-	                dispose();
-	            }
-	        });
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 }

@@ -60,16 +60,15 @@ public class Principal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-				
+
 		JCheckBox chckbxEmDiante = new JCheckBox("18 em diante");
 		chckbxEmDiante.setBounds(705, 505, 152, 43);
 		contentPane.add(chckbxEmDiante);
-		
+
 		JCheckBox checkBox_1 = new JCheckBox("06:00 - 12:00");
 		checkBox_1.setBounds(705, 338, 152, 43);
 		contentPane.add(checkBox_1);
-		
+
 		JCheckBox checkBox = new JCheckBox("12:01 - 18:00");
 		checkBox.setBounds(705, 422, 152, 43);
 		contentPane.add(checkBox);
@@ -83,15 +82,15 @@ public class Principal extends JFrame {
 		JButton btnLogar = new JButton("Requisitar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 if (chckbxEmDiante.isSelected() || checkBox_1.isSelected() || checkBox.isSelected()) {
-						new RequisitarCarona().setVisible(true);
-						 Principal.this.dispose();
-			        } else {
-			        	CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-						campoNaoPreenchido.setVisible(true);
-			        }
-			    }
-			});
+				if (chckbxEmDiante.isSelected() || checkBox_1.isSelected() || checkBox.isSelected()) {
+					new RequisitarCarona().setVisible(true);
+					Principal.this.dispose();
+				} else {
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
+				}
+			}
+		});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.setBounds(695, 615, 162, 43);
@@ -144,33 +143,31 @@ public class Principal extends JFrame {
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		
+
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
-		
+
 		Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(pessoaLogada);
-		
-		if(veiculoLogado == null) {
+
+		if (veiculoLogado == null) {
 			btnNewButton_1.setEnabled(false);
 		}
-		
-		
+
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new OferecerCarona().setVisible(true);
 				Principal.this.dispose();
-				
 
 			}
-			});
+		});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
 		btnNewButton_1.setBounds(1317, 666, 169, 59);
 		contentPane.add(btnNewButton_1);
-		
+
 		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
 		chckbxNewCheckBox.setBounds(705, 338, 129, 23);
 		contentPane.add(chckbxNewCheckBox);
-		
+
 		JButton btnNewButton = new JButton("Histórico");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

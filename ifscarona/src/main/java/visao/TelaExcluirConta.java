@@ -70,18 +70,17 @@ public class TelaExcluirConta extends JFrame {
 				Pessoa pessoaLogada = Sessao.getPessoaLogada();
 
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
-				
+
 				dispose();
 			}
 		});
-		
+
 		btnSim.setForeground(new Color(255, 255, 255));
 		btnSim.setBorder(null);
 		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		btnSim.setBackground(new Color(174, 57, 57));
 		btnSim.setBounds(108, 127, 84, 31);
 		contentPane.add(btnSim);
-
 
 		JButton btnNo = new JButton("NÃO");
 		btnNo.addActionListener(new ActionListener() {

@@ -47,17 +47,17 @@ public class SenhasNaoConferem extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(SenhasNaoConferem.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 48, 56, 56);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblSenhaNaoConfere = new JLabel("As senhas não conferem!");
 		lblSenhaNaoConfere.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblSenhaNaoConfere.setBounds(137, 55, 169, 18);
 		contentPane.add(lblSenhaNaoConfere);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
@@ -65,13 +65,13 @@ public class SenhasNaoConferem extends JFrame {
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(179, 109, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 
 }

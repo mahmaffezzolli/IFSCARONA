@@ -338,7 +338,7 @@ public class CadastroUsuario extends JFrame {
 					EmaiInvalido Emailnvalido = new EmaiInvalido();
 
 					Emailnvalido.setVisible(true);
-					
+
 				} else if (senha.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
@@ -408,24 +408,24 @@ public class CadastroUsuario extends JFrame {
 		txtfundoVerde.setBounds(124, 0, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 	}
-	
+
 	public static boolean isValidEmailAddress(String email) {
 
 		boolean result = true;
 
 		try {
 
-		InternetAddress emailAddr = new InternetAddress(email);
+			InternetAddress emailAddr = new InternetAddress(email);
 
-		emailAddr.validate();
+			emailAddr.validate();
 
 		} catch (AddressException ex) {
 
-		result = false;
+			result = false;
 
 		}
 
 		return result;
 
-		}
+	}
 }

@@ -280,7 +280,7 @@ public class OferecerCarona extends JFrame {
 	public void oferecerCarona(Trajeto t) {
 
 		Carona c = new Carona();
-		
+
 		String qntLugar;
 		qntLugar = (String) cmbLugar.getSelectedItem();
 

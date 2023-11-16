@@ -57,7 +57,6 @@ public class Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		
 		JButton btnLogar = new JButton("Logar");
 		btnLogar.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
 		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -66,7 +65,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				new Login().setVisible(true);
-				 Inicio.this.dispose();
+				Inicio.this.dispose();
 			}
 
 		});
@@ -77,8 +76,7 @@ public class Inicio extends JFrame {
 		contentPane.add(lblCanto1);
 
 		lblCanto2 = new JLabel("");
-		lblCanto2.setIcon(
-				new ImageIcon(Inicio.class.getResource("/assets/dunso.png")));
+		lblCanto2.setIcon(new ImageIcon(Inicio.class.getResource("/assets/dunso.png")));
 		lblCanto2.setBounds(0, -108, 800, 1169);
 		contentPane.add(lblCanto2);
 		btnLogar.setBounds(810, 574, 146, 51);
@@ -95,7 +93,7 @@ public class Inicio extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				 Inicio.this.dispose();
+				Inicio.this.dispose();
 			}
 
 		});
@@ -115,8 +113,7 @@ public class Inicio extends JFrame {
 		contentPane.add(lblBemvindoAo);
 
 		lblImage = new JLabel("");
-		lblImage.setIcon(
-				new ImageIcon(Inicio.class.getResource("/assets/car.png")));
+		lblImage.setIcon(new ImageIcon(Inicio.class.getResource("/assets/car.png")));
 		lblImage.setBounds(875, 81, 337, 260);
 		contentPane.add(lblImage);
 

@@ -47,28 +47,28 @@ public class CadastroInexistente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CadastroInexistente.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 43, 48, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblCadastroInexistente = new JLabel("Cadastro Inexistente!");
 		lblCadastroInexistente.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblCadastroInexistente.setBounds(153, 60, 138, 14);
 		contentPane.add(lblCadastroInexistente);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(177, 123, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 }

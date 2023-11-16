@@ -24,7 +24,6 @@ public class TelaExcluirVeiculo extends JFrame {
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -71,20 +70,19 @@ public class TelaExcluirVeiculo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Carro veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
-				
+
 				Carona caronaCadastrada = cDAO.conexaoCaronaVeiculo(veiculoLogado);
-				
+
 				if (caronaCadastrada != null) {
 					cDAO.deletarCarona(caronaCadastrada);
 				}
 
 				boolean success = vDAO.deletarVeiculo(veiculoLogado);
-				
 
 				dispose();
 			}
 		});
-		
+
 		btnSim.setForeground(new Color(255, 255, 255));
 		btnSim.setBorder(null);
 		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
@@ -98,7 +96,7 @@ public class TelaExcluirVeiculo extends JFrame {
 				dispose();
 			}
 		});
-			
+
 		btnNo.setForeground(Color.WHITE);
 		btnNo.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		btnNo.setBorder(null);

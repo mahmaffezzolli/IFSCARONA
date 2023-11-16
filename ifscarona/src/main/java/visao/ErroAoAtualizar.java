@@ -45,33 +45,33 @@ public class ErroAoAtualizar extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Erro ao atualizar os dados");
 		lblDadosPessoaisAtualizados.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblDadosPessoaisAtualizados.setBounds(130, 54, 179, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
 		btnOk.setBounds(177, 123, 84, 31);
 		contentPane.add(btnOk);
-		
+
 		JLabel lblSucesso = new JLabel("pessoais.");
 		lblSucesso.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblSucesso.setBounds(188, 83, 63, 14);
 		contentPane.add(lblSucesso);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
-	                dispose();
-	            }
-	        });
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 }

@@ -12,9 +12,9 @@ public interface ICaronaDAO {
 	public ArrayList<Carona> listarCaronas();
 
 	public boolean deletarCarona(Carona carona);
-	
+
 	public Carona conexaoCaronaVeiculo(Veiculo carro);
-	
+
 	public ResultSet listarCaronasResultSet();
 
 }

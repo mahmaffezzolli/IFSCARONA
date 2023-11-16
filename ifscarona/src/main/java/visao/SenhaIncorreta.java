@@ -47,29 +47,29 @@ public class SenhaIncorreta extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(SenhaIncorreta.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 43, 48, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblSenhaIncorreta = new JLabel("Senha Incorreta!");
 		lblSenhaIncorreta.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblSenhaIncorreta.setBounds(153, 60, 138, 14);
 		contentPane.add(lblSenhaIncorreta);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(177, 123, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 }

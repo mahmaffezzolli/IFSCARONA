@@ -21,8 +21,9 @@ import javax.swing.JTable;
 public class Historico extends JFrame {
 
 	private DefaultTableModel tableModel;
-	 private JTable table;
+	private JTable table;
 	private JPanel contentPane;
+
 	/**
 	 * Launch the application.
 	 */
@@ -52,7 +53,7 @@ public class Historico extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnHome = new JButton("");
 		btnHome.addMouseListener(new MouseAdapter() {
 			@Override
@@ -79,31 +80,28 @@ public class Historico extends JFrame {
 		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-5, 426, 590, 172);
 		contentPane.add(lblLogo);
-		
+
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
 		lblFundo.setBounds(-2, -224, 468, 1650);
 		contentPane.add(lblFundo);
-		
+
 		JLabel lblTitulo = new JLabel("Histórico");
 		lblTitulo.setFont(new Font("Dialog", Font.BOLD, 40));
 		lblTitulo.setBounds(965, 59, 552, 107);
 		contentPane.add(lblTitulo);
-		
-		 tableModel = new DefaultTableModel();
-	        tableModel.addColumn("Nome do Motorista");
-	        tableModel.addColumn("Hora de Saída");
-	        tableModel.addColumn("Data de Saída");
-	        tableModel.addColumn("Placa do Carro");
 
-	        table = new JTable(tableModel);
+		tableModel = new DefaultTableModel();
+		tableModel.addColumn("Nome do Motorista");
+		tableModel.addColumn("Hora de Saída");
+		tableModel.addColumn("Data de Saída");
+		tableModel.addColumn("Placa do Carro");
 
-	        JScrollPane scrollPane = new JScrollPane(table);
-	        scrollPane.setBounds(616, 170, 1060, 651);
-	        contentPane.add(scrollPane);
-		
+		table = new JTable(tableModel);
 
-		
-		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(616, 170, 1060, 651);
+		contentPane.add(scrollPane);
+
 	}
 }

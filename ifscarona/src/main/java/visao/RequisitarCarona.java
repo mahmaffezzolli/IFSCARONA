@@ -78,7 +78,7 @@ public class RequisitarCarona extends JFrame {
 
 			}
 		});
-		
+
 		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
 		chckbxIfsc.setBounds(845, 442, 129, 23);
 		contentPane.add(chckbxIfsc);
@@ -90,7 +90,6 @@ public class RequisitarCarona extends JFrame {
 		chckbxBlumenau = new JCheckBox("Blumenau");
 		chckbxBlumenau.setBounds(845, 387, 129, 23);
 		contentPane.add(chckbxBlumenau);
-		
 
 		chckbxBlumenau.addItemListener(new ItemListener() {
 			@Override
@@ -99,20 +98,18 @@ public class RequisitarCarona extends JFrame {
 				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
 			}
 		});
-	        chckbxBlumenau = new JCheckBox("Blumenau");
-	        chckbxBlumenau.setBounds(845, 387, 129, 23);
-	        contentPane.add(chckbxBlumenau);
+		chckbxBlumenau = new JCheckBox("Blumenau");
+		chckbxBlumenau.setBounds(845, 387, 129, 23);
+		contentPane.add(chckbxBlumenau);
 
-	        chckbxGaspar.addItemListener(new ItemListener() {
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
-					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
+		chckbxGaspar.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
+				cmbGaspar.setEnabled(chckbxGaspar.isSelected());
 
-				}
-			});
-
-	        
+			}
+		});
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-localização-50.png")));
@@ -210,7 +207,8 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Requisitar");
-		btnNewButton.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-viajar-de-carona-50.png")));
+		btnNewButton
+				.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-viajar-de-carona-50.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 

@@ -212,16 +212,16 @@ public class CadastroVeiculo extends JFrame {
 
 				} else if (modelo.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else if (marca.isEmpty()) {
-					campoNaoPreenchido.setVisible(true);	
-					
+					campoNaoPreenchido.setVisible(true);
+
 				} else if (cor.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else if (cpf.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else {
 
 					v.setMotorista(Sessao.getPessoaLogada());
@@ -235,12 +235,12 @@ public class CadastroVeiculo extends JFrame {
 					v.setIdVeiculo(success);
 
 					if (success > 0) {
-						
+
 						Pessoa motorista = Sessao.getPessoaLogada();
-						
+
 						motorista.setVeiculo(v);
-		                pDAO.alterarPessoa(motorista);
-		                
+						pDAO.alterarPessoa(motorista);
+
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 
