@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Rectangle;
 
 public class SenhaIncorreta extends JFrame {
 
@@ -26,6 +27,8 @@ public class SenhaIncorreta extends JFrame {
 				try {
 					SenhaIncorreta frame = new SenhaIncorreta();
 					frame.setVisible(true);
+					//Centralizar
+					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
 				} catch (Exception e) {

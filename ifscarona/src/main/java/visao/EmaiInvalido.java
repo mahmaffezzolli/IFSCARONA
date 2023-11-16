@@ -66,7 +66,7 @@ public class EmaiInvalido extends JFrame {
 		contentPane.add(btnOk);
 		 btnOk.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
+
 	                dispose();
 	            }
 	        });
