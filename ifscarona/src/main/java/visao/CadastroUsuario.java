@@ -192,9 +192,10 @@ public class CadastroUsuario extends JFrame {
 		lblLinkAqui.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				dispose();
+
 				Login loginFrame = new Login();
 				loginFrame.setVisible(true);
-				dispose();
 
 			}
 		});
