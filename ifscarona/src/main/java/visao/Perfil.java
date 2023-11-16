@@ -266,7 +266,7 @@ public class Perfil extends JFrame {
 		txtMarca.setBounds(1411, 368, 300, 40);
 		contentPane.add(txtMarca);
 
-		btnSalvar = new JButton("");
+		btnSalvar = new JButton("Editar");
 		btnSalvar.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-editar-50.png")));
 		btnSalvar.addActionListener(new ActionListener() {
 
@@ -277,12 +277,12 @@ public class Perfil extends JFrame {
 			}
 		});
 
-		btnSalvar.setBackground(new Color(186, 189, 182));
+		btnSalvar.setBackground(new Color(192, 192, 192));
 		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		btnSalvar.setBounds(579, 665, 145, 53);
 		contentPane.add(btnSalvar);
 
-		btnExcluir = new JButton("");
+		btnExcluir = new JButton("Excluir");
 		btnExcluir.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-excluir-60.png")));
 		btnExcluir.addActionListener(new ActionListener() {
 
@@ -299,7 +299,7 @@ public class Perfil extends JFrame {
 		btnExcluir.setBounds(1666, 665, 145, 53);
 		contentPane.add(btnExcluir);
 
-		btnSalvarV = new JButton("");
+		btnSalvarV = new JButton("Editar");
 		btnSalvarV.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-editar-50.png")));
 		btnSalvarV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -313,7 +313,7 @@ public class Perfil extends JFrame {
 		btnSalvarV.setBounds(1314, 665, 151, 53);
 		contentPane.add(btnSalvarV);
 
-		JButton btnExcluirV = new JButton("");
+		JButton btnExcluirV = new JButton("Excluir");
 		btnExcluirV.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-excluir-60.png")));
 		btnExcluirV.addActionListener(new ActionListener() {
 
@@ -333,7 +333,7 @@ public class Perfil extends JFrame {
 		btnExcluirV.setBounds(850, 665, 145, 53);
 		contentPane.add(btnExcluirV);
 
-		JButton btnAddVeiculo = new JButton("");
+		JButton btnAddVeiculo = new JButton("Adicionar");
 		btnAddVeiculo.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-add-car-48.png")));
 		btnAddVeiculo.addActionListener(new ActionListener() {
 
