@@ -97,6 +97,10 @@ public class Perfil extends JFrame {
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");
+		btnLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 
 		btnLogOut.addMouseListener(new MouseAdapter() {
 			@Override

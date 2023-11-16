@@ -21,6 +21,8 @@ import modelo.Veiculo;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
@@ -60,6 +62,27 @@ public class Principal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JButton btnLogOut = new JButton("");
+		btnLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+
+		btnLogOut.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Sessao.setPessoaLogada(null);
+				dispose();
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+			}
+		});
+		btnLogOut.setIcon(new ImageIcon(Principal.class.getResource("/assets/Log-out.png")));
+		btnLogOut.setBorder(null);
+		btnLogOut.setBackground(new Color(244, 234, 213));
+		btnLogOut.setBounds(150, 750, 75, 65);
+		contentPane.add(btnLogOut);
 		
 				
 		JCheckBox chckbxEmDiante = new JCheckBox("18 em diante");
@@ -114,7 +137,7 @@ public class Principal extends JFrame {
 
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
-		lblFundo.setBounds(-5, -237, 468, 1650);
+		lblFundo.setBounds(-11, -235, 468, 1650);
 		contentPane.add(lblFundo);
 
 		JLabel lblFiltro = new JLabel("Filtrar viagens");
