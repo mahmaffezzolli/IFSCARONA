@@ -35,6 +35,9 @@ public class TelaExcluirVeiculo extends JFrame {
 					TelaExcluirVeiculo frame = new TelaExcluirVeiculo();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					//Centralizar
+					frame.setBounds(40, 40, 451, 234);
+					frame.setLocationRelativeTo(null);
 
 				} catch (Exception e) {
 					e.printStackTrace();

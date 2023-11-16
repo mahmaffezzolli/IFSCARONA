@@ -26,6 +26,9 @@ public class ErroAoAtualizar extends JFrame {
 				try {
 					ErroAoAtualizar frame = new ErroAoAtualizar();
 					frame.setVisible(true);
+					//Centralizar
+					frame.setBounds(40, 40, 451, 234);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
