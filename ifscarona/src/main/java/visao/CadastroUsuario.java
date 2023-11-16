@@ -70,6 +70,7 @@ public class CadastroUsuario extends JFrame {
 				try {
 					CadastroUsuario frame = new CadastroUsuario();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
