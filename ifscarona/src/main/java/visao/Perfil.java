@@ -288,8 +288,8 @@ public class Perfil extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
-				TelaExcluirConta.setVisible(true);
+				TelaExcluirVeiculo TelaExcluirVeiculo = new TelaExcluirVeiculo();
+				TelaExcluirVeiculo.setVisible(true);
 
 			}
 		});
@@ -319,8 +319,9 @@ public class Perfil extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				TelaExcluirVeiculo TelaExcluirVeiculo = new TelaExcluirVeiculo();
-				TelaExcluirVeiculo.setVisible(true);
+				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
+				TelaExcluirConta.setVisible(true);
+				
 
 			}
 		});
@@ -452,8 +453,8 @@ public class Perfil extends JFrame {
 
 			if (veiculoLogado != null && veiculoLogado.getMotorista() != null) {
 
-				//veiculoLogado.setPessoa();
-				//veiculoLogado.setCpf_pessoa(txtCPF2.getText());
+				// veiculoLogado.setPessoa();
+				// veiculoLogado.setCpf_pessoa(txtCPF2.getText());
 				veiculoLogado.setPlaca(txtPlaca.getText());
 				veiculoLogado.setCor(txtCor.getText());
 				veiculoLogado.setMarca(txtMarca.getText());
