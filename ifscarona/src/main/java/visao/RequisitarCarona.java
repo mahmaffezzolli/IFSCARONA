@@ -133,12 +133,12 @@ public class RequisitarCarona extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/MODELO.png")));
-		lblNewLabel.setBounds(1358, 443, 67, 65);
+		lblNewLabel.setBounds(1389, 387, 67, 65);
 		contentPane.add(lblNewLabel);
 
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		comboBox_2.setBounds(1443, 461, 169, 22);
+		comboBox_2.setBounds(1474, 414, 169, 22);
 		comboBox_2.setBackground(new Color(255, 251, 233));
 		contentPane.add(comboBox_2);
 
@@ -181,7 +181,7 @@ public class RequisitarCarona extends JFrame {
 
 		JLabel lblFundoLugar = new JLabel("");
 		lblFundoLugar.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoLugar.setBounds(1344, 411, 320, 133);
+		lblFundoLugar.setBounds(1355, 360, 320, 133);
 		contentPane.add(lblFundoLugar);
 
 		JLabel lblFundo = new JLabel("");
@@ -206,10 +206,11 @@ public class RequisitarCarona extends JFrame {
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares necessários?");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_1.setBounds(1274, 293, 530, 107);
+		lblNewLabel_1_1.setBounds(1273, 278, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
-		JButton btnNewButton = new JButton("Requisitar");
+		JButton btnNewButton = new JButton("   Requisitar");
+		btnNewButton.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-viajar-de-carona-50.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -226,7 +227,7 @@ public class RequisitarCarona extends JFrame {
 			}
 		});
 		btnNewButton.setBackground(new Color(251, 251, 233));
-		btnNewButton.setBounds(1090, 801, 169, 54);
+		btnNewButton.setBounds(1081, 809, 189, 54);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Requisitar Carona");

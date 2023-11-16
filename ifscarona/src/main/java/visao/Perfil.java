@@ -266,7 +266,8 @@ public class Perfil extends JFrame {
 		txtMarca.setBounds(1411, 368, 300, 40);
 		contentPane.add(txtMarca);
 
-		btnSalvar = new JButton("Editar");
+		btnSalvar = new JButton("");
+		btnSalvar.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-editar-50.png")));
 		btnSalvar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -276,12 +277,13 @@ public class Perfil extends JFrame {
 			}
 		});
 
-		btnSalvar.setBackground(new Color(255, 255, 255));
+		btnSalvar.setBackground(new Color(186, 189, 182));
 		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnSalvar.setBounds(579, 665, 138, 40);
+		btnSalvar.setBounds(579, 665, 145, 53);
 		contentPane.add(btnSalvar);
 
-		btnExcluir = new JButton("Excluir");
+		btnExcluir = new JButton("");
+		btnExcluir.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-excluir-60.png")));
 		btnExcluir.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -294,10 +296,11 @@ public class Perfil extends JFrame {
 
 		btnExcluir.setBackground(new Color(255, 182, 193));
 		btnExcluir.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnExcluir.setBounds(827, 665, 138, 40);
+		btnExcluir.setBounds(1666, 665, 145, 53);
 		contentPane.add(btnExcluir);
 
-		btnSalvarV = new JButton("Editar");
+		btnSalvarV = new JButton("");
+		btnSalvarV.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-editar-50.png")));
 		btnSalvarV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -306,11 +309,12 @@ public class Perfil extends JFrame {
 		});
 
 		btnSalvarV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnSalvarV.setBackground(new Color(255, 255, 255));
-		btnSalvarV.setBounds(1314, 665, 138, 40);
+		btnSalvarV.setBackground(new Color(186, 189, 182));
+		btnSalvarV.setBounds(1314, 665, 151, 53);
 		contentPane.add(btnSalvarV);
 
-		JButton btnExcluirV = new JButton("Excluir");
+		JButton btnExcluirV = new JButton("");
+		btnExcluirV.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-excluir-60.png")));
 		btnExcluirV.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -322,10 +326,11 @@ public class Perfil extends JFrame {
 		});
 		btnExcluirV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		btnExcluirV.setBackground(new Color(255, 182, 193));
-		btnExcluirV.setBounds(1546, 665, 138, 40);
+		btnExcluirV.setBounds(850, 665, 145, 53);
 		contentPane.add(btnExcluirV);
 
-		JButton btnAddVeiculo = new JButton("Adicionar Veículo");
+		JButton btnAddVeiculo = new JButton("");
+		btnAddVeiculo.setIcon(new ImageIcon(Perfil.class.getResource("/assets/icons8-add-car-48.png")));
 		btnAddVeiculo.addActionListener(new ActionListener() {
 
 			@Override
@@ -344,8 +349,8 @@ public class Perfil extends JFrame {
 		});
 
 		btnAddVeiculo.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnAddVeiculo.setBackground(Color.WHITE);
-		btnAddVeiculo.setBounds(1420, 767, 165, 40);
+		btnAddVeiculo.setBackground(new Color(181, 239, 126));
+		btnAddVeiculo.setBounds(1519, 785, 157, 53);
 		contentPane.add(btnAddVeiculo);
 
 		JLabel lbCPF = new JLabel("CPF:");

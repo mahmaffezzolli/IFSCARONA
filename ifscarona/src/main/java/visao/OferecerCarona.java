@@ -217,7 +217,9 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_1.setBounds(1249, 278, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
-		JButton btnNewButton = new JButton("Oferecer");
+		JButton btnNewButton = new JButton("   Oferecer");
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnNewButton.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -237,7 +239,7 @@ public class OferecerCarona extends JFrame {
 		});
 
 		btnNewButton.setBackground(new Color(251, 251, 233));
-		btnNewButton.setBounds(1090, 801, 169, 54);
+		btnNewButton.setBounds(1090, 820, 184, 65);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Oferecer Carona");
