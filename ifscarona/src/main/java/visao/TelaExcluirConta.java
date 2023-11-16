@@ -72,8 +72,8 @@ public class TelaExcluirConta extends JFrame {
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
 				
 				
-				Principal principal = new Principal();
-				principal.setVisible(true);
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
 				
 				dispose();
 
