@@ -23,6 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import javax.swing.JPasswordField;
@@ -322,7 +325,8 @@ public class CadastroUsuario extends JFrame {
 
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
-
+				String senhaCriptografada = BCrypt.hashpw(senha, BCrypt.gensalt());
+				
 				// validação se o campo é vazio, se for, abre a tela de erro
 				if (nome.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
@@ -369,7 +373,7 @@ public class CadastroUsuario extends JFrame {
 					p.setNome(nome);
 					p.setSobrenome(sobrenome);
 					p.setEmail(email);
-					p.setSenha(senha);
+					p.setSenha(senhaCriptografada);
 					p.setDataNasc(dataNascimento);
 
 					String success = pDAO.cadastrarPessoa(p);

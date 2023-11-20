@@ -11,9 +11,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -24,6 +32,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import org.mindrot.jbcrypt.BCrypt;
+
+import controle.JavaMail;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Pessoa;
@@ -149,6 +160,11 @@ public class Login extends JFrame {
 					Pessoa pessoaLogada = pDAO.login(email, senha);
 
 					if (pessoaLogada != null) {
+						try {
+							//JavaMail.enviarEmail(email);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
 
 						VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 
@@ -256,4 +272,6 @@ public class Login extends JFrame {
 		return result;
 
 	}
+
+	
 }

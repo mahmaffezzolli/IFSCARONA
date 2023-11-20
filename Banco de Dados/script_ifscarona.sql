@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
   `sobrenome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `data_nasc` DATE NOT NULL,
-  `senha` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(60) NOT NULL,
   `id_veiculo` INT,
   PRIMARY KEY (`cpf`),
   CONSTRAINT `fk_Pessoa_Veiculo1`

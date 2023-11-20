@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import modelo.Carro;
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
@@ -178,29 +180,32 @@ public class PessoaDAO implements IPessoaDAO {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "SELECT * FROM pessoas WHERE pessoas.email = ? AND pessoas.senha = ?";
+		String query = "SELECT * FROM pessoas WHERE pessoas.email = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, email);
-			ps.setString(2, senha);
 
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				Pessoa pessoa = new Pessoa();
-				pessoa.setCpf(rs.getString("cpf"));
-				pessoa.setNome(rs.getString("nome"));
-				pessoa.setSobrenome(rs.getString("sobrenome"));
-				pessoa.setEmail(rs.getString("email"));
-				pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
+				String senhaArmazenada = rs.getString("senha");
 
-				VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-				Carro carro = vDAO.conexaoVeiculoPessoa(pessoa);
+				if (BCrypt.checkpw(senha, senhaArmazenada)) {
+					Pessoa pessoa = new Pessoa();
+					pessoa.setCpf(rs.getString("cpf"));
+					pessoa.setNome(rs.getString("nome"));
+					pessoa.setSobrenome(rs.getString("sobrenome"));
+					pessoa.setEmail(rs.getString("email"));
+					pessoa.setDataNasc(rs.getDate("data_nasc").toLocalDate());
 
-				pessoa.setVeiculo(carro);
+					VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+					Carro carro = vDAO.conexaoVeiculoPessoa(pessoa);
 
-				return pessoa;
+					pessoa.setVeiculo(carro);
+
+					return pessoa;
+				}
 			}
 
 		} catch (SQLException e) {
