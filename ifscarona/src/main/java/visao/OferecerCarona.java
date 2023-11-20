@@ -1,19 +1,19 @@
 package visao;
 
 import java.awt.Color;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.sql.ResultSet;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,8 +35,10 @@ public class OferecerCarona extends JFrame {
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
 	private JComboBox<String> cmbLugar;
-	private JCheckBox chckbxGaspar;
-	private JCheckBox chckbxBlumenau;
+	private JRadioButton rdbtnGaspar;
+	private JRadioButton rdbtnBlumenau;
+	private JRadioButton rdbtnIfsc;
+
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 	private JDatePicker datePicker;
@@ -91,33 +93,35 @@ public class OferecerCarona extends JFrame {
 			}
 		});
 
-		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
-		chckbxIfsc.setBounds(845, 469, 129, 23);
-		contentPane.add(chckbxIfsc);
+		rdbtnIfsc = new JRadioButton("IFSC");
+		rdbtnIfsc.setBounds(845, 469, 129, 23);
+		contentPane.add(rdbtnIfsc);
 
-		chckbxGaspar = new JCheckBox("Gaspar");
-		chckbxGaspar.setBounds(845, 432, 129, 23);
-		contentPane.add(chckbxGaspar);
+		rdbtnGaspar = new JRadioButton("Gaspar");
+		rdbtnGaspar.setBounds(845, 432, 129, 23);
+		contentPane.add(rdbtnGaspar);
 
-		chckbxBlumenau = new JCheckBox("Blumenau");
-		chckbxBlumenau.setBounds(845, 396, 129, 23);
-		contentPane.add(chckbxBlumenau);
+		rdbtnBlumenau = new JRadioButton("Blumenau");
+		rdbtnBlumenau.setBounds(845, 396, 129, 23);
+		contentPane.add(rdbtnBlumenau);
 
-		chckbxGaspar.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
-				cmbGaspar.setEnabled(chckbxGaspar.isSelected());
+		ButtonGroup radioGroup = new ButtonGroup();
+		radioGroup.add(rdbtnGaspar);
+		radioGroup.add(rdbtnBlumenau);
+		radioGroup.add(rdbtnIfsc);
 
-			}
+		rdbtnGaspar.addItemListener(e -> {
+			cmbBlumenau.setEnabled(!rdbtnGaspar.isSelected());
+			cmbGaspar.setEnabled(rdbtnGaspar.isSelected());
 		});
 
-		chckbxBlumenau.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				cmbGaspar.setEnabled(!chckbxBlumenau.isSelected());
-				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
-			}
+		rdbtnBlumenau.addItemListener(e -> {
+			cmbGaspar.setEnabled(!rdbtnBlumenau.isSelected());
+			cmbBlumenau.setEnabled(rdbtnBlumenau.isSelected());
+		});
+		rdbtnIfsc.addItemListener(e -> {
+			cmbGaspar.setEnabled(false);
+			cmbBlumenau.setEnabled(false);
 		});
 
 		JLabel lblNewLabel_3 = new JLabel("");
@@ -221,17 +225,17 @@ public class OferecerCarona extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected()) {
+				if (cmbLugar.getSelectedIndex() <= 0) {
+
+					showCampoNaoPreenchido();
+
+				} else if ((rdbtnGaspar.isSelected() || rdbtnIfsc.isSelected() || rdbtnBlumenau.isSelected())
+						&& cmbLugar.getSelectedIndex() > 0) {
 
 					Trajeto t = definirTrajeto();
 					oferecerCarona(t);
-
 					new ListagemCaronas().setVisible(true);
 					OferecerCarona.this.dispose();
-
-				} else {
-					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-					campoNaoPreenchido.setVisible(true);
 				}
 			}
 		});
@@ -253,32 +257,50 @@ public class OferecerCarona extends JFrame {
 	}
 
 	public Trajeto definirTrajeto() {
-
 		Trajeto t = new Trajeto();
-		String bairro;
 
-		t.setOrigem("IFSC");
+		if (rdbtnGaspar.isSelected()) {
+			String bairro = (String) cmbGaspar.getSelectedItem();
 
-		if (chckbxGaspar.isSelected()) {
+			if (bairroSelecionado(bairro, cmbGaspar)) {
+				t.setDestino("Gaspar, " + bairro);
+				t.setOrigem("IFSC");
+				
+			} else {
+				showCampoNaoPreenchido();
+				return null;
+			}
+			
+		} else if (rdbtnBlumenau.isSelected()) {
+			String bairro = (String) cmbBlumenau.getSelectedItem();
 
-			bairro = (String) cmbGaspar.getSelectedItem();
-			t.setDestino("Gaspar, " + bairro);
-
-		} else if (chckbxBlumenau.isSelected()) {
-
-			bairro = (String) cmbBlumenau.getSelectedItem();
-			t.setDestino("Blumenau, " + bairro);
+			if (bairroSelecionado(bairro, cmbBlumenau)) {
+				t.setDestino("Blumenau, " + bairro);
+				t.setOrigem("IFSC");
+				
+			} else {
+				showCampoNaoPreenchido();
+				return null;
+			}
+			
+		} else if (rdbtnIfsc.isSelected()) {
+			t.setDestino("IFSC");
+			
+		} else {
+			showCampoNaoPreenchido();
+			return null;
 		}
 
 		Long success = tDAO.cadastrarTrajeto(t);
 		t.setIdTrajeto(success);
+
 		return t;
 	}
 
 	public void oferecerCarona(Trajeto t) {
 
 		Carona c = new Carona();
-		
+
 		String qntLugar;
 		qntLugar = (String) cmbLugar.getSelectedItem();
 
@@ -299,5 +321,14 @@ public class OferecerCarona extends JFrame {
 
 		}
 
+	}
+
+	private boolean bairroSelecionado(String bairro, JComboBox<String> comboBox) {
+		return comboBox.getSelectedIndex() > 0 && bairro != null && !bairro.isEmpty();
+	}
+
+	private void showCampoNaoPreenchido() {
+		CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+		campoNaoPreenchido.setVisible(true);
 	}
 }

@@ -26,7 +26,6 @@ public class CampoNaoPreenchido extends JFrame {
 				try {
 					CampoNaoPreenchido frame = new CampoNaoPreenchido();
 					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
 					//Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
