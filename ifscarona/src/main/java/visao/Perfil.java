@@ -81,19 +81,18 @@ public class Perfil extends JFrame {
 
 		JButton btnHome = new JButton("");
 		btnHome.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				Principal principal = new Principal();
-				principal.setVisible(true);
-			}
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Principal principal = new Principal();
+		        principal.setVisible(true);
+		        dispose();
+		    }
 		});
-
-		btnHome.setBorder(null);
-		btnHome.setForeground(new Color(0, 0, 0));
-		btnHome.setBackground(new Color(159, 203, 153));
+		btnHome.setBorderPainted(false);
+		btnHome.setContentAreaFilled(false);
+		btnHome.setFocusPainted(false);
 		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
-		btnHome.setBounds(165, 640, 75, 65);
+		btnHome.setBounds(140, 762, 75, 65);
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");

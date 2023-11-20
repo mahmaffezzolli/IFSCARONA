@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -167,37 +168,94 @@ public class CaronaDAO implements ICaronaDAO {
 
 	@Override
 	public boolean alterarCarona(Carona carona) {
-		ConexaoBanco c = ConexaoBanco.getInstancia();
-		Connection con = c.conectar();
+	    ConexaoBanco c = ConexaoBanco.getInstancia();
+	    Connection con = c.conectar();
 
-		String query = "UPDATE caronas SET cpf_passageiro = ?, id_trajeto = ?, id_veiculo = ?, qnt_passageiros = ?, horario = ?, data = ? WHERE id_carona = ?";
+	    String query = "UPDATE caronas SET ";
+	    boolean hasSet = false;
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, carona.getPassageiro().getCpf());
-			ps.setLong(2, carona.getTrajeto().getIdTrajeto());
-			ps.setLong(3, carona.getVeiculo().getIdVeiculo());
-			ps.setInt(4, carona.getQntPassageiro());
-			ps.setTime(5, carona.getHorario());
-			ps.setDate(6, Date.valueOf(carona.getData()));
-			ps.setLong(7, carona.getIdCarona());
+	    if (carona.getPassageiro() != null) {
+	        query += "cpf_passageiro = ?, ";
+	        hasSet = true;
+	    }
 
-			int rowsAffected = ps.executeUpdate();
+	    if (carona.getTrajeto() != null) {
+	        query += "id_trajeto = ?, ";
+	        hasSet = true;
+	    }
 
-			if (rowsAffected > 0) {
-				return true;
-			} else {
-				return false;
-			}
+	    if (carona.getVeiculo() != null) {
+	        query += "id_veiculo = ?, ";
+	        hasSet = true;
+	    }
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			c.fecharConexao();
-		}
+	    if (carona.getQntPassageiro() != null) {
+	        query += "qnt_passageiros = ?, ";
+	        hasSet = true;
+	    }
 
+	    if (carona.getHorario() != null) {
+	        query += "horario = ?, ";
+	        hasSet = true;
+	    }
+
+	    if (carona.getData() != null) {
+	        query += "data = ?, ";
+	        hasSet = true;
+	    }
+
+	    if (hasSet) {
+
+	        query = query.substring(0, query.length() - 2);
+
+	        query += " WHERE id_carona = ?";
+
+	        try {
+	            PreparedStatement ps = con.prepareStatement(query);
+
+	            int i = 1;
+
+	            if (carona.getPassageiro() != null) {
+	                ps.setString(i++, carona.getPassageiro().getCpf());
+	            }
+
+	            if (carona.getTrajeto() != null) {
+	                ps.setLong(i++, carona.getTrajeto().getIdTrajeto());
+	            }
+
+	            if (carona.getVeiculo() != null) {
+	                ps.setLong(i++, carona.getVeiculo().getIdVeiculo());
+	            }
+
+	            if (carona.getQntPassageiro() != null) {
+	                ps.setInt(i++, carona.getQntPassageiro());
+	            }
+
+	            if (carona.getHorario() != null) {
+	                ps.setTime(i++, carona.getHorario());
+	            }
+
+	            if (carona.getData() != null) {
+	                ps.setDate(i++, Date.valueOf(carona.getData()));
+	            }
+
+	            ps.setLong(i, carona.getIdCarona());
+
+	            int rowsAffected = ps.executeUpdate();
+
+	            return rowsAffected > 0;
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        } finally {
+	            c.fecharConexao();
+	        }
+	    } else {
+	        return false;
+	    }
 	}
+
 
 	@Override
 	public boolean deletarCarona(Carona carona) {

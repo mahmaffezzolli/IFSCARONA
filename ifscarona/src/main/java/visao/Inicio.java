@@ -56,7 +56,6 @@ public class Inicio extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
 		
 		JButton btnLogar = new JButton("Logar");
 		btnLogar.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));

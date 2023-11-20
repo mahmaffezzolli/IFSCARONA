@@ -3,15 +3,17 @@ package visao;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.time.LocalDate;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import controle.CaronaDAO;
 import controle.PessoaDAO;
@@ -28,21 +31,24 @@ import controle.VeiculoDAO;
 import modelo.Carona;
 import modelo.Carro;
 import modelo.Pessoa;
+import modelo.Sessao;
 import modelo.Trajeto;
 import modelo.Veiculo;
 
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class ListagemCaronas extends JFrame {
+
 	private DefaultTableModel tableModel;
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-
 	private JTable table;
-
 	private JPanel contentPane;
+	private JButton btnSelecionar;
+	private boolean isEditingEnabled = false;
 
 	/**
 	 * Launch the application.
@@ -78,15 +84,14 @@ public class ListagemCaronas extends JFrame {
 		btnHome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
 				Principal principal = new Principal();
 				principal.setVisible(true);
+				dispose();
 			}
 		});
-
-		btnHome.setBorder(null);
-		btnHome.setForeground(new Color(0, 0, 0));
-		btnHome.setBackground(new Color(244, 234, 213));
+		btnHome.setBorderPainted(false);
+		btnHome.setContentAreaFilled(false);
+		btnHome.setFocusPainted(false);
 		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
 		btnHome.setBounds(140, 762, 75, 65);
 		contentPane.add(btnHome);
@@ -106,18 +111,55 @@ public class ListagemCaronas extends JFrame {
 		lblFundo.setBounds(-2, -224, 468, 1650);
 		contentPane.add(lblFundo);
 
+		btnSelecionar = new JButton("Selecionar");
+		btnSelecionar.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnSelecionar.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
+		btnSelecionar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int selectedRowIndex = table.getSelectedRow();
+
+				if (selectedRowIndex != -1) {
+					Long idCarona = Long.parseLong(table.getValueAt(selectedRowIndex, 0).toString());
+					String cpfMotorista = cDAO.pegaCarona(idCarona).getMotorista().getCpf();
+
+					if (Sessao.getPessoaLogada().getCpf().equals(cpfMotorista)) {
+
+						alterarCarona(idCarona);
+
+					} else {
+						System.out.println("Logged-in user is not the driver. Cannot update carona.");
+					}
+				} else {
+					System.out.println("No row selected.");
+				}
+			}
+		});
+
+		btnSelecionar.setBackground(new Color(251, 251, 233));
+		btnSelecionar.setBounds(1600, 850, 185, 65);
+		contentPane.add(btnSelecionar);
+
+		Font tableFont = new Font("Dialog", Font.PLAIN, 14);
+
 		tableModel = new DefaultTableModel();
+		tableModel.addColumn("ID Carona");
 		tableModel.addColumn("Nome do Motorista");
 		tableModel.addColumn("Hora de Saída");
 		tableModel.addColumn("Veículo");
 		tableModel.addColumn("Origem");
 		tableModel.addColumn("Destino");
 
-
-		// Inicialize a tabela com o modelo de tabela
 		table = new JTable(tableModel);
+		table.setFont(tableFont);
+		int rowHeight = 25;
+		table.setRowHeight(rowHeight);
 
-		// Adicione a tabela a um JScrollPane para rolagem
+		JTableHeader tableHeader = table.getTableHeader();
+		int headerRowHeight = 30;
+		tableHeader.setPreferredSize(new Dimension(tableHeader.getWidth(), headerRowHeight));
+		tableHeader.setFont(tableFont.deriveFont(Font.BOLD));
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(616, 170, 1060, 651);
 		contentPane.add(scrollPane);
@@ -153,13 +195,11 @@ public class ListagemCaronas extends JFrame {
 
 				Carro carro = vDAO.pegaVeiculo(idVeiculo);
 
-				Object[] rowData = { nomeMotorista, horario, carro.getPlaca(), origem, destino };
+				Object[] rowData = { idCarona, nomeMotorista, horario, carro.getPlaca(), origem, destino };
 				tableModel.addRow(rowData);
 
 			}
-		} catch (
-
-		SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -172,4 +212,44 @@ public class ListagemCaronas extends JFrame {
 		}
 
 	}
+
+	public void alterarCarona(Long idCarona) {
+		int selectedRowIndex = table.getSelectedRow();
+
+		if (selectedRowIndex != -1) {
+			Carona carona = new Carona();
+			carona.setIdCarona(idCarona);
+
+			if (btnSelecionar.getText().equals("Selecionar")) {
+
+				isEditingEnabled = true;
+				btnSelecionar.setText("Salvar");
+			} else if (btnSelecionar.getText().equals("Salvar")) {
+
+				isEditingEnabled = false;
+
+				if (carona.getTrajeto() == null) {
+					carona.setTrajeto(new Trajeto());
+				}
+
+				boolean updated = CaronaDAO.getInstancia().alterarCarona(carona);
+
+				if (updated) {
+					DadosAtualizados dadosAtualizados = new DadosAtualizados();
+					dadosAtualizados.setVisible(true);
+				} else {
+					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+					erroAoAtualizar.setVisible(true);
+				}
+
+				btnSelecionar.setText("Selecionar");
+			}
+
+			table.setModel(tableModel);
+		} else {
+			System.out.println("No row selected.");
+		}
+	}
+
+
 }

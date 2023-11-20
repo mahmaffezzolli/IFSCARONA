@@ -161,7 +161,7 @@ public class Login extends JFrame {
 
 					if (pessoaLogada != null) {
 						try {
-							//JavaMail.enviarEmail(email);
+							// JavaMail.enviarEmail(email);
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
@@ -260,7 +260,6 @@ public class Login extends JFrame {
 		try {
 
 			InternetAddress emailAddr = new InternetAddress(email);
-
 			emailAddr.validate();
 
 		} catch (AddressException ex) {
@@ -273,5 +272,4 @@ public class Login extends JFrame {
 
 	}
 
-	
 }
