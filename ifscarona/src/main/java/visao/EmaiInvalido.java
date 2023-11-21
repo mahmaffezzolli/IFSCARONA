@@ -3,6 +3,8 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,6 +44,11 @@ public class EmaiInvalido extends JFrame {
 	 * Create the frame.
 	 */
 	public EmaiInvalido() {
+		
+		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
+		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+		this.setIconImage(iconeTitulo);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();

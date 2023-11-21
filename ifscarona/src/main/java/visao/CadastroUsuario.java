@@ -3,6 +3,8 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -87,6 +89,11 @@ public class CadastroUsuario extends JFrame {
 	 * @throws ParseException
 	 */
 	public CadastroUsuario() throws ParseException {
+		
+		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
+		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+		this.setIconImage(iconeTitulo);
+		
 		setTitle("Cadastro");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

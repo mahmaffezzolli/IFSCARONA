@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
@@ -47,6 +48,11 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
+		
+		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
+		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+		this.setIconImage(iconeTitulo);
+		
 		Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, 1935, 1049);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);

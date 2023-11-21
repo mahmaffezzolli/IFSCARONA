@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -43,6 +44,11 @@ public class Historico extends JFrame {
 	 * Create the frame.
 	 */
 	public Historico() {
+		
+		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
+		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+		this.setIconImage(iconeTitulo);
+		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
