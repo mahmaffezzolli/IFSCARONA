@@ -10,6 +10,7 @@ import java.sql.Time;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import modelo.Carona;
 import modelo.Carro;
@@ -25,7 +26,6 @@ public class CaronaDAO implements ICaronaDAO {
 	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-
 
 	public CaronaDAO() {
 
@@ -168,94 +168,93 @@ public class CaronaDAO implements ICaronaDAO {
 
 	@Override
 	public boolean alterarCarona(Carona carona) {
-	    ConexaoBanco c = ConexaoBanco.getInstancia();
-	    Connection con = c.conectar();
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
 
-	    String query = "UPDATE caronas SET ";
-	    boolean hasSet = false;
+		String query = "UPDATE caronas SET ";
+		boolean hasSet = false;
 
-	    if (carona.getPassageiro() != null) {
-	        query += "cpf_passageiro = ?, ";
-	        hasSet = true;
-	    }
+		if (carona.getPassageiro() != null) {
+			query += "cpf_passageiro = ?, ";
+			hasSet = true;
+		}
 
-	    if (carona.getTrajeto() != null) {
-	        query += "id_trajeto = ?, ";
-	        hasSet = true;
-	    }
+		if (carona.getTrajeto() != null) {
+			query += "id_trajeto = ?, ";
+			hasSet = true;
+		}
 
-	    if (carona.getVeiculo() != null) {
-	        query += "id_veiculo = ?, ";
-	        hasSet = true;
-	    }
+		if (carona.getVeiculo() != null) {
+			query += "id_veiculo = ?, ";
+			hasSet = true;
+		}
 
-	    if (carona.getQntPassageiro() != null) {
-	        query += "qnt_passageiros = ?, ";
-	        hasSet = true;
-	    }
+		if (carona.getQntPassageiro() != null) {
+			query += "qnt_passageiros = ?, ";
+			hasSet = true;
+		}
 
-	    if (carona.getHorario() != null) {
-	        query += "horario = ?, ";
-	        hasSet = true;
-	    }
+		if (carona.getHorario() != null) {
+			query += "horario = ?, ";
+			hasSet = true;
+		}
 
-	    if (carona.getData() != null) {
-	        query += "data = ?, ";
-	        hasSet = true;
-	    }
+		if (carona.getData() != null) {
+			query += "data = ?, ";
+			hasSet = true;
+		}
 
-	    if (hasSet) {
+		if (hasSet) {
 
-	        query = query.substring(0, query.length() - 2);
+			query = query.substring(0, query.length() - 2);
 
-	        query += " WHERE id_carona = ?";
+			query += " WHERE id_carona = ?";
 
-	        try {
-	            PreparedStatement ps = con.prepareStatement(query);
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
 
-	            int i = 1;
+				int i = 1;
 
-	            if (carona.getPassageiro() != null) {
-	                ps.setString(i++, carona.getPassageiro().getCpf());
-	            }
+				if (carona.getPassageiro() != null) {
+					ps.setString(i++, carona.getPassageiro().getCpf());
+				}
 
-	            if (carona.getTrajeto() != null) {
-	                ps.setLong(i++, carona.getTrajeto().getIdTrajeto());
-	            }
+				if (carona.getTrajeto() != null) {
+					ps.setLong(i++, carona.getTrajeto().getIdTrajeto());
+				}
 
-	            if (carona.getVeiculo() != null) {
-	                ps.setLong(i++, carona.getVeiculo().getIdVeiculo());
-	            }
+				if (carona.getVeiculo() != null) {
+					ps.setLong(i++, carona.getVeiculo().getIdVeiculo());
+				}
 
-	            if (carona.getQntPassageiro() != null) {
-	                ps.setInt(i++, carona.getQntPassageiro());
-	            }
+				if (carona.getQntPassageiro() != null) {
+					ps.setInt(i++, carona.getQntPassageiro());
+				}
 
-	            if (carona.getHorario() != null) {
-	                ps.setTime(i++, carona.getHorario());
-	            }
+				if (carona.getHorario() != null) {
+					ps.setTime(i++, carona.getHorario());
+				}
 
-	            if (carona.getData() != null) {
-	                ps.setDate(i++, Date.valueOf(carona.getData()));
-	            }
+				if (carona.getData() != null) {
+					ps.setDate(i++, Date.valueOf(carona.getData()));
+				}
 
-	            ps.setLong(i, carona.getIdCarona());
+				ps.setLong(i, carona.getIdCarona());
 
-	            int rowsAffected = ps.executeUpdate();
+				int rowsAffected = ps.executeUpdate();
 
-	            return rowsAffected > 0;
+				return rowsAffected > 0;
 
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	            return false;
-	        } finally {
-	            c.fecharConexao();
-	        }
-	    } else {
-	        return false;
-	    }
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			} finally {
+				c.fecharConexao();
+			}
+		} else {
+			return false;
+		}
 	}
-
 
 	@Override
 	public boolean deletarCarona(Carona carona) {
@@ -394,18 +393,18 @@ public class CaronaDAO implements ICaronaDAO {
 
 				Carona carona = new Carona();
 				carona.setIdCarona(rs.getLong("id_carona"));
-				
+
 				Pessoa motorista = pDAO.pegaPessoa(rs.getString("cpf_motorista"));
-	            carona.setMotorista(motorista);
-	            
-	            Pessoa passageiro = pDAO.pegaPessoa(rs.getString("cpf_passageiro"));
-	            carona.setPassageiro(passageiro);
+				carona.setMotorista(motorista);
 
-	            Trajeto trajeto = tDAO.pegaTrajeto(rs.getLong("id_trajeto"));
-	            carona.setTrajeto(trajeto);
+				Pessoa passageiro = pDAO.pegaPessoa(rs.getString("cpf_passageiro"));
+				carona.setPassageiro(passageiro);
 
-	            Veiculo veiculo = vDAO.pegaVeiculo(rs.getLong("id_veiculo"));
-	            carona.setVeiculo(veiculo);
+				Trajeto trajeto = tDAO.pegaTrajeto(rs.getLong("id_trajeto"));
+				carona.setTrajeto(trajeto);
+
+				Veiculo veiculo = vDAO.pegaVeiculo(rs.getLong("id_veiculo"));
+				carona.setVeiculo(veiculo);
 
 				carona.setData(null);
 				carona.setHorario(rs.getTime("horario"));
@@ -420,6 +419,57 @@ public class CaronaDAO implements ICaronaDAO {
 		}
 
 		return null;
+	}
+
+	public List<Carona> listarCaronasDisponíveis() {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		List<Carona> caronas = new ArrayList<>();
+
+		String query = "SELECT caronas.id_carona as id_carona, caronas.horario as horario, mo.cpf as cpf_motorista, mo.nome AS nome_motorista, "
+				+ "veiculos.id_veiculo as id_veiculo, veiculos.placa as placa, trajetos.id_trajeto as id_trajeto, trajetos.origem as origem, trajetos.destino as destino, "
+				+ "caronas.qnt_passageiros as qnt_passageiros " + "FROM caronas "
+				+ "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
+				+ "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista "
+				+ "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Carona carona = new Carona();
+				carona.setIdCarona(rs.getLong("id_carona"));
+
+				Pessoa motorista = new Pessoa();
+				motorista.setCpf(rs.getString("cpf_motorista"));
+				motorista.setNome(rs.getString("nome_motorista"));
+				carona.setMotorista(motorista);
+
+				Trajeto trajeto = new Trajeto();
+				trajeto.setIdTrajeto(rs.getLong("id_trajeto"));
+				trajeto.setDestino(rs.getString("destino"));
+				trajeto.setOrigem(rs.getString("origem"));
+				carona.setTrajeto(trajeto);
+
+				Carro carro = new Carro();
+				carro.setIdVeiculo(rs.getLong("id_veiculo"));
+				carro.setPlaca(rs.getString("placa"));
+				carona.setVeiculo(carro);
+
+				carona.setHorario(rs.getTime("horario"));
+
+				caronas.add(carona);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return caronas;
 	}
 
 }

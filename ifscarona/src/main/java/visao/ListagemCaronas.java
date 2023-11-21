@@ -9,11 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Time;
 
-import javax.swing.DefaultCellEditor;
+import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,30 +23,24 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import controle.CaronaDAO;
-import controle.PessoaDAO;
-import controle.TrajetoDAO;
 import controle.VeiculoDAO;
 import modelo.Carona;
 import modelo.Carro;
-import modelo.Pessoa;
 import modelo.Sessao;
-import modelo.Trajeto;
-import modelo.Veiculo;
-
 import javax.swing.JTable;
-import javax.swing.JTextField;
 
 public class ListagemCaronas extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DefaultTableModel tableModel;
-	private PessoaDAO pDAO = PessoaDAO.getInstancia();
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 	private JTable table;
 	private JPanel contentPane;
 	private JButton btnSelecionar;
-	private boolean isEditingEnabled = false;
 
 	/**
 	 * Launch the application.
@@ -164,92 +156,28 @@ public class ListagemCaronas extends JFrame {
 		scrollPane.setBounds(616, 170, 1060, 651);
 		contentPane.add(scrollPane);
 
-		ResultSet resultSet = CaronaDAO.getInstancia().listarCaronasResultSet();
+		List<Carona> caronas = cDAO.listarCaronasDisponíveis();
 
 		try {
-			while (resultSet.next()) {
-				Long idCarona = resultSet.getLong("id_carona");
-				String cpfMotorista = resultSet.getString("cpf_motorista");
-				String cpfPassageiro = resultSet.getString("cpf_passageiro");
-				Long idVeiculo = resultSet.getLong("id_veiculo");
-				Integer qntpassageiros = resultSet.getInt("qnt_passageiros");
-				Time horario = resultSet.getTime("horario");
-				Long idTrajeto = resultSet.getLong("id_trajeto");
+		    for (Carona carona : caronas) {
+		        String origem = carona.getTrajeto().getOrigem();
+		        String destino = carona.getTrajeto().getDestino();
 
-				// pegando no banco
-				Pessoa motorista = pDAO.pegaPessoa(cpfMotorista);
-				Pessoa passageiro = pDAO.pegaPessoa(cpfPassageiro);
+		        Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
 
-				String nomeMotorista = motorista.getNome();
-
-				if (passageiro != null) {
-					String nomePassageiro = passageiro.getNome();
-				}
-
-				Carona carona = cDAO.pegaCarona(idCarona);
-				Veiculo veiculo = carona.getVeiculo();
-
-				Trajeto trajeto = tDAO.pegaTrajeto(idTrajeto);
-				String origem = trajeto.getOrigem();
-				String destino = trajeto.getDestino();
-
-				Carro carro = vDAO.pegaVeiculo(idVeiculo);
-
-				Object[] rowData = { idCarona, nomeMotorista, horario, carro.getPlaca(), origem, destino };
-				tableModel.addRow(rowData);
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (resultSet != null) {
-					resultSet.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		        Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), carona.getHorario(), carro.getPlaca(), origem, destino };
+		        tableModel.addRow(rowData);
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
 		}
+
+
 
 	}
 
 	public void alterarCarona(Long idCarona) {
-		int selectedRowIndex = table.getSelectedRow();
 
-		if (selectedRowIndex != -1) {
-			Carona carona = new Carona();
-			carona.setIdCarona(idCarona);
-
-			if (btnSelecionar.getText().equals("Selecionar")) {
-
-				isEditingEnabled = true;
-				btnSelecionar.setText("Salvar");
-			} else if (btnSelecionar.getText().equals("Salvar")) {
-
-				isEditingEnabled = false;
-
-				if (carona.getTrajeto() == null) {
-					carona.setTrajeto(new Trajeto());
-				}
-
-				boolean updated = CaronaDAO.getInstancia().alterarCarona(carona);
-
-				if (updated) {
-					DadosAtualizados dadosAtualizados = new DadosAtualizados();
-					dadosAtualizados.setVisible(true);
-				} else {
-					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
-					erroAoAtualizar.setVisible(true);
-				}
-
-				btnSelecionar.setText("Selecionar");
-			}
-
-			table.setModel(tableModel);
-		} else {
-			System.out.println("No row selected.");
-		}
 	}
-
 
 }
