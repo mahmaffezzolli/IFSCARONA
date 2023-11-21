@@ -57,7 +57,7 @@ public class CadastroErro extends JFrame {
 		
 		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar pessoa!");
 		lblCadastroErro.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroErro.setBounds(135, 55, 176, 18);
+		lblCadastroErro.setBounds(135, 55, 225, 18);
 		contentPane.add(lblCadastroErro);
 		
 		JButton btnNewButton = new JButton("OK");

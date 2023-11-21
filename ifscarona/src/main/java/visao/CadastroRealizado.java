@@ -57,7 +57,7 @@ public class CadastroRealizado extends JFrame {
 		
 		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com secesso!");
 		lblCadastroRealizado.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroRealizado.setBounds(115, 60, 221, 18);
+		lblCadastroRealizado.setBounds(115, 60, 291, 18);
 		contentPane.add(lblCadastroRealizado);
 		
 		JButton btnNewButton = new JButton("OK");

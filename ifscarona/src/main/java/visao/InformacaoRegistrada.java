@@ -58,7 +58,7 @@ public class InformacaoRegistrada extends JFrame {
 		
 		JLabel lblInformacaoRegistrada = new JLabel("Informação já registrada!");
 		lblInformacaoRegistrada.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblInformacaoRegistrada.setBounds(144, 59, 169, 18);
+		lblInformacaoRegistrada.setBounds(144, 59, 202, 18);
 		contentPane.add(lblInformacaoRegistrada);
 		
 		JButton btnNewButton = new JButton("OK");

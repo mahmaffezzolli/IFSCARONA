@@ -280,7 +280,7 @@ public class CadastroVeiculo extends JFrame {
 
 		lblCadastroVeiculo = new JLabel("Cadastro de Veículo");
 		lblCadastroVeiculo.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblCadastroVeiculo.setBounds(930, 58, 514, 107);
+		lblCadastroVeiculo.setBounds(930, 58, 698, 107);
 		contentPane.add(lblCadastroVeiculo);
 
 		JButton btnHome = new JButton("");

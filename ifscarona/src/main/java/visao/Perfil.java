@@ -92,7 +92,7 @@ public class Perfil extends JFrame {
 		btnHome.setContentAreaFilled(false);
 		btnHome.setFocusPainted(false);
 		btnHome.setIcon(new ImageIcon(Perfil.class.getResource("/assets/home.png")));
-		btnHome.setBounds(140, 762, 75, 65);
+		btnHome.setBounds(128, 758, 75, 65);
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");
@@ -114,7 +114,7 @@ public class Perfil extends JFrame {
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
 		btnLogOut.setIcon(new ImageIcon(Perfil.class.getResource("/assets/Log-out.png")));
-		btnLogOut.setBounds(165, 858, 75, 65);
+		btnLogOut.setBounds(140, 859, 75, 65);
 		contentPane.add(btnLogOut);
 
 		txtSobrenome = new JTextField();
@@ -126,12 +126,12 @@ public class Perfil extends JFrame {
 		txtSobrenome.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(547, 238, 77, 20);
+		lblNome.setBounds(530, 238, 101, 20);
 		lblNome.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblNome);
 
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setBounds(547, 304, 138, 20);
+		lblSobrenome.setBounds(530, 304, 204, 20);
 		lblSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblSobrenome);
 
@@ -144,7 +144,7 @@ public class Perfil extends JFrame {
 		contentPane.add(txtEmail);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(547, 373, 84, 20);
+		lblEmail.setBounds(530, 373, 84, 20);
 		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblEmail);
 
@@ -178,12 +178,12 @@ public class Perfil extends JFrame {
 		contentPane.add(txtData);
 
 		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds(547, 446, 59, 20);
+		lblCPF.setBounds(530, 446, 59, 20);
 		lblCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblCPF);
 
 		JLabel lblData = new JLabel("Nascimento:");
-		lblData.setBounds(547, 513, 138, 29);
+		lblData.setBounds(530, 513, 194, 29);
 		lblData.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblData);
 
@@ -203,12 +203,12 @@ public class Perfil extends JFrame {
 
 		JLabel lblDados = new JLabel("Dados Pessoais");
 		lblDados.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblDados.setBounds(619, 77, 317, 81);
+		lblDados.setBounds(619, 77, 376, 81);
 		contentPane.add(lblDados);
 
 		JLabel lblVeiculo = new JLabel("Veículo");
 		lblVeiculo.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblVeiculo.setBounds(1437, 87, 145, 61);
+		lblVeiculo.setBounds(1437, 87, 239, 61);
 		contentPane.add(lblVeiculo);
 
 		JSeparator separator = new JSeparator();
@@ -245,7 +245,7 @@ public class Perfil extends JFrame {
 
 		JLabel lblMarca = new JLabel("Marca:");
 		lblMarca.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
-		lblMarca.setBounds(1271, 373, 75, 20);
+		lblMarca.setBounds(1271, 373, 132, 20);
 		contentPane.add(lblMarca);
 
 		txtCor = new JTextField();
@@ -258,7 +258,7 @@ public class Perfil extends JFrame {
 
 		JLabel lblModelo = new JLabel("Modelo:");
 		lblModelo.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
-		lblModelo.setBounds(1271, 446, 94, 20);
+		lblModelo.setBounds(1271, 446, 132, 20);
 		contentPane.add(lblModelo);
 
 		txtMarca = new JTextField();
@@ -298,7 +298,7 @@ public class Perfil extends JFrame {
 		});
 
 		btnExcluir.setBackground(new Color(255, 182, 193));
-		btnExcluir.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnExcluir.setBounds(1666, 665, 145, 53);
 		contentPane.add(btnExcluir);
 
@@ -331,7 +331,7 @@ public class Perfil extends JFrame {
 
 			}
 		});
-		btnExcluirV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnExcluirV.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnExcluirV.setBackground(new Color(255, 182, 193));
 		btnExcluirV.setBounds(850, 665, 145, 53);
 		contentPane.add(btnExcluirV);

@@ -57,7 +57,7 @@ public class CadastroErroVeiculo extends JFrame {
 		
 		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar veículo!");
 		lblCadastroErro.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroErro.setBounds(135, 55, 176, 18);
+		lblCadastroErro.setBounds(135, 55, 227, 18);
 		contentPane.add(lblCadastroErro);
 		
 		JButton btnNewButton = new JButton("OK");

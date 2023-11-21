@@ -190,7 +190,7 @@ public class CadastroUsuario extends JFrame {
 		lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblLinkAqui.setBounds(1369, 486, 178, 14);
+		lblLinkAqui.setBounds(1384, 486, 178, 14);
 		contentPane.add(lblLinkAqui);
 		lblLinkAqui.addMouseListener(new MouseAdapter() {
 			@Override
@@ -258,7 +258,7 @@ public class CadastroUsuario extends JFrame {
 
 		lblDataNascimento = new JLabel("Data de Nascimento:");
 		lblDataNascimento.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDataNascimento.setBounds(1266, 203, 147, 14);
+		lblDataNascimento.setBounds(1266, 203, 178, 14);
 		contentPane.add(lblDataNascimento);
 
 		txtEmail = new JTextField();

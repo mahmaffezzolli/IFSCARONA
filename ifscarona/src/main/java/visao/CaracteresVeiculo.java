@@ -57,7 +57,7 @@ public class CaracteresVeiculo extends JFrame {
 		
 		JLabel lblCadastroErro = new JLabel("A placa deve ter 7 caracteres!");
 		lblCadastroErro.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroErro.setBounds(135, 55, 245, 18);
+		lblCadastroErro.setBounds(118, 45, 245, 18);
 		contentPane.add(lblCadastroErro);
 		
 		JButton btnNewButton = new JButton("OK");

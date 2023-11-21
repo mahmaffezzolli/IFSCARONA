@@ -56,7 +56,7 @@ public class ErroAoAtualizar extends JFrame {
 		
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Erro ao atualizar os dados");
 		lblDadosPessoaisAtualizados.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDadosPessoaisAtualizados.setBounds(130, 54, 179, 18);
+		lblDadosPessoaisAtualizados.setBounds(130, 54, 232, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
 		
 		JButton btnOk = new JButton("OK");
@@ -68,7 +68,7 @@ public class ErroAoAtualizar extends JFrame {
 		
 		JLabel lblSucesso = new JLabel("pessoais.");
 		lblSucesso.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSucesso.setBounds(188, 83, 63, 14);
+		lblSucesso.setBounds(188, 83, 99, 14);
 		contentPane.add(lblSucesso);
 		 btnOk.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

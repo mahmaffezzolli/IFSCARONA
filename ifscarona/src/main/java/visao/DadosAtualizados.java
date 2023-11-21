@@ -57,7 +57,7 @@ public class DadosAtualizados extends JFrame {
 		
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Dados Pessoais atualizados");
 		lblDadosPessoaisAtualizados.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDadosPessoaisAtualizados.setBounds(125, 57, 186, 18);
+		lblDadosPessoaisAtualizados.setBounds(125, 57, 241, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
 		
 		JButton btnOk = new JButton("OK");
@@ -69,7 +69,7 @@ public class DadosAtualizados extends JFrame {
 		
 		JLabel lblSucesso = new JLabel("com sucesso!");
 		lblSucesso.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSucesso.setBounds(164, 83, 97, 14);
+		lblSucesso.setBounds(164, 83, 136, 14);
 		contentPane.add(lblSucesso);
 		 btnOk.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

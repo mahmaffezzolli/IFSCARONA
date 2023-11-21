@@ -58,7 +58,7 @@ public class CadastroInexistente extends JFrame {
 		
 		JLabel lblCadastroInexistente = new JLabel("Cadastro Inexistente!");
 		lblCadastroInexistente.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroInexistente.setBounds(153, 60, 138, 14);
+		lblCadastroInexistente.setBounds(153, 60, 182, 14);
 		contentPane.add(lblCadastroInexistente);
 		
 		JButton btnNewButton = new JButton("OK");

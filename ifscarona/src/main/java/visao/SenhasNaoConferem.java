@@ -58,7 +58,7 @@ public class SenhasNaoConferem extends JFrame {
 		
 		JLabel lblSenhaNaoConfere = new JLabel("As senhas não conferem!");
 		lblSenhaNaoConfere.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSenhaNaoConfere.setBounds(137, 55, 169, 18);
+		lblSenhaNaoConfere.setBounds(137, 55, 222, 18);
 		contentPane.add(lblSenhaNaoConfere);
 		
 		JButton btnNewButton = new JButton("OK");
