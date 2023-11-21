@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
 
+import controle.JavaMail;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Pessoa;
@@ -153,6 +154,7 @@ public class Login extends JFrame {
                                 Principal principal = new Principal();
                                 principal.setVisible(true);
                                 dispose();
+                                JavaMail.enviarEmail(email);
                             } else {
                                 SenhaIncorreta senhaincorreta = new SenhaIncorreta();
                                 senhaincorreta.setVisible(true);
