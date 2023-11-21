@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,6 +56,11 @@ public class Login extends JFrame {
     }
 
     public Login() {
+    	
+    	java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
+		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+		this.setIconImage(iconeTitulo);
+		
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, screen.width, screen.height - 30);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
