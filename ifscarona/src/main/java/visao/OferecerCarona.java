@@ -10,8 +10,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -225,11 +223,11 @@ public class OferecerCarona extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Oferecer");
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnNewButton.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
-		btnNewButton.addActionListener(new ActionListener() {
+        btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
+        btnNewButton.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
+        btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				if (cmbLugar.getSelectedIndex() <= 0) {
 
 					showCampoNaoPreenchido();
