@@ -7,12 +7,16 @@
 
 # Principais Telas
 
+• Tela Inicial
 ![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/4ddc7a9a-b9dc-4556-a580-d34ae51b4328)
 
+• Tela Principal
 ![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/4e3285bb-2e79-44da-9084-0154d1bbf403)
 
+• Tela de Perfil
 ![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/b36cbbb9-5f64-4388-88d4-d2b70d446209)
 
+• Tela de Requisitar Carona
 ![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/cebad397-2bfd-4e8e-b786-0c014b4a658d)
 
 
