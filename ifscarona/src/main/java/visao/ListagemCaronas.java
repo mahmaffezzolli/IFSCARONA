@@ -156,10 +156,19 @@ public class ListagemCaronas extends JFrame {
 		tableModel.addColumn("Origem");
 		tableModel.addColumn("Destino");
 
-		table = new JTable(tableModel);
+
+		table = new JTable(tableModel) {
+		    @Override
+		    public boolean isCellEditable(int row, int cell) {
+		        return false;
+		    }
+		};
+
 		table.setFont(tableFont);
 		int rowHeight = 25;
 		table.setRowHeight(rowHeight);
+
+		table.getTableHeader().setReorderingAllowed(false);
 
 		JTableHeader tableHeader = table.getTableHeader();
 		int headerRowHeight = 30;
