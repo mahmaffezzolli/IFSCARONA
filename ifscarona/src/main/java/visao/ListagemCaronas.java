@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -63,11 +63,11 @@ public class ListagemCaronas extends JFrame {
 	 * Create the frame.
 	 */
 	public ListagemCaronas() {
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -119,15 +119,9 @@ public class ListagemCaronas extends JFrame {
 
 				if (selectedRowIndex != -1) {
 					Long idCarona = Long.parseLong(table.getValueAt(selectedRowIndex, 0).toString());
-					String cpfMotorista = cDAO.pegaCarona(idCarona).getMotorista().getCpf();
 
-					if (Sessao.getPessoaLogada().getCpf().equals(cpfMotorista)) {
+					alterarCarona(idCarona);
 
-						alterarCarona(idCarona);
-
-					} else {
-						System.out.println("Logged-in user is not the driver. Cannot update carona.");
-					}
 				} else {
 					System.out.println("No row selected.");
 				}
@@ -148,12 +142,11 @@ public class ListagemCaronas extends JFrame {
 		tableModel.addColumn("Origem");
 		tableModel.addColumn("Destino");
 
-
 		table = new JTable(tableModel) {
-		    @Override
-		    public boolean isCellEditable(int row, int cell) {
-		        return false;
-		    }
+			@Override
+			public boolean isCellEditable(int row, int cell) {
+				return false;
+			}
 		};
 
 		table.setFont(tableFont);
@@ -174,25 +167,38 @@ public class ListagemCaronas extends JFrame {
 		List<Carona> caronas = cDAO.listarCaronasDisponíveis();
 
 		try {
-		    for (Carona carona : caronas) {
-		        String origem = carona.getTrajeto().getOrigem();
-		        String destino = carona.getTrajeto().getDestino();
+			for (Carona carona : caronas) {
+				String origem = carona.getTrajeto().getOrigem();
+				String destino = carona.getTrajeto().getDestino();
 
-		        Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
+				Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
 
-		        Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), carona.getHorario(), carro.getPlaca(), origem, destino };
-		        tableModel.addRow(rowData);
-		    }
+				Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), carona.getHorario(),
+						carro.getPlaca(), origem, destino };
+				tableModel.addRow(rowData);
+			}
 		} catch (Exception e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
-
-
 
 	}
 
 	public void alterarCarona(Long idCarona) {
+		
+		String cpfMotorista = cDAO.pegaCarona(idCarona).getMotorista().getCpf();
 
+		if (Sessao.getPessoaLogada().getCpf().equals(cpfMotorista)) {
+			AlterarExcluirCarona editar = null;
+			try {
+				editar = new AlterarExcluirCarona(idCarona);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			editar.setVisible(true);
+			dispose();
+		} else {
+			System.out.println("Logged-in user is not the driver. Cannot update carona.");
+		}
 	}
 
 }

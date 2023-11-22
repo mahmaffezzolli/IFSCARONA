@@ -15,32 +15,25 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.PessoaDAO;
-import controle.VeiculoDAO;
-import modelo.Carro;
-import modelo.Pessoa;
+import controle.CaronaDAO;
+import modelo.Carona;
 import modelo.Sessao;
-import modelo.Veiculo;
 
-public class AlterarExluirCarona extends JFrame {
+public class AlterarExcluirCarona extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtDestino;
 	private JTextField txtHorário;
-	private JTextField txtCPF;
 	private JTextField txtData;
 	private JTextField txtOrigem;
-	private PessoaDAO pDAO = PessoaDAO.getInstancia();
-	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private JTextField textField;
-	private JTextField txtCPF2;
-	private JButton btnSalvar, btnExcluir, btnSalvarV;
+	private JButton btnSalvar;
+	private Long idCarona;
 
 	/**
 	 * Launch the application.
@@ -49,7 +42,8 @@ public class AlterarExluirCarona extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlterarExluirCarona frame = new AlterarExluirCarona();
+					Long idCarona = null;
+					AlterarExcluirCarona frame = new AlterarExcluirCarona(idCarona);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -62,9 +56,14 @@ public class AlterarExluirCarona extends JFrame {
 	/**
 	 * Create the frame.
 	 * 
+	 * @param idCarona
+	 * 
 	 * @throws ParseException
 	 */
-	public AlterarExluirCarona() throws ParseException {
+	public AlterarExcluirCarona(Long idCarona) throws ParseException {
+
+		this.idCarona = idCarona;
+
 		Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, 1935, 1049);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -77,17 +76,17 @@ public class AlterarExluirCarona extends JFrame {
 
 		JButton btnHome = new JButton("");
 		btnHome.addMouseListener(new MouseAdapter() {
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        Principal principal = new Principal();
-		        principal.setVisible(true);
-		        dispose();
-		    }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Principal principal = new Principal();
+				principal.setVisible(true);
+				dispose();
+			}
 		});
 		btnHome.setBorderPainted(false);
 		btnHome.setContentAreaFilled(false);
 		btnHome.setFocusPainted(false);
-		btnHome.setIcon(new ImageIcon(AlterarExluirCarona.class.getResource("/assets/home.png")));
+		btnHome.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/home.png")));
 		btnHome.setBounds(128, 758, 75, 65);
 		contentPane.add(btnHome);
 
@@ -109,7 +108,7 @@ public class AlterarExluirCarona extends JFrame {
 
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
-		btnLogOut.setIcon(new ImageIcon(AlterarExluirCarona.class.getResource("/assets/Log-out.png")));
+		btnLogOut.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/Log-out.png")));
 		btnLogOut.setBounds(140, 859, 75, 65);
 		contentPane.add(btnLogOut);
 
@@ -171,7 +170,7 @@ public class AlterarExluirCarona extends JFrame {
 		contentPane.add(lblData);
 
 		JLabel lblIcon = new JLabel("");
-		lblIcon.setIcon(new ImageIcon(AlterarExluirCarona.class.getResource("/assets/perfil.png")));
+		lblIcon.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/perfil.png")));
 		lblIcon.setBounds(55, 80, 300, 273);
 		contentPane.add(lblIcon);
 
@@ -190,12 +189,10 @@ public class AlterarExluirCarona extends JFrame {
 		contentPane.add(lblDados);
 
 		btnSalvar = new JButton("Editar");
-		btnSalvar.setIcon(new ImageIcon(AlterarExluirCarona.class.getResource("/assets/icons8-editar-50.png")));
+		btnSalvar.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/icons8-editar-50.png")));
 		btnSalvar.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-
-				
+				editarCarona();
 			}
 		});
 
@@ -204,9 +201,8 @@ public class AlterarExluirCarona extends JFrame {
 		btnSalvar.setBounds(1103, 624, 145, 53);
 		contentPane.add(btnSalvar);
 
-
 		JButton btnExcluirV = new JButton("Excluir");
-		btnExcluirV.setIcon(new ImageIcon(AlterarExluirCarona.class.getResource("/assets/icons8-excluir-60.png")));
+		btnExcluirV.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/icons8-excluir-60.png")));
 		btnExcluirV.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -215,8 +211,6 @@ public class AlterarExluirCarona extends JFrame {
 				TelaExcluirConta.setVisible(true);
 
 				dispose();
-			
-				
 
 			}
 		});
@@ -225,22 +219,52 @@ public class AlterarExluirCarona extends JFrame {
 		btnExcluirV.setBounds(1333, 626, 145, 53);
 		contentPane.add(btnExcluirV);
 
-
-		
-
-		Pessoa pessoaLogada = Sessao.getPessoaLogada();
-
-		if (pessoaLogada != null) {
-			txtDestino.setText(pessoaLogada.getSobrenome());
-			txtHorário.setText(pessoaLogada.getEmail());
-			txtOrigem.setText(pessoaLogada.getNome());
-			txtCPF.setText(String.valueOf(pessoaLogada.getCpf()));
-			txtData.setText(String.valueOf(pessoaLogada.getDataNasc()));
-
-		}
-
-		
-		}
 	}
 
+	public AlterarExcluirCarona() {
 
+	}
+
+	public void editarCarona() {
+		if (idCarona != null) {
+			if (btnSalvar.getText().equals("Editar")) {
+
+				txtDestino.setEnabled(true);
+				txtDestino.setEditable(true);
+				txtHorário.setEnabled(true);
+				txtHorário.setEditable(true);
+				txtOrigem.setEnabled(true);
+				txtOrigem.setEditable(true);
+				txtData.setEnabled(true);
+				txtData.setEditable(true);
+
+				btnSalvar.setText("Salvar");
+
+			} else if (btnSalvar.getText().equals("Salvar")) {
+
+				Carona carona = cDAO.pegaCarona(idCarona);
+
+				boolean success = cDAO.alterarCarona(carona);
+
+				if (success) {
+					DadosAtualizados dadosAtualizados = new DadosAtualizados();
+					dadosAtualizados.setVisible(true);
+				} else {
+					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+					erroAoAtualizar.setVisible(true);
+				}
+
+				txtDestino.setEnabled(false);
+				txtDestino.setEditable(false);
+				txtHorário.setEnabled(false);
+				txtHorário.setEditable(false);
+				txtOrigem.setEnabled(false);
+				txtOrigem.setEditable(false);
+				txtData.setEnabled(false);
+				txtData.setEditable(false);
+
+				btnSalvar.setText("Editar");
+			}
+		}
+	}
+}
