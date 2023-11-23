@@ -21,13 +21,14 @@ import javax.swing.text.MaskFormatter;
 
 import controle.CaronaDAO;
 import modelo.Carona;
+import modelo.Carro;
 import modelo.Sessao;
 
 public class AlterarExcluirCarona extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtDestino;
-	private JTextField txtHorário;
+	private JTextField txtHorario;
 	private JTextField txtData;
 	private JTextField txtOrigem;
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
@@ -35,9 +36,7 @@ public class AlterarExcluirCarona extends JFrame {
 	private JButton btnSalvar;
 	private Long idCarona;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,13 +52,6 @@ public class AlterarExcluirCarona extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 * 
-	 * @param idCarona
-	 * 
-	 * @throws ParseException
-	 */
 	public AlterarExcluirCarona(Long idCarona) throws ParseException {
 
 		this.idCarona = idCarona;
@@ -134,13 +126,14 @@ public class AlterarExcluirCarona extends JFrame {
 		lblDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblDestino);
 
-		txtHorário = new JTextField();
-		txtHorário.setEnabled(false);
-		txtHorário.setEditable(false);
-		txtHorário.setBounds(1030, 460, 300, 40);
-		txtHorário.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
-		txtHorário.setColumns(10);
-		contentPane.add(txtHorário);
+		txtHorario = new JTextField();
+		txtHorario.setEnabled(false);
+		txtHorario.setEditable(false);
+		txtHorario.setBounds(1178, 368, 300, 40);
+		txtHorario.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtHorario.setColumns(10);
+		contentPane.add(txtHorario);
+
 
 		JLabel lblHorário = new JLabel("Horário:");
 		lblHorário.setBounds(919, 465, 101, 20);
@@ -205,67 +198,86 @@ public class AlterarExcluirCarona extends JFrame {
 		btnSalvar.setBounds(965, 688, 145, 53);
 		contentPane.add(btnSalvar);
 
-		JButton btnExcluirV = new JButton("Excluir");
-		btnExcluirV.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/icons8-excluir-60.png")));
-		btnExcluirV.addActionListener(new ActionListener() {
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/icons8-excluir-60.png")));
+		btnExcluir.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
-				TelaExcluirConta.setVisible(true);
-
-				dispose();
+				TelaExcluirCarona TelaExcluirCarona = null;
+				try {
+					TelaExcluirCarona = new TelaExcluirCarona(idCarona);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				TelaExcluirCarona.setBounds(40, 40, 451, 234);
+				TelaExcluirCarona.setLocationRelativeTo(null);
+				TelaExcluirCarona.setVisible(true);
 
 			}
 		});
-		btnExcluirV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnExcluirV.setBackground(new Color(255, 182, 193));
-		btnExcluirV.setBounds(1195, 688, 145, 53);
-		contentPane.add(btnExcluirV);
+
+		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnExcluir.setBackground(new Color(255, 182, 193));
+		btnExcluir.setBounds(1333, 626, 145, 53);
+		contentPane.add(btnExcluir);
+
+		Carona carona = cDAO.pegaCarona(idCarona);
+
+		if (carona != null) {
+			txtDestino.setText(carona.getTrajeto().getDestino());
+			txtHorario.setText(String.valueOf(carona.getHorario()));
+			txtOrigem.setText(carona.getTrajeto().getOrigem());
+			txtData.setText(String.valueOf(carona.getData()));
+
+
+
+		
 
 	}
-
 
 	public void editarCarona() {
-		if (idCarona != null) {
-			if (btnSalvar.getText().equals("Editar")) {
+		if (btnSalvar.getText().equals("Editar")) {
 
-				txtDestino.setEnabled(true);
-				txtDestino.setEditable(true);
-				txtHorário.setEnabled(true);
-				txtHorário.setEditable(true);
-				txtOrigem.setEnabled(true);
-				txtOrigem.setEditable(true);
-				txtData.setEnabled(true);
-				txtData.setEditable(true);
+			txtDestino.setEnabled(true);
+			txtDestino.setEditable(true);
+			txtHorario.setEnabled(true);
+			txtHorario.setEditable(true);
+			txtOrigem.setEnabled(true);
+			txtOrigem.setEditable(true);
+			txtData.setEnabled(true);
+			txtData.setEditable(true);
 
-				btnSalvar.setText("Salvar");
+			btnSalvar.setText("Salvar");
 
-			} else if (btnSalvar.getText().equals("Salvar")) {
+		} else if (btnSalvar.getText().equals("Salvar")) {
 
-				Carona carona = cDAO.pegaCarona(idCarona);
+			Carona carona = cDAO.pegaCarona(idCarona);
 
-				boolean success = cDAO.alterarCarona(carona);
+			boolean success = cDAO.alterarCarona(carona);
 
-				if (success) {
-					DadosAtualizados dadosAtualizados = new DadosAtualizados();
-					dadosAtualizados.setVisible(true);
-				} else {
-					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
-					erroAoAtualizar.setVisible(true);
-				}
+			if (success) {
+				DadosAtualizados dadosAtualizados = new DadosAtualizados();
+				dadosAtualizados.setVisible(true);
+			} else {
+				ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
 
-				txtDestino.setEnabled(false);
-				txtDestino.setEditable(false);
-				txtHorário.setEnabled(false);
-				txtHorário.setEditable(false);
-				txtOrigem.setEnabled(false);
-				txtOrigem.setEditable(false);
-				txtData.setEnabled(false);
-				txtData.setEditable(false);
-
-				btnSalvar.setText("Editar");
+				erroAoAtualizar.setVisible(true);
 			}
+
+			txtDestino.setEnabled(false);
+			txtDestino.setEditable(false);
+			txtHorario.setEnabled(false);
+			txtHorario.setEditable(false);
+			txtOrigem.setEnabled(false);
+			txtOrigem.setEditable(false);
+			txtData.setEnabled(false);
+			txtData.setEditable(false);
+
+			btnSalvar.setText("Editar");
 		}
+
 	}
+
 }

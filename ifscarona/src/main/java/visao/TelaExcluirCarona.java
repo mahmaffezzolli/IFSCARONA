@@ -22,11 +22,11 @@ import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class TelaExcluirVeiculo extends JFrame {
+public class TelaExcluirCarona extends JFrame {
 
 	private JPanel contentPane;
-	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
+	private Long idCarona;
 
 	/**
 	 * Launch the application.
@@ -35,7 +35,8 @@ public class TelaExcluirVeiculo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaExcluirVeiculo frame = new TelaExcluirVeiculo();
+					Long idCarona = null;
+					TelaExcluirCarona frame = new TelaExcluirCarona(idCarona);
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					// Centralizar
@@ -52,19 +53,14 @@ public class TelaExcluirVeiculo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaExcluirVeiculo() {
-		
+	public TelaExcluirCarona(Long idCarona) throws ParseException {
+		setResizable(false);
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
-		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
-		this.setIconImage(iconeTitulo);
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -78,7 +74,7 @@ public class TelaExcluirVeiculo extends JFrame {
 		lblTexto.setBounds(128, 48, 198, 18);
 		contentPane.add(lblTexto);
 
-		JLabel lblTexto2 = new JLabel("excluir o veículo?");
+		JLabel lblTexto2 = new JLabel("excluir a carona?");
 		lblTexto2.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblTexto2.setBounds(157, 77, 154, 14);
 		contentPane.add(lblTexto2);
@@ -87,25 +83,15 @@ public class TelaExcluirVeiculo extends JFrame {
 		btnSim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Carro veiculoLogado = vDAO.conexaoVeiculoPessoa(Sessao.getPessoaLogada());
+				Carona carona = cDAO.pegaCarona(idCarona);
 
-				Carona caronaCadastrada = cDAO.conexaoCaronaVeiculo(veiculoLogado);
-
-				if (caronaCadastrada != null) {
-					cDAO.deletarCarona(caronaCadastrada);
+				if (carona != null) {
+					cDAO.deletarCarona(carona);
 				}
 
-				vDAO.deletarVeiculo(veiculoLogado);
-
-				Perfil per = null;
-				try {
-					per = new Perfil();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
-
-				per.setVisible(true);
-
+				ListagemCaronas listagem = new ListagemCaronas();
+				listagem.setVisible(true);
+				
 				dispose();
 			}
 		});
@@ -132,7 +118,7 @@ public class TelaExcluirVeiculo extends JFrame {
 		contentPane.add(btnNo);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaExcluirVeiculo.class.getResource("/assets/alerta.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaExcluirCarona.class.getResource("/assets/alerta.png")));
 		lblNewLabel.setBounds(45, 48, 46, 39);
 		contentPane.add(lblNewLabel);
 

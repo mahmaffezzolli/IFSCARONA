@@ -66,7 +66,6 @@ public class OferecerCarona extends JFrame {
 
 	public OferecerCarona() {
 
-
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
@@ -95,12 +94,12 @@ public class OferecerCarona extends JFrame {
 		JCalendar calendar = new JCalendar();
 		calendar.setBounds(1400, 594, 205, 153);
 		contentPane.add(calendar);
-		
+	
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
 		separator_1_1.setBounds(1364, 571, 295, 12);
 		contentPane.add(separator_1_1);
-		
+
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(new Color(0, 0, 0));
 		separator_1.setBounds(725, 571, 295, 12);
@@ -192,9 +191,6 @@ public class OferecerCarona extends JFrame {
 		separator.setBounds(1182, 304, 11, 489);
 		contentPane.add(separator);
 
-
-		
-		
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Principal.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(81, 304, 385, 151);
@@ -226,11 +222,11 @@ public class OferecerCarona extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Oferecer");
-        btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
-        btnNewButton.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
-        btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnNewButton.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (cmbLugar.getSelectedIndex() <= 0) {
 
 					showCampoNaoPreenchido();
@@ -271,27 +267,27 @@ public class OferecerCarona extends JFrame {
 			if (bairroSelecionado(bairro, cmbGaspar)) {
 				t.setDestino("Gaspar, " + bairro);
 				t.setOrigem("IFSC");
-				
+
 			} else {
 				showCampoNaoPreenchido();
 				return null;
 			}
-			
+
 		} else if (rdbtnBlumenau.isSelected()) {
 			String bairro = (String) cmbBlumenau.getSelectedItem();
 
 			if (bairroSelecionado(bairro, cmbBlumenau)) {
 				t.setDestino("Blumenau, " + bairro);
 				t.setOrigem("IFSC");
-				
+
 			} else {
 				showCampoNaoPreenchido();
 				return null;
 			}
-			
+
 		} else if (rdbtnIfsc.isSelected()) {
 			t.setDestino("IFSC");
-			
+
 		} else {
 			showCampoNaoPreenchido();
 			return null;

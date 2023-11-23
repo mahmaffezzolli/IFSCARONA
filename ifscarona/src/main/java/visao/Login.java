@@ -27,12 +27,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
 
-import controle.JavaMail;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
-import modelo.Veiculo;
 
 public class Login extends JFrame {
 
@@ -148,7 +146,7 @@ public class Login extends JFrame {
 
                             if (pessoaLogada != null) {
                                 VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-                                Veiculo v = vDAO.conexaoVeiculoPessoa(pessoaLogada);
+                                vDAO.conexaoVeiculoPessoa(pessoaLogada);
                                 Sessao.setPessoaLogada(pessoaLogada);
 
                                 Principal principal = new Principal();
@@ -156,8 +154,8 @@ public class Login extends JFrame {
                                 dispose();
                                 //JavaMail.enviarEmail(email);
                             } else {
-                                SenhaIncorreta senhaincorreta = new SenhaIncorreta();
-                                senhaincorreta.setVisible(true);
+                               EmaiInvalido emailinvalido = new EmaiInvalido();
+                                emailinvalido.setVisible(true);
                             }
                             return null;
                         }
@@ -246,9 +244,5 @@ public class Login extends JFrame {
 
     private void showProgressBar(boolean show) {
         progressBar.setVisible(show);
-    }
-
-    private void myDispose() {
-        setVisible(false);
     }
 }

@@ -25,8 +25,10 @@ import modelo.Trajeto;
 
 import javax.swing.JComboBox;
 import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
 
 public class RequisitarCarona extends JFrame {
 
@@ -35,8 +37,9 @@ public class RequisitarCarona extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
-	private JCheckBox chckbxGaspar;
-	private JCheckBox chckbxBlumenau;
+	private JRadioButton rdbtnIfsc;
+	private JRadioButton rdbtnGaspar;
+	private JRadioButton rdbtnBlumenau;
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 
 	/**
@@ -85,6 +88,7 @@ public class RequisitarCarona extends JFrame {
 			}
 		});
 		
+
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
 		separator_1_1.setBounds(1425, 511, 283, 23);
@@ -94,44 +98,19 @@ public class RequisitarCarona extends JFrame {
 		separator_1.setForeground(new Color(0, 0, 0));
 		separator_1.setBounds(776, 511, 283, 23);
 		contentPane.add(separator_1);
+
+		JRadioButton rdbtnIfsc = new JRadioButton("IFSC");
+		rdbtnIfsc.setBounds(837, 453, 129, 23);
+		contentPane.add(rdbtnIfsc);
 		
-		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
-		chckbxIfsc.setBounds(869, 438, 129, 23);
-		contentPane.add(chckbxIfsc);
-		  chckbxIfsc.addItemListener(new ItemListener() {
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					cmbBlumenau.setEnabled(chckbxGaspar.isSelected());
-					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
-
-				}
-			});
-
-		chckbxGaspar = new JCheckBox("Gaspar");
-		chckbxGaspar.setBounds(869, 397, 129, 23);
-		contentPane.add(chckbxGaspar);
-
-		chckbxBlumenau = new JCheckBox("Blumenau");
-		chckbxBlumenau.setBounds(869, 360, 129, 23);
-		contentPane.add(chckbxBlumenau);
+		JRadioButton rdbtnGaspar = new JRadioButton("Gaspar");
+		rdbtnGaspar.setBounds(837, 414, 129, 23);
+		contentPane.add(rdbtnGaspar);
 		
+		JRadioButton rdbtnBlumenau = new JRadioButton("Blumenau");
+		rdbtnBlumenau.setBounds(837, 377, 129, 23);
+		contentPane.add(rdbtnBlumenau);
 
-		chckbxBlumenau.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				cmbGaspar.setEnabled(!chckbxBlumenau.isSelected());
-				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
-			}
-		});
-
-	        chckbxGaspar.addItemListener(new ItemListener() {
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
-					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
-
-				}
-			});
 
 	        
 
@@ -140,6 +119,11 @@ public class RequisitarCarona extends JFrame {
 		lblNewLabel_3.setBounds(776, 378, 87, 58);
 		contentPane.add(lblNewLabel_3);
 
+		ButtonGroup radioGroup = new ButtonGroup();
+		radioGroup.add(rdbtnGaspar);
+		radioGroup.add(rdbtnBlumenau);
+		radioGroup.add(rdbtnIfsc);
+		
 		btnHome.setBorder(null);
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(244, 234, 214));
@@ -184,6 +168,19 @@ public class RequisitarCarona extends JFrame {
 		cmbBlumenau.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbBlumenau);
 
+		rdbtnGaspar.addItemListener(e -> {
+			cmbBlumenau.setEnabled(!rdbtnGaspar.isSelected());
+			cmbGaspar.setEnabled(rdbtnGaspar.isSelected());
+		});
+
+		rdbtnBlumenau.addItemListener(e -> {
+			cmbGaspar.setEnabled(!rdbtnBlumenau.isSelected());
+			cmbBlumenau.setEnabled(rdbtnBlumenau.isSelected());
+		});
+		rdbtnIfsc.addItemListener(e -> {
+			cmbGaspar.setEnabled(false);
+			cmbBlumenau.setEnabled(false);
+		});
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -230,7 +227,7 @@ public class RequisitarCarona extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (chckbxGaspar.isSelected() || chckbxBlumenau.isSelected() || chckbxIfsc.isSelected()) {
+				if (rdbtnGaspar.isSelected() || rdbtnBlumenau.isSelected() || rdbtnIfsc.isSelected()) {
 
 					definirTrajeto();
 
@@ -259,12 +256,12 @@ public class RequisitarCarona extends JFrame {
 
 		t.setOrigem("IFSC");
 
-		if (chckbxGaspar.isSelected()) {
+		if (rdbtnGaspar.isSelected()) {
 
 			bairro = (String) cmbGaspar.getSelectedItem();
 			t.setDestino("Gaspar, " + bairro);
 
-		} else if (chckbxBlumenau.isSelected()) {
+		} else if (rdbtnBlumenau.isSelected()) {
 
 			bairro = (String) cmbBlumenau.getSelectedItem();
 			t.setDestino("Blumenau, " + bairro);

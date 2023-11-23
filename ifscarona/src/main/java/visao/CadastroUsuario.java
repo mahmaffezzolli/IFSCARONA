@@ -19,7 +19,6 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -75,7 +74,7 @@ public class CadastroUsuario extends JFrame {
 				try {
 					CadastroUsuario frame = new CadastroUsuario();
 					frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -89,11 +88,11 @@ public class CadastroUsuario extends JFrame {
 	 * @throws ParseException
 	 */
 	public CadastroUsuario() throws ParseException {
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setTitle("Cadastro");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -333,7 +332,7 @@ public class CadastroUsuario extends JFrame {
 				String senha = String.valueOf(txtSenha.getPassword());
 				String confSenha = String.valueOf(txtConfirmacaoSenha.getPassword());
 				String senhaCriptografada = BCrypt.hashpw(senha, BCrypt.gensalt());
-				
+
 				// validação se o campo é vazio, se for, abre a tela de erro
 				if (nome.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
@@ -351,7 +350,7 @@ public class CadastroUsuario extends JFrame {
 					EmaiInvalido Emailnvalido = new EmaiInvalido();
 
 					Emailnvalido.setVisible(true);
-					
+
 				} else if (senha.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
@@ -374,8 +373,6 @@ public class CadastroUsuario extends JFrame {
 						cpfS = "0".repeat(11 - cpfLength) + cpfS;
 					}
 
-					Long cpf = Long.parseLong(cpfS);
-
 					p.setCpf(cpfS);
 					p.setNome(nome);
 					p.setSobrenome(sobrenome);
@@ -386,11 +383,12 @@ public class CadastroUsuario extends JFrame {
 					String success = pDAO.cadastrarPessoa(p);
 
 					if (success == cpfS) {
-						CadastroRealizado cadastroRealizado = new CadastroRealizado();
-						cadastroRealizado.setVisible(true);
 
 						Login login = new Login();
 						login.setVisible(true);
+
+						CadastroRealizado cadastroRealizado = new CadastroRealizado();
+						cadastroRealizado.setVisible(true);
 
 						dispose();
 
@@ -421,24 +419,24 @@ public class CadastroUsuario extends JFrame {
 		txtfundoVerde.setBounds(124, 0, 1939, 1106);
 		contentPane.add(txtfundoVerde);
 	}
-	
+
 	public static boolean isValidEmailAddress(String email) {
 
 		boolean result = true;
 
 		try {
 
-		InternetAddress emailAddr = new InternetAddress(email);
+			InternetAddress emailAddr = new InternetAddress(email);
 
-		emailAddr.validate();
+			emailAddr.validate();
 
 		} catch (AddressException ex) {
 
-		result = false;
+			result = false;
 
 		}
 
 		return result;
 
-		}
+	}
 }
