@@ -44,12 +44,13 @@ public class CadastroInexistente extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroInexistente() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -64,7 +65,7 @@ public class CadastroInexistente extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblCadastroInexistente = new JLabel("Cadastro Inexistente!");
-		lblCadastroInexistente.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblCadastroInexistente.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblCadastroInexistente.setBounds(153, 60, 182, 14);
 		contentPane.add(lblCadastroInexistente);
 		

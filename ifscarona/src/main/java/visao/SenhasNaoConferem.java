@@ -44,12 +44,13 @@ public class SenhasNaoConferem extends JFrame {
 	 * Create the frame.
 	 */
 	public SenhasNaoConferem() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -64,7 +65,7 @@ public class SenhasNaoConferem extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblSenhaNaoConfere = new JLabel("As senhas não conferem!");
-		lblSenhaNaoConfere.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblSenhaNaoConfere.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblSenhaNaoConfere.setBounds(137, 55, 222, 18);
 		contentPane.add(lblSenhaNaoConfere);
 		

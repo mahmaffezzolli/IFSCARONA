@@ -42,12 +42,13 @@ public class ErroAoAtualizar extends JFrame {
 	 * Create the frame.
 	 */
 	public ErroAoAtualizar() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -62,8 +63,8 @@ public class ErroAoAtualizar extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Erro ao atualizar os dados");
-		lblDadosPessoaisAtualizados.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDadosPessoaisAtualizados.setBounds(130, 54, 232, 18);
+		lblDadosPessoaisAtualizados.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblDadosPessoaisAtualizados.setBounds(130, 54, 217, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
 		
 		JButton btnOk = new JButton("OK");
@@ -74,8 +75,8 @@ public class ErroAoAtualizar extends JFrame {
 		contentPane.add(btnOk);
 		
 		JLabel lblSucesso = new JLabel("pessoais.");
-		lblSucesso.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSucesso.setBounds(188, 83, 99, 14);
+		lblSucesso.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblSucesso.setBounds(188, 83, 99, 18);
 		contentPane.add(lblSucesso);
 		 btnOk.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

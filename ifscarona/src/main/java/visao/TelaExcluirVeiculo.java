@@ -53,12 +53,13 @@ public class TelaExcluirVeiculo extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaExcluirVeiculo() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -68,12 +69,12 @@ public class TelaExcluirVeiculo extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblTexto = new JLabel("Tem certeza que deseja");
-		lblTexto.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		lblTexto.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblTexto.setBounds(128, 48, 198, 18);
 		contentPane.add(lblTexto);
 
 		JLabel lblTexto2 = new JLabel("excluir o veículo?");
-		lblTexto2.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		lblTexto2.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblTexto2.setBounds(157, 77, 154, 14);
 		contentPane.add(lblTexto2);
 

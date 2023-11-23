@@ -43,12 +43,13 @@ public class DadosAtualizados extends JFrame {
 	 * Create the frame.
 	 */
 	public DadosAtualizados() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -63,7 +64,7 @@ public class DadosAtualizados extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Dados Pessoais atualizados");
-		lblDadosPessoaisAtualizados.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblDadosPessoaisAtualizados.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblDadosPessoaisAtualizados.setBounds(125, 57, 241, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
 		
@@ -75,7 +76,7 @@ public class DadosAtualizados extends JFrame {
 		contentPane.add(btnOk);
 		
 		JLabel lblSucesso = new JLabel("com sucesso!");
-		lblSucesso.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblSucesso.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblSucesso.setBounds(164, 83, 136, 14);
 		contentPane.add(lblSucesso);
 		 btnOk.addActionListener(new ActionListener() {

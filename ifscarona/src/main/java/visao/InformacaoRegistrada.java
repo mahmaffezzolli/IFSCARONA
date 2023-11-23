@@ -44,12 +44,13 @@ public class InformacaoRegistrada extends JFrame {
 	 * Create the frame.
 	 */
 	public InformacaoRegistrada() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -64,8 +65,8 @@ public class InformacaoRegistrada extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblInformacaoRegistrada = new JLabel("Informação já registrada!");
-		lblInformacaoRegistrada.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblInformacaoRegistrada.setBounds(144, 59, 202, 18);
+		lblInformacaoRegistrada.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblInformacaoRegistrada.setBounds(119, 60, 213, 31);
 		contentPane.add(lblInformacaoRegistrada);
 		
 		JButton btnNewButton = new JButton("OK");

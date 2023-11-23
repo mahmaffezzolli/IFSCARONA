@@ -43,12 +43,13 @@ public class CadastroRealizado extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroRealizado() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -59,12 +60,12 @@ public class CadastroRealizado extends JFrame {
 		
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CadastroRealizado.class.getResource("/assets/alerta.png")));
-		lblAviso.setBounds(45, 44, 48, 48);
+		lblAviso.setBounds(44, 46, 48, 48);
 		contentPane.add(lblAviso);
 		
 		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com secesso!");
-		lblCadastroRealizado.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCadastroRealizado.setBounds(115, 60, 291, 18);
+		lblCadastroRealizado.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblCadastroRealizado.setBounds(102, 59, 291, 18);
 		contentPane.add(lblCadastroRealizado);
 		
 		JButton btnNewButton = new JButton("OK");
