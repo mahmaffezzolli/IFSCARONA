@@ -176,7 +176,7 @@ public class OferecerCarona extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(1160, 278, 11, 416);
+		separator.setBounds(1171, 278, 11, 489);
 		contentPane.add(separator);
 
 
