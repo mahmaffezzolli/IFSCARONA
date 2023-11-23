@@ -127,8 +127,8 @@ public class Principal extends JFrame {
 		contentPane.add(btnLogar);
 
 		JLabel lblFundoFiltro = new JLabel("");
-		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/FundoClaroP.png")));
-		lblFundoFiltro.setBounds(597, 261, 532, 560);
+		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/FUndo CLaroP.png")));
+		lblFundoFiltro.setBounds(617, 228, 532, 560);
 		contentPane.add(lblFundoFiltro);
 
 		JLabel lblCarro = new JLabel("");
