@@ -37,9 +37,9 @@ public class RequisitarCarona extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
+	private JRadioButton rdbtnIfsc;
 	private JRadioButton rdbtnGaspar;
 	private JRadioButton rdbtnBlumenau;
-	private JRadioButton rdbtnIfsc;
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 
 	/**
@@ -88,7 +88,7 @@ public class RequisitarCarona extends JFrame {
 			}
 		});
 		
-<<<<<<< Updated upstream
+
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
 		separator_1_1.setBounds(1425, 511, 283, 23);
@@ -98,45 +98,7 @@ public class RequisitarCarona extends JFrame {
 		separator_1.setForeground(new Color(0, 0, 0));
 		separator_1.setBounds(776, 511, 283, 23);
 		contentPane.add(separator_1);
-		
-		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
-		chckbxIfsc.setBounds(869, 438, 129, 23);
-		contentPane.add(chckbxIfsc);
-		  chckbxIfsc.addItemListener(new ItemListener() {
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					cmbBlumenau.setEnabled(chckbxGaspar.isSelected());
-					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
 
-				}
-			});
-
-		chckbxGaspar = new JCheckBox("Gaspar");
-		chckbxGaspar.setBounds(869, 397, 129, 23);
-		contentPane.add(chckbxGaspar);
-
-		chckbxBlumenau = new JCheckBox("Blumenau");
-		chckbxBlumenau.setBounds(869, 360, 129, 23);
-		contentPane.add(chckbxBlumenau);
-		
-
-		chckbxBlumenau.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				cmbGaspar.setEnabled(!chckbxBlumenau.isSelected());
-				cmbBlumenau.setEnabled(chckbxBlumenau.isSelected());
-			}
-		});
-
-	        chckbxGaspar.addItemListener(new ItemListener() {
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					cmbBlumenau.setEnabled(!chckbxGaspar.isSelected());
-					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
-
-				}
-			});
-=======
 		JRadioButton rdbtnIfsc = new JRadioButton("IFSC");
 		rdbtnIfsc.setBounds(837, 453, 129, 23);
 		contentPane.add(rdbtnIfsc);
@@ -148,7 +110,7 @@ public class RequisitarCarona extends JFrame {
 		JRadioButton rdbtnBlumenau = new JRadioButton("Blumenau");
 		rdbtnBlumenau.setBounds(837, 377, 129, 23);
 		contentPane.add(rdbtnBlumenau);
->>>>>>> Stashed changes
+
 
 	        
 

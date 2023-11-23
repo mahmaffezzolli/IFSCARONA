@@ -242,20 +242,13 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
 
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
 		lblNewLabel_4.setBounds(1344, 333, 392, 472);
 		contentPane.add(lblNewLabel_4);
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 	}
 
 	public Trajeto definirTrajeto() {
