@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,12 +29,16 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-
+	private JRadioButton rdbtn6ao12;
+	private JRadioButton rdbtn12ao18;
+	private JRadioButton rdbtn18emDiante;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -84,24 +90,30 @@ public class Principal extends JFrame {
 				inicio.setVisible(true);
 			}
 		});
+		
+		JRadioButton rdbtn6ao12 = new JRadioButton("06:00 - 12:00");
+		rdbtn6ao12.setBounds(705, 338, 152, 45);
+		contentPane.add(rdbtn6ao12);
+		
+		JRadioButton rdbtn12ao18 = new JRadioButton("12:01 - 18:00");
+		rdbtn12ao18.setBounds(705, 422, 152, 43);
+		contentPane.add(rdbtn12ao18);
+		
+		
+		JRadioButton rdbtn18emDiante = new JRadioButton("18:00 em diante");
+		rdbtn18emDiante.setBounds(705, 505, 155, 43);
+		contentPane.add(rdbtn18emDiante);
+		
+		ButtonGroup radioGroup = new ButtonGroup();
+		radioGroup.add(rdbtn6ao12);
+		radioGroup.add(rdbtn12ao18);
+		radioGroup.add(rdbtn18emDiante);
+		
 		btnLogOut.setIcon(new ImageIcon(Principal.class.getResource("/assets/Log-out.png")));
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(244, 234, 213));
 		btnLogOut.setBounds(150, 750, 75, 65);
 		contentPane.add(btnLogOut);
-		
-				
-		JCheckBox chckbxEmDiante = new JCheckBox("18 em diante");
-		chckbxEmDiante.setBounds(705, 505, 152, 43);
-		contentPane.add(chckbxEmDiante);
-		
-		JCheckBox checkBox_1 = new JCheckBox("06:00 - 12:00");
-		checkBox_1.setBounds(705, 338, 152, 43);
-		contentPane.add(checkBox_1);
-		
-		JCheckBox checkBox = new JCheckBox("12:01 - 18:00");
-		checkBox.setBounds(705, 422, 152, 43);
-		contentPane.add(checkBox);
 
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
@@ -112,7 +124,7 @@ public class Principal extends JFrame {
 		JButton btnLogar = new JButton("Requisitar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 if (chckbxEmDiante.isSelected() || checkBox_1.isSelected() || checkBox.isSelected()) {
+				 if (rdbtn18emDiante.isSelected() ||rdbtn12ao18.isSelected() || rdbtn6ao12.isSelected()) {
 						new RequisitarCarona().setVisible(true);
 						 Principal.this.dispose();
 			        } else {
