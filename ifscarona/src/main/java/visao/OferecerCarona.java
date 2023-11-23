@@ -242,14 +242,11 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
 
-<<<<<<< HEAD
-=======
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
 		lblNewLabel_4.setBounds(1344, 333, 392, 472);
 		contentPane.add(lblNewLabel_4);
 
->>>>>>> 717f209ac43dbe5071b07d52b7cea6ba702cd810
 	}
 
 	public Trajeto definirTrajeto() {
