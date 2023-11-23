@@ -67,6 +67,10 @@ public class AlterarExcluirCarona extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton btnHome = new JButton("");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnHome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -79,7 +83,7 @@ public class AlterarExcluirCarona extends JFrame {
 		btnHome.setContentAreaFilled(false);
 		btnHome.setFocusPainted(false);
 		btnHome.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/home.png")));
-		btnHome.setBounds(128, 758, 75, 65);
+		btnHome.setBounds(164, 714, 75, 65);
 		contentPane.add(btnHome);
 
 		JButton btnLogOut = new JButton("");
@@ -101,24 +105,24 @@ public class AlterarExcluirCarona extends JFrame {
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
 		btnLogOut.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/Log-out.png")));
-		btnLogOut.setBounds(140, 859, 75, 65);
+		btnLogOut.setBounds(169, 828, 75, 65);
 		contentPane.add(btnLogOut);
 
 		txtDestino = new JTextField();
 		txtDestino.setEnabled(false);
 		txtDestino.setEditable(false);
-		txtDestino.setBounds(1178, 299, 300, 40);
+		txtDestino.setBounds(1030, 380, 300, 40);
 		txtDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		contentPane.add(txtDestino);
 		txtDestino.setColumns(10);
 
 		JLabel lblOrigem = new JLabel("Origem:");
-		lblOrigem.setBounds(1067, 245, 101, 35);
+		lblOrigem.setBounds(919, 306, 89, 35);
 		lblOrigem.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblOrigem);
 
 		JLabel lblDestino = new JLabel("Destino:");
-		lblDestino.setBounds(1067, 304, 204, 20);
+		lblDestino.setBounds(919, 385, 101, 20);
 		lblDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblDestino);
 
@@ -130,8 +134,9 @@ public class AlterarExcluirCarona extends JFrame {
 		txtHorario.setColumns(10);
 		contentPane.add(txtHorario);
 
-		JLabel lblHorário = new JLabel("Horário");
-		lblHorário.setBounds(1067, 373, 101, 20);
+
+		JLabel lblHorário = new JLabel("Horário:");
+		lblHorário.setBounds(919, 465, 101, 20);
 		lblHorário.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblHorário);
 
@@ -143,7 +148,7 @@ public class AlterarExcluirCarona extends JFrame {
 		/*****************/
 		txtData.setEnabled(false);
 		txtData.setEditable(false);
-		txtData.setBounds(1178, 441, 300, 40);
+		txtData.setBounds(1030, 540, 300, 40);
 		txtData.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtData.setColumns(10);
 		contentPane.add(txtData);
@@ -151,19 +156,19 @@ public class AlterarExcluirCarona extends JFrame {
 		txtOrigem = new JTextField();
 		txtOrigem.setEnabled(false);
 		txtOrigem.setEditable(false);
-		txtOrigem.setBounds(1178, 240, 300, 40);
+		txtOrigem.setBounds(1030, 300, 300, 40);
 		txtOrigem.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		txtOrigem.setColumns(10);
 		contentPane.add(txtOrigem);
 
 		JLabel lblData = new JLabel("Data:");
-		lblData.setBounds(1067, 446, 59, 20);
+		lblData.setBounds(949, 545, 59, 20);
 		lblData.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblData);
 
 		JLabel lblIcon = new JLabel("");
 		lblIcon.setIcon(new ImageIcon(AlterarExcluirCarona.class.getResource("/assets/perfil.png")));
-		lblIcon.setBounds(55, 80, 300, 273);
+		lblIcon.setBounds(56, 80, 300, 273);
 		contentPane.add(lblIcon);
 
 		textField = new JTextField();
@@ -172,12 +177,12 @@ public class AlterarExcluirCarona extends JFrame {
 		textField.setEditable(false);
 		textField.setColumns(10);
 		textField.setBackground(new Color(159, 203, 154));
-		textField.setBounds(10, -31, 410, 1061);
+		textField.setBounds(-72, -31, 492, 1061);
 		contentPane.add(textField);
 
 		JLabel lblDados = new JLabel("Dados Carona");
 		lblDados.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblDados.setBounds(1174, 80, 376, 81);
+		lblDados.setBounds(1012, 146, 376, 81);
 		contentPane.add(lblDados);
 
 		btnSalvar = new JButton("Editar");
@@ -190,7 +195,7 @@ public class AlterarExcluirCarona extends JFrame {
 
 		btnSalvar.setBackground(new Color(192, 192, 192));
 		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnSalvar.setBounds(1103, 624, 145, 53);
+		btnSalvar.setBounds(965, 688, 145, 53);
 		contentPane.add(btnSalvar);
 
 		JButton btnExcluir = new JButton("Excluir");
@@ -212,6 +217,7 @@ public class AlterarExcluirCarona extends JFrame {
 
 			}
 		});
+
 		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnExcluir.setBackground(new Color(255, 182, 193));
 		btnExcluir.setBounds(1333, 626, 145, 53);
@@ -225,7 +231,9 @@ public class AlterarExcluirCarona extends JFrame {
 			txtOrigem.setText(carona.getTrajeto().getOrigem());
 			txtData.setText(String.valueOf(carona.getData()));
 
-		}
+
+
+		
 
 	}
 

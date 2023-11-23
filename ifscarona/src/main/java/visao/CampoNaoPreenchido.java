@@ -43,12 +43,13 @@ public class CampoNaoPreenchido extends JFrame {
 	 * Create the frame.
 	 */
 	public CampoNaoPreenchido() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -63,8 +64,8 @@ public class CampoNaoPreenchido extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblCampoNaoPreenchido = new JLabel("Campo não preenchido!");
-		lblCampoNaoPreenchido.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCampoNaoPreenchido.setBounds(139, 56, 235, 18);
+		lblCampoNaoPreenchido.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblCampoNaoPreenchido.setBounds(120, 59, 206, 18);
 		contentPane.add(lblCampoNaoPreenchido);
 		
 		JButton btnOk = new JButton("OK");

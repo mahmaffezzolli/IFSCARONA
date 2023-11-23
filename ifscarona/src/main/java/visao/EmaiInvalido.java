@@ -44,12 +44,13 @@ public class EmaiInvalido extends JFrame {
 	 * Create the frame.
 	 */
 	public EmaiInvalido() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -64,8 +65,8 @@ public class EmaiInvalido extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblEmailInvalido = new JLabel("Email Inválido!");
-		lblEmailInvalido.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblEmailInvalido.setBounds(172, 49, 235, 18);
+		lblEmailInvalido.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblEmailInvalido.setBounds(154, 61, 129, 18);
 		contentPane.add(lblEmailInvalido);
 		
 		JButton btnOk = new JButton("OK");

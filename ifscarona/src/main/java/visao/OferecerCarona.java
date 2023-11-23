@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Properties;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,11 +24,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import org.jdatepicker.JDateComponentFactory;
 import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.SqlDateModel;
+
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
 import modelo.Carona;
 import modelo.Sessao;
 import modelo.Trajeto;
+import com.toedter.calendar.JCalendar;
 
 public class OferecerCarona extends JFrame {
 
@@ -41,6 +48,8 @@ public class OferecerCarona extends JFrame {
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 	private JDatePicker datePicker;
+
+	
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -81,15 +90,19 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
-
+		
+		JCalendar calendar = new JCalendar();
+		calendar.setBounds(1400, 594, 205, 153);
+		contentPane.add(calendar);
+	
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
-		separator_1_1.setBounds(1367, 542, 295, 12);
+		separator_1_1.setBounds(1364, 571, 295, 12);
 		contentPane.add(separator_1_1);
 
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(new Color(0, 0, 0));
-		separator_1.setBounds(744, 542, 295, 12);
+		separator_1.setBounds(725, 571, 295, 12);
 		contentPane.add(separator_1);
 
 		rdbtnIfsc = new JRadioButton("IFSC");
@@ -137,17 +150,17 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_2.setBounds(744, 597, 87, 71);
+		lblNewLabel_2.setBounds(744, 639, 87, 71);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/MODELO.png")));
-		lblNewLabel.setBounds(1379, 396, 67, 65);
+		lblNewLabel.setBounds(1379, 442, 67, 65);
 		contentPane.add(lblNewLabel);
 
 		cmbLugar = new JComboBox();
 		cmbLugar.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		cmbLugar.setBounds(1476, 421, 169, 22);
+		cmbLugar.setBounds(1469, 460, 169, 22);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
 
@@ -156,7 +169,7 @@ public class OferecerCarona extends JFrame {
 				"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central", "Centro",
 				"Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim", "Lagoa",
 				"Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
-		cmbGaspar.setBounds(829, 672, 169, 22);
+		cmbGaspar.setBounds(829, 710, 169, 22);
 		cmbGaspar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbGaspar);
 
@@ -168,14 +181,14 @@ public class OferecerCarona extends JFrame {
 				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
 				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
 				"Vila Nova" }));
-		cmbBlumenau.setBounds(829, 594, 169, 22);
+		cmbBlumenau.setBounds(829, 628, 169, 22);
 		cmbBlumenau.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbBlumenau);
 
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(1160, 278, 11, 416);
+		separator.setBounds(1182, 304, 11, 489);
 		contentPane.add(separator);
 
 		JLabel lblCarro = new JLabel("");
@@ -195,17 +208,17 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblFundoFiltro1 = new JLabel("");
 		lblFundoFiltro1.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
-		lblFundoFiltro1.setBounds(724, 342, 541, 448);
+		lblFundoFiltro1.setBounds(709, 357, 541, 448);
 		contentPane.add(lblFundoFiltro1);
 
 		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(684, 250, 530, 107);
+		lblNewLabel_1.setBounds(697, 250, 385, 107);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_1.setBounds(1246, 250, 530, 107);
+		lblNewLabel_1_1.setBounds(1305, 250, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Oferecer");

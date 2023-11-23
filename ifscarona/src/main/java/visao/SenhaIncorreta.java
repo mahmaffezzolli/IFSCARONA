@@ -44,12 +44,13 @@ public class SenhaIncorreta extends JFrame {
 	 * Create the frame.
 	 */
 	public SenhaIncorreta() {
+		setResizable(false);
 		
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(159, 203, 154));
@@ -64,8 +65,8 @@ public class SenhaIncorreta extends JFrame {
 		contentPane.add(lblAviso);
 		
 		JLabel lblSenhaIncorreta = new JLabel("Senha Incorreta!");
-		lblSenhaIncorreta.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSenhaIncorreta.setBounds(153, 60, 138, 14);
+		lblSenhaIncorreta.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblSenhaIncorreta.setBounds(154, 60, 145, 31);
 		contentPane.add(lblSenhaIncorreta);
 		
 		JButton btnNewButton = new JButton("OK");
