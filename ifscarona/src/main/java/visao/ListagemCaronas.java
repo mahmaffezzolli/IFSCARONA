@@ -120,10 +120,13 @@ public class ListagemCaronas extends JFrame {
 				if (selectedRowIndex != -1) {
 					Long idCarona = Long.parseLong(table.getValueAt(selectedRowIndex, 0).toString());
 
-					alterarCarona(idCarona);
+					try {
+						alterarCarona(idCarona);
+					} catch (ParseException e1) {
 
-				} else {
-					System.out.println("No row selected.");
+						e1.printStackTrace();
+					}
+
 				}
 			}
 		});
@@ -183,21 +186,16 @@ public class ListagemCaronas extends JFrame {
 
 	}
 
-	public void alterarCarona(Long idCarona) {
-		
+	public void alterarCarona(Long idCarona) throws ParseException {
+
 		String cpfMotorista = cDAO.pegaCarona(idCarona).getMotorista().getCpf();
 
 		if (Sessao.getPessoaLogada().getCpf().equals(cpfMotorista)) {
-			AlterarExcluirCarona editar = null;
-			try {
-				editar = new AlterarExcluirCarona(idCarona);
-			} catch (ParseException e1) {
-				e1.printStackTrace();
-			}
-			editar.setVisible(true);
+
+			AlterarExcluirCarona telaEditar = new AlterarExcluirCarona(idCarona);
+			telaEditar.setVisible(true);
+
 			dispose();
-		} else {
-			System.out.println("Logged-in user is not the driver. Cannot update carona.");
 		}
 	}
 
