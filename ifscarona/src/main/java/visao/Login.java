@@ -154,7 +154,7 @@ public class Login extends JFrame {
                                 Principal principal = new Principal();
                                 principal.setVisible(true);
                                 dispose();
-                                JavaMail.enviarEmail(email);
+                                //JavaMail.enviarEmail(email);
                             } else {
                                 SenhaIncorreta senhaincorreta = new SenhaIncorreta();
                                 senhaincorreta.setVisible(true);

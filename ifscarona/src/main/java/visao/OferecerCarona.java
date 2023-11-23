@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
+import org.jdatepicker.JDateComponentFactory;
 import org.jdatepicker.JDatePicker;
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
@@ -57,20 +57,7 @@ public class OferecerCarona extends JFrame {
 
 	public OferecerCarona() {
 
-//    	 UtilDateModel dateModel = new UtilDateModel();
-//
-//         // Crie o JDatePicker com o modelo de data
-//         JDatePickerImpl datePickerImpl = new JDatePickerImpl(dateModel);
-//
-//         // Defina a posição e tamanho do JDatePicker
-//         datePickerImpl.setBounds(1100, 500, 150, 30);
-//
-//         // Obtenha o componente JDatePicker a partir do JDatePickerImpl
-//         datePicker = datePickerImpl.getJDatePicker();
-//
-//         // Adicione o JDatePicker ao painel de conteúdo
-//         contentPane.add(datePickerImpl);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
@@ -182,6 +169,9 @@ public class OferecerCarona extends JFrame {
 		separator.setBounds(1160, 278, 11, 416);
 		contentPane.add(separator);
 
+
+		
+		
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Principal.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(81, 304, 385, 151);
@@ -334,4 +324,6 @@ public class OferecerCarona extends JFrame {
 		CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 		campoNaoPreenchido.setVisible(true);
 	}
+	
+	
 }

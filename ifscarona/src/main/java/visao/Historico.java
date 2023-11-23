@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
 
 public class Historico extends JFrame {
@@ -93,7 +94,7 @@ public class Historico extends JFrame {
 		
 		JLabel lblTitulo = new JLabel("Histórico");
 		lblTitulo.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblTitulo.setBounds(965, 59, 552, 107);
+		lblTitulo.setBounds(1045, 64, 552, 107);
 		contentPane.add(lblTitulo);
 		
 		 tableModel = new DefaultTableModel();
@@ -104,6 +105,23 @@ public class Historico extends JFrame {
 
 	        table = new JTable(tableModel);
 
+			table = new JTable(tableModel) {
+				@Override
+				public boolean isCellEditable(int row, int cell) {
+					return false;
+				}
+			};
+			
+			
+			int rowHeight = 25;
+			table.setRowHeight(rowHeight);
+
+			table.getTableHeader().setReorderingAllowed(false);
+
+			JTableHeader tableHeader = table.getTableHeader();
+			int headerRowHeight = 30;
+			tableHeader.setPreferredSize(new Dimension(tableHeader.getWidth(), headerRowHeight));
+			
 	        JScrollPane scrollPane = new JScrollPane(table);
 	        scrollPane.setBounds(616, 170, 1060, 651);
 	        contentPane.add(scrollPane);
