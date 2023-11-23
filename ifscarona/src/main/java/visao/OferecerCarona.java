@@ -82,13 +82,23 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
+		
+		JSeparator separator_1_1 = new JSeparator();
+		separator_1_1.setForeground(Color.BLACK);
+		separator_1_1.setBounds(1367, 542, 295, 12);
+		contentPane.add(separator_1_1);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setForeground(new Color(0, 0, 0));
+		separator_1.setBounds(744, 542, 295, 12);
+		contentPane.add(separator_1);
 
 		rdbtnIfsc = new JRadioButton("IFSC");
-		rdbtnIfsc.setBounds(845, 469, 129, 23);
+		rdbtnIfsc.setBounds(845, 484, 129, 23);
 		contentPane.add(rdbtnIfsc);
 
 		rdbtnGaspar = new JRadioButton("Gaspar");
-		rdbtnGaspar.setBounds(845, 432, 129, 23);
+		rdbtnGaspar.setBounds(845, 442, 129, 23);
 		contentPane.add(rdbtnGaspar);
 
 		rdbtnBlumenau = new JRadioButton("Blumenau");
@@ -116,7 +126,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_3.setBounds(744, 410, 87, 58);
+		lblNewLabel_3.setBounds(744, 421, 87, 58);
 		contentPane.add(lblNewLabel_3);
 
 		btnHome.setBorder(null);
@@ -128,17 +138,17 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_2.setBounds(744, 556, 87, 71);
+		lblNewLabel_2.setBounds(744, 597, 87, 71);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/MODELO.png")));
-		lblNewLabel.setBounds(1357, 414, 67, 65);
+		lblNewLabel.setBounds(1379, 396, 67, 65);
 		contentPane.add(lblNewLabel);
 
 		cmbLugar = new JComboBox();
 		cmbLugar.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		cmbLugar.setBounds(1435, 432, 169, 22);
+		cmbLugar.setBounds(1476, 421, 169, 22);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
 
@@ -147,7 +157,7 @@ public class OferecerCarona extends JFrame {
 				"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central", "Centro",
 				"Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim", "Lagoa",
 				"Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
-		cmbGaspar.setBounds(829, 605, 169, 22);
+		cmbGaspar.setBounds(829, 672, 169, 22);
 		cmbGaspar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbGaspar);
 
@@ -159,7 +169,7 @@ public class OferecerCarona extends JFrame {
 				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
 				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
 				"Vila Nova" }));
-		cmbBlumenau.setBounds(829, 546, 169, 22);
+		cmbBlumenau.setBounds(829, 594, 169, 22);
 		cmbBlumenau.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbBlumenau);
 
@@ -182,34 +192,24 @@ public class OferecerCarona extends JFrame {
 		lblLogo.setBounds(-5, 426, 590, 172);
 		contentPane.add(lblLogo);
 
-		JLabel lblFundoLugar = new JLabel("");
-		lblFundoLugar.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoLugar.setBounds(1313, 374, 320, 133);
-		contentPane.add(lblFundoLugar);
-
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
 		lblFundo.setBounds(-5, -239, 468, 1650);
 		contentPane.add(lblFundo);
 
-		JLabel lblFundoFiltro = new JLabel("");
-		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro.setBounds(723, 360, 320, 151);
-		contentPane.add(lblFundoFiltro);
-
 		JLabel lblFundoFiltro1 = new JLabel("");
-		lblFundoFiltro1.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblFundoFiltro1.setBounds(723, 518, 320, 151);
+		lblFundoFiltro1.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
+		lblFundoFiltro1.setBounds(724, 342, 541, 448);
 		contentPane.add(lblFundoFiltro1);
 
 		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(676, 278, 530, 107);
+		lblNewLabel_1.setBounds(684, 250, 530, 107);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_1.setBounds(1249, 278, 530, 107);
+		lblNewLabel_1_1.setBounds(1246, 250, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Oferecer");
@@ -234,7 +234,7 @@ public class OferecerCarona extends JFrame {
 		});
 
 		btnNewButton.setBackground(new Color(251, 251, 233));
-		btnNewButton.setBounds(1090, 820, 184, 65);
+		btnNewButton.setBounds(1096, 867, 184, 65);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Oferecer Carona");
@@ -242,6 +242,14 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
 
+<<<<<<< HEAD
+=======
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
+		lblNewLabel_4.setBounds(1344, 333, 392, 472);
+		contentPane.add(lblNewLabel_4);
+
+>>>>>>> 717f209ac43dbe5071b07d52b7cea6ba702cd810
 	}
 
 	public Trajeto definirTrajeto() {
@@ -319,6 +327,4 @@ public class OferecerCarona extends JFrame {
 		CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 		campoNaoPreenchido.setVisible(true);
 	}
-	
-	
 }
