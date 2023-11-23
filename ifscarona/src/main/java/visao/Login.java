@@ -156,8 +156,8 @@ public class Login extends JFrame {
                                 dispose();
                                 //JavaMail.enviarEmail(email);
                             } else {
-                                SenhaIncorreta senhaincorreta = new SenhaIncorreta();
-                                senhaincorreta.setVisible(true);
+                               EmaiInvalido emailinvalido = new EmaiInvalido();
+                                emailinvalido.setVisible(true);
                             }
                             return null;
                         }
