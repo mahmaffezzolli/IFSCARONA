@@ -35,9 +35,7 @@ public class AlterarExcluirCarona extends JFrame {
 	private JButton btnSalvar;
 	private Long idCarona;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,13 +51,7 @@ public class AlterarExcluirCarona extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 * 
-	 * @param idCarona
-	 * 
-	 * @throws ParseException
-	 */
+	
 	public AlterarExcluirCarona(Long idCarona) throws ParseException {
 
 		this.idCarona = idCarona;
