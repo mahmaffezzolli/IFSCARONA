@@ -27,7 +27,6 @@ import controle.VeiculoDAO;
 import modelo.Carro;
 import modelo.Pessoa;
 import modelo.Sessao;
-import modelo.Veiculo;
 
 public class Perfil extends JFrame {
 
@@ -333,8 +332,6 @@ public class Perfil extends JFrame {
 
 				dispose();
 			
-				
-
 			}
 		});
 		btnExcluirV.setFont(new Font("Dialog", Font.PLAIN, 12));
