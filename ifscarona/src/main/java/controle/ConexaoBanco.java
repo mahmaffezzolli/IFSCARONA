@@ -4,45 +4,40 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoBanco {
-    private static Connection conexao;
-    private static ConexaoBanco instancia;
-    private static final String USER = "ifscarona";
-    private static final String PASSWORD = "Aluno1234!";
+public class ConexaoBanco {	
+	private static Connection conexao;
+	private static ConexaoBanco instancia;
+	private static final String DATABASE = "bd_ifscarona";
+	private static final String USER     = "root";
+	private static final String PSW      = "aluno";
 
-    private ConexaoBanco() {
-    }
+	public ConexaoBanco() {}
 
-    public static ConexaoBanco getInstancia() {
-        if (instancia == null) {
-            instancia = new ConexaoBanco();
-        }
-        return instancia;
-    }
+	public static ConexaoBanco getInstancia() {
+		if (instancia == null) { 
+			instancia = new ConexaoBanco(); 
+		}
+		return instancia;	
+	}
 
-    public Connection conectar() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+	public Connection conectar() {
+		try {
+			conexao = DriverManager.getConnection("jdbc:mysql://localhost/"+ DATABASE + "?serverTimezone=UTC", USER, PSW);
+		} catch (Exception e) { 
+			e.printStackTrace(); 
+		}
+		return conexao;		
+	}
 
-            String url = "jdbc:mysql://ifscarona.mysql.database.azure.com:3306/bd_ifscarona?useSSL=true";
+	public boolean fecharConexao() { 
+		try { 
+			conexao.close(); 
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 
-            conexao = DriverManager.getConnection(url, USER, PASSWORD);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return conexao;
-    }
-
-    public boolean fecharConexao() {
-        try {
-            if (conexao != null && !conexao.isClosed()) {
-                conexao.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        return true;
-    }
+		return true;
+	}
 }

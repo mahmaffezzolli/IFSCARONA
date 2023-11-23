@@ -242,11 +242,6 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
 
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/tela inicio fundo botoes.png")));
-		lblNewLabel_4.setBounds(1313, 519, 320, 133);
-		contentPane.add(lblNewLabel_4);
-
 	}
 
 	public Trajeto definirTrajeto() {

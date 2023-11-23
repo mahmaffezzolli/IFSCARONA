@@ -88,6 +88,14 @@ public class RequisitarCarona extends JFrame {
 		JCheckBox chckbxIfsc = new JCheckBox("IFSC");
 		chckbxIfsc.setBounds(845, 442, 129, 23);
 		contentPane.add(chckbxIfsc);
+		  chckbxIfsc.addItemListener(new ItemListener() {
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					cmbBlumenau.setEnabled(chckbxGaspar.isSelected());
+					cmbGaspar.setEnabled(chckbxGaspar.isSelected());
+
+				}
+			});
 
 		chckbxGaspar = new JCheckBox("Gaspar");
 		chckbxGaspar.setBounds(845, 414, 129, 23);
