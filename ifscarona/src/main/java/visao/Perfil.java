@@ -296,6 +296,8 @@ public class Perfil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				TelaExcluirVeiculo TelaExcluirVeiculo = new TelaExcluirVeiculo();
+				TelaExcluirVeiculo.setBounds(40, 40, 451, 234);
+				TelaExcluirVeiculo.setLocationRelativeTo(null);
 				TelaExcluirVeiculo.setVisible(true);
 
 			}
@@ -327,6 +329,8 @@ public class Perfil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				TelaExcluirConta TelaExcluirConta = new TelaExcluirConta();
+				TelaExcluirConta.setBounds(40, 40, 451, 234);
+				TelaExcluirConta.setLocationRelativeTo(null);
 				TelaExcluirConta.setVisible(true);
 
 				dispose();
@@ -425,9 +429,13 @@ public class Perfil extends JFrame {
 
 			if (success) {
 				DadosAtualizados dadosAtualizados = new DadosAtualizados();
+				dadosAtualizados.setBounds(40, 40, 451, 234);
+				dadosAtualizados.setLocationRelativeTo(null);
 				dadosAtualizados.setVisible(true);
 			} else {
 				ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+				erroAoAtualizar.setBounds(40, 40, 451, 234);
+				erroAoAtualizar.setLocationRelativeTo(null);
 				erroAoAtualizar.setVisible(true);
 			}
 
@@ -470,9 +478,13 @@ public class Perfil extends JFrame {
 
 				if (success) {
 					DadosAtualizados dadosAtualizados = new DadosAtualizados();
+					dadosAtualizados.setBounds(40, 40, 451, 234);
+					dadosAtualizados.setLocationRelativeTo(null);
 					dadosAtualizados.setVisible(true);
 				} else {
 					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+					erroAoAtualizar.setBounds(40, 40, 451, 234);
+					erroAoAtualizar.setLocationRelativeTo(null);
 					erroAoAtualizar.setVisible(true);
 				}
 

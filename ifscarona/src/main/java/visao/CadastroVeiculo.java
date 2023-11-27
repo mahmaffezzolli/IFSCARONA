@@ -124,6 +124,8 @@ public class CadastroVeiculo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Crie uma instância da tela de Cancelar e a torne visível
 				Cancelar telaCancelar = new Cancelar();
+				telaCancelar.setBounds(40, 40, 451, 234);
+				telaCancelar.setLocationRelativeTo(null);
 				telaCancelar.setVisible(true);
 			}
 		});
@@ -223,18 +225,28 @@ public class CadastroVeiculo extends JFrame {
 				}
 
 				if (placa.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (modelo.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (marca.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (cor.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (cpf.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else {
@@ -257,10 +269,14 @@ public class CadastroVeiculo extends JFrame {
 						pDAO.alterarPessoa(motorista);
 
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
+						cadastroRealizado.setBounds(40, 40, 451, 234);
+						cadastroRealizado.setLocationRelativeTo(null);
 						cadastroRealizado.setVisible(true);
 
 					} else {
 						CadastroErroVeiculo cadastroErroVeiculo = new CadastroErroVeiculo();
+						cadastroErroVeiculo.setBounds(40, 40, 451, 234);
+						cadastroErroVeiculo.setLocationRelativeTo(null);
 						cadastroErroVeiculo.setVisible(true);
 					}
 				}

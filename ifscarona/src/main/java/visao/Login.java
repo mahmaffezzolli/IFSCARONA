@@ -130,9 +130,13 @@ public class Login extends JFrame {
 
 				if (txtEmail.getText().isEmpty() || senha.isEmpty()) {
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 				} else if (!isValidEmailAddress(email)) {
 					EmaiInvalido emailInvalido = new EmaiInvalido();
+					emailInvalido.setBounds(40, 40, 451, 234);
+					emailInvalido.setLocationRelativeTo(null);
 					emailInvalido.setVisible(true);
 				} else {
 					showProgressBar(true);
@@ -153,6 +157,8 @@ public class Login extends JFrame {
 								// JavaMail.enviarEmail(email);
 							} else {
 								EmaiInvalido emailinvalido = new EmaiInvalido();
+								emailinvalido.setBounds(40, 40, 451, 234);
+								emailinvalido.setLocationRelativeTo(null);
 								emailinvalido.setVisible(true);
 							}
 							return null;

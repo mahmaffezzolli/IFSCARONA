@@ -333,27 +333,40 @@ public class CadastroUsuario extends JFrame {
 
 				// validação se o campo é vazio, se for, abre a tela de erro
 				if (nome.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (sobrenome.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (txtCPF.getText().isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (txtEmail.getText().isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 				} else if (isValidEmailAddress(email) == false) {
 
 					EmaiInvalido Emailnvalido = new EmaiInvalido();
-
+					Emailnvalido.setBounds(40, 40, 451, 234);
+					Emailnvalido.setLocationRelativeTo(null);
 					Emailnvalido.setVisible(true);
 
 				} else if (senha.isEmpty()) {
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (!senha.equals(confSenha)) {
 					SenhasNaoConferem senhasNaoConferem = new SenhasNaoConferem();
+					senhasNaoConferem.setBounds(40, 40, 451, 234);
+					senhasNaoConferem.setLocationRelativeTo(null);
 					senhasNaoConferem.setVisible(true);
 
 				} else {
@@ -386,12 +399,16 @@ public class CadastroUsuario extends JFrame {
 						login.setVisible(true);
 
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
+						cadastroRealizado.setBounds(40, 40, 451, 234);
+						cadastroRealizado.setLocationRelativeTo(null);
 						cadastroRealizado.setVisible(true);
 
 						dispose();
 
 					} else {
 						CadastroErro cadastroErro = new CadastroErro();
+						cadastroErro.setBounds(40, 40, 451, 234);
+						cadastroErro.setLocationRelativeTo(null);
 						cadastroErro.setVisible(true);
 					}
 

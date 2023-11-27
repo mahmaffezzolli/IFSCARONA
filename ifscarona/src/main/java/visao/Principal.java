@@ -128,6 +128,8 @@ public class Principal extends JFrame {
 					Principal.this.dispose();
 				} else {
 					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 				}
 			}

@@ -339,6 +339,8 @@ public class OferecerCarona extends JFrame {
 
 	private void showCampoNaoPreenchido() {
 		CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+		campoNaoPreenchido.setBounds(40, 40, 451, 234);
+		campoNaoPreenchido.setLocationRelativeTo(null);
 		campoNaoPreenchido.setVisible(true);
 	}
 
