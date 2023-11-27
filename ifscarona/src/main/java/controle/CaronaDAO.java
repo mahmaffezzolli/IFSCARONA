@@ -7,12 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.sql.Types;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import modelo.Carona;
 import modelo.Carro;
 import modelo.ICaronaDAO;

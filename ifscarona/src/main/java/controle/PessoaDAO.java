@@ -7,13 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import org.mindrot.jbcrypt.BCrypt;
-
 import modelo.Carro;
 import modelo.IPessoaDAO;
 import modelo.Pessoa;
-import modelo.Veiculo;
 
 public class PessoaDAO implements IPessoaDAO {
 

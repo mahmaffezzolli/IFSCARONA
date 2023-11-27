@@ -6,11 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import modelo.Carro;
 import modelo.IVeiculoDAO;
 import modelo.Pessoa;
-import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO {
 
@@ -202,7 +200,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 					Long idVeiculo = rs.getLong("id_veiculo");
 
 					carro = new Carro();
-					
+
 					carro.setMotorista(motorista);
 					carro.setPlaca(placa);
 					carro.setCor(cor);
@@ -219,7 +217,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 		return carro;
 	}
-	
+
 	public Carro pegaVeiculo(Long idVeiculo) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();
@@ -234,17 +232,17 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 			if (rs.next()) {
 				Carro carro = new Carro();
-				
+
 				carro.setIdVeiculo(rs.getLong("id_veiculo"));
 				carro.setPlaca(rs.getString("placa"));
 				carro.setCor(rs.getString("cor"));
 				carro.setMarca(rs.getString("marca"));
 				carro.setModelo(rs.getString("modelo"));
-				
+
 				PessoaDAO pDAO = PessoaDAO.getInstancia();
-	            String cpfMotorista = rs.getString("cpf_pessoa");
-	            Pessoa motorista = pDAO.pegaPessoa(cpfMotorista);
-	            carro.setMotorista(motorista);
+				String cpfMotorista = rs.getString("cpf_pessoa");
+				Pessoa motorista = pDAO.pegaPessoa(cpfMotorista);
+				carro.setMotorista(motorista);
 
 				return carro;
 			}

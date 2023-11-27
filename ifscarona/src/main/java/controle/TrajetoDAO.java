@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import modelo.ITrajetoDAO;
-import modelo.Pessoa;
 import modelo.Trajeto;
 
 public class TrajetoDAO implements ITrajetoDAO {
@@ -200,7 +198,7 @@ public class TrajetoDAO implements ITrajetoDAO {
 
 		return trajetos;
 	}
-	
+
 	public Trajeto pegaTrajeto(Long idTrajeto) {
 		ConexaoBanco c = ConexaoBanco.getInstancia();
 		Connection con = c.conectar();

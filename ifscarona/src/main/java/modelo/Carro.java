@@ -1,13 +1,13 @@
 package modelo;
 
-public class Carro extends Veiculo{
-	
+public class Carro extends Veiculo {
+
 	private String placa;
 	private String cor;
 	private String marca;
 	private String modelo;
 	private Pessoa motorista;
-	
+
 	public String getPlaca() {
 		return placa;
 	}
@@ -46,7 +46,7 @@ public class Carro extends Veiculo{
 
 	public void setMotorista(Pessoa motorista) {
 		this.motorista = motorista;
-	
+
 	}
 
 }

@@ -11,9 +11,9 @@ public interface IPessoaDAO {
 	public ArrayList<Pessoa> listarPessoas();
 
 	public boolean deletarPessoa(Pessoa pessoa);
-	
+
 	public Pessoa login(String email, String senha);
-	
+
 	public Pessoa pegaPessoa(String cpf);
 
 }

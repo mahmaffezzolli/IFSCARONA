@@ -5,9 +5,9 @@ public class Veiculo {
 	private Long idVeiculo;
 
 	public Veiculo() {
-		
+
 	}
-	
+
 	public Long getIdVeiculo() {
 		return idVeiculo;
 	}
