@@ -28,7 +28,7 @@ public class CampoNaoPreenchido extends JFrame {
 				try {
 					CampoNaoPreenchido frame = new CampoNaoPreenchido();
 					frame.setVisible(true);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -44,11 +44,11 @@ public class CampoNaoPreenchido extends JFrame {
 	 */
 	public CampoNaoPreenchido() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -57,28 +57,28 @@ public class CampoNaoPreenchido extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblCampoNaoPreenchido = new JLabel("Campo não preenchido!");
 		lblCampoNaoPreenchido.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblCampoNaoPreenchido.setBounds(120, 59, 206, 18);
+		lblCampoNaoPreenchido.setBounds(120, 59, 250, 18);
 		contentPane.add(lblCampoNaoPreenchido);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
 		btnOk.setBounds(177, 123, 84, 31);
 		contentPane.add(btnOk);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                dispose();
-	            }
-	        });
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 
 }

@@ -29,7 +29,7 @@ public class InformacaoRegistrada extends JFrame {
 					InformacaoRegistrada frame = new InformacaoRegistrada();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -45,11 +45,11 @@ public class InformacaoRegistrada extends JFrame {
 	 */
 	public InformacaoRegistrada() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -58,30 +58,30 @@ public class InformacaoRegistrada extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(InformacaoRegistrada.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 48, 57, 57);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblInformacaoRegistrada = new JLabel("Informação já registrada!");
 		lblInformacaoRegistrada.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblInformacaoRegistrada.setBounds(119, 60, 213, 31);
+		lblInformacaoRegistrada.setBounds(119, 60, 307, 31);
 		contentPane.add(lblInformacaoRegistrada);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(176, 118, 84, 31);
+		btnNewButton.setBounds(205, 116, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 
 }

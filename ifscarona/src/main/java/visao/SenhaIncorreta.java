@@ -29,7 +29,7 @@ public class SenhaIncorreta extends JFrame {
 				try {
 					SenhaIncorreta frame = new SenhaIncorreta();
 					frame.setVisible(true);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -45,11 +45,11 @@ public class SenhaIncorreta extends JFrame {
 	 */
 	public SenhaIncorreta() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -58,29 +58,29 @@ public class SenhaIncorreta extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(SenhaIncorreta.class.getResource("/assets/alerta.png")));
-		lblAviso.setBounds(45, 43, 48, 48);
+		lblAviso.setBounds(74, 48, 48, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblSenhaIncorreta = new JLabel("Senha Incorreta!");
 		lblSenhaIncorreta.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblSenhaIncorreta.setBounds(154, 60, 145, 31);
+		lblSenhaIncorreta.setBounds(154, 60, 186, 31);
 		contentPane.add(lblSenhaIncorreta);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 31);
+		btnNewButton.setBounds(189, 123, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 }

@@ -30,7 +30,7 @@ public class SenhasNaoConferem extends JFrame {
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -45,11 +45,11 @@ public class SenhasNaoConferem extends JFrame {
 	 */
 	public SenhasNaoConferem() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -58,17 +58,17 @@ public class SenhasNaoConferem extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(SenhasNaoConferem.class.getResource("/assets/alerta.png")));
-		lblAviso.setBounds(45, 48, 56, 56);
+		lblAviso.setBounds(45, 39, 56, 56);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblSenhaNaoConfere = new JLabel("As senhas não conferem!");
 		lblSenhaNaoConfere.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblSenhaNaoConfere.setBounds(137, 55, 222, 18);
+		lblSenhaNaoConfere.setBounds(113, 55, 246, 18);
 		contentPane.add(lblSenhaNaoConfere);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
@@ -76,13 +76,13 @@ public class SenhasNaoConferem extends JFrame {
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(179, 109, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 
 }

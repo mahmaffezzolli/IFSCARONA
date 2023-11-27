@@ -28,7 +28,7 @@ public class CadastroRealizado extends JFrame {
 					CadastroRealizado frame = new CadastroRealizado();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -44,11 +44,11 @@ public class CadastroRealizado extends JFrame {
 	 */
 	public CadastroRealizado() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -57,29 +57,29 @@ public class CadastroRealizado extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CadastroRealizado.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(44, 46, 48, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com secesso!");
 		lblCadastroRealizado.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblCadastroRealizado.setBounds(102, 59, 291, 18);
+		lblCadastroRealizado.setBounds(102, 59, 349, 18);
 		contentPane.add(lblCadastroRealizado);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 31);
+		btnNewButton.setBounds(199, 123, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 
 }

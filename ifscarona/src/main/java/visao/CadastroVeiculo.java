@@ -76,11 +76,11 @@ public class CadastroVeiculo extends JFrame {
 	 * @throws ParseException
 	 */
 	public CadastroVeiculo() throws ParseException {
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setTitle("Cadastro");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,12 +101,14 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(lblCpf);
 
 		textCpf = new JTextField();
+		textCpf.setFont(new Font("Dialog", Font.PLAIN, 15));
 		textCpf.setBackground(new Color(244, 234, 213));
 		textCpf.setColumns(10);
 		textCpf.setBounds(999, 625, 336, 45);
 		contentPane.add(textCpf);
 
 		BoxCor = new JComboBox<String>();
+		BoxCor.setFont(new Font("Dialog", Font.BOLD, 15));
 		BoxCor.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t",
 				"Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t" }));
 		BoxCor.setToolTipText("");
@@ -116,7 +118,7 @@ public class CadastroVeiculo extends JFrame {
 
 		btnCancelarVeiculo = new JButton("CANCELAR");
 		btnCancelarVeiculo.setBorder(new LineBorder(new Color(255, 128, 128), 4, true));
-		btnCancelarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
+		btnCancelarVeiculo.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnCancelarVeiculo.setForeground(new Color(0, 0, 0));
 		btnCancelarVeiculo.setBackground(new Color(255, 251, 233));
 		btnCancelarVeiculo.setBounds(1178, 723, 178, 54);
@@ -130,6 +132,7 @@ public class CadastroVeiculo extends JFrame {
 		});
 
 		JComboBox<String> BoxMarca = new JComboBox<String>();
+		BoxMarca.setFont(new Font("Dialog", Font.BOLD, 15));
 		BoxMarca.setBackground(new Color(255, 251, 233));
 		BoxMarca.setModel(
 				new DefaultComboBoxModel(new String[] { "SELECIONE A MARCA ", "AUDI", "BMW", "CAOA CHERRY", "CHEVROLET",
@@ -167,7 +170,7 @@ public class CadastroVeiculo extends JFrame {
 		mascaraPlaca = new MaskFormatter("*******");
 		txtPlaca = new JFormattedTextField(mascaraPlaca);
 		/*****************/
-		
+
 		txtPlaca.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);
@@ -197,7 +200,7 @@ public class CadastroVeiculo extends JFrame {
 
 		btnCadastrarVeiculo = new JButton("CADASTRAR");
 		btnCadastrarVeiculo.setForeground(new Color(0, 0, 0));
-		btnCadastrarVeiculo.setFont(new Font("Arial", Font.PLAIN, 13));
+		btnCadastrarVeiculo.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
 		btnCadastrarVeiculo.setBounds(951, 723, 178, 54);
@@ -206,39 +209,37 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
 				Carro v = new Carro();
 
 				CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 
 				String cpf = String.valueOf(textCpf.getText());
-		        String placa = txtPlaca.getText().replaceAll("[^a-zA-Z0-9]", "");
+				String placa = txtPlaca.getText().replaceAll("[^a-zA-Z0-9]", "");
 				String modelo = txtModelo.getText();
 				String cor = (String) BoxCor.getSelectedItem();
 				String marca = (String) BoxMarca.getSelectedItem();
 
-				 if (placa.length() != 7) {
-					 CaracteresVeiculo caracteresVeiculo = new CaracteresVeiculo();
-					 caracteresVeiculo.setVisible(true);
-			            return; 
-			        }
-			        
-			        
+				if (placa.length() != 7) {
+					CaracteresVeiculo caracteresVeiculo = new CaracteresVeiculo();
+					caracteresVeiculo.setVisible(true);
+					return;
+				}
+
 				if (placa.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
 
 				} else if (modelo.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else if (marca.isEmpty()) {
-					campoNaoPreenchido.setVisible(true);	
-					
+					campoNaoPreenchido.setVisible(true);
+
 				} else if (cor.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else if (cpf.isEmpty()) {
 					campoNaoPreenchido.setVisible(true);
-					
+
 				} else {
 
 					v.setMotorista(Sessao.getPessoaLogada());
@@ -252,12 +253,12 @@ public class CadastroVeiculo extends JFrame {
 					v.setIdVeiculo(success);
 
 					if (success > 0) {
-						
+
 						Pessoa motorista = Sessao.getPessoaLogada();
-						
+
 						motorista.setVeiculo(v);
-		                pDAO.alterarPessoa(motorista);
-		                
+						pDAO.alterarPessoa(motorista);
+
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setVisible(true);
 
@@ -287,7 +288,7 @@ public class CadastroVeiculo extends JFrame {
 
 		lblCadastroVeiculo = new JLabel("Cadastro de Veículo");
 		lblCadastroVeiculo.setFont(new Font("Dialog", Font.BOLD, 53));
-		lblCadastroVeiculo.setBounds(930, 58, 698, 107);
+		lblCadastroVeiculo.setBounds(868, 58, 698, 107);
 		contentPane.add(lblCadastroVeiculo);
 
 		JButton btnHome = new JButton("");

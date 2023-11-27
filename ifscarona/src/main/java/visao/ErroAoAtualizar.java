@@ -28,7 +28,7 @@ public class ErroAoAtualizar extends JFrame {
 				try {
 					ErroAoAtualizar frame = new ErroAoAtualizar();
 					frame.setVisible(true);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -43,11 +43,11 @@ public class ErroAoAtualizar extends JFrame {
 	 */
 	public ErroAoAtualizar() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -56,33 +56,33 @@ public class ErroAoAtualizar extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Erro ao atualizar os dados");
 		lblDadosPessoaisAtualizados.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblDadosPessoaisAtualizados.setBounds(130, 54, 217, 18);
+		lblDadosPessoaisAtualizados.setBounds(130, 54, 246, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
-		btnOk.setBounds(177, 123, 84, 31);
+		btnOk.setBounds(212, 122, 84, 31);
 		contentPane.add(btnOk);
-		
+
 		JLabel lblSucesso = new JLabel("pessoais.");
 		lblSucesso.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblSucesso.setBounds(188, 83, 99, 18);
+		lblSucesso.setBounds(210, 79, 99, 18);
 		contentPane.add(lblSucesso);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
-	                dispose();
-	            }
-	        });
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 }

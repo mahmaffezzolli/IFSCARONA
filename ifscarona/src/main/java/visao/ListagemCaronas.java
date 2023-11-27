@@ -138,24 +138,23 @@ public class ListagemCaronas extends JFrame {
 						telaEditar.setVisible(true);
 
 						dispose();
-					}else {
-						
+					} else {
+
 						String cpfPassageiro = Sessao.getPessoaLogada().getCpf();
 						Carona carona = cDAO.pegaCarona(idCarona);
 						Pessoa passageiro = PessoaDAO.getInstancia().pegaPessoa(cpfPassageiro);
 						carona.setPassageiro(passageiro);
-						
+
 						cDAO.alterarCarona(carona);
-						
-						
+
 					}
 
 				}
 			}
 		});
 
-		btnSelecionar.setBackground(new Color(251, 251, 233));
-		btnSelecionar.setBounds(1600, 850, 185, 65);
+		btnSelecionar.setBackground(new Color(211, 215, 207));
+		btnSelecionar.setBounds(1497, 853, 185, 65);
 		contentPane.add(btnSelecionar);
 
 		Font tableFont = new Font("Dialog", Font.PLAIN, 14);
@@ -204,7 +203,7 @@ public class ListagemCaronas extends JFrame {
 				String destino = carona.getTrajeto().getDestino();
 
 				Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
-				
+
 				DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -212,7 +211,7 @@ public class ListagemCaronas extends JFrame {
 				String horario = carona.getHorario().toLocalTime().format(timeFormatter);
 
 				Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), data, horario,
-				        carro.getPlaca(), origem, destino };
+						carro.getPlaca(), origem, destino };
 				tableModel.addRow(rowData);
 			}
 		} catch (Exception e) {

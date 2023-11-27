@@ -219,7 +219,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(697, 250, 385, 107);
+		lblNewLabel_1.setBounds(661, 250, 496, 107);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
@@ -248,13 +248,13 @@ public class OferecerCarona extends JFrame {
 			}
 		});
 
-		btnNewButton.setBackground(new Color(251, 251, 233));
+		btnNewButton.setBackground(new Color(211, 215, 207));
 		btnNewButton.setBounds(1096, 867, 184, 65);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Oferecer Carona");
 		lblNewLabel_1_2.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1_2.setBounds(965, 59, 552, 107);
+		lblNewLabel_1_2.setBounds(999, 54, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
 
 		JLabel lblNewLabel_4 = new JLabel("");

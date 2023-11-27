@@ -119,17 +119,17 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(separator_1);
 
 		rdbtnIfsc = new JRadioButton("IFSC");
-		rdbtnIfsc.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		rdbtnIfsc.setFont(new Font("Dialog", Font.BOLD, 12));
 		rdbtnIfsc.setBounds(860, 450, 130, 25);
 		contentPane.add(rdbtnIfsc);
 
 		rdbtnGaspar = new JRadioButton("Gaspar");
-		rdbtnGaspar.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		rdbtnGaspar.setFont(new Font("Dialog", Font.BOLD, 12));
 		rdbtnGaspar.setBounds(860, 400, 130, 25);
 		contentPane.add(rdbtnGaspar);
 
 		rdbtnBlumenau = new JRadioButton("Blumenau");
-		rdbtnBlumenau.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		rdbtnBlumenau.setFont(new Font("Dialog", Font.BOLD, 12));
 		rdbtnBlumenau.setBounds(860, 350, 130, 25);
 		contentPane.add(rdbtnBlumenau);
 
@@ -161,14 +161,14 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		cmbLugar = new JComboBox<>();
-		cmbLugar.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		cmbLugar.setFont(new Font("Dialog", Font.BOLD, 12));
 		cmbLugar.setModel(new DefaultComboBoxModel<>(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		cmbLugar.setBounds(1514, 400, 170, 35);
+		cmbLugar.setBounds(1517, 401, 170, 23);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
 
 		cmbGaspar = new JComboBox<>();
-		cmbGaspar.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		cmbGaspar.setFont(new Font("Dialog", Font.BOLD, 12));
 		cmbGaspar.setModel(new DefaultComboBoxModel<>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
 				"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central", "Centro",
 				"Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim", "Lagoa",
@@ -178,7 +178,7 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(cmbGaspar);
 
 		cmbBlumenau = new JComboBox<>();
-		cmbBlumenau.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		cmbBlumenau.setFont(new Font("Dialog", Font.BOLD, 12));
 		cmbBlumenau.setModel(new DefaultComboBoxModel<>(new String[] { "BLUMENAU", "Badenfurt", "Fidélis",
 				"Itoupava Central", "Itoupavazinha", "Salto do Norte", "Testo Salto", "Vila Itoupava", "Fortaleza",
 				"Fortaleza Alta", "Itoupava Norte", "Nova Esperança", "Ponta Aguda", "Tribess", "Vorstadt", "Da Glória",
@@ -245,7 +245,7 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Requisitar");
-		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnNewButton
 				.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-viajar-de-carona-50.png")));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -263,7 +263,7 @@ public class RequisitarCarona extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBackground(new Color(251, 251, 233));
+		btnNewButton.setBackground(new Color(211, 215, 207));
 		btnNewButton.setBounds(1081, 809, 189, 60);
 		contentPane.add(btnNewButton);
 

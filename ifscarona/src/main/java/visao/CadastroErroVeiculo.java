@@ -28,7 +28,7 @@ public class CadastroErroVeiculo extends JFrame {
 					CadastroErroVeiculo frame = new CadastroErroVeiculo();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -44,11 +44,11 @@ public class CadastroErroVeiculo extends JFrame {
 	 */
 	public CadastroErroVeiculo() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -57,29 +57,29 @@ public class CadastroErroVeiculo extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CadastroErroVeiculo.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 45, 48, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar veículo!");
 		lblCadastroErro.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblCadastroErro.setBounds(135, 55, 227, 18);
+		lblCadastroErro.setBounds(135, 55, 260, 18);
 		contentPane.add(lblCadastroErro);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setBorder(null);
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 31);
+		btnNewButton.setBounds(205, 122, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                dispose();
-	            }
-	        });
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 
 }

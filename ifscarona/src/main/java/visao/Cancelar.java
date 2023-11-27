@@ -30,7 +30,7 @@ public class Cancelar extends JFrame {
 					Cancelar frame = new Cancelar();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -46,11 +46,11 @@ public class Cancelar extends JFrame {
 	 */
 	public Cancelar() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -59,17 +59,17 @@ public class Cancelar extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(Cancelar.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 47, 48, 43);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblCancelar = new JLabel("Deseja cancelar?");
 		lblCancelar.setFont(new Font("Nirmala UI", Font.BOLD, 17));
 		lblCancelar.setBounds(142, 58, 162, 18);
 		contentPane.add(lblCancelar);
-		
+
 		JButton btnSim = new JButton("SIM");
 		btnSim.setForeground(new Color(255, 255, 255));
 		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
@@ -77,25 +77,24 @@ public class Cancelar extends JFrame {
 		btnSim.setBackground(new Color(174, 57, 57));
 		btnSim.setBounds(108, 126, 84, 31);
 		contentPane.add(btnSim);
-		
+
 		btnSim.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Abre a tela de perfil 
-                Perfil Perfil = null;
+			public void actionPerformed(ActionEvent e) {
+				// Abre a tela de perfil
+				Perfil Perfil = null;
 				try {
 					Perfil = new Perfil();
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-                Perfil.setVisible(true);
+				Perfil.setVisible(true);
 
-                // Fecha a janela atual (Cancelar)
-                dispose();
-            }
-        });
-		
-		
+				// Fecha a janela atual (Cancelar)
+				dispose();
+			}
+		});
+
 		JButton btnNao = new JButton("NÃO");
 		btnNao.setForeground(new Color(255, 255, 255));
 		btnNao.setFont(new Font("Nirmala UI", Font.BOLD, 16));
@@ -103,13 +102,13 @@ public class Cancelar extends JFrame {
 		btnNao.setBackground(new Color(0, 0, 0));
 		btnNao.setBounds(231, 126, 84, 31);
 		contentPane.add(btnNao);
-		
+
 		btnNao.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Fecha a janela atual
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 
 }

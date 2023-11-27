@@ -38,7 +38,7 @@ public class Principal extends JFrame {
 	private JRadioButton rdbtn6ao12;
 	private JRadioButton rdbtn12ao18;
 	private JRadioButton rdbtn18emDiante;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -60,11 +60,11 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -74,7 +74,7 @@ public class Principal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnLogOut = new JButton("");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,25 +90,27 @@ public class Principal extends JFrame {
 				inicio.setVisible(true);
 			}
 		});
-		
+
 		JRadioButton rdbtn6ao12 = new JRadioButton("06:00 - 12:00");
-		rdbtn6ao12.setBounds(705, 338, 152, 45);
+		rdbtn6ao12.setFont(new Font("Dialog", Font.BOLD, 15));
+		rdbtn6ao12.setBounds(705, 338, 169, 45);
 		contentPane.add(rdbtn6ao12);
-		
+
 		JRadioButton rdbtn12ao18 = new JRadioButton("12:01 - 18:00");
-		rdbtn12ao18.setBounds(705, 422, 152, 43);
+		rdbtn12ao18.setFont(new Font("Dialog", Font.BOLD, 15));
+		rdbtn12ao18.setBounds(705, 422, 169, 43);
 		contentPane.add(rdbtn12ao18);
-		
-		
+
 		JRadioButton rdbtn18emDiante = new JRadioButton("18:00 em diante");
-		rdbtn18emDiante.setBounds(705, 505, 155, 43);
+		rdbtn18emDiante.setFont(new Font("Dialog", Font.BOLD, 15));
+		rdbtn18emDiante.setBounds(705, 505, 169, 43);
 		contentPane.add(rdbtn18emDiante);
-		
+
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(rdbtn6ao12);
 		radioGroup.add(rdbtn12ao18);
 		radioGroup.add(rdbtn18emDiante);
-		
+
 		btnLogOut.setIcon(new ImageIcon(Principal.class.getResource("/assets/Log-out.png")));
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(244, 234, 213));
@@ -122,17 +124,18 @@ public class Principal extends JFrame {
 		contentPane.add(separator);
 
 		JButton btnLogar = new JButton("Requisitar");
+		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 if (rdbtn18emDiante.isSelected() ||rdbtn12ao18.isSelected() || rdbtn6ao12.isSelected()) {
-						new RequisitarCarona().setVisible(true);
-						 Principal.this.dispose();
-			        } else {
-			        	CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-						campoNaoPreenchido.setVisible(true);
-			        }
-			    }
-			});
+				if (rdbtn18emDiante.isSelected() || rdbtn12ao18.isSelected() || rdbtn6ao12.isSelected()) {
+					new RequisitarCarona().setVisible(true);
+					Principal.this.dispose();
+				} else {
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setVisible(true);
+				}
+			}
+		});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.setBounds(695, 615, 162, 43);
@@ -164,7 +167,7 @@ public class Principal extends JFrame {
 		contentPane.add(lblFiltro);
 
 		JButton btnPerfil = new JButton("Perfil ");
-		btnPerfil.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnPerfil.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -184,34 +187,32 @@ public class Principal extends JFrame {
 		contentPane.add(btnPerfil);
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		
+		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 15));
+
 		Pessoa pessoaLogada = Sessao.getPessoaLogada();
-		
+
 		Veiculo veiculoLogado = vDAO.conexaoVeiculoPessoa(pessoaLogada);
-		
-		if(veiculoLogado == null) {
+
+		if (veiculoLogado == null) {
 			btnNewButton_1.setEnabled(false);
 		}
-		
-		
+
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new OferecerCarona().setVisible(true);
 				Principal.this.dispose();
-				
 
 			}
-			});
+		});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
 		btnNewButton_1.setBounds(1317, 666, 169, 59);
 		contentPane.add(btnNewButton_1);
-		
+
 		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
 		chckbxNewCheckBox.setBounds(705, 338, 129, 23);
 		contentPane.add(chckbxNewCheckBox);
-		
+
 		JButton btnNewButton = new JButton("Histórico");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +222,7 @@ public class Principal extends JFrame {
 		});
 		btnNewButton.setBackground(new Color(244, 234, 213));
 		btnNewButton.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnNewButton.setBounds(1317, 318, 169, 59);
 		contentPane.add(btnNewButton);
 

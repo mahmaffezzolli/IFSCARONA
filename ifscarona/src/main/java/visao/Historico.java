@@ -144,7 +144,10 @@ public class Historico extends JFrame {
 		contentPane.add(scrollPane);
 
 		JButton btnExcluir = new JButton("Cancelar carona");
-		btnExcluir.setBounds(1586, 865, 133, 33);
+		btnExcluir.setIcon(new ImageIcon(Historico.class.getResource("/assets/icons8-excluir-60.png")));
+		btnExcluir.setBackground(new Color(255, 182, 193));
+		btnExcluir.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnExcluir.setBounds(1436, 852, 245, 65);
 		btnExcluir.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {

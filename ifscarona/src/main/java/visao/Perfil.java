@@ -69,11 +69,11 @@ public class Perfil extends JFrame {
 	 * @throws ParseException
 	 */
 	public Perfil() throws ParseException {
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, 1935, 1049);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -86,12 +86,12 @@ public class Perfil extends JFrame {
 
 		JButton btnHome = new JButton("");
 		btnHome.addMouseListener(new MouseAdapter() {
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        Principal principal = new Principal();
-		        principal.setVisible(true);
-		        dispose();
-		    }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Principal principal = new Principal();
+				principal.setVisible(true);
+				dispose();
+			}
 		});
 		btnHome.setBorderPainted(false);
 		btnHome.setContentAreaFilled(false);
@@ -119,7 +119,7 @@ public class Perfil extends JFrame {
 		btnLogOut.setBorder(null);
 		btnLogOut.setBackground(new Color(159, 203, 153));
 		btnLogOut.setIcon(new ImageIcon(Perfil.class.getResource("/assets/Log-out.png")));
-		btnLogOut.setBounds(140, 859, 75, 65);
+		btnLogOut.setBounds(128, 859, 75, 65);
 		contentPane.add(btnLogOut);
 
 		txtSobrenome = new JTextField();
@@ -303,8 +303,8 @@ public class Perfil extends JFrame {
 		});
 
 		btnExcluir.setBackground(new Color(255, 182, 193));
-		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnExcluir.setBounds(1666, 665, 145, 53);
+		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 15));
+		btnExcluir.setBounds(1660, 665, 151, 53);
 		contentPane.add(btnExcluir);
 
 		btnSalvarV = new JButton("Editar");
@@ -331,12 +331,12 @@ public class Perfil extends JFrame {
 				TelaExcluirConta.setVisible(true);
 
 				dispose();
-			
+
 			}
 		});
-		btnExcluirV.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnExcluirV.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnExcluirV.setBackground(new Color(255, 182, 193));
-		btnExcluirV.setBounds(850, 665, 145, 53);
+		btnExcluirV.setBounds(850, 665, 151, 53);
 		contentPane.add(btnExcluirV);
 
 		JButton btnAddVeiculo = new JButton("Adicionar");

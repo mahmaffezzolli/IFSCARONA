@@ -71,12 +71,12 @@ public class TelaExcluirVeiculo extends JFrame {
 
 		JLabel lblTexto = new JLabel("Tem certeza que deseja");
 		lblTexto.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblTexto.setBounds(128, 48, 198, 18);
+		lblTexto.setBounds(128, 48, 241, 18);
 		contentPane.add(lblTexto);
 
 		JLabel lblTexto2 = new JLabel("excluir o veículo?");
 		lblTexto2.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblTexto2.setBounds(157, 77, 154, 14);
+		lblTexto2.setBounds(157, 77, 182, 14);
 		contentPane.add(lblTexto2);
 
 		JButton btnSim = new JButton("SIM");

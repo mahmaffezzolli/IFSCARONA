@@ -29,7 +29,7 @@ public class CadastroInexistente extends JFrame {
 					CadastroInexistente frame = new CadastroInexistente();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -45,11 +45,11 @@ public class CadastroInexistente extends JFrame {
 	 */
 	public CadastroInexistente() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -58,28 +58,28 @@ public class CadastroInexistente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CadastroInexistente.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 43, 48, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblCadastroInexistente = new JLabel("Cadastro Inexistente!");
 		lblCadastroInexistente.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblCadastroInexistente.setBounds(153, 60, 182, 14);
+		lblCadastroInexistente.setBounds(153, 60, 218, 14);
 		contentPane.add(lblCadastroInexistente);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 31);
+		btnNewButton.setBounds(208, 120, 84, 31);
 		contentPane.add(btnNewButton);
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 }

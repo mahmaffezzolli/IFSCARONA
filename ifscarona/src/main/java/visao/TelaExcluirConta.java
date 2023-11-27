@@ -35,7 +35,7 @@ public class TelaExcluirConta extends JFrame {
 					TelaExcluirConta frame = new TelaExcluirConta();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -51,11 +51,11 @@ public class TelaExcluirConta extends JFrame {
 	 */
 	public TelaExcluirConta() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -67,12 +67,12 @@ public class TelaExcluirConta extends JFrame {
 
 		JLabel lblTexto = new JLabel("Tem certeza que deseja");
 		lblTexto.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblTexto.setBounds(128, 48, 197, 18);
+		lblTexto.setBounds(128, 48, 227, 18);
 		contentPane.add(lblTexto);
 
 		JLabel lblTexto2 = new JLabel("excluir a conta?");
 		lblTexto2.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblTexto2.setBounds(157, 77, 139, 14);
+		lblTexto2.setBounds(157, 77, 166, 14);
 		contentPane.add(lblTexto2);
 
 		JButton btnSim = new JButton("SIM");
@@ -83,23 +83,20 @@ public class TelaExcluirConta extends JFrame {
 
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
 
-				
 				Inicio inicio = new Inicio();
 				inicio.setVisible(true);
-				
+
 				dispose();
 
-				
 			}
 		});
-		
+
 		btnSim.setForeground(new Color(255, 255, 255));
 		btnSim.setBorder(null);
 		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		btnSim.setBackground(new Color(174, 57, 57));
 		btnSim.setBounds(108, 127, 84, 31);
 		contentPane.add(btnSim);
-
 
 		JButton btnNo = new JButton("NÃO");
 		btnNo.addActionListener(new ActionListener() {

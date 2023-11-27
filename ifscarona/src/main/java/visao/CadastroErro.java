@@ -60,19 +60,19 @@ public class CadastroErro extends JFrame {
 
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CadastroErro.class.getResource("/assets/alerta.png")));
-		lblAviso.setBounds(45, 45, 48, 48);
+		lblAviso.setBounds(64, 41, 48, 48);
 		contentPane.add(lblAviso);
 
 		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar pessoa!");
 		lblCadastroErro.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblCadastroErro.setBounds(135, 55, 225, 18);
+		lblCadastroErro.setBounds(135, 55, 282, 18);
 		contentPane.add(lblCadastroErro);
 
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setBorder(null);
 		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnNewButton.setBackground(new Color(255, 251, 233));
-		btnNewButton.setBounds(177, 123, 84, 31);
+		btnNewButton.setBounds(200, 117, 84, 31);
 		contentPane.add(btnNewButton);
 
 		btnNewButton.addActionListener(new ActionListener() {

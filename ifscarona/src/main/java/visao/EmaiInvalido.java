@@ -29,7 +29,7 @@ public class EmaiInvalido extends JFrame {
 					EmaiInvalido frame = new EmaiInvalido();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 
@@ -45,11 +45,11 @@ public class EmaiInvalido extends JFrame {
 	 */
 	public EmaiInvalido() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -58,29 +58,29 @@ public class EmaiInvalido extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(EmaiInvalido.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblEmailInvalido = new JLabel("Email Inválido!");
 		lblEmailInvalido.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblEmailInvalido.setBounds(154, 61, 129, 18);
+		lblEmailInvalido.setBounds(154, 61, 211, 18);
 		contentPane.add(lblEmailInvalido);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
 		btnOk.setBounds(177, 123, 84, 31);
 		contentPane.add(btnOk);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-	                dispose();
-	            }
-	        });
+				dispose();
+			}
+		});
 	}
 
 }

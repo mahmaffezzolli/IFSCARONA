@@ -92,7 +92,7 @@ public class Login extends JFrame {
 		contentPane.add(lblFundoClaro);
 
 		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
+		lblEmail.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblEmail.setBounds(900, 360, 191, 15);
 		contentPane.add(lblEmail);
 
@@ -123,7 +123,7 @@ public class Login extends JFrame {
 		});
 
 		JButton btnLogar = new JButton("LOGAR");
-		btnLogar.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.addActionListener(new ActionListener() {
@@ -175,7 +175,7 @@ public class Login extends JFrame {
 		contentPane.add(btnLogar);
 
 		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
+		lblSenha.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblSenha.setBounds(900, 530, 99, 15);
 		contentPane.add(lblSenha);
 
@@ -194,7 +194,7 @@ public class Login extends JFrame {
 
 		JLabel lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblLinkAqui.setBounds(1084, 797, 77, 14);
+		lblLinkAqui.setBounds(1095, 798, 77, 14);
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(lblLinkAqui);
@@ -224,8 +224,8 @@ public class Login extends JFrame {
 		});
 
 		progressBar = new JProgressBar();
-		progressBar.setForeground(new Color(149, 249, 141));
-		progressBar.setBackground(new Color(241, 233, 197));
+		progressBar.setForeground(new Color(78, 154, 6));
+		progressBar.setBackground(new Color(215, 235, 175));
 		progressBar.setIndeterminate(true);
 		progressBar.setBounds(952, 700, 220, 20);
 		contentPane.add(progressBar);

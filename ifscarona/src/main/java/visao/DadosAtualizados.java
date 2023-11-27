@@ -29,7 +29,7 @@ public class DadosAtualizados extends JFrame {
 					DadosAtualizados frame = new DadosAtualizados();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					//Centralizar
+					// Centralizar
 					frame.setBounds(40, 40, 451, 234);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -44,11 +44,11 @@ public class DadosAtualizados extends JFrame {
 	 */
 	public DadosAtualizados() {
 		setResizable(false);
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 234);
 		contentPane = new JPanel();
@@ -57,33 +57,33 @@ public class DadosAtualizados extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAviso = new JLabel("");
 		lblAviso.setIcon(new ImageIcon(CampoNaoPreenchido.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(45, 49, 54, 48);
 		contentPane.add(lblAviso);
-		
+
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Dados Pessoais atualizados");
 		lblDadosPessoaisAtualizados.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblDadosPessoaisAtualizados.setBounds(125, 57, 241, 18);
+		lblDadosPessoaisAtualizados.setBounds(125, 57, 270, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
-		btnOk.setBounds(177, 123, 84, 31);
+		btnOk.setBounds(207, 119, 84, 31);
 		contentPane.add(btnOk);
-		
+
 		JLabel lblSucesso = new JLabel("com sucesso!");
 		lblSucesso.setFont(new Font("Nirmala UI", Font.BOLD, 17));
-		lblSucesso.setBounds(164, 83, 136, 14);
+		lblSucesso.setBounds(186, 83, 136, 14);
 		contentPane.add(lblSucesso);
-		 btnOk.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                // Fecha a janela atual
-	                dispose();
-	            }
-	        });
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Fecha a janela atual
+				dispose();
+			}
+		});
 	}
 }
