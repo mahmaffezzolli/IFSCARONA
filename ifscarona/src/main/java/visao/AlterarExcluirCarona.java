@@ -8,13 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Time;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,7 +22,6 @@ import javax.swing.border.LineBorder;
 import controle.CaronaDAO;
 import modelo.Carona;
 import modelo.Sessao;
-
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePicker;
@@ -123,12 +119,12 @@ public class AlterarExcluirCarona extends JFrame {
 		txtDestino.setColumns(10);
 
 		JLabel lblOrigem = new JLabel("Origem:");
-		lblOrigem.setBounds(920, 300, 90, 35);
+		lblOrigem.setBounds(865, 300, 145, 35);
 		lblOrigem.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblOrigem);
 
 		JLabel lblDestino = new JLabel("Destino:");
-		lblDestino.setBounds(920, 380, 95, 35);
+		lblDestino.setBounds(865, 380, 150, 35);
 		lblDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblDestino);
 
@@ -138,11 +134,10 @@ public class AlterarExcluirCarona extends JFrame {
 		contentPane.add(timePicker);
 
 		JLabel lblHorário = new JLabel("Horário:");
-		lblHorário.setBounds(920, 460, 95, 35);
+		lblHorário.setBounds(865, 460, 150, 35);
 		lblHorário.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblHorário);
 
-		
 		DatePickerSettings dateSettings = new DatePickerSettings();
 		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
@@ -161,7 +156,7 @@ public class AlterarExcluirCarona extends JFrame {
 		contentPane.add(txtOrigem);
 
 		JLabel lblData = new JLabel("Data:");
-		lblData.setBounds(950, 540, 59, 35);
+		lblData.setBounds(865, 540, 144, 35);
 		lblData.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblData);
 
@@ -194,7 +189,7 @@ public class AlterarExcluirCarona extends JFrame {
 
 		btnSalvar.setBackground(new Color(192, 192, 192));
 		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnSalvar.setBounds(960, 680, 145, 55);
+		btnSalvar.setBounds(1006, 668, 145, 55);
 		contentPane.add(btnSalvar);
 
 		JButton btnExcluir = new JButton("Excluir");
@@ -219,7 +214,7 @@ public class AlterarExcluirCarona extends JFrame {
 
 		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnExcluir.setBackground(new Color(255, 182, 193));
-		btnExcluir.setBounds(1150, 680, 145, 55);
+		btnExcluir.setBounds(1185, 668, 145, 55);
 		contentPane.add(btnExcluir);
 
 		Carona carona = cDAO.pegaCarona(idCarona);
@@ -251,18 +246,19 @@ public class AlterarExcluirCarona extends JFrame {
 			Carona carona = cDAO.pegaCarona(idCarona);
 
 			if (carona != null) {
-			    txtDestino.setText(carona.getTrajeto().getDestino());
-			    txtOrigem.setText(carona.getTrajeto().getOrigem());
+				txtDestino.setText(carona.getTrajeto().getDestino());
+				txtOrigem.setText(carona.getTrajeto().getOrigem());
 
-			    String dateStringFromDatabase = carona.getData().toString();
-			    System.out.println("Date from Database: " + dateStringFromDatabase);
+				String dateStringFromDatabase = carona.getData().toString();
+				System.out.println("Date from Database: " + dateStringFromDatabase);
 
-			    LocalDate parsedDate = LocalDate.parse(dateStringFromDatabase, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-			    
-			    System.out.println("Parsed Date: " + parsedDate);
+				LocalDate parsedDate = LocalDate.parse(dateStringFromDatabase,
+						DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 
-			    datePicker.setDate(parsedDate);
-			    timePicker.setTime(carona.getHorario().toLocalTime());
+				System.out.println("Parsed Date: " + parsedDate);
+
+				datePicker.setDate(parsedDate);
+				timePicker.setTime(carona.getHorario().toLocalTime());
 			}
 
 			boolean success = cDAO.alterarCarona(carona);
