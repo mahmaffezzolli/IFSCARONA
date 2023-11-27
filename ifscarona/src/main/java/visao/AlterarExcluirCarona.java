@@ -8,8 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.ImageIcon;
@@ -246,42 +249,41 @@ public class AlterarExcluirCarona extends JFrame {
 			Carona carona = cDAO.pegaCarona(idCarona);
 
 			if (carona != null) {
-				txtDestino.setText(carona.getTrajeto().getDestino());
-				txtOrigem.setText(carona.getTrajeto().getOrigem());
+				
+				carona.getTrajeto().setDestino(txtDestino.getText());
+				carona.getTrajeto().setOrigem(txtOrigem.getText());
 
-				String dateStringFromDatabase = carona.getData().toString();
-				System.out.println("Date from Database: " + dateStringFromDatabase);
+				LocalDate modifiedDate = datePicker.getDate();
+				LocalTime modifiedTime = timePicker.getTime();
+				LocalDateTime modifiedDateTime = LocalDateTime.of(modifiedDate, modifiedTime);
 
-				LocalDate parsedDate = LocalDate.parse(dateStringFromDatabase,
-						DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+				carona.setData(modifiedDate);
+				carona.setHorario(Time.valueOf(modifiedDateTime.toLocalTime()));
 
-				System.out.println("Parsed Date: " + parsedDate);
+				boolean success = cDAO.alterarCarona(carona);
 
-				datePicker.setDate(parsedDate);
-				timePicker.setTime(carona.getHorario().toLocalTime());
+				if (success) {
+					DadosAtualizados dadosAtualizados = new DadosAtualizados();
+					dadosAtualizados.setVisible(true);
+				} else {
+					ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
+					erroAoAtualizar.setVisible(true);
+				}
+
+				disableEditing();
 			}
-
-			boolean success = cDAO.alterarCarona(carona);
-
-			if (success) {
-				DadosAtualizados dadosAtualizados = new DadosAtualizados();
-				dadosAtualizados.setVisible(true);
-			} else {
-				ErroAoAtualizar erroAoAtualizar = new ErroAoAtualizar();
-
-				erroAoAtualizar.setVisible(true);
-			}
-
-			txtDestino.setEnabled(false);
-			txtDestino.setEditable(false);
-			txtOrigem.setEnabled(false);
-			txtOrigem.setEditable(false);
-			datePicker.setEnabled(false);
-			timePicker.setEnabled(false);
-
-			btnSalvar.setText("Editar");
 		}
+	}
 
+	private void disableEditing() {
+		txtDestino.setEnabled(false);
+		txtDestino.setEditable(false);
+		txtOrigem.setEnabled(false);
+		txtOrigem.setEditable(false);
+		datePicker.setEnabled(false);
+		timePicker.setEnabled(false);
+
+		btnSalvar.setText("Editar");
 	}
 
 	private Locale determineLocale(String language, String country) {

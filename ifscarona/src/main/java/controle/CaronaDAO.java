@@ -149,11 +149,11 @@ public class CaronaDAO implements ICaronaDAO {
 				ps.executeUpdate();
 
 				try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-					if (generatedKeys.next()) {
-						return generatedKeys.getLong(1);
-					} else {
-						throw new SQLException("Creating user failed, no ID obtained.");
-					}
+				    if (generatedKeys.next()) {
+				        return generatedKeys.getLong(1);
+				    } else {
+				        throw new SQLException("Creating carona failed, no ID obtained.");
+				    }
 				}
 
 			} catch (SQLException e) {
@@ -427,13 +427,18 @@ public class CaronaDAO implements ICaronaDAO {
 
 		List<Carona> caronas = new ArrayList<>();
 
-		String query = "SELECT caronas.id_carona as id_carona, caronas.horario as horario, mo.cpf as cpf_motorista, pa.cpf as cpf_passageiro, mo.nome AS nome_motorista, "
-				+ "veiculos.id_veiculo as id_veiculo, veiculos.placa as placa, trajetos.id_trajeto as id_trajeto, trajetos.origem as origem, trajetos.destino as destino, "
-				+ "caronas.qnt_passageiros as qnt_passageiros, DATE_FORMAT(caronas.data, '%d/%m/%Y') as data "
-				+ "FROM caronas " + "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
+		String query = "SELECT caronas.id_carona as id_carona, caronas.horario as horario, "
+				+ " mo.cpf as cpf_motorista, mo.nome AS nome_motorista, "
+				+ "pa.cpf as cpf_passageiro, pa.nome AS nome_passageiro, "
+				+ "veiculos.id_veiculo as id_veiculo, veiculos.placa as placa, "
+				+ "trajetos.id_trajeto as id_trajeto, trajetos.origem as origem, "
+				+ "trajetos.destino as destino, caronas.qnt_passageiros as qnt_passageiros, "
+				+ "DATE_FORMAT(caronas.data, '%d/%m/%Y') as data " 
+				+ "FROM caronas "
+				+ "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
 				+ "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista "
-				+ "JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro "
-				+ "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo ";
+				+ "LEFT JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro "
+				+ "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo;";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

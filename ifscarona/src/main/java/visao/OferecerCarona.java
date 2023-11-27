@@ -92,11 +92,11 @@ public class OferecerCarona extends JFrame {
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
 		dateSettings.setLocale(determineLocale("pt", "BR"));
 		datePicker = new DatePicker(dateSettings);
-		datePicker.setBounds(1400, 600, 220, 50);
+		datePicker.setBounds(1400, 600, 220, 30);
 		contentPane.add(datePicker);
 
 		timePicker = new TimePicker();
-		timePicker.setBounds(1400, 700, 220, 50);
+		timePicker.setBounds(1400, 700, 220, 30);
 		contentPane.add(timePicker);
 
 		JSeparator separator_1_1 = new JSeparator();
@@ -142,7 +142,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_3.setBounds(744, 421, 87, 58);
+		lblNewLabel_3.setBounds(744, 421, 50, 50);
 		contentPane.add(lblNewLabel_3);
 
 		btnHome.setBorder(null);
@@ -154,7 +154,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_2.setBounds(744, 639, 87, 71);
+		lblNewLabel_2.setBounds(744, 639, 50, 50);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -197,27 +197,27 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Principal.class.getResource("/assets/car.png")));
-		lblCarro.setBounds(81, 304, 385, 151);
+		lblCarro.setBounds(81, 304, 184, 151);
 		contentPane.add(lblCarro);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
-		lblLogo.setBounds(-5, 426, 590, 172);
+		lblLogo.setBounds(-5, 426, 395, 172);
 		contentPane.add(lblLogo);
 
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
-		lblFundo.setBounds(-5, -239, 468, 1650);
+		lblFundo.setBounds(-5, -239, 407, 1650);
 		contentPane.add(lblFundo);
 
 		JLabel lblFundoFiltro1 = new JLabel("");
 		lblFundoFiltro1.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
-		lblFundoFiltro1.setBounds(709, 357, 541, 448);
+		lblFundoFiltro1.setBounds(709, 357, 327, 448);
 		contentPane.add(lblFundoFiltro1);
 
 		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(661, 250, 496, 107);
+		lblNewLabel_1.setBounds(695, 273, 375, 60);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
@@ -257,7 +257,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
-		lblNewLabel_4.setBounds(1344, 333, 392, 472);
+		lblNewLabel_4.setBounds(1344, 333, 327, 472);
 		contentPane.add(lblNewLabel_4);
 
 	}
