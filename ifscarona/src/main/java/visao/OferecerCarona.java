@@ -10,7 +10,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Locale;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -22,18 +24,15 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import org.jdatepicker.JDateComponentFactory;
-import org.jdatepicker.JDatePicker;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.SqlDateModel;
-
 import controle.CaronaDAO;
 import controle.TrajetoDAO;
 import modelo.Carona;
 import modelo.Sessao;
 import modelo.Trajeto;
-import com.toedter.calendar.JCalendar;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.TimePicker;
 
 public class OferecerCarona extends JFrame {
 
@@ -44,12 +43,11 @@ public class OferecerCarona extends JFrame {
 	private JRadioButton rdbtnGaspar;
 	private JRadioButton rdbtnBlumenau;
 	private JRadioButton rdbtnIfsc;
+	private DatePicker datePicker;
+	private TimePicker timePicker;
 
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
-	private JDatePicker datePicker;
-
-	
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -90,11 +88,19 @@ public class OferecerCarona extends JFrame {
 
 			}
 		});
-		
-		JCalendar calendar = new JCalendar();
-		calendar.setBounds(1400, 594, 205, 153);
-		contentPane.add(calendar);
-	
+
+		DatePickerSettings dateSettings = new DatePickerSettings();
+		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
+		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
+		dateSettings.setLocale(determineLocale("pt", "BR"));
+		datePicker = new DatePicker(dateSettings);
+		datePicker.setBounds(1400, 600, 220, 50);
+		contentPane.add(datePicker);
+
+		timePicker = new TimePicker();
+		timePicker.setBounds(1400, 700, 220, 50);
+		contentPane.add(timePicker);
+
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
 		separator_1_1.setBounds(1364, 571, 295, 12);
@@ -306,8 +312,12 @@ public class OferecerCarona extends JFrame {
 		String qntLugar;
 		qntLugar = (String) cmbLugar.getSelectedItem();
 
-		c.setData(null);
-		c.setHorario(null);
+		LocalDate localDate = datePicker.getDate();
+
+		Time localTime = Time.valueOf(timePicker.getTime());
+
+		c.setData(localDate);
+		c.setHorario(localTime);
 		c.setQntPassageiro(Integer.valueOf(qntLugar));
 		c.setMotorista(Sessao.getPessoaLogada());
 		c.setVeiculo(Sessao.getPessoaLogada().getVeiculo());
@@ -332,5 +342,9 @@ public class OferecerCarona extends JFrame {
 	private void showCampoNaoPreenchido() {
 		CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
 		campoNaoPreenchido.setVisible(true);
+	}
+
+	private Locale determineLocale(String language, String country) {
+		return new Locale(language, country);
 	}
 }

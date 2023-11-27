@@ -16,6 +16,7 @@ import controle.CaronaDAO;
 import controle.VeiculoDAO;
 import modelo.Carona;
 import modelo.Carro;
+import modelo.Pessoa;
 import modelo.Sessao;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -26,7 +27,6 @@ public class TelaExcluirCarona extends JFrame {
 
 	private JPanel contentPane;
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
-	private Long idCarona;
 
 	/**
 	 * Launch the application.
@@ -91,9 +91,10 @@ public class TelaExcluirCarona extends JFrame {
 
 				ListagemCaronas listagem = new ListagemCaronas();
 				listagem.setVisible(true);
-				
+
 				dispose();
 			}
+
 		});
 
 		btnSim.setForeground(new Color(255, 255, 255));

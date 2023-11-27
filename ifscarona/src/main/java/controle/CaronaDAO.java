@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Types;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -345,6 +346,7 @@ public class CaronaDAO implements ICaronaDAO {
 					carona.setIdCarona(idCarona);
 					carona.setMotorista(motorista);
 					carona.setHorario(horario);
+					carona.setData(data);
 					carona.setPassageiro(passageiro);
 					carona.setQntPassageiro(passageiros);
 					carona.setTrajeto(trajeto);
@@ -406,7 +408,7 @@ public class CaronaDAO implements ICaronaDAO {
 				Veiculo veiculo = vDAO.pegaVeiculo(rs.getLong("id_veiculo"));
 				carona.setVeiculo(veiculo);
 
-				carona.setData(null);
+				carona.setData(rs.getDate("data").toLocalDate());
 				carona.setHorario(rs.getTime("horario"));
 				carona.setQntPassageiro(rs.getInt("qnt_passageiros"));
 
@@ -427,11 +429,12 @@ public class CaronaDAO implements ICaronaDAO {
 
 		List<Carona> caronas = new ArrayList<>();
 
-		String query = "SELECT caronas.id_carona as id_carona, caronas.horario as horario, mo.cpf as cpf_motorista, mo.nome AS nome_motorista, "
+		String query = "SELECT caronas.id_carona as id_carona, caronas.horario as horario, mo.cpf as cpf_motorista, pa.cpf as cpf_passageiro, mo.nome AS nome_motorista, "
 				+ "veiculos.id_veiculo as id_veiculo, veiculos.placa as placa, trajetos.id_trajeto as id_trajeto, trajetos.origem as origem, trajetos.destino as destino, "
-				+ "caronas.qnt_passageiros as qnt_passageiros " + "FROM caronas "
-				+ "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
+				+ "caronas.qnt_passageiros as qnt_passageiros, DATE_FORMAT(caronas.data, '%d/%m/%Y') as data "
+				+ "FROM caronas " + "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
 				+ "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista "
+				+ "JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro "
 				+ "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo ";
 
 		try {
@@ -448,6 +451,10 @@ public class CaronaDAO implements ICaronaDAO {
 				motorista.setNome(rs.getString("nome_motorista"));
 				carona.setMotorista(motorista);
 
+				Pessoa passageiro = new Pessoa();
+				passageiro.setCpf(rs.getString("cpf_passageiro"));
+				carona.setPassageiro(passageiro);
+
 				Trajeto trajeto = new Trajeto();
 				trajeto.setIdTrajeto(rs.getLong("id_trajeto"));
 				trajeto.setDestino(rs.getString("destino"));
@@ -460,6 +467,10 @@ public class CaronaDAO implements ICaronaDAO {
 				carona.setVeiculo(carro);
 
 				carona.setHorario(rs.getTime("horario"));
+				String dateStr = rs.getString("data");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				LocalDate date = LocalDate.parse(dateStr, formatter);
+				carona.setData(date);
 
 				caronas.add(carona);
 			}
@@ -470,6 +481,27 @@ public class CaronaDAO implements ICaronaDAO {
 		}
 
 		return caronas;
+	}
+
+	public boolean removerPassageiroDaCarona(long idCarona) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "UPDATE caronas SET cpf_passageiro = NULL WHERE id_carona = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, idCarona);
+
+			int rowsAffected = ps.executeUpdate();
+
+			return rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			c.fecharConexao();
+		}
 	}
 
 }

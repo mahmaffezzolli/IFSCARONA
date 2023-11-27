@@ -8,8 +8,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.util.Locale;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +19,10 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.TimePicker;
+
 import controle.TrajetoDAO;
 import modelo.Trajeto;
 
@@ -27,7 +30,6 @@ import javax.swing.JComboBox;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 
 public class RequisitarCarona extends JFrame {
@@ -37,9 +39,13 @@ public class RequisitarCarona extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<String> cmbGaspar;
 	private JComboBox<String> cmbBlumenau;
+	private JComboBox<String> cmbLugar;
 	private JRadioButton rdbtnIfsc;
 	private JRadioButton rdbtnGaspar;
 	private JRadioButton rdbtnBlumenau;
+	private DatePicker datePicker;
+	private TimePicker timePicker;
+
 	private TrajetoDAO tDAO = TrajetoDAO.getInstancia();
 
 	/**
@@ -62,11 +68,11 @@ public class RequisitarCarona extends JFrame {
 	 * Create the frame.
 	 */
 	public RequisitarCarona() {
-		
+
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
-		
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screen.width, screen.height - 30);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -87,43 +93,56 @@ public class RequisitarCarona extends JFrame {
 
 			}
 		});
-		
+
+		DatePickerSettings dateSettings = new DatePickerSettings();
+		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
+		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
+		dateSettings.setLocale(determineLocale("pt", "BR"));
+		datePicker = new DatePicker(dateSettings);
+		datePicker.getComponentDateTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		datePicker.setBounds(1463, 565, 220, 30);
+		contentPane.add(datePicker);
+
+		timePicker = new TimePicker();
+		timePicker.getComponentTimeTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		timePicker.setBounds(1463, 665, 220, 30);
+		contentPane.add(timePicker);
 
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
 		separator_1_1.setBounds(1425, 511, 283, 23);
 		contentPane.add(separator_1_1);
-		
+
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(new Color(0, 0, 0));
-		separator_1.setBounds(776, 511, 283, 23);
+		separator_1.setBounds(765, 525, 283, 23);
 		contentPane.add(separator_1);
 
-		JRadioButton rdbtnIfsc = new JRadioButton("IFSC");
-		rdbtnIfsc.setBounds(837, 453, 129, 23);
+		rdbtnIfsc = new JRadioButton("IFSC");
+		rdbtnIfsc.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		rdbtnIfsc.setBounds(860, 450, 130, 25);
 		contentPane.add(rdbtnIfsc);
-		
-		JRadioButton rdbtnGaspar = new JRadioButton("Gaspar");
-		rdbtnGaspar.setBounds(837, 414, 129, 23);
+
+		rdbtnGaspar = new JRadioButton("Gaspar");
+		rdbtnGaspar.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		rdbtnGaspar.setBounds(860, 400, 130, 25);
 		contentPane.add(rdbtnGaspar);
-		
-		JRadioButton rdbtnBlumenau = new JRadioButton("Blumenau");
-		rdbtnBlumenau.setBounds(837, 377, 129, 23);
+
+		rdbtnBlumenau = new JRadioButton("Blumenau");
+		rdbtnBlumenau.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		rdbtnBlumenau.setBounds(860, 350, 130, 25);
 		contentPane.add(rdbtnBlumenau);
-
-
-	        
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_3.setBounds(776, 378, 87, 58);
+		lblNewLabel_3.setBounds(775, 400, 50, 50);
 		contentPane.add(lblNewLabel_3);
 
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(rdbtnGaspar);
 		radioGroup.add(rdbtnBlumenau);
 		radioGroup.add(rdbtnIfsc);
-		
+
 		btnHome.setBorder(null);
 		btnHome.setForeground(new Color(0, 0, 0));
 		btnHome.setBackground(new Color(244, 234, 214));
@@ -133,30 +152,33 @@ public class RequisitarCarona extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_2.setBounds(776, 565, 87, 71);
+		lblNewLabel_2.setBounds(775, 585, 50, 50);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/MODELO.png")));
-		lblNewLabel.setBounds(1437, 339, 67, 65);
+		lblNewLabel.setBounds(1437, 385, 62, 62);
 		contentPane.add(lblNewLabel);
 
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		comboBox_2.setBounds(1528, 361, 169, 22);
-		comboBox_2.setBackground(new Color(255, 251, 233));
-		contentPane.add(comboBox_2);
+		cmbLugar = new JComboBox<>();
+		cmbLugar.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		cmbLugar.setModel(new DefaultComboBoxModel<>(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
+		cmbLugar.setBounds(1514, 400, 170, 35);
+		cmbLugar.setBackground(new Color(255, 251, 233));
+		contentPane.add(cmbLugar);
 
 		cmbGaspar = new JComboBox<>();
+		cmbGaspar.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		cmbGaspar.setModel(new DefaultComboBoxModel<>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
 				"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central", "Centro",
 				"Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim", "Lagoa",
 				"Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
-		cmbGaspar.setBounds(849, 631, 169, 22);
+		cmbGaspar.setBounds(850, 630, 170, 25);
 		cmbGaspar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbGaspar);
 
 		cmbBlumenau = new JComboBox<>();
+		cmbBlumenau.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
 		cmbBlumenau.setModel(new DefaultComboBoxModel<>(new String[] { "BLUMENAU", "Badenfurt", "Fidélis",
 				"Itoupava Central", "Itoupavazinha", "Salto do Norte", "Testo Salto", "Vila Itoupava", "Fortaleza",
 				"Fortaleza Alta", "Itoupava Norte", "Nova Esperança", "Ponta Aguda", "Tribess", "Vorstadt", "Da Glória",
@@ -164,7 +186,7 @@ public class RequisitarCarona extends JFrame {
 				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
 				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
 				"Vila Nova" }));
-		cmbBlumenau.setBounds(849, 565, 169, 22);
+		cmbBlumenau.setBounds(850, 570, 170, 25);
 		cmbBlumenau.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbBlumenau);
 
@@ -223,7 +245,9 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Requisitar");
-		btnNewButton.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-viajar-de-carona-50.png")));
+		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 16));
+		btnNewButton
+				.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/icons8-viajar-de-carona-50.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -240,7 +264,7 @@ public class RequisitarCarona extends JFrame {
 			}
 		});
 		btnNewButton.setBackground(new Color(251, 251, 233));
-		btnNewButton.setBounds(1081, 809, 189, 54);
+		btnNewButton.setBounds(1081, 809, 189, 60);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Requisitar Carona");
@@ -249,25 +273,57 @@ public class RequisitarCarona extends JFrame {
 		contentPane.add(lblNewLabel_1_2);
 	}
 
-	public void definirTrajeto() {
-
+	public Trajeto definirTrajeto() {
 		Trajeto t = new Trajeto();
-		String bairro;
-
-		t.setOrigem("IFSC");
 
 		if (rdbtnGaspar.isSelected()) {
+			String bairro = (String) cmbGaspar.getSelectedItem();
 
-			bairro = (String) cmbGaspar.getSelectedItem();
-			t.setDestino("Gaspar, " + bairro);
+			if (bairroSelecionado(bairro, cmbGaspar)) {
+				t.setDestino("Gaspar, " + bairro);
+				t.setOrigem("IFSC");
+
+			} else {
+				showCampoNaoPreenchido();
+				return null;
+			}
 
 		} else if (rdbtnBlumenau.isSelected()) {
+			String bairro = (String) cmbBlumenau.getSelectedItem();
 
-			bairro = (String) cmbBlumenau.getSelectedItem();
-			t.setDestino("Blumenau, " + bairro);
+			if (bairroSelecionado(bairro, cmbBlumenau)) {
+				t.setDestino("Blumenau, " + bairro);
+				t.setOrigem("IFSC");
+
+			} else {
+				showCampoNaoPreenchido();
+				return null;
+			}
+
+		} else if (rdbtnIfsc.isSelected()) {
+			t.setDestino("IFSC");
+
+		} else {
+			showCampoNaoPreenchido();
+			return null;
 		}
 
 		Long success = tDAO.cadastrarTrajeto(t);
+		t.setIdTrajeto(success);
 
+		return t;
+	}
+
+	private boolean bairroSelecionado(String bairro, JComboBox<String> comboBox) {
+		return comboBox.getSelectedIndex() > 0 && bairro != null && !bairro.isEmpty();
+	}
+
+	private void showCampoNaoPreenchido() {
+		CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+		campoNaoPreenchido.setVisible(true);
+	}
+
+	private Locale determineLocale(String language, String country) {
+		return new Locale(language, country);
 	}
 }

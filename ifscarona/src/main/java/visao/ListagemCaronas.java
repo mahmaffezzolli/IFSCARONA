@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -24,9 +25,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import controle.CaronaDAO;
+import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Carona;
 import modelo.Carro;
+import modelo.Pessoa;
 import modelo.Sessao;
 import javax.swing.JTable;
 
@@ -120,11 +123,31 @@ public class ListagemCaronas extends JFrame {
 				if (selectedRowIndex != -1) {
 					Long idCarona = Long.parseLong(table.getValueAt(selectedRowIndex, 0).toString());
 
-					try {
-						alterarCarona(idCarona);
-					} catch (ParseException e1) {
+					String cpfMotorista = cDAO.pegaCarona(idCarona).getMotorista().getCpf();
 
-						e1.printStackTrace();
+					if (Sessao.getPessoaLogada().getCpf().equals(cpfMotorista)) {
+
+						btnSelecionar.setEnabled(true);
+
+						AlterarExcluirCarona telaEditar = null;
+						try {
+							telaEditar = new AlterarExcluirCarona(idCarona);
+						} catch (ParseException e1) {
+							e1.printStackTrace();
+						}
+						telaEditar.setVisible(true);
+
+						dispose();
+					}else {
+						
+						String cpfPassageiro = Sessao.getPessoaLogada().getCpf();
+						Carona carona = cDAO.pegaCarona(idCarona);
+						Pessoa passageiro = PessoaDAO.getInstancia().pegaPessoa(cpfPassageiro);
+						carona.setPassageiro(passageiro);
+						
+						cDAO.alterarCarona(carona);
+						
+						
 					}
 
 				}
@@ -140,12 +163,18 @@ public class ListagemCaronas extends JFrame {
 		tableModel = new DefaultTableModel();
 		tableModel.addColumn("ID Carona");
 		tableModel.addColumn("Nome do Motorista");
+		tableModel.addColumn("Data");
 		tableModel.addColumn("Hora de Saída");
 		tableModel.addColumn("Veículo");
 		tableModel.addColumn("Origem");
 		tableModel.addColumn("Destino");
 
 		table = new JTable(tableModel) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int cell) {
 				return false;
@@ -175,28 +204,21 @@ public class ListagemCaronas extends JFrame {
 				String destino = carona.getTrajeto().getDestino();
 
 				Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
+				
+				DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
-				Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), carona.getHorario(),
-						carro.getPlaca(), origem, destino };
+				String data = carona.getData().format(dateFormatter);
+				String horario = carona.getHorario().toLocalTime().format(timeFormatter);
+
+				Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), data, horario,
+				        carro.getPlaca(), origem, destino };
 				tableModel.addRow(rowData);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-	}
-
-	public void alterarCarona(Long idCarona) throws ParseException {
-
-		String cpfMotorista = cDAO.pegaCarona(idCarona).getMotorista().getCpf();
-
-		if (Sessao.getPessoaLogada().getCpf().equals(cpfMotorista)) {
-
-			AlterarExcluirCarona telaEditar = new AlterarExcluirCarona(idCarona);
-			telaEditar.setVisible(true);
-
-			dispose();
-		}
 	}
 
 }

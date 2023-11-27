@@ -53,16 +53,12 @@ public class TelaExcluirVeiculo extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaExcluirVeiculo() {
-		
-		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
-		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
-		this.setIconImage(iconeTitulo);
-		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		java.net.URL caminhoIcone = getClass().getResource("/assets/janelaIcon.png");
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
 		this.setIconImage(iconeTitulo);
+
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 451, 234);

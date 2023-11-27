@@ -8,35 +8,41 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import javax.swing.text.MaskFormatter;
-
 import controle.CaronaDAO;
 import modelo.Carona;
-import modelo.Carro;
 import modelo.Sessao;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.TimePicker;
 
 public class AlterarExcluirCarona extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtDestino;
-	private JTextField txtHorario;
-	private JTextField txtData;
 	private JTextField txtOrigem;
 	private CaronaDAO cDAO = CaronaDAO.getInstancia();
 	private JTextField textField;
 	private JButton btnSalvar;
 	private Long idCarona;
 
-	
+	private DatePicker datePicker;
+	private TimePicker timePicker;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -117,41 +123,34 @@ public class AlterarExcluirCarona extends JFrame {
 		txtDestino.setColumns(10);
 
 		JLabel lblOrigem = new JLabel("Origem:");
-		lblOrigem.setBounds(919, 306, 89, 35);
+		lblOrigem.setBounds(920, 300, 90, 35);
 		lblOrigem.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblOrigem);
 
 		JLabel lblDestino = new JLabel("Destino:");
-		lblDestino.setBounds(919, 385, 101, 20);
+		lblDestino.setBounds(920, 380, 95, 35);
 		lblDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblDestino);
 
-		txtHorario = new JTextField();
-		txtHorario.setEnabled(false);
-		txtHorario.setEditable(false);
-		txtHorario.setBounds(1178, 368, 300, 40);
-		txtHorario.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
-		txtHorario.setColumns(10);
-		contentPane.add(txtHorario);
-
+		timePicker = new TimePicker();
+		timePicker.setEnabled(false); // Disable initially
+		timePicker.setBounds(1030, 460, 300, 40);
+		contentPane.add(timePicker);
 
 		JLabel lblHorário = new JLabel("Horário:");
-		lblHorário.setBounds(919, 465, 101, 20);
+		lblHorário.setBounds(920, 460, 95, 35);
 		lblHorário.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblHorário);
 
-		txtData = new JTextField();
-		/*****************/
-		MaskFormatter mascaraData = null;
-		mascaraData = new MaskFormatter("##/##/####");
-		txtData = new JFormattedTextField(mascaraData);
-		/*****************/
-		txtData.setEnabled(false);
-		txtData.setEditable(false);
-		txtData.setBounds(1030, 540, 300, 40);
-		txtData.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
-		txtData.setColumns(10);
-		contentPane.add(txtData);
+		
+		DatePickerSettings dateSettings = new DatePickerSettings();
+		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
+		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
+		dateSettings.setLocale(determineLocale("pt", "BR"));
+		datePicker = new DatePicker(dateSettings);
+		datePicker.setEnabled(false); // Disable initially
+		datePicker.setBounds(1030, 540, 300, 40);
+		contentPane.add(datePicker);
 
 		txtOrigem = new JTextField();
 		txtOrigem.setEnabled(false);
@@ -162,7 +161,7 @@ public class AlterarExcluirCarona extends JFrame {
 		contentPane.add(txtOrigem);
 
 		JLabel lblData = new JLabel("Data:");
-		lblData.setBounds(949, 545, 59, 20);
+		lblData.setBounds(950, 540, 59, 35);
 		lblData.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		contentPane.add(lblData);
 
@@ -195,7 +194,7 @@ public class AlterarExcluirCarona extends JFrame {
 
 		btnSalvar.setBackground(new Color(192, 192, 192));
 		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
-		btnSalvar.setBounds(965, 688, 145, 53);
+		btnSalvar.setBounds(960, 680, 145, 55);
 		contentPane.add(btnSalvar);
 
 		JButton btnExcluir = new JButton("Excluir");
@@ -220,20 +219,18 @@ public class AlterarExcluirCarona extends JFrame {
 
 		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnExcluir.setBackground(new Color(255, 182, 193));
-		btnExcluir.setBounds(1333, 626, 145, 53);
+		btnExcluir.setBounds(1150, 680, 145, 55);
 		contentPane.add(btnExcluir);
 
 		Carona carona = cDAO.pegaCarona(idCarona);
 
 		if (carona != null) {
 			txtDestino.setText(carona.getTrajeto().getDestino());
-			txtHorario.setText(String.valueOf(carona.getHorario()));
 			txtOrigem.setText(carona.getTrajeto().getOrigem());
-			txtData.setText(String.valueOf(carona.getData()));
+			datePicker.setDate(carona.getData());
+			timePicker.setTime(carona.getHorario().toLocalTime());
 
-
-
-		
+		}
 
 	}
 
@@ -242,18 +239,31 @@ public class AlterarExcluirCarona extends JFrame {
 
 			txtDestino.setEnabled(true);
 			txtDestino.setEditable(true);
-			txtHorario.setEnabled(true);
-			txtHorario.setEditable(true);
+
 			txtOrigem.setEnabled(true);
 			txtOrigem.setEditable(true);
-			txtData.setEnabled(true);
-			txtData.setEditable(true);
+			datePicker.setEnabled(true);
+			timePicker.setEnabled(true);
 
 			btnSalvar.setText("Salvar");
 
 		} else if (btnSalvar.getText().equals("Salvar")) {
-
 			Carona carona = cDAO.pegaCarona(idCarona);
+
+			if (carona != null) {
+			    txtDestino.setText(carona.getTrajeto().getDestino());
+			    txtOrigem.setText(carona.getTrajeto().getOrigem());
+
+			    String dateStringFromDatabase = carona.getData().toString();
+			    System.out.println("Date from Database: " + dateStringFromDatabase);
+
+			    LocalDate parsedDate = LocalDate.parse(dateStringFromDatabase, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+			    
+			    System.out.println("Parsed Date: " + parsedDate);
+
+			    datePicker.setDate(parsedDate);
+			    timePicker.setTime(carona.getHorario().toLocalTime());
+			}
 
 			boolean success = cDAO.alterarCarona(carona);
 
@@ -268,16 +278,18 @@ public class AlterarExcluirCarona extends JFrame {
 
 			txtDestino.setEnabled(false);
 			txtDestino.setEditable(false);
-			txtHorario.setEnabled(false);
-			txtHorario.setEditable(false);
 			txtOrigem.setEnabled(false);
 			txtOrigem.setEditable(false);
-			txtData.setEnabled(false);
-			txtData.setEditable(false);
+			datePicker.setEnabled(false);
+			timePicker.setEnabled(false);
 
 			btnSalvar.setText("Editar");
 		}
 
+	}
+
+	private Locale determineLocale(String language, String country) {
+		return new Locale(language, country);
 	}
 
 }
