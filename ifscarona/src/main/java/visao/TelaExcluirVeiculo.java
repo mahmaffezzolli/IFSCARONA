@@ -5,13 +5,11 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controle.CaronaDAO;
 import controle.VeiculoDAO;
 import modelo.Carona;

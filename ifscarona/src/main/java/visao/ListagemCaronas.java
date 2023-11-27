@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,7 +22,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-
 import controle.CaronaDAO;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;

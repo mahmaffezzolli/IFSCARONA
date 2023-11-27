@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Locale;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,7 +28,6 @@ import controle.TrajetoDAO;
 import modelo.Carona;
 import modelo.Sessao;
 import modelo.Trajeto;
-
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePicker;

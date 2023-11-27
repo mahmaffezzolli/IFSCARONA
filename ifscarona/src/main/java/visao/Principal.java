@@ -6,8 +6,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
-
-import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,12 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-
 import controle.VeiculoDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
 import modelo.Veiculo;
-
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;

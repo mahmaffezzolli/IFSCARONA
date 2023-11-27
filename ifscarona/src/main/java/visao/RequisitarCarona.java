@@ -9,7 +9,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,14 +17,11 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePicker;
-
 import controle.TrajetoDAO;
 import modelo.Trajeto;
-
 import javax.swing.JComboBox;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;

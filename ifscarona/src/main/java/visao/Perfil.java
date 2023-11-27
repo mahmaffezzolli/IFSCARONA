@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
-
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Carro;

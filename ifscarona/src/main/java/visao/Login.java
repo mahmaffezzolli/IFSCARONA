@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
-
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.swing.ImageIcon;
@@ -26,8 +25,6 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
-
-import controle.CaronaDAO;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Pessoa;
