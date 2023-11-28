@@ -122,7 +122,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 		} finally {
 
 			c.fecharConexao();
-		}
+		} 
 
 		return false;
 	}
