@@ -247,7 +247,7 @@ public class ListagemCaronas extends JFrame {
 		btnLimpar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				filterCaronas();
+				limpar();
 			}
 		});
 		contentPane.add(btnLimpar);

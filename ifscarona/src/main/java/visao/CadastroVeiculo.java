@@ -89,28 +89,28 @@ public class CadastroVeiculo extends JFrame {
 
 		JLabel lblIconeCPF = new JLabel("");
 		lblIconeCPF.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/cpf.png")));
-		lblIconeCPF.setBounds(930, 608, 59, 65);
+		lblIconeCPF.setBounds(929, 669, 59, 65);
 		contentPane.add(lblIconeCPF);
 
 		JLabel lblCpf = new JLabel("CPF:");
-		lblCpf.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCpf.setBounds(999, 602, 147, 14);
+		lblCpf.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblCpf.setBounds(998, 650, 147, 25);
 		contentPane.add(lblCpf);
 
 		textCpf = new JTextField();
 		textCpf.setFont(new Font("Dialog", Font.PLAIN, 15));
 		textCpf.setBackground(new Color(244, 234, 213));
 		textCpf.setColumns(10);
-		textCpf.setBounds(999, 625, 336, 45);
+		textCpf.setBounds(998, 686, 336, 45);
 		contentPane.add(textCpf);
 
 		BoxCor = new JComboBox<String>();
-		BoxCor.setFont(new Font("Dialog", Font.BOLD, 15));
+		BoxCor.setFont(new Font("Nirmala UI", Font.BOLD, 15));
 		BoxCor.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t",
 				"Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t" }));
 		BoxCor.setToolTipText("");
 		BoxCor.setBackground(new Color(255, 251, 233));
-		BoxCor.setBounds(999, 322, 336, 45);
+		BoxCor.setBounds(998, 383, 336, 45);
 		contentPane.add(BoxCor);
 
 		btnCancelarVeiculo = new JButton("CANCELAR");
@@ -118,7 +118,7 @@ public class CadastroVeiculo extends JFrame {
 		btnCancelarVeiculo.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnCancelarVeiculo.setForeground(new Color(0, 0, 0));
 		btnCancelarVeiculo.setBackground(new Color(255, 251, 233));
-		btnCancelarVeiculo.setBounds(1178, 723, 178, 54);
+		btnCancelarVeiculo.setBounds(1177, 784, 178, 54);
 		contentPane.add(btnCancelarVeiculo);
 		btnCancelarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,14 +131,14 @@ public class CadastroVeiculo extends JFrame {
 		});
 
 		JComboBox<String> BoxMarca = new JComboBox<String>();
-		BoxMarca.setFont(new Font("Dialog", Font.BOLD, 15));
+		BoxMarca.setFont(new Font("Nirmala UI", Font.BOLD, 15));
 		BoxMarca.setBackground(new Color(255, 251, 233));
 		BoxMarca.setModel(
 				new DefaultComboBoxModel(new String[] { "SELECIONE A MARCA ", "AUDI", "BMW", "CAOA CHERRY", "CHEVROLET",
 						"CITROEN", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "LAND ROVER", "MERCEDES-BENZ",
 						"MITSUBISHI", "NISSAN", "PEUGEOT", "PORSCHE", "RENAULT", "TOYOTA", "VOLKSWAGEN", "VOLVO" }));
 		BoxMarca.setToolTipText("");
-		BoxMarca.setBounds(999, 425, 336, 45);
+		BoxMarca.setBounds(998, 486, 336, 45);
 		contentPane.add(BoxMarca);
 
 		lblCarro = new JLabel("New label");
@@ -155,12 +155,12 @@ public class CadastroVeiculo extends JFrame {
 		lblIconePlaca = new JLabel("New label");
 		lblIconePlaca
 				.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/icons8-placa-do-automóvel-60.png")));
-		lblIconePlaca.setBounds(930, 225, 59, 45);
+		lblIconePlaca.setBounds(930, 286, 59, 45);
 		contentPane.add(lblIconePlaca);
 
 		JLabel lblPlaca = new JLabel("Placa:");
-		lblPlaca.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblPlaca.setBounds(999, 202, 122, 14);
+		lblPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblPlaca.setBounds(1000, 250, 60, 25);
 		contentPane.add(lblPlaca);
 
 		txtPlaca = new JTextField();
@@ -170,31 +170,31 @@ public class CadastroVeiculo extends JFrame {
 		txtPlaca = new JFormattedTextField(mascaraPlaca);
 		/*****************/
 
-		txtPlaca.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);
 		txtPlaca.setBackground(new Color(255, 251, 233));
-		txtPlaca.setBounds(999, 225, 336, 45);
+		txtPlaca.setBounds(1000, 290, 336, 45);
 		contentPane.add(txtPlaca);
 
 		lblIconeMarca = new JLabel("New label");
 		lblIconeMarca.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/marca.png")));
-		lblIconeMarca.setBounds(938, 418, 51, 65);
+		lblIconeMarca.setBounds(937, 479, 51, 65);
 		contentPane.add(lblIconeMarca);
 
 		lblCor = new JLabel("Cor:");
-		lblCor.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCor.setBounds(999, 302, 122, 14);
+		lblCor.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblCor.setBounds(1000, 350, 122, 25);
 		contentPane.add(lblCor);
 
 		lblIconeModelo = new JLabel("New label");
 		lblIconeModelo.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/MODELO.png")));
-		lblIconeModelo.setBounds(930, 521, 59, 52);
+		lblIconeModelo.setBounds(929, 582, 59, 52);
 		contentPane.add(lblIconeModelo);
 
 		lblIconeCor = new JLabel("New label");
 		lblIconeCor.setIcon(new ImageIcon(CadastroVeiculo.class.getResource("/assets/cor.png")));
-		lblIconeCor.setBounds(930, 317, 59, 54);
+		lblIconeCor.setBounds(929, 378, 59, 54);
 		contentPane.add(lblIconeCor);
 
 		btnCadastrarVeiculo = new JButton("CADASTRAR");
@@ -202,7 +202,7 @@ public class CadastroVeiculo extends JFrame {
 		btnCadastrarVeiculo.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnCadastrarVeiculo.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrarVeiculo.setBackground(new Color(255, 251, 233));
-		btnCadastrarVeiculo.setBounds(951, 723, 178, 54);
+		btnCadastrarVeiculo.setBounds(950, 784, 178, 54);
 		contentPane.add(btnCadastrarVeiculo);
 
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
@@ -286,17 +286,17 @@ public class CadastroVeiculo extends JFrame {
 		txtModelo = new JTextField();
 		txtModelo.setColumns(10);
 		txtModelo.setBackground(new Color(255, 251, 233));
-		txtModelo.setBounds(999, 525, 336, 45);
+		txtModelo.setBounds(998, 586, 336, 45);
 		contentPane.add(txtModelo);
 
 		lblModelo = new JLabel("Modelo:");
-		lblModelo.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblModelo.setBounds(999, 502, 147, 14);
+		lblModelo.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblModelo.setBounds(998, 550, 147, 25);
 		contentPane.add(lblModelo);
 
 		lblMarca = new JLabel("Marca:");
-		lblMarca.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblMarca.setBounds(999, 402, 122, 14);
+		lblMarca.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblMarca.setBounds(998, 450, 122, 25);
 		contentPane.add(lblMarca);
 
 		lblCadastroVeiculo = new JLabel("Cadastro de Veículo");

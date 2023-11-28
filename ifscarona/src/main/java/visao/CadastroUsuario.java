@@ -38,10 +38,12 @@ public class CadastroUsuario extends JFrame {
 	private JLabel lblCadastro;
 	private JLabel lblCPF;
 	private JTextField txtCPF;
+	private JTextField txtCPF_1;
 	private JLabel lblEmail;
 	private JTextField txtEmail;
 	private JLabel lblDataNascimento;
 	private JTextField txtDataNascimento;
+	private JTextField txtDataNascimento_1;
 	private JLabel lblSenha;
 	private JLabel lblConfirmacaoSenha;
 	private JButton btnCadastrar;
@@ -114,7 +116,7 @@ public class CadastroUsuario extends JFrame {
 		JCheckBox CheckSenha = new JCheckBox("Mostrar senha");
 		CheckSenha.setFont(new Font("Dialog", Font.PLAIN, 13));
 		CheckSenha.setBackground(new Color(255, 251, 233));
-		CheckSenha.setBounds(1475, 374, 127, 14);
+		CheckSenha.setBounds(1475, 444, 127, 14);
 		contentPane.add(CheckSenha);
 		CheckSenha.addActionListener(new ActionListener() {
 			@Override
@@ -130,7 +132,7 @@ public class CadastroUsuario extends JFrame {
 		JCheckBox CheckConfirmacao = new JCheckBox("Mostrar senha");
 		CheckConfirmacao.setFont(new Font("Dialog", Font.PLAIN, 13));
 		CheckConfirmacao.setBackground(new Color(255, 251, 233));
-		CheckConfirmacao.setBounds(1475, 486, 127, 14);
+		CheckConfirmacao.setBounds(1475, 556, 127, 14);
 		contentPane.add(CheckConfirmacao);
 
 		CheckConfirmacao.addActionListener(new ActionListener() {
@@ -144,57 +146,57 @@ public class CadastroUsuario extends JFrame {
 			}
 		});
 		txtConfirmacaoSenha = new JPasswordField();
-		txtConfirmacaoSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtConfirmacaoSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		txtConfirmacaoSenha.setBackground(new Color(255, 251, 233));
-		txtConfirmacaoSenha.setBounds(1266, 429, 336, 46);
+		txtConfirmacaoSenha.setBounds(1266, 499, 336, 46);
 		contentPane.add(txtConfirmacaoSenha);
 
 		txtSenha = new JPasswordField();
-		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		txtSenha.setBackground(new Color(255, 251, 233));
-		txtSenha.setBounds(1266, 326, 336, 46);
+		txtSenha.setBounds(1266, 396, 336, 46);
 		contentPane.add(txtSenha);
 
 		lblIconeNome = new JLabel("New label");
 		lblIconeNome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
-		lblIconeNome.setBounds(676, 227, 59, 45);
+		lblIconeNome.setBounds(676, 297, 59, 45);
 		contentPane.add(lblIconeNome);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblNome.setBounds(745, 202, 122, 14);
+		lblNome.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblNome.setBounds(745, 272, 122, 25);
 		contentPane.add(lblNome);
 
 		txtNome = new JTextField();
-		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtNome.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		txtNome.setToolTipText("");
 		txtNome.setColumns(10);
 		txtNome.setBackground(new Color(255, 251, 233));
-		txtNome.setBounds(745, 227, 336, 45);
+		txtNome.setBounds(745, 297, 336, 45);
 		contentPane.add(txtNome);
 
 		lblIconeCPF = new JLabel("New label");
 		lblIconeCPF.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/cpf.png")));
-		lblIconeCPF.setBounds(676, 417, 59, 71);
+		lblIconeCPF.setBounds(676, 487, 59, 71);
 		contentPane.add(lblIconeCPF);
 
 		lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSobrenome.setBounds(745, 296, 122, 14);
+		lblSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblSobrenome.setBounds(745, 366, 122, 25);
 		contentPane.add(lblSobrenome);
 
 		txtSobrenome = new JTextField();
-		txtSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		txtSobrenome.setToolTipText("");
 		txtSobrenome.setColumns(10);
 		txtSobrenome.setBackground(new Color(255, 251, 233));
-		txtSobrenome.setBounds(745, 327, 336, 45);
+		txtSobrenome.setBounds(745, 397, 336, 45);
 		contentPane.add(txtSobrenome);
 
 		lblLinkAqui = new JLabel("Clique aqui");
 		lblLinkAqui.setForeground(Color.BLUE);
 		lblLinkAqui.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblLinkAqui.setBounds(1384, 486, 178, 14);
+		lblLinkAqui.setBounds(1379, 556, 178, 14);
 		contentPane.add(lblLinkAqui);
 		lblLinkAqui.addMouseListener(new MouseAdapter() {
 			@Override
@@ -208,43 +210,43 @@ public class CadastroUsuario extends JFrame {
 		});
 		lblPossuiCadastro = new JLabel("Possui cadastro?");
 		lblPossuiCadastro.setFont(new Font("Dialog", Font.PLAIN, 13));
-		lblPossuiCadastro.setBounds(1266, 486, 178, 14);
+		lblPossuiCadastro.setBounds(1266, 556, 178, 14);
 		contentPane.add(lblPossuiCadastro);
 
 		lblIconeConfiormacaoSenha = new JLabel("New label");
 		lblIconeConfiormacaoSenha.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/senha.png")));
-		lblIconeConfiormacaoSenha.setBounds(1197, 425, 59, 55);
+		lblIconeConfiormacaoSenha.setBounds(1197, 495, 59, 55);
 
 		contentPane.add(lblIconeConfiormacaoSenha);
 		lblIconeSenha = new JLabel("New label");
 		lblIconeSenha.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/senha.png")));
-		lblIconeSenha.setBounds(1197, 317, 59, 55);
+		lblIconeSenha.setBounds(1197, 387, 59, 55);
 		contentPane.add(lblIconeSenha);
 
 		lblIconeDataNascimento = new JLabel("New label");
 		lblIconeDataNascimento
 				.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-data-de-nascimento-60.png")));
-		lblIconeDataNascimento.setBounds(1197, 219, 59, 60);
+		lblIconeDataNascimento.setBounds(1197, 289, 59, 60);
 		contentPane.add(lblIconeDataNascimento);
 
 		lblIconeEmail = new JLabel("New label");
 		lblIconeEmail.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nova-mensagem-60.png")));
-		lblIconeEmail.setBounds(676, 529, 59, 52);
+		lblIconeEmail.setBounds(676, 599, 59, 52);
 		contentPane.add(lblIconeEmail);
 
 		lblIconeSobrenome = new JLabel("New label");
 		lblIconeSobrenome.setIcon(new ImageIcon(CadastroUsuario.class.getResource("/assets/icons8-nome-60.png")));
-		lblIconeSobrenome.setBounds(676, 327, 59, 45);
+		lblIconeSobrenome.setBounds(676, 397, 59, 45);
 		contentPane.add(lblIconeSobrenome);
 
 		lblConfirmacaoSenha = new JLabel("Confirmação de Senha:");
-		lblConfirmacaoSenha.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblConfirmacaoSenha.setBounds(1266, 404, 178, 14);
+		lblConfirmacaoSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblConfirmacaoSenha.setBounds(1266, 474, 200, 25);
 		contentPane.add(lblConfirmacaoSenha);
 
 		lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblSenha.setBounds(1266, 297, 122, 14);
+		lblSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblSenha.setBounds(1266, 367, 122, 25);
 		contentPane.add(lblSenha);
 
 		txtDataNascimento = new JTextField();
@@ -252,29 +254,31 @@ public class CadastroUsuario extends JFrame {
 		/*****************/
 		MaskFormatter mascaraData = null;
 		mascaraData = new MaskFormatter("##/##/####");
-		txtDataNascimento = new JFormattedTextField(mascaraData);
+		txtDataNascimento_1 = new JFormattedTextField(mascaraData);
+		txtDataNascimento_1.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		/*****************/
 
-		txtDataNascimento.setColumns(10);
-		txtDataNascimento.setBackground(new Color(255, 251, 233));
-		txtDataNascimento.setBounds(1266, 227, 336, 45);
-		contentPane.add(txtDataNascimento);
+		txtDataNascimento_1.setColumns(10);
+		txtDataNascimento_1.setBackground(new Color(255, 251, 233));
+		txtDataNascimento_1.setBounds(1266, 297, 336, 45);
+		contentPane.add(txtDataNascimento_1);
 
 		lblDataNascimento = new JLabel("Data de Nascimento:");
-		lblDataNascimento.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDataNascimento.setBounds(1266, 203, 178, 14);
+		lblDataNascimento.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblDataNascimento.setBounds(1266, 273, 178, 25);
 		contentPane.add(lblDataNascimento);
 
 		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		txtEmail.setToolTipText("");
 		txtEmail.setColumns(10);
 		txtEmail.setBackground(new Color(255, 251, 233));
-		txtEmail.setBounds(745, 536, 336, 45);
+		txtEmail.setBounds(745, 606, 336, 45);
 		contentPane.add(txtEmail);
 
 		lblEmail = new JLabel("E-mail:");
-		lblEmail.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblEmail.setBounds(745, 507, 147, 14);
+		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblEmail.setBounds(745, 577, 147, 25);
 		contentPane.add(lblEmail);
 
 		txtCPF = new JTextField();
@@ -282,18 +286,19 @@ public class CadastroUsuario extends JFrame {
 		/*****************/
 		MaskFormatter mascaraCPF = null;
 		mascaraCPF = new MaskFormatter("###.###.###-##");
-		txtCPF = new JFormattedTextField(mascaraCPF);
+		txtCPF_1 = new JFormattedTextField(mascaraCPF);
+		txtCPF_1.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
 		/*****************/
 
-		txtCPF.setToolTipText("");
-		txtCPF.setColumns(10);
-		txtCPF.setBackground(new Color(255, 251, 233));
-		txtCPF.setBounds(745, 430, 336, 45);
-		contentPane.add(txtCPF);
+		txtCPF_1.setToolTipText("");
+		txtCPF_1.setColumns(10);
+		txtCPF_1.setBackground(new Color(255, 251, 233));
+		txtCPF_1.setBounds(745, 500, 336, 45);
+		contentPane.add(txtCPF_1);
 
 		lblCPF = new JLabel("CPF:");
-		lblCPF.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblCPF.setBounds(745, 402, 122, 14);
+		lblCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
+		lblCPF.setBounds(745, 472, 122, 25);
 		contentPane.add(lblCPF);
 
 		lblCadastro = new JLabel("Cadastro");
@@ -305,7 +310,7 @@ public class CadastroUsuario extends JFrame {
 		btnCadastrar.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnCadastrar.setBorder(new LineBorder(new Color(244, 234, 213), 4, true));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
-		btnCadastrar.setBounds(1342, 536, 178, 54);
+		btnCadastrar.setBounds(1342, 606, 178, 54);
 		contentPane.add(btnCadastrar);
 
 		btnCadastrar.addActionListener(new ActionListener() {
