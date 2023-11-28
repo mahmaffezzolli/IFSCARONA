@@ -213,14 +213,17 @@ public class ListagemCaronas extends JFrame {
 		contentPane.add(scrollPane);
 
 		datePicker = new DatePicker();
+		datePicker.getComponentDateTextField().setFont(new Font("Dialog", Font.PLAIN, 15));
 		datePicker.setBounds(1592, 199, 200, 30);
 		contentPane.add(datePicker);
 
 		timePicker = new TimePicker();
+		timePicker.getComponentTimeTextField().setFont(new Font("Dialog", Font.PLAIN, 15));
 		timePicker.setBounds(1592, 260, 200, 30);
 		contentPane.add(timePicker);
 
 		originFilter = new JTextField("Origem");
+		originFilter.setFont(new Font("Dialog", Font.PLAIN, 15));
 		originFilter.setToolTipText("Origem");
 		originFilter.setBounds(1592, 321, 199, 30);
 
@@ -243,6 +246,7 @@ public class ListagemCaronas extends JFrame {
 		contentPane.add(originFilter);
 
 		destinationFilter = new JTextField("Destino");
+		destinationFilter.setFont(new Font("Dialog", Font.PLAIN, 15));
 		destinationFilter.setToolTipText("Destino");
 		destinationFilter.setBounds(1592, 380, 199, 30);
 		destinationFilter.addFocusListener(new FocusListener() {
@@ -265,7 +269,7 @@ public class ListagemCaronas extends JFrame {
 		JButton filterButton = new JButton("Filtrar");
 		filterButton.setIcon(new ImageIcon(ListagemCaronas.class.getResource("/assets/icons8-editar-50.png")));
 		filterButton.setBackground(new Color(211, 215, 207));
-		filterButton.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		filterButton.setFont(new Font("Dialog", Font.BOLD, 16));
 		filterButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -277,7 +281,7 @@ public class ListagemCaronas extends JFrame {
 
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.setIcon(new ImageIcon(ListagemCaronas.class.getResource("/assets/icons8-excluir-60.png")));
-		btnLimpar.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		btnLimpar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnLimpar.setBackground(new Color(255, 182, 193));
 		btnLimpar.setBounds(1613, 523, 161, 50);
 		btnLimpar.addActionListener(new ActionListener() {

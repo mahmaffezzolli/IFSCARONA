@@ -64,12 +64,12 @@ public class InformacaoRegistrada extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblInformacaoRegistrada = new JLabel("Informação já registrada!");
-		lblInformacaoRegistrada.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblInformacaoRegistrada.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblInformacaoRegistrada.setBounds(119, 60, 307, 31);
 		contentPane.add(lblInformacaoRegistrada);
 
 		JButton btnNewButton = new JButton("OK");
-		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(205, 116, 84, 31);

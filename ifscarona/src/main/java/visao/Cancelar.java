@@ -65,13 +65,13 @@ public class Cancelar extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblCancelar = new JLabel("Deseja cancelar?");
-		lblCancelar.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblCancelar.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblCancelar.setBounds(142, 58, 162, 18);
 		contentPane.add(lblCancelar);
 
 		JButton btnSim = new JButton("SIM");
 		btnSim.setForeground(new Color(255, 255, 255));
-		btnSim.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		btnSim.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnSim.setBorder(null);
 		btnSim.setBackground(new Color(174, 57, 57));
 		btnSim.setBounds(108, 126, 84, 31);
@@ -96,7 +96,7 @@ public class Cancelar extends JFrame {
 
 		JButton btnNao = new JButton("NÃO");
 		btnNao.setForeground(new Color(255, 255, 255));
-		btnNao.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		btnNao.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNao.setBorder(null);
 		btnNao.setBackground(new Color(0, 0, 0));
 		btnNao.setBounds(231, 126, 84, 31);

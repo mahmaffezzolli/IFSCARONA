@@ -146,13 +146,13 @@ public class CadastroUsuario extends JFrame {
 			}
 		});
 		txtConfirmacaoSenha = new JPasswordField();
-		txtConfirmacaoSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtConfirmacaoSenha.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtConfirmacaoSenha.setBackground(new Color(255, 251, 233));
 		txtConfirmacaoSenha.setBounds(1266, 499, 336, 46);
 		contentPane.add(txtConfirmacaoSenha);
 
 		txtSenha = new JPasswordField();
-		txtSenha.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtSenha.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtSenha.setBackground(new Color(255, 251, 233));
 		txtSenha.setBounds(1266, 396, 336, 46);
 		contentPane.add(txtSenha);
@@ -168,7 +168,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblNome);
 
 		txtNome = new JTextField();
-		txtNome.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtNome.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtNome.setToolTipText("");
 		txtNome.setColumns(10);
 		txtNome.setBackground(new Color(255, 251, 233));
@@ -186,7 +186,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblSobrenome);
 
 		txtSobrenome = new JTextField();
-		txtSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtSobrenome.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtSobrenome.setToolTipText("");
 		txtSobrenome.setColumns(10);
 		txtSobrenome.setBackground(new Color(255, 251, 233));
@@ -255,7 +255,7 @@ public class CadastroUsuario extends JFrame {
 		MaskFormatter mascaraData = null;
 		mascaraData = new MaskFormatter("##/##/####");
 		txtDataNascimento_1 = new JFormattedTextField(mascaraData);
-		txtDataNascimento_1.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtDataNascimento_1.setFont(new Font("Dialog", Font.PLAIN, 15));
 		/*****************/
 
 		txtDataNascimento_1.setColumns(10);
@@ -269,7 +269,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblDataNascimento);
 
 		txtEmail = new JTextField();
-		txtEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtEmail.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtEmail.setToolTipText("");
 		txtEmail.setColumns(10);
 		txtEmail.setBackground(new Color(255, 251, 233));
@@ -287,7 +287,7 @@ public class CadastroUsuario extends JFrame {
 		MaskFormatter mascaraCPF = null;
 		mascaraCPF = new MaskFormatter("###.###.###-##");
 		txtCPF_1 = new JFormattedTextField(mascaraCPF);
-		txtCPF_1.setFont(new Font("Nirmala UI", Font.PLAIN, 17));
+		txtCPF_1.setFont(new Font("Dialog", Font.PLAIN, 15));
 		/*****************/
 
 		txtCPF_1.setToolTipText("");
@@ -328,7 +328,7 @@ public class CadastroUsuario extends JFrame {
 				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
 
-				String cpfS = txtCPF.getText();
+				String cpfS = txtCPF_1.getText();
 
 				String email = txtEmail.getText();
 
@@ -347,7 +347,7 @@ public class CadastroUsuario extends JFrame {
 					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
-				} else if (txtCPF.getText().isEmpty()) {
+				} else if (txtCPF_1.getText().isEmpty()) {
 					campoNaoPreenchido.setBounds(40, 40, 451, 234);
 					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
@@ -377,7 +377,7 @@ public class CadastroUsuario extends JFrame {
 				} else {
 
 					// tranformando em fotmato de data
-					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
+					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento_1.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
 
 					// removendo a máscara

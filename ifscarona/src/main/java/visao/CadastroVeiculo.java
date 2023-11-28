@@ -105,7 +105,7 @@ public class CadastroVeiculo extends JFrame {
 		contentPane.add(textCpf);
 
 		BoxCor = new JComboBox<String>();
-		BoxCor.setFont(new Font("Nirmala UI", Font.BOLD, 15));
+		BoxCor.setFont(new Font("Dialog", Font.PLAIN, 15));
 		BoxCor.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE A COR", "Branco\t", "Cinza\t", "Preto\t",
 				"Prata\t", "Azul\t", "Vermelho", "Marrom/Bege", "Verde\t", "Amarelo\t" }));
 		BoxCor.setToolTipText("");
@@ -131,7 +131,7 @@ public class CadastroVeiculo extends JFrame {
 		});
 
 		JComboBox<String> BoxMarca = new JComboBox<String>();
-		BoxMarca.setFont(new Font("Nirmala UI", Font.BOLD, 15));
+		BoxMarca.setFont(new Font("Dialog", Font.PLAIN, 15));
 		BoxMarca.setBackground(new Color(255, 251, 233));
 		BoxMarca.setModel(
 				new DefaultComboBoxModel(new String[] { "SELECIONE A MARCA ", "AUDI", "BMW", "CAOA CHERRY", "CHEVROLET",
@@ -170,7 +170,7 @@ public class CadastroVeiculo extends JFrame {
 		txtPlaca = new JFormattedTextField(mascaraPlaca);
 		/*****************/
 
-		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		txtPlaca.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtPlaca.setToolTipText("");
 		txtPlaca.setColumns(10);
 		txtPlaca.setBackground(new Color(255, 251, 233));
@@ -272,7 +272,10 @@ public class CadastroVeiculo extends JFrame {
 						cadastroRealizado.setBounds(40, 40, 451, 234);
 						cadastroRealizado.setLocationRelativeTo(null);
 						cadastroRealizado.setVisible(true);
+						
+						dispose();
 
+						
 					} else {
 						CadastroErroVeiculo cadastroErroVeiculo = new CadastroErroVeiculo();
 						cadastroErroVeiculo.setBounds(40, 40, 451, 234);
@@ -284,6 +287,7 @@ public class CadastroVeiculo extends JFrame {
 		});
 
 		txtModelo = new JTextField();
+		txtModelo.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtModelo.setColumns(10);
 		txtModelo.setBackground(new Color(255, 251, 233));
 		txtModelo.setBounds(998, 586, 336, 45);

@@ -63,19 +63,19 @@ public class DadosAtualizados extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblDadosPessoaisAtualizados = new JLabel("Dados Pessoais atualizados");
-		lblDadosPessoaisAtualizados.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblDadosPessoaisAtualizados.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblDadosPessoaisAtualizados.setBounds(125, 57, 270, 18);
 		contentPane.add(lblDadosPessoaisAtualizados);
 
 		JButton btnOk = new JButton("OK");
-		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnOk.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
-		btnOk.setBounds(207, 119, 84, 31);
+		btnOk.setBounds(186, 119, 84, 31);
 		contentPane.add(btnOk);
 
 		JLabel lblSucesso = new JLabel("com sucesso!");
-		lblSucesso.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblSucesso.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblSucesso.setBounds(186, 83, 136, 14);
 		contentPane.add(lblSucesso);
 		btnOk.addActionListener(new ActionListener() {

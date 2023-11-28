@@ -64,12 +64,12 @@ public class CadastroRealizado extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com secesso!");
-		lblCadastroRealizado.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblCadastroRealizado.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblCadastroRealizado.setBounds(102, 59, 349, 18);
 		contentPane.add(lblCadastroRealizado);
 
 		JButton btnNewButton = new JButton("OK");
-		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(199, 123, 84, 31);

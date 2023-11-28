@@ -92,10 +92,12 @@ public class OferecerCarona extends JFrame {
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
 		dateSettings.setLocale(determineLocale("pt", "BR"));
 		datePicker = new DatePicker(dateSettings);
+		datePicker.getComponentDateTextField().setFont(new Font("Dialog", Font.PLAIN, 12));
 		datePicker.setBounds(1400, 600, 220, 30);
 		contentPane.add(datePicker);
 
 		timePicker = new TimePicker();
+		timePicker.getComponentTimeTextField().setFont(new Font("Dialog", Font.PLAIN, 12));
 		timePicker.setBounds(1400, 700, 220, 30);
 		contentPane.add(timePicker);
 
@@ -110,14 +112,17 @@ public class OferecerCarona extends JFrame {
 		contentPane.add(separator_1);
 
 		rdbtnIfsc = new JRadioButton("IFSC");
+		rdbtnIfsc.setFont(new Font("Dialog", Font.PLAIN, 12));
 		rdbtnIfsc.setBounds(845, 484, 129, 23);
 		contentPane.add(rdbtnIfsc);
 
 		rdbtnGaspar = new JRadioButton("Gaspar");
+		rdbtnGaspar.setFont(new Font("Dialog", Font.PLAIN, 12));
 		rdbtnGaspar.setBounds(845, 442, 129, 23);
 		contentPane.add(rdbtnGaspar);
 
 		rdbtnBlumenau = new JRadioButton("Blumenau");
+		rdbtnBlumenau.setFont(new Font("Dialog", Font.PLAIN, 12));
 		rdbtnBlumenau.setBounds(845, 396, 129, 23);
 		contentPane.add(rdbtnBlumenau);
 
@@ -163,12 +168,14 @@ public class OferecerCarona extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		cmbLugar = new JComboBox();
+		cmbLugar.setFont(new Font("Dialog", Font.PLAIN, 12));
 		cmbLugar.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		cmbLugar.setBounds(1469, 460, 169, 22);
+		cmbLugar.setBounds(1469, 460, 184, 22);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
 
 		cmbGaspar = new JComboBox<>();
+		cmbGaspar.setFont(new Font("Dialog", Font.PLAIN, 12));
 		cmbGaspar.setModel(new DefaultComboBoxModel<>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
 				"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central", "Centro",
 				"Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim", "Lagoa",
@@ -178,6 +185,7 @@ public class OferecerCarona extends JFrame {
 		contentPane.add(cmbGaspar);
 
 		cmbBlumenau = new JComboBox<>();
+		cmbBlumenau.setFont(new Font("Dialog", Font.PLAIN, 12));
 		cmbBlumenau.setModel(new DefaultComboBoxModel<>(new String[] { "BLUMENAU", "Badenfurt", "Fidélis",
 				"Itoupava Central", "Itoupavazinha", "Salto do Norte", "Testo Salto", "Vila Itoupava", "Fortaleza",
 				"Fortaleza Alta", "Itoupava Norte", "Nova Esperança", "Ponta Aguda", "Tribess", "Vorstadt", "Da Glória",
