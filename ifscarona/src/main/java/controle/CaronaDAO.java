@@ -517,14 +517,11 @@ public class CaronaDAO implements ICaronaDAO {
 		List<Carona> filteredCaronas = new ArrayList<>();
 
 		StringBuilder queryBuilder = new StringBuilder(
-			    "SELECT caronas.*, trajetos.*, mo.nome AS motorista_nome, pa.nome AS passageiro_nome, veiculos.* " +
-			    "FROM caronas " +
-			    "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto " +
-			    "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista " +
-			    "LEFT JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro " +
-			    "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo " +
-			    "WHERE 1=1 ");
-
+				"SELECT caronas.*, trajetos.*, mo.nome AS motorista_nome, pa.nome AS passageiro_nome, veiculos.* "
+						+ "FROM caronas " + "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
+						+ "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista "
+						+ "LEFT JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro "
+						+ "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo " + "WHERE 1=1 ");
 
 		List<Object> params = new ArrayList<>();
 
@@ -555,18 +552,17 @@ public class CaronaDAO implements ICaronaDAO {
 
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
-				    Carona carona = new Carona();
-				    carona.setIdCarona(rs.getLong("id_carona"));
+					Carona carona = new Carona();
+					carona.setIdCarona(rs.getLong("id_carona"));
 
-				    Pessoa motorista = new Pessoa();
-				    motorista.setCpf(rs.getString("cpf_motorista"));
-				    motorista.setNome(rs.getString("motorista_nome"));
-				    carona.setMotorista(motorista);
+					Pessoa motorista = new Pessoa();
+					motorista.setCpf(rs.getString("cpf_motorista"));
+					motorista.setNome(rs.getString("motorista_nome"));
+					carona.setMotorista(motorista);
 
-				    Pessoa passageiro = new Pessoa();
-				    passageiro.setCpf(rs.getString("cpf_passageiro"));
-				    carona.setPassageiro(passageiro);
-
+					Pessoa passageiro = new Pessoa();
+					passageiro.setCpf(rs.getString("cpf_passageiro"));
+					carona.setPassageiro(passageiro);
 
 					Trajeto trajeto = new Trajeto();
 					trajeto.setIdTrajeto(rs.getLong("id_trajeto"));

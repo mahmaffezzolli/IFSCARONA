@@ -272,10 +272,9 @@ public class CadastroVeiculo extends JFrame {
 						cadastroRealizado.setBounds(40, 40, 451, 234);
 						cadastroRealizado.setLocationRelativeTo(null);
 						cadastroRealizado.setVisible(true);
-						
+
 						dispose();
 
-						
 					} else {
 						CadastroErroVeiculo cadastroErroVeiculo = new CadastroErroVeiculo();
 						cadastroErroVeiculo.setBounds(40, 40, 451, 234);
