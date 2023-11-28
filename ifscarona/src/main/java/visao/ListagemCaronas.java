@@ -163,6 +163,11 @@ public class ListagemCaronas extends JFrame {
 						carona.setPassageiro(passageiro);
 
 						cDAO.alterarCarona(carona);
+						
+						TelaCaronaSelecionada telaCaronaSelecionada = new TelaCaronaSelecionada();
+						telaCaronaSelecionada.setBounds(40, 40, 451, 234);
+						telaCaronaSelecionada.setLocationRelativeTo(null);
+						telaCaronaSelecionada.setVisible(true);
 
 					}
 
