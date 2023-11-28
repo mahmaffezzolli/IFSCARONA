@@ -268,6 +268,19 @@ public class CadastroVeiculo extends JFrame {
 						motorista.setVeiculo(v);
 						pDAO.alterarPessoa(motorista);
 
+						txtPlaca.setText("");
+						txtModelo.setText("");
+						BoxCor.setSelectedIndex(0);
+						BoxMarca.setSelectedIndex(0);
+
+						CadastroVeiculo.this.dispose();
+						try {
+							new Perfil().setVisible(true);
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
 						CadastroRealizado cadastroRealizado = new CadastroRealizado();
 						cadastroRealizado.setBounds(40, 40, 451, 234);
 						cadastroRealizado.setLocationRelativeTo(null);
