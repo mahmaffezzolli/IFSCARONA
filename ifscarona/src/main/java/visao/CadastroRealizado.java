@@ -63,7 +63,7 @@ public class CadastroRealizado extends JFrame {
 		lblAviso.setBounds(44, 46, 48, 48);
 		contentPane.add(lblAviso);
 
-		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com secesso!");
+		JLabel lblCadastroRealizado = new JLabel("Cadastro realizado com sucesso!");
 		lblCadastroRealizado.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblCadastroRealizado.setBounds(102, 59, 349, 18);
 		contentPane.add(lblCadastroRealizado);

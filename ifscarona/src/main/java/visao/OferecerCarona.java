@@ -35,12 +35,17 @@ import com.github.lgooddatepicker.components.TimePicker;
 public class OferecerCarona extends JFrame {
 
 	private JPanel contentPane;
-	private JComboBox<String> cmbGaspar;
-	private JComboBox<String> cmbBlumenau;
+	private JComboBox<String> cmbGasparD;
+	private JComboBox<String> cmbBlumenauD;
+	private JComboBox<String> cmbGasparO;
+	private JComboBox<String> cmbBlumenauO;
 	private JComboBox<String> cmbLugar;
-	private JRadioButton rdbtnGaspar;
-	private JRadioButton rdbtnBlumenau;
-	private JRadioButton rdbtnIfsc;
+	private JRadioButton rdbtnGasparD;
+	private JRadioButton rdbtnBlumenauD;
+	private JRadioButton rdbtnIfscD;
+	private JRadioButton rdbtnGasparO;
+	private JRadioButton rdbtnBlumenauO;
+	private JRadioButton rdbtnIfscO;
 	private DatePicker datePicker;
 	private TimePicker timePicker;
 
@@ -108,46 +113,139 @@ public class OferecerCarona extends JFrame {
 
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(new Color(0, 0, 0));
-		separator_1.setBounds(725, 571, 295, 12);
+		separator_1.setBounds(443, 575, 295, 12);
 		contentPane.add(separator_1);
 
-		rdbtnIfsc = new JRadioButton("IFSC");
-		rdbtnIfsc.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnIfsc.setBounds(845, 484, 129, 23);
-		contentPane.add(rdbtnIfsc);
+		// Destino
 
-		rdbtnGaspar = new JRadioButton("Gaspar");
-		rdbtnGaspar.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnGaspar.setBounds(845, 442, 129, 23);
-		contentPane.add(rdbtnGaspar);
+		rdbtnIfscD = new JRadioButton("IFSC");
+		rdbtnIfscD.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnIfscD.setBounds(563, 488, 129, 23);
+		contentPane.add(rdbtnIfscD);
 
-		rdbtnBlumenau = new JRadioButton("Blumenau");
-		rdbtnBlumenau.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnBlumenau.setBounds(845, 396, 129, 23);
-		contentPane.add(rdbtnBlumenau);
+		rdbtnGasparD = new JRadioButton("Gaspar");
+		rdbtnGasparD.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnGasparD.setBounds(563, 446, 129, 23);
+		contentPane.add(rdbtnGasparD);
+
+		rdbtnBlumenauD = new JRadioButton("Blumenau");
+		rdbtnBlumenauD.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnBlumenauD.setBounds(563, 400, 129, 23);
+		contentPane.add(rdbtnBlumenauD);
 
 		ButtonGroup radioGroup = new ButtonGroup();
-		radioGroup.add(rdbtnGaspar);
-		radioGroup.add(rdbtnBlumenau);
-		radioGroup.add(rdbtnIfsc);
+		radioGroup.add(rdbtnGasparD);
+		radioGroup.add(rdbtnBlumenauD);
+		radioGroup.add(rdbtnIfscD);
 
-		rdbtnGaspar.addItemListener(e -> {
-			cmbBlumenau.setEnabled(!rdbtnGaspar.isSelected());
-			cmbGaspar.setEnabled(rdbtnGaspar.isSelected());
+		rdbtnGasparD.addItemListener(e -> {
+			cmbBlumenauD.setEnabled(!rdbtnGasparD.isSelected());
+			cmbGasparD.setEnabled(rdbtnGasparD.isSelected());
 		});
 
-		rdbtnBlumenau.addItemListener(e -> {
-			cmbGaspar.setEnabled(!rdbtnBlumenau.isSelected());
-			cmbBlumenau.setEnabled(rdbtnBlumenau.isSelected());
+		rdbtnBlumenauD.addItemListener(e -> {
+			cmbGasparD.setEnabled(!rdbtnBlumenauD.isSelected());
+			cmbBlumenauD.setEnabled(rdbtnBlumenauD.isSelected());
 		});
-		rdbtnIfsc.addItemListener(e -> {
-			cmbGaspar.setEnabled(false);
-			cmbBlumenau.setEnabled(false);
+		rdbtnIfscD.addItemListener(e -> {
+			cmbGasparD.setEnabled(false);
+			cmbBlumenauD.setEnabled(false);
 		});
+
+		cmbGasparD = new JComboBox<String>();
+		cmbGasparD.setFont(new Font("Dialog", Font.PLAIN, 12));
+		cmbGasparD
+				.setModel(new DefaultComboBoxModel<String>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
+						"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central",
+						"Centro", "Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim",
+						"Lagoa", "Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
+		cmbGasparD.setBounds(547, 714, 169, 22);
+		cmbGasparD.setBackground(new Color(255, 251, 233));
+		contentPane.add(cmbGasparD);
+
+		cmbBlumenauD = new JComboBox<String>();
+		cmbBlumenauD.setFont(new Font("Dialog", Font.PLAIN, 12));
+		cmbBlumenauD.setModel(new DefaultComboBoxModel<String>(new String[] { "BLUMENAU", "Badenfurt", "Fidélis",
+				"Itoupava Central", "Itoupavazinha", "Salto do Norte", "Testo Salto", "Vila Itoupava", "Fortaleza",
+				"Fortaleza Alta", "Itoupava Norte", "Nova Esperança", "Ponta Aguda", "Tribess", "Vorstadt", "Da Glória",
+				"Garcia", "Progresso", "Ribeirão Fresco", "Valparaíso", "Vila Formosa", "Água Verde", "Do Salto",
+				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
+				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
+				"Vila Nova" }));
+		cmbBlumenauD.setBounds(547, 632, 169, 22);
+		cmbBlumenauD.setBackground(new Color(255, 251, 233));
+		contentPane.add(cmbBlumenauD);
+
+		// Origem
+
+		cmbGasparO = new JComboBox<String>();
+		cmbGasparO.setFont(new Font("Dialog", Font.PLAIN, 12));
+		cmbGasparO
+				.setModel(new DefaultComboBoxModel<String>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
+						"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central",
+						"Centro", "Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim",
+						"Lagoa", "Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
+		cmbGasparO.setBackground(new Color(255, 251, 233));
+		cmbGasparO.setBounds(912, 714, 169, 22);
+		contentPane.add(cmbGasparO);
+
+		cmbBlumenauO = new JComboBox<String>();
+		cmbBlumenauO.setFont(new Font("Dialog", Font.PLAIN, 12));
+		cmbBlumenauO.setModel(new DefaultComboBoxModel<String>(new String[] { "BLUMENAU", "Badenfurt", "Fidélis",
+				"Itoupava Central", "Itoupavazinha", "Salto do Norte", "Testo Salto", "Vila Itoupava", "Fortaleza",
+				"Fortaleza Alta", "Itoupava Norte", "Nova Esperança", "Ponta Aguda", "Tribess", "Vorstadt", "Da Glória",
+				"Garcia", "Progresso", "Ribeirão Fresco", "Valparaíso", "Vila Formosa", "Água Verde", "Do Salto",
+				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
+				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
+				"Vila Nova" }));
+		cmbBlumenauO.setBackground(new Color(255, 251, 233));
+		cmbBlumenauO.setBounds(912, 632, 169, 22);
+		contentPane.add(cmbBlumenauO);
+
+		JSeparator separator_1_2 = new JSeparator();
+		separator_1_2.setForeground(Color.BLACK);
+		separator_1_2.setBounds(808, 575, 295, 12);
+		contentPane.add(separator_1_2);
+
+		rdbtnIfscO = new JRadioButton("IFSC");
+		rdbtnIfscO.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnIfscO.setBounds(928, 488, 129, 23);
+		contentPane.add(rdbtnIfscO);
+
+		rdbtnGasparO = new JRadioButton("Gaspar");
+		rdbtnGasparO.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnGasparO.setBounds(928, 446, 129, 23);
+		contentPane.add(rdbtnGasparO);
+
+		rdbtnBlumenauO = new JRadioButton("Blumenau");
+		rdbtnBlumenauO.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnBlumenauO.setBounds(928, 400, 129, 23);
+		contentPane.add(rdbtnBlumenauO);
+
+		ButtonGroup radioGroup2 = new ButtonGroup();
+		radioGroup2.add(rdbtnGasparO);
+		radioGroup2.add(rdbtnBlumenauO);
+		radioGroup2.add(rdbtnIfscO);
+
+		rdbtnGasparO.addItemListener(e -> {
+			cmbBlumenauO.setEnabled(!rdbtnGasparO.isSelected());
+			cmbGasparO.setEnabled(rdbtnGasparO.isSelected());
+		});
+
+		rdbtnBlumenauO.addItemListener(e -> {
+			cmbGasparO.setEnabled(!rdbtnBlumenauO.isSelected());
+			cmbBlumenauO.setEnabled(rdbtnBlumenauO.isSelected());
+		});
+		rdbtnIfscO.addItemListener(e -> {
+			cmbGasparO.setEnabled(false);
+			cmbBlumenauO.setEnabled(false);
+		});
+
+		//
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_3.setBounds(744, 421, 50, 50);
+		lblNewLabel_3.setBounds(462, 425, 50, 50);
 		contentPane.add(lblNewLabel_3);
 
 		btnHome.setBorder(null);
@@ -159,7 +257,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_2.setBounds(744, 639, 50, 50);
+		lblNewLabel_2.setBounds(462, 643, 50, 50);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -167,35 +265,13 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel.setBounds(1379, 442, 67, 65);
 		contentPane.add(lblNewLabel);
 
-		cmbLugar = new JComboBox();
+		cmbLugar = new JComboBox<String>();
 		cmbLugar.setFont(new Font("Dialog", Font.PLAIN, 12));
-		cmbLugar.setModel(new DefaultComboBoxModel(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
+		cmbLugar.setModel(
+				new DefaultComboBoxModel<String>(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
 		cmbLugar.setBounds(1469, 460, 184, 22);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
-
-		cmbGaspar = new JComboBox<>();
-		cmbGaspar.setFont(new Font("Dialog", Font.PLAIN, 12));
-		cmbGaspar.setModel(new DefaultComboBoxModel<>(new String[] { "GASPAR", "Alto Gasparinho", "Arraial D’Ouro",
-				"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central", "Centro",
-				"Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim", "Lagoa",
-				"Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
-		cmbGaspar.setBounds(829, 710, 169, 22);
-		cmbGaspar.setBackground(new Color(255, 251, 233));
-		contentPane.add(cmbGaspar);
-
-		cmbBlumenau = new JComboBox<>();
-		cmbBlumenau.setFont(new Font("Dialog", Font.PLAIN, 12));
-		cmbBlumenau.setModel(new DefaultComboBoxModel<>(new String[] { "BLUMENAU", "Badenfurt", "Fidélis",
-				"Itoupava Central", "Itoupavazinha", "Salto do Norte", "Testo Salto", "Vila Itoupava", "Fortaleza",
-				"Fortaleza Alta", "Itoupava Norte", "Nova Esperança", "Ponta Aguda", "Tribess", "Vorstadt", "Da Glória",
-				"Garcia", "Progresso", "Ribeirão Fresco", "Valparaíso", "Vila Formosa", "Água Verde", "Do Salto",
-				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
-				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
-				"Vila Nova" }));
-		cmbBlumenau.setBounds(829, 628, 169, 22);
-		cmbBlumenau.setBackground(new Color(255, 251, 233));
-		contentPane.add(cmbBlumenau);
 
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
@@ -220,12 +296,12 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblFundoFiltro1 = new JLabel("");
 		lblFundoFiltro1.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
-		lblFundoFiltro1.setBounds(709, 357, 327, 448);
+		lblFundoFiltro1.setBounds(427, 361, 327, 448);
 		contentPane.add(lblFundoFiltro1);
 
-		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
+		JLabel lblNewLabel_1 = new JLabel("Destino");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(669, 273, 450, 60);
+		lblNewLabel_1.setBounds(547, 273, 121, 60);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
@@ -243,7 +319,7 @@ public class OferecerCarona extends JFrame {
 
 					showCampoNaoPreenchido();
 
-				} else if ((rdbtnGaspar.isSelected() || rdbtnIfsc.isSelected() || rdbtnBlumenau.isSelected())
+				} else if ((rdbtnGasparD.isSelected() || rdbtnIfscD.isSelected() || rdbtnBlumenauD.isSelected())
 						&& cmbLugar.getSelectedIndex() > 0) {
 
 					Trajeto t = definirTrajeto();
@@ -268,37 +344,72 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_4.setBounds(1344, 333, 327, 472);
 		contentPane.add(lblNewLabel_4);
 
+		JLabel lblNewLabel_1_3 = new JLabel("Origem");
+		lblNewLabel_1_3.setFont(new Font("Dialog", Font.BOLD, 31));
+		lblNewLabel_1_3.setBounds(936, 273, 121, 60);
+		contentPane.add(lblNewLabel_1_3);
+
 	}
 
 	public Trajeto definirTrajeto() {
 		Trajeto t = new Trajeto();
 
-		if (rdbtnGaspar.isSelected()) {
-			String bairro = (String) cmbGaspar.getSelectedItem();
+		// Destino
+		if (rdbtnGasparD.isSelected()) {
+			String bairro = (String) cmbGasparD.getSelectedItem();
 
-			if (bairroSelecionado(bairro, cmbGaspar)) {
+			if (bairroSelecionado(bairro, cmbGasparD)) {
 				t.setDestino("Gaspar, " + bairro);
-				t.setOrigem("IFSC");
 
 			} else {
 				showCampoNaoPreenchido();
 				return null;
 			}
 
-		} else if (rdbtnBlumenau.isSelected()) {
-			String bairro = (String) cmbBlumenau.getSelectedItem();
+		} else if (rdbtnBlumenauD.isSelected()) {
+			String bairro = (String) cmbBlumenauD.getSelectedItem();
 
-			if (bairroSelecionado(bairro, cmbBlumenau)) {
+			if (bairroSelecionado(bairro, cmbBlumenauD)) {
 				t.setDestino("Blumenau, " + bairro);
-				t.setOrigem("IFSC");
 
 			} else {
 				showCampoNaoPreenchido();
 				return null;
 			}
 
-		} else if (rdbtnIfsc.isSelected()) {
+		} else if (rdbtnIfscD.isSelected()) {
 			t.setDestino("IFSC");
+
+		} else {
+			showCampoNaoPreenchido();
+			return null;
+		}
+
+		// Origem
+		if (rdbtnGasparO.isSelected()) {
+			String bairro = (String) cmbGasparO.getSelectedItem();
+
+			if (bairroSelecionado(bairro, cmbGasparO)) {
+				t.setOrigem("Gaspar, " + bairro);
+
+			} else {
+				showCampoNaoPreenchido();
+				return null;
+			}
+
+		} else if (rdbtnBlumenauO.isSelected()) {
+			String bairro = (String) cmbBlumenauO.getSelectedItem();
+
+			if (bairroSelecionado(bairro, cmbBlumenauO)) {
+				t.setOrigem("Blumenau, " + bairro);
+
+			} else {
+				showCampoNaoPreenchido();
+				return null;
+			}
+
+		} else if (rdbtnIfscO.isSelected()) {
+			t.setOrigem("IFSC");
 
 		} else {
 			showCampoNaoPreenchido();
@@ -332,10 +443,17 @@ public class OferecerCarona extends JFrame {
 		Long success = cDAO.cadastrarCarona(c);
 
 		if (success > 0) {
-			System.out.println("foi");
+			
+			CadastroRealizado CadastroRealizado = new CadastroRealizado();
+			CadastroRealizado.setBounds(40, 40, 451, 234);
+			CadastroRealizado.setLocationRelativeTo(null);
+			CadastroRealizado.setVisible(true);
 
 		} else {
-			System.out.println("não foi");
+			CadastroErro CadastroErro = new CadastroErro();
+			CadastroErro.setBounds(40, 40, 451, 234);
+			CadastroErro.setLocationRelativeTo(null);
+			CadastroErro.setVisible(true);
 
 		}
 
@@ -351,6 +469,7 @@ public class OferecerCarona extends JFrame {
 		campoNaoPreenchido.setLocationRelativeTo(null);
 		campoNaoPreenchido.setVisible(true);
 	}
+	
 
 	private Locale determineLocale(String language, String country) {
 		return new Locale(language, country);

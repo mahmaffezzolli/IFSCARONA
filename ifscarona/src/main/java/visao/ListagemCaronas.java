@@ -12,6 +12,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -29,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import controle.CaronaDAO;
+import controle.JavaMail;
 import controle.PessoaDAO;
 import controle.VeiculoDAO;
 import modelo.Carona;
@@ -162,12 +164,20 @@ public class ListagemCaronas extends JFrame {
 						Pessoa passageiro = PessoaDAO.getInstancia().pegaPessoa(cpfPassageiro);
 						carona.setPassageiro(passageiro);
 
-						cDAO.alterarCarona(carona);
+						boolean sucesso = cDAO.alterarCarona(carona);
 						
-						TelaCaronaSelecionada telaCaronaSelecionada = new TelaCaronaSelecionada();
-						telaCaronaSelecionada.setBounds(40, 40, 451, 234);
-						telaCaronaSelecionada.setLocationRelativeTo(null);
-						telaCaronaSelecionada.setVisible(true);
+						if(sucesso) {
+							TelaCaronaSelecionada telaCaronaSelecionada = new TelaCaronaSelecionada();
+							telaCaronaSelecionada.setBounds(40, 40, 451, 234);
+							telaCaronaSelecionada.setLocationRelativeTo(null);
+							telaCaronaSelecionada.setVisible(true);
+							
+							//JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(), carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(), carona.getData(), carona.getHorario());
+						}else {
+							
+						}
+						
+						
 
 					}
 
@@ -227,7 +237,7 @@ public class ListagemCaronas extends JFrame {
 		timePicker.setBounds(1592, 260, 200, 30);
 		contentPane.add(timePicker);
 
-		originFilter = new JTextField("Origem");
+		originFilter = new JTextField("");
 		originFilter.setFont(new Font("Dialog", Font.PLAIN, 15));
 		originFilter.setToolTipText("Origem");
 		originFilter.setBounds(1592, 321, 199, 30);
@@ -250,7 +260,7 @@ public class ListagemCaronas extends JFrame {
 
 		contentPane.add(originFilter);
 
-		destinationFilter = new JTextField("Destino");
+		destinationFilter = new JTextField("");
 		destinationFilter.setFont(new Font("Dialog", Font.PLAIN, 15));
 		destinationFilter.setToolTipText("Destino");
 		destinationFilter.setBounds(1592, 380, 199, 30);
@@ -299,25 +309,31 @@ public class ListagemCaronas extends JFrame {
 
 		List<Carona> caronas = cDAO.listarCaronasDisponíveis();
 
-		System.out.println(caronas.size());
-
 		try {
 
 			for (Carona carona : caronas) {
-				String origem = carona.getTrajeto().getOrigem();
-				String destino = carona.getTrajeto().getDestino();
+				
+		        if (carona.getPassageiro().getCpf() == null) {
+		            String origem = carona.getTrajeto().getOrigem();
+		            String destino = carona.getTrajeto().getDestino();
 
-				Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
+		            Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
 
-				DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+		            String data = formatDate(carona.getData());
+		            String horario = formatTime(carona.getHorario());
 
-				String data = carona.getData().format(dateFormatter);
-				String horario = carona.getHorario().toLocalTime().format(timeFormatter);
-
-				Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), data, horario,
-						carro.getPlaca(), origem, destino };
-				tableModel.addRow(rowData);
+		            Object[] rowData = {
+		                carona.getIdCarona(),
+		                carona.getMotorista().getNome(),
+		                data,
+		                horario,
+		                carro.getPlaca(),
+		                origem,
+		                destino
+		            };
+		            tableModel.addRow(rowData);
+		        }
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -365,5 +381,15 @@ public class ListagemCaronas extends JFrame {
 		destinationFilter.setText("");
 
 		filterCaronas();
+	}
+	
+	private String formatDate(LocalDate date) {
+	    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	    return date.format(dateFormatter);
+	}
+
+	private String formatTime(Time time) {
+	    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+	    return time.toLocalTime().format(timeFormatter);
 	}
 }

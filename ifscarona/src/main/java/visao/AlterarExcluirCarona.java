@@ -23,8 +23,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import controle.CaronaDAO;
+import controle.TrajetoDAO;
 import modelo.Carona;
 import modelo.Sessao;
+import modelo.Trajeto;
+
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePicker;
@@ -147,7 +150,7 @@ public class AlterarExcluirCarona extends JFrame {
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
 		dateSettings.setLocale(determineLocale("pt", "BR"));
 		datePicker = new DatePicker(dateSettings);
-		datePicker.setEnabled(false); // Disable initially
+		datePicker.setEnabled(false); 
 		datePicker.setBounds(1030, 540, 300, 40);
 		contentPane.add(datePicker);
 
@@ -251,8 +254,17 @@ public class AlterarExcluirCarona extends JFrame {
 
 			if (carona != null) {
 				
-				carona.getTrajeto().setDestino(txtDestino.getText());
-				carona.getTrajeto().setOrigem(txtOrigem.getText());
+				Trajeto trajeto = TrajetoDAO.getInstancia().pegaTrajeto(carona.getTrajeto().getIdTrajeto());
+				
+				String destino = txtDestino.getText();
+				String origem = txtOrigem.getText();
+				
+				trajeto.setDestino(destino);
+				trajeto.setOrigem(origem);
+				
+				TrajetoDAO.getInstancia().alterarTrajeto(trajeto);
+				
+				carona.setTrajeto(trajeto);
 
 				LocalDate modifiedDate = datePicker.getDate();
 				LocalTime modifiedTime = timePicker.getTime();

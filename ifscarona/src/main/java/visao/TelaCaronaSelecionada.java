@@ -26,7 +26,7 @@ public class TelaCaronaSelecionada extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroInexistente frame = new CadastroInexistente();
+					TelaCaronaSelecionada frame = new TelaCaronaSelecionada();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					// Centralizar
@@ -58,7 +58,7 @@ public class TelaCaronaSelecionada extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblAviso = new JLabel("");
-		lblAviso.setIcon(new ImageIcon(CadastroInexistente.class.getResource("/assets/alerta.png")));
+		lblAviso.setIcon(new ImageIcon(TelaCaronaSelecionada.class.getResource("/assets/alerta.png")));
 		lblAviso.setBounds(39, 70, 48, 48);
 		contentPane.add(lblAviso);
 
