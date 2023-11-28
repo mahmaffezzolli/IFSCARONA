@@ -88,11 +88,6 @@ public class Principal extends JFrame {
 				inicio.setVisible(true);
 			}
 		});
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio canto.png")));
-		lblNewLabel_1.setBounds(1469, -39, 397, 524);
-		contentPane.add(lblNewLabel_1);
 
 		btnLogOut.setIcon(new ImageIcon(Principal.class.getResource("/assets/Log-out.png")));
 		btnLogOut.setBorder(null);
