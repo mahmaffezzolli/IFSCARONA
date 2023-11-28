@@ -36,7 +36,6 @@ public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
-	private JLabel lblCanto2;
 
 	/**
 	 * Launch the application.
@@ -99,7 +98,7 @@ public class Principal extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(1300, 240, 11, 534);
+		separator.setBounds(1123, 232, 11, 534);
 		contentPane.add(separator);
 
 		JButton btnLogar = new JButton("Requisitar");
@@ -114,10 +113,8 @@ public class Principal extends JFrame {
 
 			}
 		});
-
-		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
-		btnLogar.setBackground(new Color(255, 255, 255));
-		btnLogar.setBounds(733, 477, 200, 70);
+		btnLogar.setBackground(new Color(211, 215, 207));
+		btnLogar.setBounds(665, 492, 227, 61);
 		contentPane.add(btnLogar);
 
 		JLabel lblCarro = new JLabel("");
@@ -129,11 +126,6 @@ public class Principal extends JFrame {
 		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/assets/b1340120-e126-4821-b15c-e3627d2a38a6.png")));
 		lblLogo.setBounds(-5, 426, 590, 172);
 		contentPane.add(lblLogo);
-		
-		JLabel lblCanto1 = new JLabel("New label");
-		lblCanto1.setIcon(new ImageIcon(Inicio.class.getResource("/assets/tela inicio canto.png")));
-		lblCanto1.setBounds(1490, -14, 434, 498);
-		contentPane.add(lblCanto1);
 
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(Principal.class.getResource("/assets/fundoClaro.png")));
@@ -142,18 +134,13 @@ public class Principal extends JFrame {
 
 		JLabel lblTitulo1 = new JLabel("Topa uma ");
 		lblTitulo1.setFont(new Font("Dialog", Font.BOLD, 50));
-		lblTitulo1.setBounds(501, 268, 260, 70);
+		lblTitulo1.setBounds(610, 329, 599, 70);
 		contentPane.add(lblTitulo1);
 
 		JLabel lblTitulo2 = new JLabel(" carona? ");
-		lblTitulo2.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 55));
-		lblTitulo2.setBounds(713, 335, 254, 70);
+		lblTitulo2.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 38));
+		lblTitulo2.setBounds(695, 387, 619, 70);
 		contentPane.add(lblTitulo2);
-
-		lblCanto2 = new JLabel("");
-		lblCanto2.setIcon(new ImageIcon(Inicio.class.getResource("/assets/dunso.png")));
-		lblCanto2.setBounds(380, -158, 800, 1169);
-		contentPane.add(lblCanto2);
 
 		JButton btnPerfil = new JButton("Perfil ");
 		btnPerfil.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -172,7 +159,7 @@ public class Principal extends JFrame {
 		});
 		btnPerfil.setBackground(new Color(244, 234, 213));
 		btnPerfil.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
-		btnPerfil.setBounds(1578, 462, 169, 59);
+		btnPerfil.setBounds(1329, 485, 169, 59);
 		contentPane.add(btnPerfil);
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
@@ -195,7 +182,7 @@ public class Principal extends JFrame {
 		});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
-		btnNewButton_1.setBounds(1578, 650, 169, 59);
+		btnNewButton_1.setBounds(1329, 662, 169, 59);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton = new JButton("Histórico");
@@ -208,7 +195,7 @@ public class Principal extends JFrame {
 		btnNewButton.setBackground(new Color(244, 234, 213));
 		btnNewButton.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnNewButton.setBounds(1578, 302, 169, 59);
+		btnNewButton.setBounds(1329, 302, 169, 59);
 		contentPane.add(btnNewButton);
 
 		DatePickerSettings dateSettings = new DatePickerSettings();

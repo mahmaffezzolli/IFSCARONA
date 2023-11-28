@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
@@ -108,8 +110,8 @@ public class ListagemCaronas extends JFrame {
 		contentPane.add(btnHome);
 
 		JLabel lblFiltro = new JLabel("Filtrar viagens");
-		lblFiltro.setFont(new Font("Nirmala UI", Font.BOLD, 24));
-		lblFiltro.setBounds(1705, 100, 170, 60);
+		lblFiltro.setFont(new Font("Dialog", Font.BOLD, 26));
+		lblFiltro.setBounds(1580, 129, 225, 60);
 		contentPane.add(lblFiltro);
 
 		JLabel lblCarro = new JLabel("");
@@ -169,7 +171,7 @@ public class ListagemCaronas extends JFrame {
 		});
 
 		btnSelecionar.setBackground(new Color(251, 251, 233));
-		btnSelecionar.setBounds(1690, 760, 185, 65);
+		btnSelecionar.setBounds(1342, 826, 185, 65);
 		contentPane.add(btnSelecionar);
 
 		Font tableFont = new Font("Dialog", Font.PLAIN, 14);
@@ -207,29 +209,62 @@ public class ListagemCaronas extends JFrame {
 		tableHeader.setFont(tableFont.deriveFont(Font.BOLD));
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(595, 170, 1060, 650);
+		scrollPane.setBounds(467, 150, 1060, 650);
 		contentPane.add(scrollPane);
 
 		datePicker = new DatePicker();
-		datePicker.setBounds(1720, 200, 150, 30);
+		datePicker.setBounds(1592, 199, 200, 30);
 		contentPane.add(datePicker);
 
 		timePicker = new TimePicker();
-		timePicker.setBounds(1720, 260, 150, 30);
+		timePicker.setBounds(1592, 260, 200, 30);
 		contentPane.add(timePicker);
 
-		originFilter = new JTextField();
+		originFilter = new JTextField("Origem");
 		originFilter.setToolTipText("Origem");
-		originFilter.setBounds(1720, 320, 150, 30);
+		originFilter.setBounds(1592, 321, 199, 30);
+
+		originFilter.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (originFilter.getText().equals("Origem")) {
+					originFilter.setText("");
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (originFilter.getText().isEmpty()) {
+					originFilter.setText("Origem");
+				}
+			}
+		});
+
 		contentPane.add(originFilter);
 
-		destinationFilter = new JTextField();
+		destinationFilter = new JTextField("Destino");
 		destinationFilter.setToolTipText("Destino");
-		destinationFilter.setBounds(1720, 380, 150, 30);
+		destinationFilter.setBounds(1592, 380, 199, 30);
+		destinationFilter.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (destinationFilter.getText().equals("Destino")) {
+					destinationFilter.setText("");
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (destinationFilter.getText().isEmpty()) {
+					destinationFilter.setText("Destino");
+				}
+			}
+		});
 		contentPane.add(destinationFilter);
 
 		JButton filterButton = new JButton("Filtrar");
-		filterButton.setBackground(new Color(251, 251, 233));
+		filterButton.setIcon(new ImageIcon(ListagemCaronas.class.getResource("/assets/icons8-editar-50.png")));
+		filterButton.setBackground(new Color(211, 215, 207));
 		filterButton.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		filterButton.addActionListener(new ActionListener() {
 			@Override
@@ -237,13 +272,14 @@ public class ListagemCaronas extends JFrame {
 				filterCaronas();
 			}
 		});
-		filterButton.setBounds(1720, 430, 150, 50);
+		filterButton.setBounds(1613, 437, 161, 50);
 		contentPane.add(filterButton);
-		
-		JButton btnLimpar = new JButton("LIMPAR");
+
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setIcon(new ImageIcon(ListagemCaronas.class.getResource("/assets/icons8-excluir-60.png")));
 		btnLimpar.setFont(new Font("Nirmala UI", Font.BOLD, 16));
-		btnLimpar.setBackground(new Color(251, 251, 233));
-		btnLimpar.setBounds(1720, 496, 150, 50);
+		btnLimpar.setBackground(new Color(255, 182, 193));
+		btnLimpar.setBounds(1613, 523, 161, 50);
 		btnLimpar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

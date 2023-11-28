@@ -217,7 +217,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("Para onde você vai hoje?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(695, 273, 375, 60);
+		lblNewLabel_1.setBounds(669, 273, 450, 60);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
