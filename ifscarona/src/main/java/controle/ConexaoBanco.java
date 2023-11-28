@@ -7,10 +7,11 @@ import java.sql.SQLException;
 public class ConexaoBanco {
 	private static Connection conexao;
 	private static ConexaoBanco instancia;
-	private static final String USER = "ifscarona";
-	private static final String PASSWORD = "Aluno1234!";
+	private static final String DATABASE = "bd_ifscarona";
+	private static final String USER = "root";
+	private static final String PSW = "aluno";
 
-	private ConexaoBanco() {
+	public ConexaoBanco() {
 	}
 
 	public static ConexaoBanco getInstancia() {
@@ -22,11 +23,8 @@ public class ConexaoBanco {
 
 	public Connection conectar() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			String url = "jdbc:mysql://ifscarona.mysql.database.azure.com:3306/bd_ifscarona?useSSL=true";
-
-			conexao = DriverManager.getConnection(url, USER, PASSWORD);
+			conexao = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?serverTimezone=UTC", USER,
+					PSW);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,9 +33,7 @@ public class ConexaoBanco {
 
 	public boolean fecharConexao() {
 		try {
-			if (conexao != null && !conexao.isClosed()) {
-				conexao.close();
-			}
+			conexao.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
