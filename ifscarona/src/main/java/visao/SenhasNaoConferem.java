@@ -64,12 +64,12 @@ public class SenhasNaoConferem extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblSenhaNaoConfere = new JLabel("As senhas não conferem!");
-		lblSenhaNaoConfere.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblSenhaNaoConfere.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblSenhaNaoConfere.setBounds(113, 55, 246, 18);
 		contentPane.add(lblSenhaNaoConfere);
 
 		JButton btnNewButton = new JButton("OK");
-		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(255, 251, 233));

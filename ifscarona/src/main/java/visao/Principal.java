@@ -88,6 +88,11 @@ public class Principal extends JFrame {
 				inicio.setVisible(true);
 			}
 		});
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio canto.png")));
+		lblNewLabel_1.setBounds(1469, -39, 397, 524);
+		contentPane.add(lblNewLabel_1);
 
 		btnLogOut.setIcon(new ImageIcon(Principal.class.getResource("/assets/Log-out.png")));
 		btnLogOut.setBorder(null);
@@ -197,6 +202,11 @@ public class Principal extends JFrame {
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnNewButton.setBounds(1329, 302, 169, 59);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/assets/tela inicio canto.png")));
+		lblNewLabel.setBounds(1766, 0, 70, 15);
+		contentPane.add(lblNewLabel);
 
 		DatePickerSettings dateSettings = new DatePickerSettings();
 		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");

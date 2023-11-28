@@ -117,28 +117,29 @@ public class AlterarExcluirCarona extends JFrame {
 		txtDestino.setEnabled(false);
 		txtDestino.setEditable(false);
 		txtDestino.setBounds(1030, 380, 300, 40);
-		txtDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtDestino.setFont(new Font("Dialog", Font.PLAIN, 15));
 		contentPane.add(txtDestino);
 		txtDestino.setColumns(10);
 
 		JLabel lblOrigem = new JLabel("Origem:");
 		lblOrigem.setBounds(865, 300, 145, 35);
-		lblOrigem.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblOrigem.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblOrigem);
 
 		JLabel lblDestino = new JLabel("Destino:");
 		lblDestino.setBounds(865, 380, 150, 35);
-		lblDestino.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblDestino.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblDestino);
 
 		timePicker = new TimePicker();
+		timePicker.getComponentTimeTextField().setFont(new Font("Dialog", Font.PLAIN, 15));
 		timePicker.setEnabled(false); // Disable initially
 		timePicker.setBounds(1030, 460, 300, 40);
 		contentPane.add(timePicker);
 
 		JLabel lblHorário = new JLabel("Horário:");
 		lblHorário.setBounds(865, 460, 150, 35);
-		lblHorário.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblHorário.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblHorário);
 
 		DatePickerSettings dateSettings = new DatePickerSettings();
@@ -154,7 +155,7 @@ public class AlterarExcluirCarona extends JFrame {
 		txtOrigem.setEnabled(false);
 		txtOrigem.setEditable(false);
 		txtOrigem.setBounds(1030, 300, 300, 40);
-		txtOrigem.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtOrigem.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtOrigem.setColumns(10);
 		contentPane.add(txtOrigem);
 
@@ -191,7 +192,7 @@ public class AlterarExcluirCarona extends JFrame {
 		});
 
 		btnSalvar.setBackground(new Color(192, 192, 192));
-		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnSalvar.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnSalvar.setBounds(1006, 668, 145, 55);
 		contentPane.add(btnSalvar);
 
@@ -215,7 +216,7 @@ public class AlterarExcluirCarona extends JFrame {
 			}
 		});
 
-		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnExcluir.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnExcluir.setBackground(new Color(255, 182, 193));
 		btnExcluir.setBounds(1185, 668, 145, 55);
 		contentPane.add(btnExcluir);

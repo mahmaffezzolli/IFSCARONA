@@ -74,7 +74,7 @@ public class Login extends JFrame {
 		contentPane.add(lblCarro);
 
 		JLabel lblTitulo = new JLabel("Login");
-		lblTitulo.setFont(new Font("Nirmala UI", Font.BOLD, 65));
+		lblTitulo.setFont(new Font("Dialog", Font.BOLD, 65));
 		lblTitulo.setBounds(951, 115, 363, 110);
 		contentPane.add(lblTitulo);
 
@@ -94,7 +94,7 @@ public class Login extends JFrame {
 		contentPane.add(lblEmail);
 
 		txtEmail = new JTextField();
-		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtEmail.setFont(new Font("Dialog", Font.PLAIN, 16));
 		txtEmail.setBackground(new Color(255, 251, 233));
 		txtEmail.setToolTipText("");
 		txtEmail.setBounds(900, 390, 330, 45);
@@ -103,7 +103,7 @@ public class Login extends JFrame {
 
 		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
 		showPasswordCheckBox.setBackground(new Color(238, 238, 238));
-		showPasswordCheckBox.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		showPasswordCheckBox.setFont(new Font("Dialog", Font.PLAIN, 13));
 		showPasswordCheckBox.setBounds(1113, 610, 117, 15);
 		contentPane.add(showPasswordCheckBox);
 
@@ -183,7 +183,7 @@ public class Login extends JFrame {
 		contentPane.add(lblSenha);
 
 		txtSenha = new JPasswordField();
-		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtSenha.setFont(new Font("Dialog", Font.PLAIN, 16));
 		txtSenha.setToolTipText("");
 		txtSenha.setColumns(10);
 		txtSenha.setBackground(new Color(255, 251, 233));

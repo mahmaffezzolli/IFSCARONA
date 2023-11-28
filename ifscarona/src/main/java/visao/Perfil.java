@@ -125,31 +125,31 @@ public class Perfil extends JFrame {
 		txtSobrenome.setEnabled(false);
 		txtSobrenome.setEditable(false);
 		txtSobrenome.setBounds(695, 299, 300, 40);
-		txtSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtSobrenome.setFont(new Font("Dialog", Font.PLAIN, 15));
 		contentPane.add(txtSobrenome);
 		txtSobrenome.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(530, 238, 101, 20);
-		lblNome.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblNome.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblNome);
 
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
 		lblSobrenome.setBounds(530, 304, 204, 20);
-		lblSobrenome.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblSobrenome.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblSobrenome);
 
 		txtEmail = new JTextField();
 		txtEmail.setEnabled(false);
 		txtEmail.setEditable(false);
 		txtEmail.setBounds(695, 368, 300, 40);
-		txtEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtEmail.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtEmail.setColumns(10);
 		contentPane.add(txtEmail);
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setBounds(530, 373, 84, 20);
-		lblEmail.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblEmail.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblEmail);
 
 		txtCPF = new JTextField();
@@ -161,7 +161,7 @@ public class Perfil extends JFrame {
 		txtCPF.setEnabled(false);
 		txtCPF.setEditable(false);
 		txtCPF.setBounds(695, 441, 300, 40);
-		txtCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtCPF.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtCPF.setColumns(10);
 		contentPane.add(txtCPF);
 
@@ -169,7 +169,7 @@ public class Perfil extends JFrame {
 		txtNome.setEnabled(false);
 		txtNome.setEditable(false);
 		txtNome.setBounds(695, 233, 300, 40);
-		txtNome.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtNome.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtNome.setColumns(10);
 		contentPane.add(txtNome);
 
@@ -177,18 +177,18 @@ public class Perfil extends JFrame {
 		txtData.setEditable(false);
 		txtData.setEnabled(false);
 		txtData.setBounds(695, 512, 300, 40);
-		txtData.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtData.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtData.setColumns(10);
 		contentPane.add(txtData);
 
 		JLabel lblCPF = new JLabel("CPF:");
 		lblCPF.setBounds(530, 446, 59, 20);
-		lblCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblCPF.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblCPF);
 
 		JLabel lblData = new JLabel("Nascimento:");
 		lblData.setBounds(530, 513, 194, 29);
-		lblData.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblData.setFont(new Font("Dialog", Font.PLAIN, 25));
 		contentPane.add(lblData);
 
 		JLabel lblIcon = new JLabel("");
@@ -222,53 +222,53 @@ public class Perfil extends JFrame {
 		contentPane.add(separator);
 
 		JLabel lblPlaca = new JLabel("Placa:");
-		lblPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblPlaca.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lblPlaca.setBounds(1271, 238, 77, 20);
 		contentPane.add(lblPlaca);
 
 		txtPlaca = new JTextField();
 		txtPlaca.setEnabled(false);
 		txtPlaca.setEditable(false);
-		txtPlaca.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtPlaca.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtPlaca.setColumns(10);
 		txtPlaca.setBounds(1411, 233, 294, 40);
 		contentPane.add(txtPlaca);
 
 		JLabel lblCor = new JLabel("Cor:");
-		lblCor.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblCor.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lblCor.setBounds(1271, 304, 108, 20);
 		contentPane.add(lblCor);
 
 		txtModelo = new JTextField();
 		txtModelo.setEnabled(false);
 		txtModelo.setEditable(false);
-		txtModelo.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtModelo.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtModelo.setColumns(10);
 		txtModelo.setBounds(1411, 441, 300, 40);
 		contentPane.add(txtModelo);
 
 		JLabel lblMarca = new JLabel("Marca:");
-		lblMarca.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblMarca.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lblMarca.setBounds(1271, 373, 132, 20);
 		contentPane.add(lblMarca);
 
 		txtCor = new JTextField();
 		txtCor.setEnabled(false);
 		txtCor.setEditable(false);
-		txtCor.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtCor.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtCor.setColumns(10);
 		txtCor.setBounds(1411, 299, 300, 40);
 		contentPane.add(txtCor);
 
 		JLabel lblModelo = new JLabel("Modelo:");
-		lblModelo.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lblModelo.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lblModelo.setBounds(1271, 446, 132, 20);
 		contentPane.add(lblModelo);
 
 		txtMarca = new JTextField();
 		txtMarca.setEnabled(false);
 		txtMarca.setEditable(false);
-		txtMarca.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtMarca.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtMarca.setColumns(10);
 		txtMarca.setBounds(1411, 368, 300, 40);
 		contentPane.add(txtMarca);
@@ -285,7 +285,7 @@ public class Perfil extends JFrame {
 		});
 
 		btnSalvar.setBackground(new Color(192, 192, 192));
-		btnSalvar.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnSalvar.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnSalvar.setBounds(579, 665, 145, 53);
 		contentPane.add(btnSalvar);
 
@@ -317,7 +317,7 @@ public class Perfil extends JFrame {
 			}
 		});
 
-		btnSalvarV.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
+		btnSalvarV.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnSalvarV.setBackground(new Color(186, 189, 182));
 		btnSalvarV.setBounds(1314, 665, 151, 53);
 		contentPane.add(btnSalvarV);
@@ -367,7 +367,7 @@ public class Perfil extends JFrame {
 		contentPane.add(btnAddVeiculo);
 
 		JLabel lbCPF = new JLabel("CPF:");
-		lbCPF.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
+		lbCPF.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lbCPF.setBounds(1271, 512, 94, 20);
 		contentPane.add(lbCPF);
 
@@ -377,7 +377,7 @@ public class Perfil extends JFrame {
 		mascaraCPF2 = new MaskFormatter("###.###.###-##");
 		txtCPF2 = new JFormattedTextField(mascaraCPF2);
 		/*****************/
-		txtCPF2.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		txtCPF2.setFont(new Font("Dialog", Font.PLAIN, 15));
 		txtCPF2.setEnabled(false);
 		txtCPF2.setEditable(false);
 		txtCPF2.setColumns(10);

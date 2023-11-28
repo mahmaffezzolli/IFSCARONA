@@ -102,7 +102,7 @@ public class Inicio extends JFrame {
 			}
 
 		});
-		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnCadastrar.setBackground(new Color(255, 251, 233));
 		btnCadastrar.setBounds(981, 574, 154, 51);
 		contentPane.add(btnCadastrar);

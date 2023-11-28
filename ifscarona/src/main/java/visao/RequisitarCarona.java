@@ -95,12 +95,12 @@ public class RequisitarCarona extends JFrame {
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
 		dateSettings.setLocale(determineLocale("pt", "BR"));
 		datePicker = new DatePicker(dateSettings);
-		datePicker.getComponentDateTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		datePicker.getComponentDateTextField().setFont(new Font("Dialog", Font.PLAIN, 13));
 		datePicker.setBounds(1463, 565, 220, 30);
 		contentPane.add(datePicker);
 
 		timePicker = new TimePicker();
-		timePicker.getComponentTimeTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		timePicker.getComponentTimeTextField().setFont(new Font("Dialog", Font.PLAIN, 13));
 		timePicker.setBounds(1463, 665, 220, 30);
 		contentPane.add(timePicker);
 

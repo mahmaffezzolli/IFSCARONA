@@ -63,12 +63,12 @@ public class SenhaIncorreta extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblSenhaIncorreta = new JLabel("Senha Incorreta!");
-		lblSenhaIncorreta.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblSenhaIncorreta.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblSenhaIncorreta.setBounds(154, 60, 186, 31);
 		contentPane.add(lblSenhaIncorreta);
 
 		JButton btnNewButton = new JButton("OK");
-		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton.setBorder(null);
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(189, 123, 84, 31);

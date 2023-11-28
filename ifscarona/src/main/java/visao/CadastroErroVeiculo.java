@@ -64,13 +64,13 @@ public class CadastroErroVeiculo extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblCadastroErro = new JLabel("Erro ao cadastrar veículo!");
-		lblCadastroErro.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblCadastroErro.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblCadastroErro.setBounds(135, 55, 260, 18);
 		contentPane.add(lblCadastroErro);
 
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.setBorder(null);
-		btnNewButton.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnNewButton.setBackground(new Color(255, 251, 233));
 		btnNewButton.setBounds(205, 122, 84, 31);
 		contentPane.add(btnNewButton);

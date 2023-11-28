@@ -64,12 +64,12 @@ public class EmaiInvalido extends JFrame {
 		contentPane.add(lblAviso);
 
 		JLabel lblEmailInvalido = new JLabel("Email Inválido!");
-		lblEmailInvalido.setFont(new Font("Nirmala UI", Font.BOLD, 17));
+		lblEmailInvalido.setFont(new Font("Dialog", Font.BOLD, 17));
 		lblEmailInvalido.setBounds(154, 61, 211, 18);
 		contentPane.add(lblEmailInvalido);
 
 		JButton btnOk = new JButton("OK");
-		btnOk.setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		btnOk.setFont(new Font("Dialog", Font.PLAIN, 13));
 		btnOk.setBorder(null);
 		btnOk.setBackground(new Color(255, 251, 233));
 		btnOk.setBounds(177, 123, 84, 31);
