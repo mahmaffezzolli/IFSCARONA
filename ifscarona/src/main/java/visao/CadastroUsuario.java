@@ -25,6 +25,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 import org.mindrot.jbcrypt.BCrypt;
+
+import controle.JavaMail;
 import controle.PessoaDAO;
 import modelo.Pessoa;
 import javax.swing.JPasswordField;
@@ -408,6 +410,8 @@ public class CadastroUsuario extends JFrame {
 						cadastroRealizado.setLocationRelativeTo(null);
 						cadastroRealizado.setVisible(true);
 
+						//JavaMail.enviarEmailContaCadastrada(email);
+						
 						dispose();
 
 					} else {
