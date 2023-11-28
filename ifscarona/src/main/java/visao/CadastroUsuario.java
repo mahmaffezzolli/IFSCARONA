@@ -328,7 +328,7 @@ public class CadastroUsuario extends JFrame {
 				String nome = txtNome.getText();
 				String sobrenome = txtSobrenome.getText();
 
-				String cpfS = txtCPF.getText();
+				String cpfS = txtCPF_1.getText();
 
 				String email = txtEmail.getText();
 
@@ -347,7 +347,7 @@ public class CadastroUsuario extends JFrame {
 					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
-				} else if (txtCPF.getText().isEmpty()) {
+				} else if (txtCPF_1.getText().isEmpty()) {
 					campoNaoPreenchido.setBounds(40, 40, 451, 234);
 					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
@@ -377,7 +377,7 @@ public class CadastroUsuario extends JFrame {
 				} else {
 
 					// tranformando em fotmato de data
-					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getText(),
+					LocalDate dataNascimento = LocalDate.parse(txtDataNascimento_1.getText(),
 							DateTimeFormatter.ofPattern("dd/MM/yyy"));
 
 					// removendo a máscara
