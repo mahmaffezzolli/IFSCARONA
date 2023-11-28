@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -32,6 +34,10 @@ import modelo.Carro;
 import modelo.Pessoa;
 import modelo.Sessao;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.TimePicker;
 
 public class ListagemCaronas extends JFrame {
 
@@ -45,6 +51,10 @@ public class ListagemCaronas extends JFrame {
 	private JTable table;
 	private JPanel contentPane;
 	private JButton btnSelecionar;
+	private DatePicker datePicker;
+	private TimePicker timePicker;
+	private JTextField originFilter;
+	private JTextField destinationFilter;
 
 	/**
 	 * Launch the application.
@@ -97,6 +107,11 @@ public class ListagemCaronas extends JFrame {
 		btnHome.setBounds(140, 762, 75, 65);
 		contentPane.add(btnHome);
 
+		JLabel lblFiltro = new JLabel("Filtrar viagens");
+		lblFiltro.setFont(new Font("Nirmala UI", Font.BOLD, 24));
+		lblFiltro.setBounds(1705, 100, 170, 60);
+		contentPane.add(lblFiltro);
+
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Principal.class.getResource("/assets/car.png")));
 		lblCarro.setBounds(81, 304, 385, 151);
@@ -113,7 +128,7 @@ public class ListagemCaronas extends JFrame {
 		contentPane.add(lblFundo);
 
 		btnSelecionar = new JButton("Selecionar");
-		btnSelecionar.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnSelecionar.setFont(new Font("Nirmala UI", Font.BOLD, 16));
 		btnSelecionar.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-caronas-50.png")));
 		btnSelecionar.addActionListener(new ActionListener() {
 			@Override
@@ -138,16 +153,15 @@ public class ListagemCaronas extends JFrame {
 						telaEditar.setVisible(true);
 
 						dispose();
-					}else {
-						
+					} else {
+
 						String cpfPassageiro = Sessao.getPessoaLogada().getCpf();
 						Carona carona = cDAO.pegaCarona(idCarona);
 						Pessoa passageiro = PessoaDAO.getInstancia().pegaPessoa(cpfPassageiro);
 						carona.setPassageiro(passageiro);
-						
+
 						cDAO.alterarCarona(carona);
-						
-						
+
 					}
 
 				}
@@ -155,7 +169,7 @@ public class ListagemCaronas extends JFrame {
 		});
 
 		btnSelecionar.setBackground(new Color(251, 251, 233));
-		btnSelecionar.setBounds(1600, 850, 185, 65);
+		btnSelecionar.setBounds(1690, 760, 185, 65);
 		contentPane.add(btnSelecionar);
 
 		Font tableFont = new Font("Dialog", Font.PLAIN, 14);
@@ -193,21 +207,63 @@ public class ListagemCaronas extends JFrame {
 		tableHeader.setFont(tableFont.deriveFont(Font.BOLD));
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(616, 170, 1060, 651);
+		scrollPane.setBounds(595, 170, 1060, 650);
 		contentPane.add(scrollPane);
 
+		datePicker = new DatePicker();
+		datePicker.setBounds(1720, 200, 150, 30);
+		contentPane.add(datePicker);
+
+		timePicker = new TimePicker();
+		timePicker.setBounds(1720, 260, 150, 30);
+		contentPane.add(timePicker);
+
+		originFilter = new JTextField();
+		originFilter.setToolTipText("Origem");
+		originFilter.setBounds(1720, 320, 150, 30);
+		contentPane.add(originFilter);
+
+		destinationFilter = new JTextField();
+		destinationFilter.setToolTipText("Destino");
+		destinationFilter.setBounds(1720, 380, 150, 30);
+		contentPane.add(destinationFilter);
+
+		JButton filterButton = new JButton("Filtrar");
+		filterButton.setBackground(new Color(251, 251, 233));
+		filterButton.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		filterButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				filterCaronas();
+			}
+		});
+		filterButton.setBounds(1720, 430, 150, 50);
+		contentPane.add(filterButton);
+		
+		JButton btnLimpar = new JButton("LIMPAR");
+		btnLimpar.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		btnLimpar.setBackground(new Color(251, 251, 233));
+		btnLimpar.setBounds(1720, 496, 150, 50);
+		btnLimpar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				limpar();
+			}
+		});
+		contentPane.add(btnLimpar);
+
 		List<Carona> caronas = cDAO.listarCaronasDisponíveis();
-		
+
 		System.out.println(caronas.size());
-		
+
 		try {
-			
+
 			for (Carona carona : caronas) {
 				String origem = carona.getTrajeto().getOrigem();
 				String destino = carona.getTrajeto().getDestino();
 
 				Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
-				
+
 				DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -215,7 +271,7 @@ public class ListagemCaronas extends JFrame {
 				String horario = carona.getHorario().toLocalTime().format(timeFormatter);
 
 				Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), data, horario,
-				        carro.getPlaca(), origem, destino };
+						carro.getPlaca(), origem, destino };
 				tableModel.addRow(rowData);
 			}
 		} catch (Exception e) {
@@ -224,4 +280,45 @@ public class ListagemCaronas extends JFrame {
 
 	}
 
+	private void filterCaronas() {
+		tableModel.setRowCount(0);
+
+		LocalDate selectedDate = datePicker.getDate();
+		LocalTime selectedTime = timePicker.getTime();
+		String selectedOrigin = originFilter.getText();
+		String selectedDestination = destinationFilter.getText();
+
+		List<Carona> filteredCaronas = cDAO.listarCaronasPorFiltro(selectedDate, selectedTime, selectedOrigin,
+				selectedDestination);
+
+		for (Carona carona : filteredCaronas) {
+			String origem = carona.getTrajeto().getOrigem();
+			String destino = carona.getTrajeto().getDestino();
+
+			Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
+
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+			String data = carona.getData().format(dateFormatter);
+			String horario = carona.getHorario().toLocalTime().format(timeFormatter);
+
+			String motoristaNome = carona.getMotorista().getNome();
+
+			Object[] rowData = { carona.getIdCarona(), motoristaNome, data, horario, carro.getPlaca(), origem,
+					destino };
+
+			tableModel.addRow(rowData);
+		}
+	}
+
+	private void limpar() {
+
+		datePicker.setDate(null);
+		timePicker.setTime(null);
+		originFilter.setText("");
+		destinationFilter.setText("");
+
+		filterCaronas();
+	}
 }

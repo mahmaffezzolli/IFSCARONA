@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Types;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -149,11 +151,11 @@ public class CaronaDAO implements ICaronaDAO {
 				ps.executeUpdate();
 
 				try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-				    if (generatedKeys.next()) {
-				        return generatedKeys.getLong(1);
-				    } else {
-				        throw new SQLException("Creating carona failed, no ID obtained.");
-				    }
+					if (generatedKeys.next()) {
+						return generatedKeys.getLong(1);
+					} else {
+						throw new SQLException("Creating carona failed, no ID obtained.");
+					}
 				}
 
 			} catch (SQLException e) {
@@ -433,8 +435,7 @@ public class CaronaDAO implements ICaronaDAO {
 				+ "veiculos.id_veiculo as id_veiculo, veiculos.placa as placa, "
 				+ "trajetos.id_trajeto as id_trajeto, trajetos.origem as origem, "
 				+ "trajetos.destino as destino, caronas.qnt_passageiros as qnt_passageiros, "
-				+ "DATE_FORMAT(caronas.data, '%d/%m/%Y') as data " 
-				+ "FROM caronas "
+				+ "DATE_FORMAT(caronas.data, '%d/%m/%Y') as data " + "FROM caronas "
 				+ "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto "
 				+ "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista "
 				+ "LEFT JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro "
@@ -469,6 +470,7 @@ public class CaronaDAO implements ICaronaDAO {
 				carro.setPlaca(rs.getString("placa"));
 				carona.setVeiculo(carro);
 
+				carona.setQntPassageiro(rs.getInt("qnt_passageiros"));
 				carona.setHorario(rs.getTime("horario"));
 				String dateStr = rs.getString("data");
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -505,6 +507,94 @@ public class CaronaDAO implements ICaronaDAO {
 		} finally {
 			c.fecharConexao();
 		}
+	}
+
+	public List<Carona> listarCaronasPorFiltro(LocalDate selectedDate, LocalTime selectedTime, String selectedOrigin,
+			String selectedDestination) {
+		ConexaoBanco c = ConexaoBanco.getInstancia();
+		Connection con = c.conectar();
+
+		List<Carona> filteredCaronas = new ArrayList<>();
+
+		StringBuilder queryBuilder = new StringBuilder(
+			    "SELECT caronas.*, trajetos.*, mo.nome AS motorista_nome, pa.nome AS passageiro_nome, veiculos.* " +
+			    "FROM caronas " +
+			    "JOIN trajetos ON caronas.id_trajeto = trajetos.id_trajeto " +
+			    "JOIN pessoas mo ON mo.cpf = caronas.cpf_motorista " +
+			    "LEFT JOIN pessoas pa ON pa.cpf = caronas.cpf_passageiro " +
+			    "JOIN veiculos ON veiculos.id_veiculo = caronas.id_veiculo " +
+			    "WHERE 1=1 ");
+
+
+		List<Object> params = new ArrayList<>();
+
+		if (selectedDate != null) {
+			queryBuilder.append("AND caronas.data = ? ");
+			params.add(Date.valueOf(selectedDate));
+		}
+
+		if (selectedTime != null) {
+			queryBuilder.append("AND caronas.horario = ? ");
+			params.add(Time.valueOf(selectedTime));
+		}
+
+		if (selectedOrigin != null && !selectedOrigin.isEmpty()) {
+			queryBuilder.append("AND trajetos.origem LIKE ? ");
+			params.add("%" + selectedOrigin + "%");
+		}
+
+		if (selectedDestination != null && !selectedDestination.isEmpty()) {
+			queryBuilder.append("AND trajetos.destino LIKE ? ");
+			params.add("%" + selectedDestination + "%");
+		}
+
+		try (PreparedStatement ps = con.prepareStatement(queryBuilder.toString())) {
+			for (int i = 0; i < params.size(); i++) {
+				ps.setObject(i + 1, params.get(i));
+			}
+
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+				    Carona carona = new Carona();
+				    carona.setIdCarona(rs.getLong("id_carona"));
+
+				    Pessoa motorista = new Pessoa();
+				    motorista.setCpf(rs.getString("cpf_motorista"));
+				    motorista.setNome(rs.getString("motorista_nome"));
+				    carona.setMotorista(motorista);
+
+				    Pessoa passageiro = new Pessoa();
+				    passageiro.setCpf(rs.getString("cpf_passageiro"));
+				    carona.setPassageiro(passageiro);
+
+
+					Trajeto trajeto = new Trajeto();
+					trajeto.setIdTrajeto(rs.getLong("id_trajeto"));
+					trajeto.setDestino(rs.getString("destino"));
+					trajeto.setOrigem(rs.getString("origem"));
+					carona.setTrajeto(trajeto);
+
+					Carro carro = new Carro();
+					carro.setIdVeiculo(rs.getLong("id_veiculo"));
+					carro.setPlaca(rs.getString("placa"));
+					carona.setVeiculo(carro);
+
+					carona.setQntPassageiro(rs.getInt("qnt_passageiros"));
+					carona.setHorario(rs.getTime("horario"));
+					String dateStr = rs.getString("data");
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					LocalDate date = LocalDate.parse(dateStr, formatter);
+					carona.setData(date);
+					filteredCaronas.add(carona);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return filteredCaronas;
 	}
 
 }
