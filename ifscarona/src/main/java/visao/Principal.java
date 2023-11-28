@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,12 +31,17 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.Locale;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private VeiculoDAO vDAO = VeiculoDAO.getInstancia();
+	private JRadioButton rdbtn6ao12;
+	private JRadioButton rdbtn12ao18;
+	private JRadioButton rdbtn18emDiante;
 	private DatePicker datePicker;
 	private TimePicker timePicker;
 
@@ -91,6 +97,25 @@ public class Principal extends JFrame {
 			}
 		});
 
+		JRadioButton rdbtn6ao12 = new JRadioButton("06:00 - 12:00");
+		rdbtn6ao12.setFont(new Font("Dialog", Font.BOLD, 15));
+		rdbtn6ao12.setBounds(587, 373, 169, 45);
+		contentPane.add(rdbtn6ao12);
+
+		JRadioButton rdbtn12ao18 = new JRadioButton("12:01 - 18:00");
+		rdbtn12ao18.setFont(new Font("Dialog", Font.BOLD, 15));
+		rdbtn12ao18.setBounds(587, 470, 169, 43);
+		contentPane.add(rdbtn12ao18);
+
+		JRadioButton rdbtn18emDiante = new JRadioButton("18:00 em diante");
+		rdbtn18emDiante.setFont(new Font("Dialog", Font.BOLD, 15));
+		rdbtn18emDiante.setBounds(587, 573, 169, 43);
+		contentPane.add(rdbtn18emDiante);
+
+		ButtonGroup radioGroup = new ButtonGroup();
+		radioGroup.add(rdbtn6ao12);
+		radioGroup.add(rdbtn12ao18);
+		radioGroup.add(rdbtn18emDiante);
 
 		btnLogOut.setIcon(new ImageIcon(Principal.class.getResource("/assets/Log-out.png")));
 		btnLogOut.setBorder(null);
@@ -107,39 +132,39 @@ public class Principal extends JFrame {
 		JComboBox cmbLugar = new JComboBox<>();
 		cmbLugar.setFont(new Font("Dialog", Font.BOLD, 12));
 		cmbLugar.setModel(new DefaultComboBoxModel<>(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
-		cmbLugar.setBounds(806, 391, 170, 23);
+		cmbLugar.setBounds(1075, 384, 170, 23);
 		cmbLugar.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbLugar);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/MODELO.png")));
-		lblNewLabel.setBounds(740, 363, 62, 62);
+		lblNewLabel.setBounds(1009, 356, 62, 62);
 		contentPane.add(lblNewLabel);
 		JButton btnLogar = new JButton("Requisitar");
 		btnLogar.setIcon(new ImageIcon(Principal.class.getResource("/assets/icons8-caronas-50.png")));
 		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent e) {
-				if (datePicker.getDate() != null || timePicker.getTime() != null) {
-					
-				    new ListagemCaronas().setVisible(true);
-				    Principal.this.dispose();
-				    
+				if (rdbtn18emDiante.isSelected() || rdbtn12ao18.isSelected() || rdbtn6ao12.isSelected()) {
+					new RequisitarCarona().setVisible(true);
+					Principal.this.dispose();
 				} else {
-				    CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
-				    campoNaoPreenchido.setBounds(40, 40, 451, 234);
-				    campoNaoPreenchido.setLocationRelativeTo(null);
-				    campoNaoPreenchido.setVisible(true);
+					CampoNaoPreenchido campoNaoPreenchido = new CampoNaoPreenchido();
+					campoNaoPreenchido.setBounds(40, 40, 451, 234);
+					campoNaoPreenchido.setLocationRelativeTo(null);
+					campoNaoPreenchido.setVisible(true);
 				}
-
 			}
 		});
-		
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
 		btnLogar.setBounds(821, 790, 179, 65);
 		contentPane.add(btnLogar);
+
+		JLabel lblFundoFiltro = new JLabel("");
+		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/FUndo CLaroP.png")));
+		lblFundoFiltro.setBounds(510, 224, 532, 560);
+		contentPane.add(lblFundoFiltro);
 
 		JLabel lblCarro = new JLabel("");
 		lblCarro.setIcon(new ImageIcon(Principal.class.getResource("/assets/car.png")));
@@ -158,7 +183,7 @@ public class Principal extends JFrame {
 
 		JLabel lblFiltro = new JLabel("Filtrar viagens");
 		lblFiltro.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblFiltro.setBounds(716, 147, 281, 107);
+		lblFiltro.setBounds(716, 147, 385, 107);
 		contentPane.add(lblFiltro);
 
 		JButton btnPerfil = new JButton("Perfil ");
@@ -223,17 +248,17 @@ public class Principal extends JFrame {
 		dateSettings.setLocale(determineLocale("pt", "BR"));
 		datePicker = new DatePicker(dateSettings);
 		datePicker.getComponentDateTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
-		datePicker.setBounds(752, 492, 220, 30);
+		datePicker.setBounds(1021, 485, 220, 30);
 		contentPane.add(datePicker);
 
 		timePicker = new TimePicker();
 		timePicker.getComponentTimeTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
-		timePicker.setBounds(752, 587, 220, 30);
+		timePicker.setBounds(1021, 580, 220, 30);
 		contentPane.add(timePicker);
 
 		JLabel lblFundoFiltro_1 = new JLabel("");
 		lblFundoFiltro_1.setIcon(new ImageIcon(Principal.class.getResource("/assets/FUndo CLaroP.png")));
-		lblFundoFiltro_1.setBounds(697, 220, 532, 560);
+		lblFundoFiltro_1.setBounds(966, 213, 532, 560);
 		contentPane.add(lblFundoFiltro_1);
 
 	}
