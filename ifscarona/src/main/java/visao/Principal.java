@@ -7,12 +7,18 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.TimePicker;
+
 import controle.VeiculoDAO;
 import modelo.Pessoa;
 import modelo.Sessao;
@@ -23,8 +29,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
 public class Principal extends JFrame {
@@ -34,6 +42,8 @@ public class Principal extends JFrame {
 	private JRadioButton rdbtn6ao12;
 	private JRadioButton rdbtn12ao18;
 	private JRadioButton rdbtn18emDiante;
+	private DatePicker datePicker;
+	private TimePicker timePicker;
 
 	/**
 	 * Launch the application.
@@ -89,17 +99,17 @@ public class Principal extends JFrame {
 
 		JRadioButton rdbtn6ao12 = new JRadioButton("06:00 - 12:00");
 		rdbtn6ao12.setFont(new Font("Dialog", Font.BOLD, 15));
-		rdbtn6ao12.setBounds(705, 338, 169, 45);
+		rdbtn6ao12.setBounds(587, 373, 169, 45);
 		contentPane.add(rdbtn6ao12);
 
 		JRadioButton rdbtn12ao18 = new JRadioButton("12:01 - 18:00");
 		rdbtn12ao18.setFont(new Font("Dialog", Font.BOLD, 15));
-		rdbtn12ao18.setBounds(705, 422, 169, 43);
+		rdbtn12ao18.setBounds(587, 470, 169, 43);
 		contentPane.add(rdbtn12ao18);
 
 		JRadioButton rdbtn18emDiante = new JRadioButton("18:00 em diante");
 		rdbtn18emDiante.setFont(new Font("Dialog", Font.BOLD, 15));
-		rdbtn18emDiante.setBounds(705, 505, 169, 43);
+		rdbtn18emDiante.setBounds(587, 573, 169, 43);
 		contentPane.add(rdbtn18emDiante);
 
 		ButtonGroup radioGroup = new ButtonGroup();
@@ -116,10 +126,22 @@ public class Principal extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(1122, 241, 11, 534);
+		separator.setBounds(1403, 240, 11, 534);
 		contentPane.add(separator);
 
+		JComboBox cmbLugar = new JComboBox<>();
+		cmbLugar.setFont(new Font("Dialog", Font.BOLD, 12));
+		cmbLugar.setModel(new DefaultComboBoxModel<>(new String[] { "SELECIONE OS LUGARES", "1", "2", "3", "4" }));
+		cmbLugar.setBounds(1075, 384, 170, 23);
+		cmbLugar.setBackground(new Color(255, 251, 233));
+		contentPane.add(cmbLugar);
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(RequisitarCarona.class.getResource("/assets/MODELO.png")));
+		lblNewLabel.setBounds(1009, 356, 62, 62);
+		contentPane.add(lblNewLabel);
 		JButton btnLogar = new JButton("Requisitar");
+		btnLogar.setIcon(new ImageIcon(Principal.class.getResource("/assets/icons8-caronas-50.png")));
 		btnLogar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -136,12 +158,12 @@ public class Principal extends JFrame {
 		});
 		btnLogar.setBorder(new LineBorder(new Color(249, 239, 197), 4, true));
 		btnLogar.setBackground(new Color(255, 251, 233));
-		btnLogar.setBounds(695, 615, 162, 43);
+		btnLogar.setBounds(821, 790, 179, 65);
 		contentPane.add(btnLogar);
 
 		JLabel lblFundoFiltro = new JLabel("");
 		lblFundoFiltro.setIcon(new ImageIcon(Principal.class.getResource("/assets/FUndo CLaroP.png")));
-		lblFundoFiltro.setBounds(617, 228, 532, 560);
+		lblFundoFiltro.setBounds(510, 224, 532, 560);
 		contentPane.add(lblFundoFiltro);
 
 		JLabel lblCarro = new JLabel("");
@@ -161,7 +183,7 @@ public class Principal extends JFrame {
 
 		JLabel lblFiltro = new JLabel("Filtrar viagens");
 		lblFiltro.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblFiltro.setBounds(634, 176, 385, 107);
+		lblFiltro.setBounds(716, 147, 385, 107);
 		contentPane.add(lblFiltro);
 
 		JButton btnPerfil = new JButton("Perfil ");
@@ -181,7 +203,7 @@ public class Principal extends JFrame {
 		});
 		btnPerfil.setBackground(new Color(244, 234, 213));
 		btnPerfil.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
-		btnPerfil.setBounds(1317, 478, 169, 59);
+		btnPerfil.setBounds(1578, 462, 169, 59);
 		contentPane.add(btnPerfil);
 
 		JButton btnNewButton_1 = new JButton("Oferecer");
@@ -204,12 +226,8 @@ public class Principal extends JFrame {
 		});
 		btnNewButton_1.setBorder(new LineBorder(new Color(232, 218, 188), 4));
 		btnNewButton_1.setBackground(new Color(244, 234, 213));
-		btnNewButton_1.setBounds(1317, 666, 169, 59);
+		btnNewButton_1.setBounds(1578, 650, 169, 59);
 		contentPane.add(btnNewButton_1);
-
-		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
-		chckbxNewCheckBox.setBounds(705, 338, 129, 23);
-		contentPane.add(chckbxNewCheckBox);
 
 		JButton btnNewButton = new JButton("Histórico");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -221,8 +239,31 @@ public class Principal extends JFrame {
 		btnNewButton.setBackground(new Color(244, 234, 213));
 		btnNewButton.setBorder(new LineBorder(new Color(232, 218, 188), 4, true));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnNewButton.setBounds(1317, 318, 169, 59);
+		btnNewButton.setBounds(1578, 302, 169, 59);
 		contentPane.add(btnNewButton);
 
+		DatePickerSettings dateSettings = new DatePickerSettings();
+		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
+		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
+		dateSettings.setLocale(determineLocale("pt", "BR"));
+		datePicker = new DatePicker(dateSettings);
+		datePicker.getComponentDateTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		datePicker.setBounds(1021, 485, 220, 30);
+		contentPane.add(datePicker);
+
+		timePicker = new TimePicker();
+		timePicker.getComponentTimeTextField().setFont(new Font("Nirmala UI", Font.PLAIN, 13));
+		timePicker.setBounds(1021, 580, 220, 30);
+		contentPane.add(timePicker);
+
+		JLabel lblFundoFiltro_1 = new JLabel("");
+		lblFundoFiltro_1.setIcon(new ImageIcon(Principal.class.getResource("/assets/FUndo CLaroP.png")));
+		lblFundoFiltro_1.setBounds(966, 213, 532, 560);
+		contentPane.add(lblFundoFiltro_1);
+
+	}
+
+	private Locale determineLocale(String language, String country) {
+		return new Locale(language, country);
 	}
 }
