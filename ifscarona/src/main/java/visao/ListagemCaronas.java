@@ -281,8 +281,8 @@ public class ListagemCaronas extends JFrame {
 		});
 		contentPane.add(destinationFilter);
 
-		JButton filterButton = new JButton("Filtrar");
-		filterButton.setIcon(new ImageIcon(ListagemCaronas.class.getResource("/assets/icons8-editar-50.png")));
+		JButton filterButton = new JButton(" Filtrar");
+		filterButton.setIcon(new ImageIcon(ListagemCaronas.class.getResource("/assets/icons8-filtro-50.png")));
 		filterButton.setBackground(new Color(211, 215, 207));
 		filterButton.setFont(new Font("Dialog", Font.BOLD, 16));
 		filterButton.addActionListener(new ActionListener() {

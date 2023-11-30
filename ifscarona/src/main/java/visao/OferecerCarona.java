@@ -96,6 +96,16 @@ public class OferecerCarona extends JFrame {
 		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
 		dateSettings.setLocale(determineLocale("pt", "BR"));
+		
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
+		lblNewLabel_6.setBounds(914, 642, 75, 63);
+		contentPane.add(lblNewLabel_6);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/janelaIcon.png")));
+		label.setBounds(914, 425, 94, 61);
+		contentPane.add(label);
 		datePicker = new DatePicker(dateSettings);
 		datePicker.getComponentDateTextField().setFont(new Font("Dialog", Font.PLAIN, 12));
 		datePicker.setBounds(1400, 600, 220, 30);
@@ -113,24 +123,24 @@ public class OferecerCarona extends JFrame {
 
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(new Color(0, 0, 0));
-		separator_1.setBounds(443, 575, 295, 12);
+		separator_1.setBounds(491, 571, 295, 12);
 		contentPane.add(separator_1);
 
 		// Destino
 
 		rdbtnIfscD = new JRadioButton("IFSC");
 		rdbtnIfscD.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnIfscD.setBounds(563, 488, 129, 23);
+		rdbtnIfscD.setBounds(617, 488, 129, 23);
 		contentPane.add(rdbtnIfscD);
 
 		rdbtnGasparD = new JRadioButton("Gaspar");
 		rdbtnGasparD.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnGasparD.setBounds(563, 446, 129, 23);
+		rdbtnGasparD.setBounds(617, 446, 129, 23);
 		contentPane.add(rdbtnGasparD);
 
 		rdbtnBlumenauD = new JRadioButton("Blumenau");
 		rdbtnBlumenauD.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnBlumenauD.setBounds(563, 400, 129, 23);
+		rdbtnBlumenauD.setBounds(617, 400, 129, 23);
 		contentPane.add(rdbtnBlumenauD);
 
 		ButtonGroup radioGroup = new ButtonGroup();
@@ -159,7 +169,7 @@ public class OferecerCarona extends JFrame {
 						"Barracão", "Bateias", "Bela Vista", "Belchior Alto", "Belchior Baixo", "Belchior Central",
 						"Centro", "Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim",
 						"Lagoa", "Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
-		cmbGasparD.setBounds(547, 714, 169, 22);
+		cmbGasparD.setBounds(617, 708, 169, 22);
 		cmbGasparD.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbGasparD);
 
@@ -172,7 +182,7 @@ public class OferecerCarona extends JFrame {
 				"Escola Agrícola", "Passo Manso", "Salto Weissbach", "Velha", "Velha Central", "Velha Grande",
 				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
 				"Vila Nova" }));
-		cmbBlumenauD.setBounds(547, 632, 169, 22);
+		cmbBlumenauD.setBounds(617, 626, 169, 22);
 		cmbBlumenauD.setBackground(new Color(255, 251, 233));
 		contentPane.add(cmbBlumenauD);
 
@@ -186,7 +196,7 @@ public class OferecerCarona extends JFrame {
 						"Centro", "Coloninha", "Figueira", "Gaspar Alto", "Gaspar Grande", "Gasparinho", "Gaspar Mirim",
 						"Lagoa", "Macucos", "Margem Esquerda", "Poço Grande", "Santa Terezinha", "Sete de Setembro" }));
 		cmbGasparO.setBackground(new Color(255, 251, 233));
-		cmbGasparO.setBounds(912, 714, 169, 22);
+		cmbGasparO.setBounds(1022, 703, 169, 22);
 		contentPane.add(cmbGasparO);
 
 		cmbBlumenauO = new JComboBox<String>();
@@ -199,27 +209,27 @@ public class OferecerCarona extends JFrame {
 				"Boa Vista", "Bom Retiro", "Centro", "Itoupava Seca", "Jardim Blumenau", "Victor Konder",
 				"Vila Nova" }));
 		cmbBlumenauO.setBackground(new Color(255, 251, 233));
-		cmbBlumenauO.setBounds(912, 632, 169, 22);
+		cmbBlumenauO.setBounds(1022, 632, 169, 22);
 		contentPane.add(cmbBlumenauO);
 
 		JSeparator separator_1_2 = new JSeparator();
 		separator_1_2.setForeground(Color.BLACK);
-		separator_1_2.setBounds(808, 575, 295, 12);
+		separator_1_2.setBounds(914, 571, 295, 12);
 		contentPane.add(separator_1_2);
 
 		rdbtnIfscO = new JRadioButton("IFSC");
 		rdbtnIfscO.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnIfscO.setBounds(928, 488, 129, 23);
+		rdbtnIfscO.setBounds(1022, 488, 129, 23);
 		contentPane.add(rdbtnIfscO);
 
 		rdbtnGasparO = new JRadioButton("Gaspar");
 		rdbtnGasparO.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnGasparO.setBounds(928, 446, 129, 23);
+		rdbtnGasparO.setBounds(1022, 446, 129, 23);
 		contentPane.add(rdbtnGasparO);
 
 		rdbtnBlumenauO = new JRadioButton("Blumenau");
 		rdbtnBlumenauO.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnBlumenauO.setBounds(928, 400, 129, 23);
+		rdbtnBlumenauO.setBounds(1022, 400, 129, 23);
 		contentPane.add(rdbtnBlumenauO);
 
 		ButtonGroup radioGroup2 = new ButtonGroup();
@@ -245,7 +255,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_3.setBounds(462, 425, 50, 50);
+		lblNewLabel_3.setBounds(513, 432, 50, 50);
 		contentPane.add(lblNewLabel_3);
 
 		btnHome.setBorder(null);
@@ -257,7 +267,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
-		lblNewLabel_2.setBounds(462, 643, 50, 50);
+		lblNewLabel_2.setBounds(513, 655, 50, 50);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -276,7 +286,7 @@ public class OferecerCarona extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(1182, 304, 11, 489);
+		separator.setBounds(1269, 304, 11, 489);
 		contentPane.add(separator);
 
 		JLabel lblCarro = new JLabel("");
@@ -296,17 +306,17 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblFundoFiltro1 = new JLabel("");
 		lblFundoFiltro1.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
-		lblFundoFiltro1.setBounds(427, 361, 327, 448);
+		lblFundoFiltro1.setBounds(472, 345, 327, 448);
 		contentPane.add(lblFundoFiltro1);
 
 		JLabel lblNewLabel_1 = new JLabel("Destino");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1.setBounds(547, 273, 121, 60);
+		lblNewLabel_1.setBounds(559, 273, 191, 60);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Quantos lugares disponíveis?");
-		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_1.setBounds(1305, 250, 530, 107);
+		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 27));
+		lblNewLabel_1_1.setBounds(1318, 251, 530, 107);
 		contentPane.add(lblNewLabel_1_1);
 
 		JButton btnNewButton = new JButton("   Oferecer");
@@ -336,7 +346,7 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_1_2 = new JLabel("Oferecer Carona");
 		lblNewLabel_1_2.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewLabel_1_2.setBounds(999, 54, 552, 107);
+		lblNewLabel_1_2.setBounds(940, 46, 552, 107);
 		contentPane.add(lblNewLabel_1_2);
 
 		JLabel lblNewLabel_4 = new JLabel("");
@@ -346,8 +356,13 @@ public class OferecerCarona extends JFrame {
 
 		JLabel lblNewLabel_1_3 = new JLabel("Origem");
 		lblNewLabel_1_3.setFont(new Font("Dialog", Font.BOLD, 31));
-		lblNewLabel_1_3.setBounds(936, 273, 121, 60);
+		lblNewLabel_1_3.setBounds(999, 273, 167, 60);
 		contentPane.add(lblNewLabel_1_3);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
+		lblNewLabel_5.setBounds(898, 304, 385, 535);
+		contentPane.add(lblNewLabel_5);
 
 	}
 
