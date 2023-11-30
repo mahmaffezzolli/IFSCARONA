@@ -96,12 +96,12 @@ public class OferecerCarona extends JFrame {
 		dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
 		dateSettings.setFormatForDatesBeforeCommonEra("dd/MM/yyyy");
 		dateSettings.setLocale(determineLocale("pt", "BR"));
-		
+
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/icons8-localização-50.png")));
 		lblNewLabel_6.setBounds(914, 642, 75, 63);
 		contentPane.add(lblNewLabel_6);
-		
+
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/janelaIcon.png")));
 		label.setBounds(914, 425, 94, 61);
@@ -358,7 +358,7 @@ public class OferecerCarona extends JFrame {
 		lblNewLabel_1_3.setFont(new Font("Dialog", Font.BOLD, 31));
 		lblNewLabel_1_3.setBounds(999, 273, 167, 60);
 		contentPane.add(lblNewLabel_1_3);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(OferecerCarona.class.getResource("/assets/FUndo CLaroP.png")));
 		lblNewLabel_5.setBounds(898, 304, 385, 535);
@@ -458,7 +458,7 @@ public class OferecerCarona extends JFrame {
 		Long success = cDAO.cadastrarCarona(c);
 
 		if (success > 0) {
-			
+
 			CadastroRealizado CadastroRealizado = new CadastroRealizado();
 			CadastroRealizado.setBounds(40, 40, 451, 234);
 			CadastroRealizado.setLocationRelativeTo(null);
@@ -484,7 +484,6 @@ public class OferecerCarona extends JFrame {
 		campoNaoPreenchido.setLocationRelativeTo(null);
 		campoNaoPreenchido.setVisible(true);
 	}
-	
 
 	private Locale determineLocale(String language, String country) {
 		return new Locale(language, country);

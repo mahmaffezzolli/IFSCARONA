@@ -165,19 +165,19 @@ public class ListagemCaronas extends JFrame {
 						carona.setPassageiro(passageiro);
 
 						boolean sucesso = cDAO.alterarCarona(carona);
-						
-						if(sucesso) {
+
+						if (sucesso) {
 							TelaCaronaSelecionada telaCaronaSelecionada = new TelaCaronaSelecionada();
 							telaCaronaSelecionada.setBounds(40, 40, 451, 234);
 							telaCaronaSelecionada.setLocationRelativeTo(null);
 							telaCaronaSelecionada.setVisible(true);
-							
-							//JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(), carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(), carona.getData(), carona.getHorario());
-						}else {
-							
+
+							// JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(),
+							// carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(),
+							// carona.getData(), carona.getHorario());
+						} else {
+
 						}
-						
-						
 
 					}
 
@@ -312,28 +312,21 @@ public class ListagemCaronas extends JFrame {
 		try {
 
 			for (Carona carona : caronas) {
-				
-		        if (carona.getPassageiro().getCpf() == null) {
-		            String origem = carona.getTrajeto().getOrigem();
-		            String destino = carona.getTrajeto().getDestino();
 
-		            Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
+				if (carona.getPassageiro().getCpf() == null) {
+					String origem = carona.getTrajeto().getOrigem();
+					String destino = carona.getTrajeto().getDestino();
 
-		            String data = formatDate(carona.getData());
-		            String horario = formatTime(carona.getHorario());
+					Carro carro = vDAO.pegaVeiculo(carona.getVeiculo().getIdVeiculo());
 
-		            Object[] rowData = {
-		                carona.getIdCarona(),
-		                carona.getMotorista().getNome(),
-		                data,
-		                horario,
-		                carro.getPlaca(),
-		                origem,
-		                destino
-		            };
-		            tableModel.addRow(rowData);
-		        }
-				
+					String data = formatDate(carona.getData());
+					String horario = formatTime(carona.getHorario());
+
+					Object[] rowData = { carona.getIdCarona(), carona.getMotorista().getNome(), data, horario,
+							carro.getPlaca(), origem, destino };
+					tableModel.addRow(rowData);
+				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -382,14 +375,14 @@ public class ListagemCaronas extends JFrame {
 
 		filterCaronas();
 	}
-	
+
 	private String formatDate(LocalDate date) {
-	    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	    return date.format(dateFormatter);
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return date.format(dateFormatter);
 	}
 
 	private String formatTime(Time time) {
-	    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-	    return time.toLocalTime().format(timeFormatter);
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+		return time.toLocalTime().format(timeFormatter);
 	}
 }
