@@ -172,7 +172,8 @@ public class ListagemCaronas extends JFrame {
 							telaCaronaSelecionada.setLocationRelativeTo(null);
 							telaCaronaSelecionada.setVisible(true);
 							
-							//JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(), carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(), carona.getData(), carona.getHorario());
+							JavaMail.enviarEmailCaronaConfirmadaMotorista(carona.getMotorista().getEmail(), carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(), carona.getData(), carona.getHorario());
+							JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(), carona.getMotorista().getNome(), carona.getTrajeto().getOrigem(), carona.getData(), carona.getHorario());
 						}else {
 							
 						}
