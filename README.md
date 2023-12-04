@@ -11,13 +11,14 @@
 ![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/4ddc7a9a-b9dc-4556-a580-d34ae51b4328)
 
 • Tela Principal
-![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/4e3285bb-2e79-44da-9084-0154d1bbf403)
+![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/99845226/fc3fb26a-6e9c-4ae8-af21-3d3d4e5d1e54)
 
 • Tela de Perfil
-![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/b36cbbb9-5f64-4388-88d4-d2b70d446209)
+![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/99845226/ea76b6df-b1ac-4536-8c66-24b872abf36c)
 
-• Tela de Requisitar Carona
-![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/111303568/cebad397-2bfd-4e8e-b786-0c014b4a658d)
+• Tela de Oferecer Carona
+![image](https://github.com/mahmaffezzolli/IFSCARONA/assets/99845226/2cf163a0-66c6-4405-9946-f9786d1fd5e1)
+
 
 
 
