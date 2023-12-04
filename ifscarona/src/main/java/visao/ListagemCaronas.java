@@ -171,12 +171,20 @@ public class ListagemCaronas extends JFrame {
 							telaCaronaSelecionada.setBounds(40, 40, 451, 234);
 							telaCaronaSelecionada.setLocationRelativeTo(null);
 							telaCaronaSelecionada.setVisible(true);
+<<<<<<< HEAD
 
 							// JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(),
 							// carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(),
 							// carona.getData(), carona.getHorario());
 						} else {
 
+=======
+							
+							JavaMail.enviarEmailCaronaConfirmadaMotorista(carona.getMotorista().getEmail(), carona.getPassageiro().getNome(), carona.getTrajeto().getDestino(), carona.getData(), carona.getHorario());
+							JavaMail.enviarEmailCaronaConfirmada(carona.getPassageiro().getEmail(), carona.getMotorista().getNome(), carona.getTrajeto().getOrigem(), carona.getData(), carona.getHorario());
+						}else {
+							
+>>>>>>> 2207e2f540c09adfdda14c9f22b6fb4aeb53f4eb
 						}
 
 					}

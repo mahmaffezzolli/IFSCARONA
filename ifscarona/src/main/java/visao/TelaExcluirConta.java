@@ -77,7 +77,7 @@ public class TelaExcluirConta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Pessoa pessoaLogada = Sessao.getPessoaLogada();
-
+				
 				boolean success = pDAO.deletarPessoa(pessoaLogada);
 
 				Inicio inicio = new Inicio();

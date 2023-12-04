@@ -354,10 +354,11 @@ public class CadastroUsuario extends JFrame {
 					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
 
-				} else if (txtEmail.getText().isEmpty()) {
+				} else if (txtEmail.getText().isEmpty() ) {
 					campoNaoPreenchido.setBounds(40, 40, 451, 234);
 					campoNaoPreenchido.setLocationRelativeTo(null);
 					campoNaoPreenchido.setVisible(true);
+					
 				} else if (isValidEmailAddress(email) == false) {
 
 					EmaiInvalido Emailnvalido = new EmaiInvalido();
@@ -410,7 +411,7 @@ public class CadastroUsuario extends JFrame {
 						cadastroRealizado.setLocationRelativeTo(null);
 						cadastroRealizado.setVisible(true);
 
-						//JavaMail.enviarEmailContaCadastrada(email);
+						JavaMail.enviarEmailContaCadastrada(email);
 						
 						dispose();
 

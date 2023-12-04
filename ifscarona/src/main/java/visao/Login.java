@@ -142,6 +142,7 @@ public class Login extends JFrame {
 					showProgressBar(true);
 
 					SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+						@SuppressWarnings("null")
 						@Override
 						protected Void doInBackground() throws Exception {
 							Pessoa pessoaLogada = pDAO.login(email, senha);
@@ -154,13 +155,23 @@ public class Login extends JFrame {
 								Principal principal = new Principal();
 								principal.setVisible(true);
 								dispose();
-								// JavaMail.enviarEmail(email);
-							} else {
+
+							} else if(pessoaLogada.getEmail() != email){
+								
 								EmaiInvalido emailinvalido = new EmaiInvalido();
 								emailinvalido.setBounds(40, 40, 451, 234);
 								emailinvalido.setLocationRelativeTo(null);
 								emailinvalido.setVisible(true);
+								
+							} else {
+								
+								SenhaIncorreta senhaIncorreta = new SenhaIncorreta();
+								senhaIncorreta.setBounds(40, 40, 451, 234);
+								senhaIncorreta.setLocationRelativeTo(null);
+								senhaIncorreta.setVisible(true);
+								
 							}
+							
 							return null;
 						}
 
